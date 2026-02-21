@@ -1,178 +1,208 @@
-<!-- Encabezado global -->
-<div id="header-placeholder"></div>
-<script src="/matematica-a-pedal/assets/load-header.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- UNIDAD 0 · BLOQUE D — POTENCIACIÓN Y RADICACIÓN -->
-<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+  <title>Unidad 0 · Bloque D — Potenciación y Radicación | Matemática a Pedal</title>
 
-  <!-- MathJax (omití si ya está cargado) -->
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+
+  <!-- MathJax: configuración + carga -->
   <script>
-    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      }
+    };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
 
-  <!-- Encabezado -->
-  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
-    <h1 style="color:#783f04; margin:0;">Unidad 0 · Bloque D — Potenciación y Radicación</h1>
-    <p style="margin:8px 0 0;">
-      Repasamos el significado de las potencias y sus propiedades, y cómo las raíces se expresan como potencias fraccionarias.
-      Este bloque conecta directamente con la <b>Unidad 4 — Potenciación y Radicación</b>.
-    </p>
-  </div>
+<body>
+  <!-- Encabezado global -->
+  <div id="header-placeholder"></div>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- Recordatorio teórico -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">📘 Recordatorio</h2>
-    <ul style="margin:0 0 0 18px;">
-      <li><b>Potencia:</b> \(a^n\) significa multiplicar \(a\) por sí mismo \(n\) veces.</li>
-      <li><b>Exponente 0:</b> \(a^0=1\) (\(a\neq0\)).</li>
-      <li><b>Exponente negativo:</b> \(a^{-n}=\tfrac{1}{a^n}\).</li>
-      <li><b>Exponente fraccionario:</b> \(a^{\frac{1}{n}}=\sqrt[n]{a}\).</li>
-      <li><b>Potencia de una potencia:</b> \( (a^m)^n = a^{m\cdot n} \).</li>
-      <li><b>Producto de potencias de igual base:</b> \( a^m \cdot a^n = a^{m+n} \).</li>
-      <li><b>Cociente de potencias de igual base:</b> \( \dfrac{a^m}{a^n} = a^{m-n} \), \(a \neq 0\).</li>
-      <li><b>Potencia de un producto:</b> \( (ab)^n = a^n \cdot b^n \).</li>
-    </ul>
-  </div>
+  <!-- UNIDAD 0 · BLOQUE D — POTENCIACIÓN Y RADICACIÓN -->
+  <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
 
-  <!-- Ejercicio 1 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">1) Calculá las potencias</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>\(2^3\)</li>
-      <li>\((-3)^2\)</li>
-      <li>\((-3)^3\)</li>
-      <li>\(5^0\)</li>
-      <li>\(10^{-2}\)</li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\(2^3=8\)</li>
-        <li>\((-3)^2=9\)</li>
-        <li>\((-3)^3=-27\)</li>
-        <li>\(5^0=1\)</li>
-        <li>\(10^{-2}=\tfrac{1}{100}=0{,}01\)</li>
+    <!-- Encabezado -->
+    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
+      <h1 style="color:#783f04; margin:0;">Unidad 0 · Bloque D — Potenciación y Radicación</h1>
+      <p style="margin:8px 0 0;">
+        Repasamos el significado de las potencias y sus propiedades, y cómo las raíces se expresan como potencias fraccionarias.
+        Este bloque conecta directamente con la <b>Unidad 4 — Potenciación y Radicación</b>.
+      </p>
+    </div>
+
+    <!-- Recordatorio teórico -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">📘 Recordatorio</h2>
+      <ul style="margin:0 0 0 18px;">
+        <li><b>Potencia:</b> \(a^n\) significa multiplicar \(a\) por sí mismo \(n\) veces.</li>
+        <li><b>Exponente 0:</b> \(a^0=1\) (\(a\neq0\)).</li>
+        <li><b>Exponente negativo:</b> \(a^{-n}=\tfrac{1}{a^n}\).</li>
+        <li><b>Exponente fraccionario:</b> \(a^{\frac{1}{n}}=\sqrt[n]{a}\).</li>
+        <li><b>Potencia de una potencia:</b> \( (a^m)^n = a^{m\cdot n} \).</li>
+        <li><b>Producto de potencias de igual base:</b> \( a^m \cdot a^n = a^{m+n} \).</li>
+        <li><b>Cociente de potencias de igual base:</b> \( \dfrac{a^m}{a^n} = a^{m-n} \), \(a \neq 0\).</li>
+        <li><b>Potencia de un producto:</b> \( (ab)^n = a^n \cdot b^n \).</li>
       </ul>
-    </details>
+    </div>
+
+    <!-- Ejercicio 1 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">1) Calculá las potencias</h2>
+      <ol style="margin:0 0 0 18px;">
+        <li>\(2^3\)</li>
+        <li>\((-3)^2\)</li>
+        <li>\((-3)^3\)</li>
+        <li>\(5^0\)</li>
+        <li>\(10^{-2}\)</li>
+      </ol>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\(2^3=8\)</li>
+          <li>\((-3)^2=9\)</li>
+          <li>\((-3)^3=-27\)</li>
+          <li>\(5^0=1\)</li>
+          <li>\(10^{-2}=\tfrac{1}{100}=0{,}01\)</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Ejercicio 2 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">2) Aplicá las propiedades de las potencias</h2>
+      <p>Usá las reglas básicas: \(a^m·a^n=a^{m+n}\), \((a^m)^n=a^{m·n}\), \((a·b)^n=a^n·b^n\), \(a^m/a^n=a^{m-n}\).</p>
+      <ol style="margin:0 0 0 18px;">
+        <li>\(2^3·2^4\)</li>
+        <li>\((3^2)^3\)</li>
+        <li>\((2·5)^2\)</li>
+        <li>\(\tfrac{5^6}{5^2}\)</li>
+        <li>\(a^4·a^{-2}\)</li>
+      </ol>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\(2^3·2^4=2^7=128\).</li>
+          <li>\((3^2)^3=3^6=729\).</li>
+          <li>\((2·5)^2=2^2·5^2=4·25=100\).</li>
+          <li>\(5^6/5^2=5^{6-2}=5^4=625\).</li>
+          <li>\(a^4·a^{-2}=a^{4-2}=a^2\).</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Ejercicio 3 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">3) Calculá las raíces</h2>
+      <ol style="margin:0 0 0 18px;">
+        <li>\(\sqrt{81}\)</li>
+        <li>\(\sqrt{\tfrac{1}{4}}\)</li>
+        <li>\(\sqrt{-9}\)</li>
+        <li>\(\sqrt[3]{8}\)</li>
+        <li>\(\sqrt[3]{-27}\)</li>
+      </ol>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\(\sqrt{81}=9\).</li>
+          <li>\(\sqrt{\tfrac{1}{4}}=\tfrac{1}{2}\).</li>
+          <li>\(\sqrt{-9}\) no es real.</li>
+          <li>\(\sqrt[3]{8}=2\).</li>
+          <li>\(\sqrt[3]{-27}=-3\).</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Ejercicio 4 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">4) Expresá como potencia con exponente fraccionario</h2>
+      <ol style="margin:0 0 0 18px;">
+        <li>\(\sqrt{5}\)</li>
+        <li>\(\sqrt[3]{7}\)</li>
+        <li>\(\sqrt[4]{x^3}\)</li>
+        <li>\(\sqrt[3]{a^6}\)</li>
+      </ol>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\(\sqrt{5}=5^{1/2}\).</li>
+          <li>\(\sqrt[3]{7}=7^{1/3}\).</li>
+          <li>\(\sqrt[4]{x^3}=x^{3/4}\).</li>
+          <li>\(\sqrt[3]{a^6}=a^{6/3}=a^2\).</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Ejercicio 5 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">5) Aplicación mixta</h2>
+      <p>Resolvé usando propiedades de potencias y raíces:</p>
+      <ol style="margin:0 0 0 18px;">
+        <li>\(\sqrt{25·9}\)</li>
+        <li>\(\sqrt{\tfrac{4}{9}}\)</li>
+        <li>\(\sqrt[3]{8·27}\)</li>
+        <li>\((\sqrt{16})^3\)</li>
+        <li>\(\sqrt[4]{81}\)</li>
+      </ol>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\(\sqrt{25·9}=\sqrt{25}\sqrt{9}=5·3=15\).</li>
+          <li>\(\sqrt{\tfrac{4}{9}}=\tfrac{2}{3}\).</li>
+          <li>\(\sqrt[3]{8·27}=\sqrt[3]{8}\sqrt[3]{27}=2·3=6\).</li>
+          <li>\((\sqrt{16})^3=4^3=64\).</li>
+          <li>\(\sqrt[4]{81}=(81)^{1/4}=(3^4)^{1/4}=3\).</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Error común -->
+    <div style="margin-top:18px; background:#FFF6E6; border:1px dashed #FFD580; border-radius:12px; padding:14px;">
+      <h3 style="color:#783f04; margin:0 0 6px;">💡 Cuidado con esto</h3>
+      <p>
+        No confundas:<br />
+        \(\sqrt{a+b}\neq\sqrt{a}+\sqrt{b}\).<br />
+        Ejemplo: \(\sqrt{9+16}=\sqrt{25}=5\neq3+4=7.\)
+      </p>
+    </div>
+
+    <!-- Cierre -->
+    <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">🚴‍♀️ Para seguir</h2>
+      <p>Pasá al <b>Bloque E — Notación científica</b> para aplicar potencias de base 10 y representar números grandes o muy pequeños de modo compacto.</p>
+    </div>
+
+  </section>
+  <!-- FIN BLOQUE D -->
+
+  <!-- Navegador Unidad 0 - Bloque D -->
+  <div style="max-width:1180px; margin:12px auto 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center;
+                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
+                padding:12px; font-family:'Roboto Mono', monospace;">
+      <a href="/matematica-a-pedal/unidad0/bloque-c.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">⬅️ Bloque C</a>
+      <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+      <a href="/matematica-a-pedal/unidad0/bloque-e.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">Bloque E ➡️</a>
+    </div>
   </div>
 
-  <!-- Ejercicio 2 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">2) Aplicá las propiedades de las potencias</h2>
-    <p>Usá las reglas básicas: \(a^m·a^n=a^{m+n}\), \((a^m)^n=a^{m·n}\), \((a·b)^n=a^n·b^n\), \(a^m/a^n=a^{m-n}\).</p>
-    <ol style="margin:0 0 0 18px;">
-      <li>\(2^3·2^4\)</li>
-      <li>\((3^2)^3\)</li>
-      <li>\((2·5)^2\)</li>
-      <li>\(\tfrac{5^6}{5^2}\)</li>
-      <li>\(a^4·a^{-2}\)</li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\(2^3·2^4=2^7=128\).</li>
-        <li>\((3^2)^3=3^6=729\).</li>
-        <li>\((2·5)^2=2^2·5^2=4·25=100\).</li>
-        <li>\(5^6/5^2=5^{6-2}=5^4=625\).</li>
-        <li>\(a^4·a^{-2}=a^{4-2}=a^2\).</li>
-      </ul>
-    </details>
-  </div>
+  <!-- TOC (si corresponde) -->
+  <script src="/matematica-a-pedal/assets/toc.js"></script>
 
-  <!-- Ejercicio 3 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">3) Calculá las raíces</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>\(\sqrt{81}\)</li>
-      <li>\(\sqrt{\tfrac{1}{4}}\)</li>
-      <li>\(\sqrt{-9}\)</li>
-      <li>\(\sqrt[3]{8}\)</li>
-      <li>\(\sqrt[3]{-27}\)</li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\(\sqrt{81}=9\).</li>
-        <li>\(\sqrt{\tfrac{1}{4}}=\tfrac{1}{2}\).</li>
-        <li>\(\sqrt{-9}\) no es real.</li>
-        <li>\(\sqrt[3]{8}=2\).</li>
-        <li>\(\sqrt[3]{-27}=-3\).</li>
-      </ul>
-    </details>
-  </div>
-
-  <!-- Ejercicio 4 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">4) Expresá como potencia con exponente fraccionario</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>\(\sqrt{5}\)</li>
-      <li>\(\sqrt[3]{7}\)</li>
-      <li>\(\sqrt[4]{x^3}\)</li>
-      <li>\(\sqrt[3]{a^6}\)</li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\(\sqrt{5}=5^{1/2}\).</li>
-        <li>\(\sqrt[3]{7}=7^{1/3}\).</li>
-        <li>\(\sqrt[4]{x^3}=x^{3/4}\).</li>
-        <li>\(\sqrt[3]{a^6}=a^{6/3}=a^2\).</li>
-      </ul>
-    </details>
-  </div>
-
-  <!-- Ejercicio 5 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">5) Aplicación mixta</h2>
-    <p>Resolvé usando propiedades de potencias y raíces:</p>
-    <ol style="margin:0 0 0 18px;">
-      <li>\(\sqrt{25·9}\)</li>
-      <li>\(\sqrt{\tfrac{4}{9}}\)</li>
-      <li>\(\sqrt[3]{8·27}\)</li>
-      <li>\((\sqrt{16})^3\)</li>
-      <li>\(\sqrt[4]{81}\)</li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\(\sqrt{25·9}=\sqrt{25}\sqrt{9}=5·3=15\).</li>
-        <li>\(\sqrt{\tfrac{4}{9}}=\tfrac{2}{3}\).</li>
-        <li>\(\sqrt[3]{8·27}=\sqrt[3]{8}\sqrt[3]{27}=2·3=6\).</li>
-        <li>\((\sqrt{16})^3=4^3=64\).</li>
-        <li>\(\sqrt[4]{81}=(81)^{1/4}=(3^4)^{1/4}=3\).</li>
-      </ul>
-    </details>
-  </div>
-
-  <!-- Error común -->
-  <div style="margin-top:18px; background:#FFF6E6; border:1px dashed #FFD580; border-radius:12px; padding:14px;">
-    <h3 style="color:#783f04; margin:0 0 6px;">💡 Cuidado con esto</h3>
-    <p>
-      No confundas:<br>
-      \(\sqrt{a+b}\neq\sqrt{a}+\sqrt{b}\).  
-      Ejemplo: \(\sqrt{9+16}=\sqrt{25}=5\neq3+4=7.\)
-    </p>
-  </div>
-
-  <!-- Cierre -->
-  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🚴‍♀️ Para seguir</h2>
-    <p>Pasá al <b>Bloque E — Notación científica</b> para aplicar potencias de base 10 y representar números grandes o muy pequeños de modo compacto.</p>
-  </div>
-
-</section>
-<!-- FIN BLOQUE D -->
-
-<!-- Navegador Unidad 0 - Bloque D -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
-    <a href="/matematica-a-pedal/unidad0/bloque-c.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">⬅️ Bloque C</a>
-    <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    <a href="/matematica-a-pedal/unidad0/bloque-e.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">Bloque E ➡️</a>
-  </div>
-</div>
-
-<script src="/matematica-a-pedal/assets/toc.js"></script>
-
+  <!-- Scripts globales (siempre al final) -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+</body>
+</html>
