@@ -1,8 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matemática a Pedal · Unidad 1 · Bloque B · Propiedades de las operaciones</title>
+
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body style="font-family:'Roboto Mono', monospace; background:#FFF6E6; color:#7f6000;">
+
 <!-- Encabezado global -->
 <div id="header-placeholder"></div>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
-<!-- CAPÍTULO 2 — PROPIEDADES DE LAS OPERACIONES (Matemática a Pedal) -->
-<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+
+<!-- CAPÍTULO 2 — PROPIEDADES DE LAS OPERACIONES -->
+<section style="line-height:1.5; max-width:1180px; margin:0 auto;">
 
   <!-- Encabezado -->
   <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
@@ -13,7 +41,7 @@
   <!-- Objetivos -->
   <div style="margin-top:18px; border:1.5px dashed #783f04; border-radius:12px; padding:14px 16px;">
     <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Objetivos del Bloque B</h2>
-    <ul style="margin:0 0 0 18px; padding:0;">
+    <ul style="margin:0 0 0 18px;">
       <li>Reconocer cuándo aplican las propiedades conmutativa, asociativa y distributiva.</li>
       <li>Transformar y simplificar expresiones de forma segura.</li>
       <li>Detectar errores típicos (qué <b>no</b> se puede hacer).</li>
@@ -24,7 +52,7 @@
   <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
     <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
       <h3 style="color:#783f04; margin:0 0 6px;">Conmutativa</h3>
-      <p style="margin:0 0 6px;">El orden de los términos <b>no cambia</b> el resultado (solo en suma y producto).</p>
+      <p>El orden de los términos <b>no cambia</b> el resultado (solo en suma y producto).</p>
       <div style="background:#FFF6E6; padding:10px; border-radius:8px;">
         <div>Para todo a,b ∈ R:</div>
         <div>a + b = b + a</div>
@@ -34,11 +62,12 @@
     </div>
 
     <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplos</h4>
-      <p style="margin:0 6px 6px;">7 + 12 = 12 + 7 = 19</p>
-      <p style="margin:0 6px 6px;">3·5 = 5·3 = 15</p>
-      <details><summary style="cursor:pointer; color:#783f04;">Error común</summary>
-        <p style="margin:6px 0 0;">a − b ≠ b − a (en general). Ej.: 5−2=3 pero 2−5=−3.</p>
+      <h4 style="color:#783f04;">Ejemplos</h4>
+      <p>7 + 12 = 12 + 7 = 19</p>
+      <p>3·5 = 5·3 = 15</p>
+      <details>
+        <summary style="cursor:pointer; color:#783f04;">Error común</summary>
+        <p>a − b ≠ b − a. Ej.: 5−2=3 pero 2−5=−3.</p>
       </details>
     </div>
   </div>
@@ -46,8 +75,8 @@
   <!-- Propiedad Asociativa -->
   <div style="margin-top:12px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
     <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Asociativa</h3>
-      <p style="margin:0 0 6px;">La forma de agrupar (paréntesis) no altera el resultado (solo en suma y producto).</p>
+      <h3 style="color:#783f04;">Asociativa</h3>
+      <p>La forma de agrupar (paréntesis) no altera el resultado (solo en suma y producto).</p>
       <div style="background:#FFF6E6; padding:10px; border-radius:8px;">
         <div>Para todo a,b,c ∈ R:</div>
         <div>(a + b) + c = a + (b + c)</div>
@@ -57,126 +86,59 @@
     </div>
 
     <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplos</h4>
-      <p style="margin:0 6px 6px;">(2 + 4) + 7 = 2 + (4 + 7) = 13</p>
-      <p style="margin:0 6px 6px;">(3·7)·5 = 3·(7·5) = 105</p>
-      <details><summary style="cursor:pointer; color:#783f04;">Error común</summary>
-        <p style="margin:6px 0 0;">(10 − 3) − 2 ≠ 10 − (3 − 2). Izq.=5, Der.=9.</p>
+      <h4 style="color:#783f04;">Ejemplos</h4>
+      <p>(2 + 4) + 7 = 2 + (4 + 7) = 13</p>
+      <p>(3·7)·5 = 3·(7·5) = 105</p>
+      <details>
+        <summary style="cursor:pointer; color:#783f04;">Error común</summary>
+        <p>(10 − 3) − 2 ≠ 10 − (3 − 2). Izq.=5, Der.=9.</p>
       </details>
     </div>
   </div>
 
   <!-- Propiedad Distributiva -->
   <div style="margin-top:12px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h3 style="color:#783f04; margin:0 0 6px;">Distributiva</h3>
-    <p style="margin:0 0 6px;">Multiplicar por una suma (o resta) equivale a multiplicar por cada término y sumar (o restar).</p>
+    <h3 style="color:#783f04;">Distributiva</h3>
+    <p>Multiplicar por una suma (o resta) equivale a multiplicar por cada término y sumar (o restar).</p>
     <div style="background:#FFF6E6; padding:10px; border-radius:8px;">
-      <div>Para todo a,b,c ∈ R:</div>
       <div>a(b + c) = ab + ac</div>
       <div>a(b − c) = ab − ac</div>
       <div>(a + b)c = ac + bc</div>
     </div>
-
-    <!-- Ejemplos paso a paso -->
-    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:10px;">
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 1</h4>
-        <p style="margin:0;">2(x + 3) = 2x + 6</p>
-        <small>Se reparte el 2 a ambos términos.</small>
-      </div>
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 2</h4>
-        <p style="margin:0;">(a + b)(x + y) = ax + ay + bx + by</p>
-        <small>Producto de binomios = “todos con todos”.</small>
-      </div>
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 3</h4>
-        <p style="margin:0;">−2(x + y − 5) = −2x − 2y + 10</p>
-        <small>Atención al signo negativo: cambia todos los signos dentro.</small>
-      </div>
-    </div>
-
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Errores típicos a evitar</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>a(b + c) ≠ ab + c (falta distribuir al segundo término).</li>
-        <li>(a + b)² ≠ a² + b² (falta el término 2ab). Correcto: a² + 2ab + b².</li>
-        <li>−(x − y) ≠ −x − y (correcto: −x + y).</li>
-      </ul>
-    </details>
   </div>
 
-  <!-- Estrategias de simplificación -->
+  <!-- Estrategias -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Estrategias rápidas</h2>
-    <ul style="margin:0 0 0 18px;">
-      <li><b>Reordenar</b> sumas o productos (conmutativa) para juntar “parejas convenientes”.</li>
-      <li><b>Reagrupar</b> (asociativa) para calcular primero lo más simple.</li>
-      <li><b>Expandir</b> o <b>factorizar</b> (distributiva) según convenga: a(b+c) ↔ ab+ac.</li>
-      <li><b>Control de signos</b>: un “−” delante de paréntesis cambia todos los signos.</li>
+    <h2 style="color:#783f04;">Estrategias rápidas</h2>
+    <ul>
+      <li><b>Reordenar</b> sumas o productos.</li>
+      <li><b>Reagrupar</b> para calcular primero lo más simple.</li>
+      <li><b>Expandir</b> o <b>factorizar</b> según convenga.</li>
+      <li><b>Control de signos</b> en paréntesis.</li>
     </ul>
   </div>
 
-  <!-- Mini-actividad 1 -->
-  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 1 · Identifica la propiedad</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>5 + 13 = 13 + 5</li>
-      <li>(2·7)·5 = 2·(7·5)</li>
-      <li>3(x − 4) = 3x − 12</li>
-      <li>a + (b + c) = (a + b) + c</li>
-      <li>(m + n)p = mp + np</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>Conmutativa (suma)</li>
-        <li>Asociativa (producto)</li>
-        <li>Distributiva</li>
-        <li>Asociativa (suma)</li>
-        <li>Distributiva</li>
-      </ul>
-    </details>
-  </div>
-
-  <!-- Mini-actividad 2 -->
-  <div style="margin-top:12px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 2 · Simplifica correctamente</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>2(x + 5) − (x − 3)</li>
-      <li>(a + b)(a − b)</li>
-      <li>−(3y − 2) + 4(2 − y)</li>
-      <li>(2m + 1)²</li>
-      <li>3x − 2x + 5 − (x − 4)</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones paso a paso</summary>
-      <ol style="margin:8px 0 0 18px;">
-        <li>2x + 10 − x + 3 = <b>x + 13</b></li>
-        <li>a² − b² (producto notable) = <b>(a − b)(a + b)</b> o expandido <b>a² − b²</b></li>
-        <li>−3y + 2 + 8 − 4y = <b>−7y + 10</b></li>
-        <li>(2m + 1)(2m + 1) = 4m² + 4m + 1 → <b>4m² + 4m + 1</b></li>
-        <li>3x − 2x + 5 − x + 4 = (3x − 2x − x) + 9 = <b>9</b></li>
-      </ol>
-    </details>
-  </div>
-
-  <!-- Cierre -->
-  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Para seguir</h2>
-    <p style="margin:0;">En el próximo capítulo: <b>Suma y resta con números reales</b> (reglas de signos, paréntesis y transformaciones útiles).</p>
-  </div>
-
 </section>
+
 <!-- Navegador inferior -->
 <div style="max-width:1180px; margin:12px auto 0;">
   <div style="display:flex; justify-content:space-between; align-items:center;
               background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
+              padding:12px;">
     <a href="/matematica-a-pedal/unidad1/index.html"
        style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
               border-radius:10px; padding:8px 14px;">⬅️ Bloque A</a>
-    <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+    <span style="font-size:14px;">Continuá pedaleando</span>
     <a href="/matematica-a-pedal/unidad1/bloque-c.html"
        style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
               border-radius:10px; padding:8px 14px;">Bloque C ➡️</a>
   </div>
 </div>
-<!-- FIN CAPÍTULO 2 -->
+
+<!-- Scripts globales (SIEMPRE al final) -->
+<script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+
+</body>
+</html>
