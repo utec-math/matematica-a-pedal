@@ -1,20 +1,3 @@
-<!-- assets/header.html -->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matemática a Pedal</title>
-
-  <!-- ✅ Favicon global -->
-  <link rel="icon" type="image/png" href="/matematica-a-pedal/assets/bici-espiral.png?v=1">
-  <link rel="apple-touch-icon" href="/matematica-a-pedal/assets/bici-espiral.png">
-
-  <!-- Fuente y estilo global opcional -->
-  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=2">
-</head>
-
-<body>
 <header style="font-family:'Roboto Mono', monospace;">
 
   <!-- PORTADA TIPOGRÁFICA -->
@@ -37,6 +20,17 @@
                   font-size:clamp(14px,2.3vw,18px);max-width:640px;">
           Capítulos cortos, ejemplos claros y mini-apps interactivas para pedalear matemática a tu ritmo.
         </p>
+
+        <!-- 🔐 BOTÓN CERTIFICADO -->
+        <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button id="btnCertLogin"
+            style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">
+            🎓 Ingresar para certificado
+          </button>
+          <span id="certStatus" style="color:#783f04; font-size:14px;"></span>
+        </div>
+
+        <div id="certMsg" style="color:#783f04; margin-top:6px; font-size:14px;"></div>
       </div>
 
       <!-- Imagen lateral -->
@@ -49,143 +43,55 @@
     </div>
   </div>
 
-  <!-- MENÚ HORIZONTAL DE UNIDADES -->
+  <!-- MENÚ HORIZONTAL -->
   <nav style="position:relative; z-index:50;
               background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
     <div style="max-width:1180px; margin:0 auto;
                 display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap;">
 
-  <!-- SOBRE EL PROYECTO -->
-      <a href="/matematica-a-pedal/sobre.html"
-   style="position:absolute; left:24px; bottom:10px;
-          font-family:'Roboto Mono', monospace; color:#783f04;
-          background:#FFF6E6; border:1px solid #FFD580;
-          border-radius:10px; padding:6px 10px; font-size:14px;
-          text-decoration:none; box-shadow:0 2px 4px rgba(0,0,0,.05);">
-  🚲 Sobre el proyecto
-</a>
-      
-      <!-- Inicio -->
       <a href="/matematica-a-pedal/index.html"
          style="background:#fff; border:1px solid #FFD580; color:#783f04;
                 border-radius:10px; padding:8px 12px; text-decoration:none;">
         🏠 Inicio
       </a>
 
-      <!-- Unidad 0 -->
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-         🧮 Unidad 0 ▾
-        </button>
-        <div class="submenu">
-          <a href="/matematica-a-pedal/unidad0/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html">Mini Evaluación</a>
-        </div>
-      </div>
-
-      <!-- Unidad 1 -->
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-         🧮 Unidad 1 ▾
-        </button>
-        <div class="submenu">
-          <a href="/matematica-a-pedal/unidad1/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-f.html">Bloque F</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-g.html">Bloque G</a>
-          <a href="/matematica-a-pedal/unidad1/mini-evaluacion.html">Mini Evaluación</a>
-        </div>
-      </div>
-
-      <!-- Unidad 2 -->
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-         🧮 Unidad 2 ▾
-        </button>
-        <div class="submenu">
-          <a href="/matematica-a-pedal/unidad2/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad2/mini-evaluacion.html">Mini Evaluación</a>
-        </div>
-      </div>
-
-      <!-- Unidad 3 -->
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-         🧮 Unidad 3 ▾
-        </button>
-        <div class="submenu">
-          <a href="/matematica-a-pedal/unidad3/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad3/mini-evaluacion.html">Mini Evaluación</a>
-        </div>
-      </div>
-
-      <!-- Unidad 4 -->
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-         🧮 Unidad 4 ▾
-        </button>
-        <div class="submenu">
-          <a href="/matematica-a-pedal/unidad4/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-f.html">Bloque F</a>
-          <a href="/matematica-a-pedal/unidad4/mini-evaluacion.html">Mini Evaluación</a>
-        </div>
-      </div>
-
-      <!-- Autodiagnóstico -->
       <a href="/matematica-a-pedal/autodiagnostico.html"
          style="background:#fff; border:1px solid #FFD580; color:#783f04;
                 border-radius:10px; padding:8px 12px; text-decoration:none;">
         🧠 Autodiagnóstico
       </a>
+
     </div>
   </nav>
+
 </header>
 
-<style>
-  .submenu{
-    display:none; position:absolute; top:38px; left:0; z-index:1000;
-    background:#fff; border:1px solid #FFD580; border-radius:10px;
-    box-shadow:0 6px 12px rgba(0,0,0,.08); min-width:240px; padding:6px 0;
-  }
-  .submenu a{
-    display:block; padding:6px 12px; color:#7f6000; text-decoration:none;
-  }
-  .submenu a:hover{ background:#FFF6E6; }
-  .menu-item:hover .submenu{ display:block; }
+<!-- MODAL CERTIFICADO -->
+<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999;">
+  <div style="background:#fff; max-width:520px; margin:10vh auto; padding:16px; border-radius:14px; border:1px solid #FFD580;">
+    <h3 style="margin:0 0 10px; color:#783f04;">Registro para certificado</h3>
 
+    <label style="display:block; margin:10px 0 6px; color:#7f6000;">Curso / cohorte</label>
+    <select id="cohortSelect" style="width:100%; padding:8px; border-radius:10px; border:1px solid #FFD580;"></select>
+
+    <label style="display:block; margin:10px 0 6px; color:#7f6000;">Grupo (opcional)</label>
+    <input id="groupInput" placeholder="Ej: Grupo A / Grupo 1"
+           style="width:100%; padding:8px; border-radius:10px; border:1px solid #FFD580;" />
+
+    <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:14px;">
+      <button id="btnCertClose" style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">
+        Cancelar
+      </button>
+      <button id="btnCertSave" style="background:#783f04;border:1px solid #783f04;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;">
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
   @media (max-width: 720px){
     .hero-inner{ flex-direction:column; align-items:flex-start !important; }
     .hero-art{ display:none !important; }
   }
 </style>
-</body>
-</html>
