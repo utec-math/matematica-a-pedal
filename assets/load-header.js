@@ -64,3 +64,5 @@
     console.error("No se pudo cargar nav.json", e);
   }
 })();
+  // Avisar que el header ya está cargado e inyectado en el DOM
+  window.dispatchEvent(new Event("map:header-ready"));
