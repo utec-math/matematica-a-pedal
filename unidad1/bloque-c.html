@@ -1,8 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matemática a Pedal · Unidad 1 · Bloque C · Suma y resta con números reales</title>
+
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body style="font-family:'Roboto Mono', monospace; background:#FFF6E6; color:#7f6000;">
+
 <!-- Encabezado global -->
 <div id="header-placeholder"></div>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
-<!-- CAPÍTULO 3 — SUMA Y RESTA CON NÚMEROS REALES (Matemática a Pedal) -->
-<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+
+<!-- CAPÍTULO 3 — SUMA Y RESTA CON NÚMEROS REALES -->
+<section style="line-height:1.5; max-width:1180px; margin:0 auto;">
 
   <!-- Encabezado -->
   <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
@@ -12,148 +40,99 @@
 
   <!-- Objetivos -->
   <div style="margin-top:18px; border:1.5px dashed #783f04; border-radius:12px; padding:14px 16px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Objetivos del Bloque C</h2>
-    <ul style="margin:0 0 0 18px;">
+    <h2 style="color:#783f04;">Objetivos del Bloque C</h2>
+    <ul>
       <li>Comprender la relación entre suma y resta como operaciones inversas.</li>
       <li>Aplicar correctamente las reglas de los signos.</li>
       <li>Manejar la eliminación de paréntesis y simplificación de expresiones.</li>
     </ul>
   </div>
 
-  <!-- Concepto básico -->
+  <!-- Relación suma-resta -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">1️⃣  Relación entre suma y resta</h2>
-    <p>Todo número <a> a </a> tiene un opuesto <a> −a </a> tal que a + (−a) = 0.</p>
-    <p>Por definición: <b>a − b = a + (−b)</b></p>
-    <p>Así, restar un número equivale a sumar su opuesto.</p>
+    <h2 style="color:#783f04;">1️⃣ Relación entre suma y resta</h2>
+    <p>Todo número <b>a</b> tiene un opuesto <b>−a</b> tal que \\( a + (-a) = 0 \\).</p>
+    <p>Por definición: <b>\\( a - b = a + (-b) \\)</b></p>
+    <p>Restar un número equivale a sumar su opuesto.</p>
   </div>
 
   <!-- Reglas de signos -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">2️⃣  Reglas de los signos</h2>
+    <h2 style="color:#783f04;">2️⃣ Reglas de los signos</h2>
     <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
       <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
-        <h4 style="color:#783f04; margin:0 0 6px;">Suma de signos iguales</h4>
+        <h4 style="color:#783f04;">Suma de signos iguales</h4>
         <p>Se suman los valores absolutos y se conserva el signo.</p>
-        <p>Ejemplo: (+5) + (+3) = +8   (−7) + (−2) = −9</p>
+        <p>(+5) + (+3) = +8<br>(−7) + (−2) = −9</p>
       </div>
       <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
-        <h4 style="color:#783f04; margin:0 0 6px;">Suma de signos distintos</h4>
+        <h4 style="color:#783f04;">Suma de signos distintos</h4>
         <p>Se restan los valores absolutos y se conserva el signo del mayor.</p>
-        <p>Ejemplo: (+8) + (−5) = +3   (−10) + (+4) = −6</p>
+        <p>(+8) + (−5) = +3<br>(−10) + (+4) = −6</p>
       </div>
     </div>
-    <p style="margin-top:10px;">La resta se resuelve transformándola en suma y aplicando estas reglas.</p>
+    <p style="margin-top:10px;">La resta se transforma en suma y se aplican estas reglas.</p>
   </div>
 
-  <!-- Eliminación de paréntesis -->
+  <!-- Paréntesis -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">3️⃣  Eliminación de paréntesis</h2>
-    <ul style="margin:0 0 0 18px;">
-      <li>Signo “+” delante → no cambia los signos internos.</li>
-      <li>Signo “−” delante → cambia todos los signos dentro.</li>
+    <h2 style="color:#783f04;">3️⃣ Eliminación de paréntesis</h2>
+    <ul>
+      <li>Signo “+” delante → no cambia signos.</li>
+      <li>Signo “−” delante → cambia todos los signos internos.</li>
     </ul>
-    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:10px;">
-      <div style="background:#FFF6E6; border-radius:12px; padding:10px;">
-        <p>−(a + b) = −a − b</p>
-        <p>−(a − b) = −a + b</p>
-      </div>
-      <div style="background:#FFF6E6; border-radius:12px; padding:10px;">
-        <p>Ejemplo: −(3 + 5) = −3 − 5 = −8</p>
-        <p>Ejemplo: −(4 − 6) = −4 + 6 = 2</p>
-      </div>
+    <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
+      <p>\\( -(a + b) = -a - b \\)</p>
+      <p>\\( -(a - b) = -a + b \\)</p>
+      <p>Ej.: \\( -(3 + 5) = -8 \\)</p>
     </div>
   </div>
 
-  <!-- Ejemplos guiados -->
+  <!-- Ejemplos -->
   <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
     <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 1</h4>
-      <p>3 − 7 = 3 + (−7) = −4</p>
+      <h4 style="color:#783f04;">Ejemplo 1</h4>
+      <p>\\( 3 - 7 = -4 \\)</p>
     </div>
     <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 2</h4>
-      <p>−5 − (−2) = −5 + 2 = −3</p>
+      <h4 style="color:#783f04;">Ejemplo 2</h4>
+      <p>\\( -5 - (-2) = -3 \\)</p>
     </div>
     <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 3</h4>
-      <p>−(x + 2) + (x − 5) = −x − 2 + x − 5 = −7</p>
+      <h4 style="color:#783f04;">Ejemplo 3</h4>
+      <p>\\( -(x + 2) + (x - 5) = -7 \\)</p>
     </div>
   </div>
 
-  <!-- Mini-actividad 1 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 1 · Aplica las reglas de los signos</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>(+7) + (−10)</li>
-      <li>(−6) + (−3)</li>
-      <li>(−8) − (−5)</li>
-      <li>(−12) + (+15)</li>
-      <li>(+9) − (+14)</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ol style="margin:8px 0 0 18px;">
-        <li>−3</li>
-        <li>−9</li>
-        <li>−3</li>
-        <li>+3</li>
-        <li>−5</li>
-      </ol>
-    </details>
-  </div>
-
-  <!-- Mini-actividad 2 -->
-  <div style="margin-top:14px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 2 · Elimina paréntesis y simplifica</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>−(x − 3) + (2x − 1)</li>
-      <li>4 − (5 − 7)</li>
-      <li>−[ 2 − (3 − x) ]</li>
-      <li>−(a + b − c) + (a − b + c)</li>
-      <li>−(−4 + 2) − (3 − 5)</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones paso a paso</summary>
-      <ol style="margin:8px 0 0 18px;">
-        <li>−x + 3 + 2x − 1 = <b>x + 2</b></li>
-        <li>4 − 5 + 7 = <b>6</b></li>
-        <li>−2 + (3 − x) = −2 + 3 − x = <b>1 − x</b></li>
-        <li>−a − b + c + a − b + c = <b>−2b + 2c</b></li>
-        <li>4 − 2 − 3 + 5 = <b>4</b></li>
-      </ol>
-    </details>
-  </div>
-
-  <!-- Nota conceptual -->
-  <div style="margin-top:16px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">Para recordar</h2>
-    <ul style="margin:0 0 0 18px;">
-      <li>La resta es una suma con el signo cambiado.</li>
-      <li>Un signo “−” delante de paréntesis cambia todos los signos dentro.</li>
-      <li>Siempre simplificá agrupando términos semejantes.</li>
+  <!-- Recordatorio -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">Para recordar</h2>
+    <ul>
+      <li>La resta es suma con signo cambiado.</li>
+      <li>Un “−” delante de paréntesis cambia todos los signos.</li>
+      <li>Agrupá términos semejantes.</li>
     </ul>
   </div>
 
-  <!-- Cierre -->
-  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">Para seguir</h2>
-    <p style="margin:0;">En el próximo capítulo: <b>Multiplicación y división de números reales</b> (reglas de signos, inversos y fracciones equivalentes).</p>
-  </div>
-
-<!-- Navegador Unidad 1 - Capítulo 3 (dentro del section para mantener el ancho) -->
-<div style="margin-top:12px;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
+  <!-- Navegador -->
+  <div style="margin-top:18px; display:flex; justify-content:space-between; align-items:center;
               background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
+              padding:12px;">
     <a href="/matematica-a-pedal/unidad1/bloque-b.html"
        style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
               border-radius:10px; padding:8px 14px;">⬅️ Bloque B</a>
-    <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+    <span style="font-size:14px;">Continuá pedaleando</span>
     <a href="/matematica-a-pedal/unidad1/bloque-d.html"
        style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
               border-radius:10px; padding:8px 14px;">Bloque D ➡️</a>
   </div>
-</div>
+
 </section>
 
-<!-- FIN CAPÍTULO 3 -->
+<!-- Scripts globales (SIEMPRE al final) -->
+<script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
 
+</body>
+</html>
