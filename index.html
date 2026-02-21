@@ -8,20 +8,9 @@
   <!-- Estilos globales -->
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
 </head>
-  
-  <!-- Firebase + Auth -->
-<script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
 
-  <!-- Sistema de certificado -->
-<script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
-
-<!-- Sincronización de progreso (opcional en la portada) -->
-<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
-  
 <body>
-  <!-- Encabezado (imagen superior) -->
+  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
@@ -29,22 +18,21 @@
   <main style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
     <!-- HERO / BIENVENIDA -->
-<header style="position:relative; overflow:hidden; border-radius:18px; margin-top:8px; box-shadow:0 8px 20px rgba(0,0,0,.08);">
-  <div style="background:linear-gradient(105deg,#FFD580 0%, #FFA559 55%, #FFC06A 100%);
-              padding:36px 28px; border:2px solid #fff; text-align:center;">
-    <h1 style="color:#783f04; margin:0; font-size:38px;">Bienvenidos a <em>Matemática a Pedal</em></h1>
-    <p style="margin:16px auto 0; max-width:760px; font-size:18px;">
-      Este sito pedalea contigo por capítulos cortos, ejemplos claros, ejercicios con soluciones
-      y mini-apps interactivas. La idea es que puedas cursar y repasar a tu ritmo, con foco en
-      lo esencial y evitando errores típicos.
-    </p>
-    <p style="margin:14px auto 0; max-width:760px; font-size:18px;">
-      Para comenzar, usá el menú superior (<strong>Unidades ▾</strong>) o retomá donde dejaste:
-      el progreso se sincroniza automáticamente.
-    </p>
-  </div>
-</header>
-
+    <header style="position:relative; overflow:hidden; border-radius:18px; margin-top:8px; box-shadow:0 8px 20px rgba(0,0,0,.08);">
+      <div style="background:linear-gradient(105deg,#FFD580 0%, #FFA559 55%, #FFC06A 100%);
+                  padding:36px 28px; border:2px solid #fff; text-align:center;">
+        <h1 style="color:#783f04; margin:0; font-size:38px;">Bienvenidos a <em>Matemática a Pedal</em></h1>
+        <p style="margin:16px auto 0; max-width:760px; font-size:18px;">
+          Este sito pedalea contigo por capítulos cortos, ejemplos claros, ejercicios con soluciones
+          y mini-apps interactivas. La idea es que puedas cursar y repasar a tu ritmo, con foco en
+          lo esencial y evitando errores típicos.
+        </p>
+        <p style="margin:14px auto 0; max-width:760px; font-size:18px;">
+          Para comenzar, usá el menú superior (<strong>Unidades ▾</strong>) o retomá donde dejaste:
+          el progreso se sincroniza automáticamente.
+        </p>
+      </div>
+    </header>
 
     <!-- QUÉ VAS A ENCONTRAR -->
     <section style="margin-top:18px; border:1px solid #FFD580; border-radius:14px; padding:16px;">
@@ -146,9 +134,10 @@
             <li>Retroalimentación automática</li>
           </ul>
           <a href="autodiagnostico.html"
-   style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">
-   Ver Autodiagnóstico
-</a>
+             style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">
+            Ver Autodiagnóstico
+          </a>
+        </article>
 
       </div>
     </section>
@@ -163,20 +152,14 @@
         <div><a href="#" style="color:#7f6000; text-decoration:none;">Contacto: martin.bulanti@utec.edu.uy</a></div>
       </div>
       <small style="display:block; margin-top:8px; opacity:.9;">Material abierto para uso educativo · UTEC – Uruguay</small>
-      <span>·</span>
-
     </footer>
 
   </main>
 
+  <!-- Scripts (al final, sin duplicados) -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
