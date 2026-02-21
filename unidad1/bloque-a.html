@@ -1,11 +1,15 @@
-<!-- Encabezado global -->
-<div id="header-placeholder"></div>
-<script src="/matematica-a-pedal/assets/load-header.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- CAPÍTULO 1 — CONJUNTOS NUMÉRICOS (Matemática a Pedal) -->
-<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+  <title>Unidad 1 · Bloque A — Conjuntos numéricos | Matemática a Pedal</title>
 
-  <!-- MathJax (v3) -->
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+
+  <!-- MathJax: configuración + carga -->
   <script>
     window.MathJax = {
       tex: {
@@ -15,234 +19,253 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
 
-  <!-- Encabezado -->
-  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
-    <h1 style="color:#783f04; margin:0; font-size:28px;">Unidad 1 · Bloque A — Conjuntos numéricos</h1>
-    <p style="margin:8px 0 0;">¿Por qué hay distintos “tipos” de números? Porque resolvemos problemas distintos: contar, medir, comparar, dividir, aproximar…</p>
-  </div>
+<body>
+  <!-- Encabezado global -->
+  <div id="header-placeholder"></div>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- Objetivos -->
-  <div style="margin-top:18px; display:grid; gap:12px;">
-    <div style="border:1.5px dashed #783f04; border-radius:12px; padding:14px 16px;">
-      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Objetivos del Bloque A</h2>
+  <!-- CAPÍTULO 1 — CONJUNTOS NUMÉRICOS (Matemática a Pedal) -->
+  <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+
+    <!-- Encabezado -->
+    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+      <h1 style="color:#783f04; margin:0; font-size:28px;">Unidad 1 · Bloque A — Conjuntos numéricos</h1>
+      <p style="margin:8px 0 0;">¿Por qué hay distintos “tipos” de números? Porque resolvemos problemas distintos: contar, medir, comparar, dividir, aproximar…</p>
+    </div>
+
+    <!-- Objetivos -->
+    <div style="margin-top:18px; display:grid; gap:12px;">
+      <div style="border:1.5px dashed #783f04; border-radius:12px; padding:14px 16px;">
+        <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Objetivos del Bloque A</h2>
+        <ul style="margin:0 0 0 18px; padding:0;">
+          <li>Reconocer y clasificar números en <b>N</b>, <b>Z</b>, <b>Q</b>, <b>I</b>, <b>R</b>.</li>
+          <li>Entender las relaciones de inclusión entre conjuntos numéricos.</li>
+          <li>Aplicar criterios rápidos para decidir a qué conjunto pertenece un número.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tarjetas de definición -->
+    <div style="margin-top:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">Mapa rápido de conjuntos</h2>
+
+      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+        <!-- Naturales -->
+        <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+          <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Naturales</b> — N</h3>
+          <p style="margin:0 0 6px;">Para <i>contar</i> objetos.</p>
+          <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( N = \{0, 1, 2, 3, \dots\} \)</div>
+          <small>Algunos autores empiezan en 1. Aquí incluimos el 0.</small>
+        </div>
+
+        <!-- Enteros -->
+        <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+          <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Enteros</b> — Z</h3>
+          <p style="margin:0 0 6px;">Positivos, negativos y el 0.</p>
+          <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( Z = \{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\} \)</div>
+        </div>
+
+        <!-- Racionales -->
+        <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+          <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Racionales</b> — Q</h3>
+          <p style="margin:0 0 6px;">Cociente de enteros con denominador distinto de 0.</p>
+          <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( Q = \left\{ \frac{m}{n} \,\middle|\, m,n \in Z,\; n \ne 0 \right\} \)</div>
+          <small>Incluye: fracciones, decimales finitos y periódicos.</small>
+        </div>
+
+        <!-- Irracionales -->
+        <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+          <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Irracionales</b> — I</h3>
+          <p style="margin:0 0 6px;">No pueden expresarse como \( m/n \).</p>
+          <div style="background:#FFF6E6; padding:10px; border-radius:8px;">Decimales infinitos <b>no</b> periódicos: \( \sqrt{2},\, \pi,\, e, \dots \)</div>
+        </div>
+
+        <!-- Reales -->
+        <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+          <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Reales</b> — R</h3>
+          <p style="margin:0 0 6px;">Unión de \(Q\) e \(I\).</p>
+          <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( R = Q \cup I \)</div>
+          <small>Cuando decimos “número” sin más, solemos referirnos a reales.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagrama SVG de inclusión -->
+    <div style="margin-top:18px;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Relaciones de inclusión</h2>
+      <p style="margin:0 0 10px;">Visualmente: \( N \subset Z \subset Q \subset R \) y \( R = Q \cup I \) con \( Q \cap I = \varnothing \).</p>
+
+      <div style="display:flex; justify-content:center;">
+        <svg viewBox="0 0 720 380" width="100%" style="max-width:720px; background:#FFFDF8; border:1px solid #FFD580; border-radius:12px">
+          <!-- Marco R -->
+          <rect x="14" y="14" width="692" height="352" rx="16" ry="16" fill="none" stroke="#783f04" stroke-width="2"/>
+          <text x="688" y="34" fill="#783f04" font-family="Roboto Mono, monospace" font-size="14">R</text>
+
+          <!-- División: izquierda Q (con N y Z dentro), derecha I = R \ Q -->
+          <line x1="440" y1="14" x2="440" y2="366" stroke="#FFBF6B" stroke-width="2" stroke-dasharray="6 6"/>
+          <text x="580" y="50" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">I = R − Q</text>
+
+          <!-- Bloque Q (contiene Z y N) -->
+          <rect x="40" y="54" width="380" height="272" rx="14" ry="14" fill="none" stroke="#FFA559" stroke-width="2"/>
+          <text x="404" y="72" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">Q</text>
+
+          <!-- Bloque Z dentro de Q -->
+          <rect x="72" y="88" width="316" height="208" rx="12" ry="12" fill="none" stroke="#FFBF6B" stroke-width="2"/>
+          <text x="374" y="104" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">Z</text>
+
+          <!-- Bloque N dentro de Z -->
+          <rect x="110" y="124" width="240" height="136" rx="10" ry="10" fill="none" stroke="#FFD580" stroke-width="2"/>
+          <text x="336" y="140" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">N</text>
+
+          <!-- Ejemplos -->
+          <text x="160" y="176" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">3 ∈ N</text>
+          <text x="160" y="198" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">0 ∈ N</text>
+
+          <!-- En Z pero fuera de N -->
+          <text x="100" y="285" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">−2 ∈ Z</text>
+
+          <!-- En Q pero fuera de Z -->
+          <text x="260" y="310" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">5/4 ∈ Q</text>
+          <text x="340" y="310" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">0,333… ∈ Q</text>
+
+          <!-- En I (derecha) -->
+          <text x="520" y="170" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">√2 ∈ I</text>
+          <text x="520" y="198" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">π ∈ I</text>
+
+          <!-- Etiqueta -->
+          <text x="48" y="44" fill="#7f6000" font-size="12" font-family="Roboto Mono, monospace">N ⊂ Z ⊂ Q</text>
+        </svg>
+      </div>
+
+      <small>Nota: \( R = Q \cup I \) y \( Q \cap I = \varnothing \). A la izquierda, \( N \subset Z \subset Q \); a la derecha, los irracionales \( I \).</small>
+    </div>
+
+    <!-- Reglas rápidas de clasificación -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Reglas rápidas para decidir “¿a qué conjunto pertenece?”</h2>
       <ul style="margin:0 0 0 18px; padding:0;">
-        <li>Reconocer y clasificar números en <b>N</b>, <b>Z</b>, <b>Q</b>, <b>I</b>, <b>R</b>.</li>
-        <li>Entender las relaciones de inclusión entre conjuntos numéricos.</li>
-        <li>Aplicar criterios rápidos para decidir a qué conjunto pertenece un número.</li>
+        <li>Es fracción \( \tfrac{m}{n} \) con \( m,n \in Z \) y \( n \ne 0 \) → <b>Q</b>.</li>
+        <li>Es decimal finito o periódico → <b>Q</b>.</li>
+        <li>Es decimal infinito no periódico → <b>I</b>.</li>
+        <li>No tiene parte decimal y puede ser negativo → <b>Z</b>.</li>
+        <li>No tiene parte decimal y no es negativo → <b>N</b>.</li>
+        <li>Todo lo anterior está dentro de <b>R</b>.</li>
       </ul>
     </div>
-  </div>
 
-  <!-- Tarjetas de definición -->
-  <div style="margin-top:16px;">
-    <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">Mapa rápido de conjuntos</h2>
-
-    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-      <!-- Naturales -->
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-        <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Naturales</b> — N</h3>
-        <p style="margin:0 0 6px;">Para <i>contar</i> objetos.</p>
-        <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( N = \{0, 1, 2, 3, \dots\} \)</div>
-        <small>Algunos autores empiezan en 1. Aquí incluimos el 0.</small>
+    <!-- Ejemplos guiados -->
+    <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo A</h3>
+        <p style="margin:0 0 6px;">\(0{,}125 = \frac{125}{1000}\) → decimal finito → <b>Q</b>.</p>
+        <details style="margin-top:4px;">
+          <summary style="cursor:pointer; color:#783f04;">Ver por qué</summary>
+          <p style="margin:6px 0 0;">Puede escribirse como \( \tfrac{1}{8} \) (fracción irreducible), por lo tanto es racional.</p>
+        </details>
       </div>
 
-      <!-- Enteros -->
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-        <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Enteros</b> — Z</h3>
-        <p style="margin:0 0 6px;">Positivos, negativos y el 0.</p>
-        <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( Z = \{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\} \)</div>
+      <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo B</h3>
+        <p style="margin:0 0 6px;">\(0{,}101001000100001\dots\) → no hay periodo fijo → <b>I</b>.</p>
+        <details style="margin-top:4px;">
+          <summary style="cursor:pointer; color:#783f04;">Ver por qué</summary>
+          <p style="margin:6px 0 0;">Es decimal infinito no periódico; no puede expresarse como \( m/n \).</p>
+        </details>
       </div>
 
-      <!-- Racionales -->
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-        <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Racionales</b> — Q</h3>
-        <p style="margin:0 0 6px;">Cociente de enteros con denominador distinto de 0.</p>
-        <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( Q = \left\{ \frac{m}{n} \,\middle|\, m,n \in Z,\; n \ne 0 \right\} \)</div>
-        <small>Incluye: fracciones, decimales finitos y periódicos.</small>
-      </div>
-
-      <!-- Irracionales -->
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-        <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Irracionales</b> — I</h3>
-        <p style="margin:0 0 6px;">No pueden expresarse como \( m/n \).</p>
-        <div style="background:#FFF6E6; padding:10px; border-radius:8px;">Decimales infinitos <b>no</b> periódicos: \( \sqrt{2},\, \pi,\, e, \dots \)</div>
-      </div>
-
-      <!-- Reales -->
-      <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
-        <h3 style="color:#783f04; margin:0 0 6px;">Números <b>Reales</b> — R</h3>
-        <p style="margin:0 0 6px;">Unión de \(Q\) e \(I\).</p>
-        <div style="background:#FFF6E6; padding:10px; border-radius:8px;">\( R = Q \cup I \)</div>
-        <small>Cuando decimos “número” sin más, solemos referirnos a reales.</small>
+      <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo C</h3>
+        <p style="margin:0 0 6px;">\( -7 \) → entero negativo → <b>Z</b> (y también \( \in Q, R\)).</p>
+        <details style="margin-top:4px;">
+          <summary style="cursor:pointer; color:#783f04;">Ver cadena de inclusión</summary>
+          <p style="margin:6px 0 0;">\( Z \subset Q \subset R \), por tanto todo entero es racional y real.</p>
+        </details>
       </div>
     </div>
-  </div>
 
-  <!-- Diagrama SVG de inclusión -->
-  <div style="margin-top:18px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Relaciones de inclusión</h2>
-    <p style="margin:0 0 10px;">Visualmente: \( N \subset Z \subset Q \subset R \) y \( R = Q \cup I \) con \( Q \cap I = \varnothing \).</p>
-
-    <div style="display:flex; justify-content:center;">
-      <svg viewBox="0 0 720 380" width="100%" style="max-width:720px; background:#FFFDF8; border:1px solid #FFD580; border-radius:12px">
-        <!-- Marco R -->
-        <rect x="14" y="14" width="692" height="352" rx="16" ry="16" fill="none" stroke="#783f04" stroke-width="2"/>
-        <text x="688" y="34" fill="#783f04" font-family="Roboto Mono, monospace" font-size="14">R</text>
-
-        <!-- División: izquierda Q (con N y Z dentro), derecha I = R \ Q -->
-        <line x1="440" y1="14" x2="440" y2="366" stroke="#FFBF6B" stroke-width="2" stroke-dasharray="6 6"/>
-        <text x="580" y="50" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">I = R − Q</text>
-
-        <!-- Bloque Q (contiene Z y N) -->
-        <rect x="40" y="54" width="380" height="272" rx="14" ry="14" fill="none" stroke="#FFA559" stroke-width="2"/>
-        <text x="404" y="72" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">Q</text>
-
-        <!-- Bloque Z dentro de Q -->
-        <rect x="72" y="88" width="316" height="208" rx="12" ry="12" fill="none" stroke="#FFBF6B" stroke-width="2"/>
-        <text x="374" y="104" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">Z</text>
-
-        <!-- Bloque N dentro de Z -->
-        <rect x="110" y="124" width="240" height="136" rx="10" ry="10" fill="none" stroke="#FFD580" stroke-width="2"/>
-        <text x="336" y="140" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">N</text>
-
-        <!-- Ejemplos -->
-        <text x="160" y="176" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">3 ∈ N</text>
-        <text x="160" y="198" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">0 ∈ N</text>
-
-        <!-- En Z pero fuera de N -->
-        <text x="100" y="285" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">−2 ∈ Z</text>
-
-        <!-- En Q pero fuera de Z (alineados) -->
-        <text x="260" y="310" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">5/4 ∈ Q</text>
-        <text x="340" y="310" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">0,333… ∈ Q</text>
-
-        <!-- En I (derecha) -->
-        <text x="520" y="170" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">√2 ∈ I</text>
-        <text x="520" y="198" fill="#7f6000" font-size="13" font-family="Roboto Mono, monospace">π ∈ I</text>
-
-        <!-- Etiqueta -->
-        <text x="48" y="44" fill="#7f6000" font-size="12" font-family="Roboto Mono, monospace">N ⊂ Z ⊂ Q</text>
-      </svg>
-    </div>
-
-    <!-- Nota limpia (sin LaTeX “escapado”) -->
-    <small>Nota: \( R = Q \cup I \) y \( Q \cap I = \varnothing \). A la izquierda, \( N \subset Z \subset Q \); a la derecha, los irracionales \( I \).</small>
-  </div>
-
-  <!-- Reglas rápidas de clasificación -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Reglas rápidas para decidir “¿a qué conjunto pertenece?”</h2>
-    <ul style="margin:0 0 0 18px; padding:0;">
-      <li>Es fracción \( \tfrac{m}{n} \) con \( m,n \in Z \) y \( n \ne 0 \) → <b>Q</b>.</li>
-      <li>Es decimal finito o periódico → <b>Q</b>.</li>
-      <li>Es decimal infinito no periódico → <b>I</b>.</li>
-      <li>No tiene parte decimal y puede ser negativo → <b>Z</b>.</li>
-      <li>No tiene parte decimal y no es negativo → <b>N</b>.</li>
-      <li>Todo lo anterior está dentro de <b>R</b>.</li>
-    </ul>
-  </div>
-
-  <!-- Ejemplos guiados -->
-  <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-    <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo A</h3>
-      <p style="margin:0 0 6px;">\(0{,}125 = \frac{125}{1000}\) → decimal finito → <b>Q</b>.</p>
-      <details style="margin-top:4px;"><summary style="cursor:pointer; color:#783f04;">Ver por qué</summary>
-        <p style="margin:6px 0 0;">Puede escribirse como \( \tfrac{1}{8} \) (fracción irreducible), por lo tanto es racional.</p>
+    <!-- Mini-actividad 1 -->
+    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 1 · Clasifica cada número</h2>
+      <ol style="margin:0 0 0 18px; padding:0;">
+        <li>5</li>
+        <li>−3</li>
+        <li>3/11</li>
+        <li>0,333…</li>
+        <li>\(\sqrt{5}\)</li>
+        <li>\(\pi\)</li>
+        <li>0</li>
+      </ol>
+      <details style="margin-top:10px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>5 → \( N \subset Z \subset Q \subset R \)</li>
+          <li>−3 → \( Z \subset Q \subset R \)</li>
+          <li>\( \tfrac{3}{11} \) → \( Q \subset R \)</li>
+          <li>\(0{,}333…\) (periódico) → \( Q \subset R \)</li>
+          <li>\( \sqrt{5} \) → \( I \subset R \)</li>
+          <li>\( \pi \) → \( I \subset R \)</li>
+          <li>0 → \( N \) (según esta convención), \( Z, Q, R \)</li>
+        </ul>
       </details>
     </div>
 
-    <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo B</h3>
-      <p style="margin:0 0 6px;">\(0{,}101001000100001\dots\) → no hay periodo fijo → <b>I</b>.</p>
-      <details style="margin-top:4px;"><summary style="cursor:pointer; color:#783f04;">Ver por qué</summary>
-        <p style="margin:6px 0 0;">Es decimal infinito no periódico; no puede expresarse como \( m/n \).</p>
+    <!-- Mini-actividad 2 -->
+    <div style="margin-top:14px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 2 · Verdadero / Falso</h2>
+      <ol style="margin:0 0 0 18px; padding:0;">
+        <li>Todo número racional es real.</li>
+        <li>Todo irracional es racional.</li>
+        <li>Existen números reales que no son racionales.</li>
+        <li>Todo natural es entero.</li>
+        <li>Existen enteros que no son naturales.</li>
+      </ol>
+      <details style="margin-top:10px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>V</li>
+          <li>F</li>
+          <li>V (ej.: \( \pi \))</li>
+          <li>V</li>
+          <li>V (ej.: \( -1 \))</li>
+        </ul>
       </details>
     </div>
 
-    <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Ejemplo C</h3>
-      <p style="margin:0 0 6px;">\( -7 \) → entero negativo → <b>Z</b> (y también \( \in Q, R\)).</p>
-      <details style="margin-top:4px;"><summary style="cursor:pointer; color:#783f04;">Ver cadena de inclusión</summary>
-        <p style="margin:6px 0 0;">\( Z \subset Q \subset R \), por tanto todo entero es racional y real.</p>
-      </details>
+    <!-- Cierre -->
+    <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Para seguir</h2>
+      <p style="margin:0;">
+        En el próximo capítulo trabajaremos <b>propiedades de las operaciones</b>
+        (conmutativa, asociativa y distributiva) con ejemplos claros y ejercicios autocorregibles.
+      </p>
     </div>
-  </div>
 
-  <!-- Mini-actividad 1 -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 1 · Clasifica cada número</h2>
-    <ol style="margin:0 0 0 18px; padding:0;">
-      <li>5</li>
-      <li>−3</li>
-      <li>3/11</li>
-      <li>0,333…</li>
-      <li>\(sqrt{5}\)</li>
-      <li>π</li>
-      <li>0</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>5 → \( N \subset Z \subset Q \subset R \)</li>
-        <li>−3 → \( Z \subset Q \subset R \)</li>
-        <li>\( \tfrac{3}{11} \) → \( Q \subset R \)</li>
-        <li>\(0{,}333…\) (periódico) → \( Q \subset R \)</li>
-        <li>\( \sqrt{5} \) → \( I \subset R \)</li>
-        <li>\( \pi \) → \( I \subset R \)</li>
-        <li>0 → \( N \) (según esta convención), \( Z, Q, R \)</li>
-      </ul>
-    </details>
-  </div>
+    <!-- Navegador Unidad 1 - Bloque A (dentro del mismo section para mantener el ancho) -->
+    <div style="margin-top:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;
+                  background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
+                  padding:12px; font-family:'Roboto Mono', monospace;">
+        <a href="/matematica-a-pedal/unidad1/index.html"
+           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                  border-radius:10px; padding:8px 14px;">⬅️ Introducción</a>
+        <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+        <a href="/matematica-a-pedal/unidad1/bloque-b.html"
+           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                  border-radius:10px; padding:8px 14px;">Bloque B ➡️</a>
+      </div>
+    </div>
 
-  <!-- Mini-actividad 2 -->
-  <div style="margin-top:14px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-actividad 2 · Verdadero / Falso</h2>
-    <ol style="margin:0 0 0 18px; padding:0;">
-      <li>Todo número racional es real.</li>
-      <li>Todo irracional es racional.</li>
-      <li>Existen números reales que no son racionales.</li>
-      <li>Todo natural es entero.</li>
-      <li>Existen enteros que no son naturales.</li>
-    </ol>
-    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>V</li>
-        <li>F</li>
-        <li>V (ej.: \( \pi \))</li>
-        <li>V</li>
-        <li>V (ej.: \( -1 \))</li>
-      </ul>
-    </details>
-  </div>
+  </section>
+  <!-- FIN BLOQUE A -->
 
-  <!-- Cierre -->
-<div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580;
-            border-radius:12px; padding:14px;">
-  <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Para seguir</h2>
-  <p style="margin:0;">
-    En el próximo capítulo trabajaremos <b>propiedades de las operaciones</b>
-    (conmutativa, asociativa y distributiva) con ejemplos claros y ejercicios autocorregibles.
-  </p>
-</div>
+  <!-- TOC (si corresponde) -->
+  <script src="/matematica-a-pedal/assets/toc.js"></script>
 
-<!-- Navegador Unidad 1 - Bloque A (dentro del mismo section para mantener el ancho) -->
-<div style="margin-top:12px;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
-    <a href="/matematica-a-pedal/unidad1/index.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">⬅️ Introducción</a>
-    <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    <a href="/matematica-a-pedal/unidad1/bloque-b.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">Bloque B ➡️</a>
-  </div>
-</div>
-</section>
-<!-- FIN BLOQUE A -->
-
-<script src="/matematica-a-pedal/assets/toc.js"></script>
-
-<!-- FIN CAPÍTULO 1 -->
+  <!-- Scripts globales (siempre al final) -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+</body>
+</html>
