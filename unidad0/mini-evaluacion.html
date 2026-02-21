@@ -1,293 +1,377 @@
-<!-- Encabezado global -->
-<div id="header-placeholder"></div>
-<script src="/matematica-a-pedal/assets/load-header.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- UNIDAD 0 · MINI-EVALUACIÓN Y CHECKLIST -->
-<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+  <title>Unidad 0 · Mini-evaluación y Checklist | Matemática a Pedal</title>
 
-  <!-- MathJax (omití si ya está cargado) -->
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+
+  <!-- MathJax: configuración + carga -->
   <script>
-    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      }
+    };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <!-- Encabezado -->
-  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
-    <h1 style="color:#783f04; margin:0;">Mini-evaluación de repaso — Calentamiento Matemático</h1>
-    <p style="margin:8px 0 0;">
-      Esta breve autoevaluación te ayuda a verificar tu dominio de los conceptos vistos en los bloques A–E.
-      No cuenta para nota: es una herramienta de diagnóstico personal.
-    </p>
-  </div>
+  <style>
+    /* ✅ Limpieza para impresión */
+    @media print {
+      #header-placeholder, nav, .submenu, button, #u0-reset, #u0-score-reset, #u0-score-calc, #u0-print { display: none !important; }
+      body { color: #000 !important; }
+      a { color: #000 !important; text-decoration: none; }
+      section[style*="max-width"] { max-width: 100% !important; margin: 0 !important; }
+      details { display: block; }
+      details > summary { display: none; }
+    }
+    @page { margin: 16mm; }
+  </style>
+</head>
 
-  <!-- Sección 1 · Núcleos conceptuales -->
-  <div style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🔹 Parte 1 · Núcleos conceptuales (A–C)</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>
-        Indicá el <b>conjunto más pequeño</b> al que pertenece cada número (N, Z, Q, I, R):<br>
-        a) \(7\) &nbsp; b) \(-4\) &nbsp; c) \( \tfrac{5}{6} \) &nbsp; d) \( \sqrt{3} \) &nbsp; e) \(0{,}125\)
-      </li>
-      <li>
-        Completá con la propiedad correcta (conmutativa, asociativa o distributiva):<br>
-        a) \( 8 + 11 = 11 + 8 \) → ____________<br>
-        b) \( (2\cdot 5)\cdot 3 = 2\cdot (5\cdot 3) \) → ____________<br>
-        c) \( k(m+n) = km + kn \) → ____________
-      </li>
-      <li>
-        Simplificá al máximo: \( \dfrac{54}{72} = \) ________.
-      </li>
-      <li>
-        Calculá y simplificá: \( \dfrac{3}{10} + \dfrac{7}{15} = \) ________.
-      </li>
-      <li>
-        Calculá (indicá resultado como potencia o número):<br>
-        a) \( 2^{3}\cdot 2^{-1} = \) ________ &nbsp;&nbsp;
-        b) \( \sqrt[3]{27} = \) ________ &nbsp;&nbsp;
-        c) \( 9^{1/2} = \) ________
-      </li>
-      <li>
-        Escribí en notación científica y realizá la operación:<br>
-        a) \(0{,}00045 =\) ________<br>
-        b) \( 3{,}2\times 10^{5} = \) ________ (¿ya está normalizado?)<br>
-        c) \( (4{,}5\times 10^{3})\,(2\times 10^{-2}) = \) ________
-      </li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones sugeridas</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>a) N ⊂ Z ⊂ Q ⊂ R · b) Z ⊂ Q ⊂ R · c) Q ⊂ R · d) I ⊂ R · e) Q ⊂ R</li>
-        <li>a) Conmutativa (suma) · b) Asociativa (producto) · c) Distributiva</li>
-        <li>\( \dfrac{54}{72} = \dfrac{3}{4} \)</li>
-        <li>\( \dfrac{3}{10} + \dfrac{7}{15} = \dfrac{9}{30} + \dfrac{14}{30} = \dfrac{23}{30} \)</li>
-        <li>a) \(2^{3}\cdot 2^{-1}=2^{2}=4\) · b) \( \sqrt[3]{27}=3 \) · c) \( 9^{1/2}=3 \)</li>
-        <li>a) \( 4{,}5\times 10^{-4} \) · b) ya está normalizado (\(1\le 3{,}2<10\)) ·
-            c) \( (4{,}5\cdot 2)\times 10^{3-2}=9\times 10^{1} = 9\times 10 \)</li>
-      </ul>
-    </details>
-  </div>
+<body>
+  <!-- Encabezado global -->
+  <div id="header-placeholder"></div>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- Sección 2 · Aplicaciones y razonamiento -->
-  <div style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🔹 Parte 2 · Aplicaciones y razonamiento (D–E)</h2>
-    <ol style="margin:0 0 0 18px;">
-      <li>
-        En una receta, \( \tfrac{3}{4} \) de taza de azúcar se reemplaza por miel usando la equivalencia
-        \( \tfrac{3}{4} = \tfrac{?}{8} \). ¿Cuántas octavas partes son? (expresá la fracción equivalente).
-      </li>
-      <li>
-        Expresá como una sola potencia y compará: \( (a^{3})^{2} \) y \( a^{3}\cdot a^{2} \). ¿Son iguales? Explicá.
-      </li>
-      <li>
-        Evaluá y justificá: ¿es cierto que \( \sqrt{9+16} = \sqrt{9} + \sqrt{16} \)? Calculá ambos lados.
-      </li>
-      <li>
-        Ordená de menor a mayor: \( 5{,}1\times 10^{-3} \), \( 4{,}9\times 10^{-2} \), \( 6\times 10^{-4} \).
-        (Sugerencia: convertí a decimales o normalizá exponente).
-      </li>
-    </ol>
-    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones sugeridas</summary>
-      <ul style="margin:8px 0 0 18px;">
-        <li>\( \tfrac{3}{4} = \tfrac{6}{8} \) (se multiplicó numerador y denominador por 2).</li>
-        <li>\( (a^{3})^{2}=a^{6} \) mientras que \( a^{3}\cdot a^{2}=a^{5} \); no son iguales (potencia de potencia ≠ producto).</li>
-        <li>\( \sqrt{9+16}=\sqrt{25}=5 \) pero \( \sqrt{9}+\sqrt{16}=3+4=7 \); no se puede separar raíz de una suma.</li>
-        <li>
-          Pasando a decimales: \(6\times10^{-4}=0{,}0006\), \(5{,}1\times10^{-3}=0{,}0051\), \(4{,}9\times10^{-2}=0{,}049\).<br>
-          Orden: \( 6\times10^{-4} < 5{,}1\times10^{-3} < 4{,}9\times10^{-2} \).
-        </li>
-      </ul>
-    </details>
-  </div>
+  <!-- UNIDAD 0 · MINI-EVALUACIÓN Y CHECKLIST -->
+  <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
 
-  <!-- 📊 Puntaje general (separado del checklist) -->
-  <div id="u0-scorebox" style="margin-top:24px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">📊 Puntaje de esta mini-evaluación</h2>
-    <p style="margin:0 0 10px;">
-      Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje se guarda automáticamente en este navegador.
-    </p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q1"> <span>1) Conjuntos</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q2"> <span>2) Propiedades</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q3"> <span>3) Simplificación</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q4"> <span>4) Suma de fracciones</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q5"> <span>5) Potencias y raíces</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q6"> <span>6) Notación científica</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q7"> <span>7) Equivalencias</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q8"> <span>8) Prop. de potencias</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q9"> <span>9) Raíces y suma</span></label>
-      <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q10"> <span>10) Orden con 10ⁿ</span></label>
+    <!-- Encabezado -->
+    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
+      <h1 style="color:#783f04; margin:0;">Mini-evaluación de repaso — Calentamiento Matemático</h1>
+      <p style="margin:8px 0 0;">
+        Esta breve autoevaluación te ayuda a verificar tu dominio de los conceptos vistos en los bloques A–E.
+        No cuenta para nota: es una herramienta de diagnóstico personal.
+      </p>
     </div>
-    <div style="display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap;">
-      <button id="u0-score-calc" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">✅ Calcular puntaje</button>
-      <button id="u0-score-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reiniciar puntaje</button>
-      <button id="u0-print" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🖨️ Imprimir / Guardar PDF</button>
-      <div style="margin-left:auto;">
-        <div style="min-width:220px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:#783f04;">Progreso</span>
-            <span id="u0-score-label" style="color:#7f6000;">0/10 · 0%</span>
-          </div>
-          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
-            <div id="u0-score-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+
+    <!-- Sección 1 · Núcleos conceptuales -->
+    <div style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">🔹 Parte 1 · Núcleos conceptuales (A–C)</h2>
+      <ol style="margin:0 0 0 18px;">
+        <li>
+          Indicá el <b>conjunto más pequeño</b> al que pertenece cada número (N, Z, Q, I, R):<br />
+          a) \(7\) &nbsp; b) \(-4\) &nbsp; c) \( \tfrac{5}{6} \) &nbsp; d) \( \sqrt{3} \) &nbsp; e) \(0{,}125\)
+        </li>
+        <li>
+          Completá con la propiedad correcta (conmutativa, asociativa o distributiva):<br />
+          a) \( 8 + 11 = 11 + 8 \) → ____________<br />
+          b) \( (2\cdot 5)\cdot 3 = 2\cdot (5\cdot 3) \) → ____________<br />
+          c) \( k(m+n) = km + kn \) → ____________
+        </li>
+        <li>
+          Simplificá al máximo: \( \dfrac{54}{72} = \) ________.
+        </li>
+        <li>
+          Calculá y simplificá: \( \dfrac{3}{10} + \dfrac{7}{15} = \) ________.
+        </li>
+        <li>
+          Calculá (indicá resultado como potencia o número):<br />
+          a) \( 2^{3}\cdot 2^{-1} = \) ________ &nbsp;&nbsp;
+          b) \( \sqrt[3]{27} = \) ________ &nbsp;&nbsp;
+          c) \( 9^{1/2} = \) ________
+        </li>
+        <li>
+          Escribí en notación científica y realizá la operación:<br />
+          a) \(0{,}00045 =\) ________<br />
+          b) \( 3{,}2\times 10^{5} = \) ________ (¿ya está normalizado?)<br />
+          c) \( (4{,}5\times 10^{3})\,(2\times 10^{-2}) = \) ________
+        </li>
+      </ol>
+
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones sugeridas</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>a) N ⊂ Z ⊂ Q ⊂ R · b) Z ⊂ Q ⊂ R · c) Q ⊂ R · d) I ⊂ R · e) Q ⊂ R</li>
+          <li>a) Conmutativa (suma) · b) Asociativa (producto) · c) Distributiva</li>
+          <li>\( \dfrac{54}{72} = \dfrac{3}{4} \)</li>
+          <li>\( \dfrac{3}{10} + \dfrac{7}{15} = \dfrac{9}{30} + \dfrac{14}{30} = \dfrac{23}{30} \)</li>
+          <li>a) \(2^{3}\cdot 2^{-1}=2^{2}=4\) · b) \( \sqrt[3]{27}=3 \) · c) \( 9^{1/2}=3 \)</li>
+          <li>
+            a) \( 4{,}5\times 10^{-4} \) · b) ya está normalizado (\(1\le 3{,}2&lt;10\)) ·
+            c) \( (4{,}5\cdot 2)\times 10^{3-2}=9\times 10^{1} = 9\times 10 \)
+          </li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Sección 2 · Aplicaciones y razonamiento -->
+    <div style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">🔹 Parte 2 · Aplicaciones y razonamiento (D–E)</h2>
+      <ol style="margin:0 0 0 18px;">
+        <li>
+          En una receta, \( \tfrac{3}{4} \) de taza de azúcar se reemplaza por miel usando la equivalencia
+          \( \tfrac{3}{4} = \tfrac{?}{8} \). ¿Cuántas octavas partes son? (expresá la fracción equivalente).
+        </li>
+        <li>
+          Expresá como una sola potencia y compará: \( (a^{3})^{2} \) y \( a^{3}\cdot a^{2} \). ¿Son iguales? Explicá.
+        </li>
+        <li>
+          Evaluá y justificá: ¿es cierto que \( \sqrt{9+16} = \sqrt{9} + \sqrt{16} \)? Calculá ambos lados.
+        </li>
+        <li>
+          Ordená de menor a mayor: \( 5{,}1\times 10^{-3} \), \( 4{,}9\times 10^{-2} \), \( 6\times 10^{-4} \).
+          (Sugerencia: convertí a decimales o normalizá exponente).
+        </li>
+      </ol>
+
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones sugeridas</summary>
+        <ul style="margin:8px 0 0 18px;">
+          <li>\( \tfrac{3}{4} = \tfrac{6}{8} \) (se multiplicó numerador y denominador por 2).</li>
+          <li>\( (a^{3})^{2}=a^{6} \) mientras que \( a^{3}\cdot a^{2}=a^{5} \); no son iguales (potencia de potencia ≠ producto).</li>
+          <li>\( \sqrt{9+16}=\sqrt{25}=5 \) pero \( \sqrt{9}+\sqrt{16}=3+4=7 \); no se puede separar raíz de una suma.</li>
+          <li>
+            Pasando a decimales: \(6\times10^{-4}=0{,}0006\), \(5{,}1\times10^{-3}=0{,}0051\), \(4{,}9\times10^{-2}=0{,}049\).<br />
+            Orden: \( 6\times10^{-4} &lt; 5{,}1\times10^{-3} &lt; 4{,}9\times10^{-2} \).
+          </li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- 📊 Puntaje general (separado del checklist) -->
+    <div id="u0-scorebox" style="margin-top:24px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">📊 Puntaje de esta mini-evaluación</h2>
+      <p style="margin:0 0 10px;">
+        Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje se guarda automáticamente en este navegador.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q1" /> <span>1) Conjuntos</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q2" /> <span>2) Propiedades</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q3" /> <span>3) Simplificación</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q4" /> <span>4) Suma de fracciones</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q5" /> <span>5) Potencias y raíces</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q6" /> <span>6) Notación científica</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q7" /> <span>7) Equivalencias</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q8" /> <span>8) Prop. de potencias</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q9" /> <span>9) Raíces y suma</span></label>
+        <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q10" /> <span>10) Orden con 10ⁿ</span></label>
+      </div>
+
+      <div style="display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap;">
+        <button id="u0-score-calc" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">✅ Calcular puntaje</button>
+        <button id="u0-score-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reiniciar puntaje</button>
+        <button id="u0-print" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🖨️ Imprimir / Guardar PDF</button>
+
+        <div style="margin-left:auto;">
+          <div style="min-width:220px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+              <span style="color:#783f04;">Progreso</span>
+              <span id="u0-score-label" style="color:#7f6000;">0/10 · 0%</span>
+            </div>
+            <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+              <div id="u0-score-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Script puntaje -->
-  <script>
-  (function(){
-    const STORAGE = 'mp-u0-score-v1';
-    const checks = Array.from(document.querySelectorAll('.u0-ans'));
-    const bar = document.getElementById('u0-score-bar');
-    const label = document.getElementById('u0-score-label');
-    const btnCalc = document.getElementById('u0-score-calc');
-    const btnReset = document.getElementById('u0-score-reset');
-    const btnPrint = document.getElementById('u0-print');
-
-    function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE)||'{}'); }catch(e){return {}} }
-    function writeState(s){ localStorage.setItem(STORAGE, JSON.stringify(s)); }
-
-    function applyState(s){ checks.forEach(ch => ch.checked = !!s[ch.dataset.key]); updateUI(); }
-    function currentScore(){ const total = checks.length||1; const ok = checks.filter(ch=>ch.checked).length; return {ok,total,pct:Math.round(100*ok/total)}; }
-    function updateUI(){ const {ok,total,pct}=currentScore(); if(bar) bar.style.width=pct+'%'; if(label) label.textContent = ok+'/'+total+' · '+pct+'%'; }
-    function handleToggle(e){ const s=readState(); s[e.target.dataset.key]=e.target.checked; writeState(s); updateUI(); }
-    function calcNow(){ updateUI(); }
-    function resetAll(){ localStorage.removeItem(STORAGE); checks.forEach(ch=>ch.checked=false); updateUI(); }
-
-    checks.forEach(ch=>ch.addEventListener('change', handleToggle));
-    if(btnCalc) btnCalc.addEventListener('click', calcNow);
-    if(btnReset) btnReset.addEventListener('click', resetAll);
-    if(btnPrint) btnPrint.addEventListener('click', ()=>window.print());
-    applyState(readState());
-  })();
-  </script>
-
-  <!-- ✅ CHECKLIST U0 (MISMO ANCHO, CON SEPARACIÓN) -->
-  <div id="u0-checklist" style="margin-top:24px;">
-    <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">✅ Checklist U0 — Autoevaluación de progreso</h2>
-      <p style="margin:0 0 10px;">
-        Marcá según tu confianza: <b>✅</b> dominio sólido • <b>🔶</b> en proceso • <b>❌</b> necesito repasar.
-        <span style="opacity:.8">Se guarda automáticamente en este navegador.</span>
-      </p>
-      <table style="width:100%; border-collapse:collapse; margin-top:8px;">
-        <thead>
-          <tr style="background:#FFD580; color:#783f04;">
-            <th style="padding:6px; border:1px solid #fff; text-align:left;">Tema</th>
-            <th style="padding:6px; border:1px solid #fff;">✅</th>
-            <th style="padding:6px; border:1px solid #fff;">🔶</th>
-            <th style="padding:6px; border:1px solid #fff;">❌</th>
-          </tr>
-        </thead>
-        <tbody style="text-align:center;">
-          <tr>
-            <td style="text-align:left;">Identifico los conjuntos numéricos y sus relaciones</td>
-            <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="ok"  aria-label="Tema 1: ✅"></td>
-            <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="mid" aria-label="Tema 1: 🔶"></td>
-            <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="no"  aria-label="Tema 1: ❌"></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;">Aplico propiedades (conmutativa, asociativa, distributiva)</td>
-            <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="ok"  aria-label="Tema 2: ✅"></td>
-            <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="mid" aria-label="Tema 2: 🔶"></td>
-            <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="no"  aria-label="Tema 2: ❌"></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;">Simplifico y opero con fracciones racionales</td>
-            <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="ok"  aria-label="Tema 3: ✅"></td>
-            <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="mid" aria-label="Tema 3: 🔶"></td>
-            <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="no"  aria-label="Tema 3: ❌"></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;">Uso potencias y raíces con distintos exponentes</td>
-            <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="ok"  aria-label="Tema 4: ✅"></td>
-            <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="mid" aria-label="Tema 4: 🔶"></td>
-            <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="no"  aria-label="Tema 4: ❌"></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;">Represento números en notación científica</td>
-            <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="ok"  aria-label="Tema 5: ✅"></td>
-            <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="mid" aria-label="Tema 5: 🔶"></td>
-            <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="no"  aria-label="Tema 5: ❌"></td>
-          </tr>
-          <tr>
-            <td style="text-align:left;">Comprendo exponentes negativos y fraccionarios</td>
-            <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="ok"  aria-label="Tema 6: ✅"></td>
-            <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="mid" aria-label="Tema 6: 🔶"></td>
-            <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="no"  aria-label="Tema 6: ❌"></td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
-        <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Borrar marcas de este dispositivo</button>
-        <span id="u0-status" style="font-size:12px; opacity:.8;"></span>
-      </div>
-    </div>
-
-    <!-- Guarda/recupera con localStorage -->
+    <!-- ✅ Script puntaje -->
     <script>
-      (function() {
-        const STORAGE_PREFIX = 'mp-u0-checklist-v1';
-        const boxes = Array.from(document.querySelectorAll('#u0-checklist .u0-box'));
-        const status = document.getElementById('u0-status');
-        const resetBtn = document.getElementById('u0-reset');
+      (function(){
+        const STORAGE = 'mp-u0-score-v1';
+        const checks = Array.from(document.querySelectorAll('.u0-ans'));
+        const bar = document.getElementById('u0-score-bar');
+        const label = document.getElementById('u0-score-label');
+        const btnCalc = document.getElementById('u0-score-calc');
+        const btnReset = document.getElementById('u0-score-reset');
+        const btnPrint = document.getElementById('u0-print');
 
-        function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_PREFIX)||'{}'); }catch(e){ return {}; } }
-        function writeState(state){ localStorage.setItem(STORAGE_PREFIX, JSON.stringify(state)); }
-        function applyState(state){ boxes.forEach(input=>{ const key=input.dataset.key, val=state[key]; input.checked=(val && input.value===val); }); }
-        function handleChange(e){ const input=e.target; if(!input||!input.dataset) return;
-          const key=input.dataset.key, val=input.value; const state=readState(); state[key]=val; writeState(state);
-          if(status){ status.textContent='Guardado.'; setTimeout(()=>status.textContent='',1200); } }
-        function resetAll(){ localStorage.removeItem(STORAGE_PREFIX); boxes.forEach(i=>i.checked=false);
-          status.textContent='Se borraron las marcas de este dispositivo.'; setTimeout(()=>status.textContent='',1500); }
+        function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE)||'{}'); }catch(e){ return {}; } }
+        function writeState(s){ localStorage.setItem(STORAGE, JSON.stringify(s)); }
 
-        const saved=readState(); applyState(saved);
-        boxes.forEach(i=>i.addEventListener('change', handleChange));
-        resetBtn.addEventListener('click', resetAll);
+        function currentScore(){
+          const total = checks.length || 1;
+          const ok = checks.filter(ch => ch.checked).length;
+          return { ok, total, pct: Math.round(100 * ok / total) };
+        }
+
+        function updateUI(){
+          const { ok, total, pct } = currentScore();
+          if (bar) bar.style.width = pct + '%';
+          if (label) label.textContent = ok + '/' + total + ' · ' + pct + '%';
+        }
+
+        function applyState(s){
+          checks.forEach(ch => ch.checked = !!s[ch.dataset.key]);
+          updateUI();
+        }
+
+        function handleToggle(e){
+          const s = readState();
+          s[e.target.dataset.key] = e.target.checked;
+          writeState(s);
+          updateUI();
+        }
+
+        function resetAll(){
+          localStorage.removeItem(STORAGE);
+          checks.forEach(ch => ch.checked = false);
+          updateUI();
+        }
+
+        checks.forEach(ch => ch.addEventListener('change', handleToggle));
+        if (btnCalc) btnCalc.addEventListener('click', updateUI);
+        if (btnReset) btnReset.addEventListener('click', resetAll);
+        if (btnPrint) btnPrint.addEventListener('click', () => window.print());
+
+        applyState(readState());
       })();
     </script>
+
+    <!-- ✅ CHECKLIST U0 (MISMO ANCHO, CON SEPARACIÓN) -->
+    <div id="u0-checklist" style="margin-top:24px;">
+      <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+        <h2 style="color:#783f04; margin:0 0 8px;">✅ Checklist U0 — Autoevaluación de progreso</h2>
+        <p style="margin:0 0 10px;">
+          Marcá según tu confianza: <b>✅</b> dominio sólido • <b>🔶</b> en proceso • <b>❌</b> necesito repasar.
+          <span style="opacity:.8">Se guarda automáticamente en este navegador.</span>
+        </p>
+
+        <table style="width:100%; border-collapse:collapse; margin-top:8px;">
+          <thead>
+            <tr style="background:#FFD580; color:#783f04;">
+              <th style="padding:6px; border:1px solid #fff; text-align:left;">Tema</th>
+              <th style="padding:6px; border:1px solid #fff;">✅</th>
+              <th style="padding:6px; border:1px solid #fff;">🔶</th>
+              <th style="padding:6px; border:1px solid #fff;">❌</th>
+            </tr>
+          </thead>
+          <tbody style="text-align:center;">
+            <tr>
+              <td style="text-align:left;">Identifico los conjuntos numéricos y sus relaciones</td>
+              <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="ok" aria-label="Tema 1: ✅" /></td>
+              <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="mid" aria-label="Tema 1: 🔶" /></td>
+              <td><input type="radio" name="tema-1" class="u0-box" data-key="sets" value="no" aria-label="Tema 1: ❌" /></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">Aplico propiedades (conmutativa, asociativa, distributiva)</td>
+              <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="ok" aria-label="Tema 2: ✅" /></td>
+              <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="mid" aria-label="Tema 2: 🔶" /></td>
+              <td><input type="radio" name="tema-2" class="u0-box" data-key="props" value="no" aria-label="Tema 2: ❌" /></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">Simplifico y opero con fracciones racionales</td>
+              <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="ok" aria-label="Tema 3: ✅" /></td>
+              <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="mid" aria-label="Tema 3: 🔶" /></td>
+              <td><input type="radio" name="tema-3" class="u0-box" data-key="frac" value="no" aria-label="Tema 3: ❌" /></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">Uso potencias y raíces con distintos exponentes</td>
+              <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="ok" aria-label="Tema 4: ✅" /></td>
+              <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="mid" aria-label="Tema 4: 🔶" /></td>
+              <td><input type="radio" name="tema-4" class="u0-box" data-key="pow" value="no" aria-label="Tema 4: ❌" /></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">Represento números en notación científica</td>
+              <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="ok" aria-label="Tema 5: ✅" /></td>
+              <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="mid" aria-label="Tema 5: 🔶" /></td>
+              <td><input type="radio" name="tema-5" class="u0-box" data-key="sci" value="no" aria-label="Tema 5: ❌" /></td>
+            </tr>
+            <tr>
+              <td style="text-align:left;">Comprendo exponentes negativos y fraccionarios</td>
+              <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="ok" aria-label="Tema 6: ✅" /></td>
+              <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="mid" aria-label="Tema 6: 🔶" /></td>
+              <td><input type="radio" name="tema-6" class="u0-box" data-key="exp" value="no" aria-label="Tema 6: ❌" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+          <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Borrar marcas de este dispositivo</button>
+          <span id="u0-status" style="font-size:12px; opacity:.8;"></span>
+        </div>
+      </div>
+
+      <!-- Guarda/recupera con localStorage -->
+      <script>
+        (function() {
+          const STORAGE_PREFIX = 'mp-u0-checklist-v1';
+          const boxes = Array.from(document.querySelectorAll('#u0-checklist .u0-box'));
+          const status = document.getElementById('u0-status');
+          const resetBtn = document.getElementById('u0-reset');
+
+          function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_PREFIX)||'{}'); }catch(e){ return {}; } }
+          function writeState(state){ localStorage.setItem(STORAGE_PREFIX, JSON.stringify(state)); }
+
+          function applyState(state){
+            boxes.forEach(input => {
+              const key = input.dataset.key;
+              const val = state[key];
+              input.checked = (val && input.value === val);
+            });
+          }
+
+          function handleChange(e){
+            const input = e.target;
+            if(!input || !input.dataset) return;
+            const key = input.dataset.key;
+            const val = input.value;
+            const state = readState();
+            state[key] = val;
+            writeState(state);
+            if(status){
+              status.textContent = 'Guardado.';
+              setTimeout(() => status.textContent = '', 1200);
+            }
+          }
+
+          function resetAll(){
+            localStorage.removeItem(STORAGE_PREFIX);
+            boxes.forEach(i => i.checked = false);
+            if(status){
+              status.textContent = 'Se borraron las marcas de este dispositivo.';
+              setTimeout(() => status.textContent = '', 1500);
+            }
+          }
+
+          applyState(readState());
+          boxes.forEach(i => i.addEventListener('change', handleChange));
+          if(resetBtn) resetBtn.addEventListener('click', resetAll);
+        })();
+      </script>
+    </div>
+
+    <!-- Cierre -->
+    <div style="margin-top:20px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04;">🚀 Siguiente paso</h2>
+      <p>
+        Si marcaste alguna casilla ❌, te recomendamos volver a los bloques correspondientes.
+        Cuando todos los temas estén en ✅ o 🔶, avanzá a la <b>Unidad 1 — Conjuntos y Operaciones</b>.
+      </p>
+    </div>
+
+  </section>
+  <!-- FIN MINI-EVALUACIÓN U0 -->
+
+  <!-- Navegador -->
+  <div style="max-width:1180px; margin:12px auto 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center;
+                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
+                padding:12px; font-family:'Roboto Mono', monospace;">
+      <a href="/matematica-a-pedal/unidad0/bloque-e.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">⬅️ Bloque E</a>
+      <span style="color:#7f6000; font-size:14px;">¡Buen pedaleo!</span>
+      <a href="/matematica-a-pedal/unidad0/index.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">🏁 Volver al inicio</a>
+    </div>
   </div>
 
-  <!-- Cierre -->
-  <div style="margin-top:20px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🚀 Siguiente paso</h2>
-    <p>
-      Si marcaste alguna casilla ❌, te recomendamos volver a los bloques correspondientes.
-      Cuando todos los temas estén en ✅ o 🔶, avanzá a la <b>Unidad 1 — Conjuntos y Operaciones</b>.
-    </p>
-  </div>
+  <!-- TOC (si corresponde) -->
+  <script src="/matematica-a-pedal/assets/toc.js"></script>
 
-</section>
-<!-- FIN MINI-EVALUACIÓN U0 -->
-
-<!-- Navegador -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
-    <a href="/matematica-a-pedal/unidad0/bloque-e.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">⬅️ Bloque E</a>
-    <span style="color:#7f6000; font-size:14px;">¡Buen pedaleo!</span>
-    <a href="/matematica-a-pedal/unidad0/index.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">🏁 Volver al inicio</a>
-  </div>
-</div>
-
-<script src="/matematica-a-pedal/assets/toc.js"></script>
-
-
-<style>
-/* ✅ Limpieza para impresión */
-@media print {
-  #header-placeholder, nav, .submenu, button, #u0-reset, #u0-score-reset, #u0-score-calc, #u0-print { display: none !important; }
-  body { color: #000 !important; }
-  a { color: #000 !important; text-decoration: none; }
-  section[style*="max-width"] { max-width: 100% !important; margin: 0 !important; }
-  details { display: block; }
-  details > summary { display: none; }
-}
-@page { margin: 16mm; }
-</style>
+  <!-- Scripts globales (siempre al final) -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+</body>
+</html>
