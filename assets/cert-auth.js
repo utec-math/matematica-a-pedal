@@ -82,4 +82,6 @@ async function init() {
   });
 }
 
-init();
+window.addEventListener("map:header-ready", () => {
+  init();
+}, { once: true });
