@@ -16,23 +16,6 @@ function renderCohorts() {
   sel.innerHTML = cohorts.map(c => `<option value="${c.id}">${c.label}</option>`).join("");
 }
 
-async function saveUserProfile(user) {
-  const { db } = window.__MAP__;
-  if (!db || !user || user.isAnonymous) return;
-
-  const email = user.email || "";
-  const displayName = user.displayName || "";
-
-  await setDoc(doc(db, "users", user.uid), {
-    email,
-    displayName,
-    name: displayName,
-    provider: user.providerData?.[0]?.providerId || "",
-    lastSeenAt: serverTimestamp(),
-    createdAt: serverTimestamp()
-  }, { merge: true });
-}
-
 async function ensureEnrollment(user, cohortId, group) {
   const { db } = window.__MAP__;
   const email = user.email || "";
@@ -42,8 +25,6 @@ async function ensureEnrollment(user, cohortId, group) {
   await setDoc(doc(db, "users", user.uid), {
     email,
     displayName,
-    name: displayName,
-    provider: user.providerData?.[0]?.providerId || "",
     lastSeenAt: serverTimestamp(),
     createdAt: serverTimestamp()
   }, { merge: true });
@@ -52,7 +33,6 @@ async function ensureEnrollment(user, cohortId, group) {
   await setDoc(doc(db, "enrollments", cohortId, "students", user.uid), {
     email,
     displayName,
-    name: displayName,
     group: group || "",
     enrolledAt: serverTimestamp()
   }, { merge: true });
@@ -62,7 +42,6 @@ function openModal() {
   const m = qs("certModal");
   if (m) m.style.display = "block";
 }
-
 function closeModal() {
   const m = qs("certModal");
   if (m) m.style.display = "none";
@@ -73,18 +52,10 @@ function setMsg(text) {
   if (el) el.textContent = text || "";
 }
 
-async function updateUI(u) {
+function updateUI(u) {
   const status = qs("certStatus");
   const btn = qs("btnCertLogin");
   if (!status || !btn) return;
-
-  if (u && !u.isAnonymous) {
-    try {
-      await saveUserProfile(u);
-    } catch (err) {
-      console.error("No se pudo guardar/actualizar el perfil del usuario:", err);
-    }
-  }
 
   if (u?.email && window.__MAP__?.isAllowedEmail?.(u.email)) {
     status.textContent = `Certificado: ${u.email}`;
@@ -110,10 +81,8 @@ function waitForMAP(cb) {
 }
 
 waitForMAP(() => {
-  // Observa login/logout para actualizar estado y guardar perfil
-  window.__MAP__.onAuthStateChanged(window.__MAP__.auth, async (u) => {
-    await updateUI(u);
-  });
+  // Observa login/logout para actualizar estado
+  window.__MAP__.onAuthStateChanged(window.__MAP__.auth, (u) => updateUI(u));
 
   // Delegación: funciona aunque el header se inyecte luego
   document.addEventListener("click", async (e) => {
