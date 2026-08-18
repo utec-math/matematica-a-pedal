@@ -66,3 +66,201 @@
 })();
   // Avisar que el header ya está cargado e inyectado en el DOM
   window.dispatchEvent(new Event("map:header-ready"));
+
+// ---- Navegación inferior coherente en todas las unidades
+(function () {
+  const BASE = '/matematica-a-pedal/';
+
+  const routes = {
+    unidad0: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'mini-evaluacion.html'],
+    unidad1: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'bloque-f.html', 'bloque-g.html', 'mini-evaluacion.html'],
+    unidad2: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'mini-evaluacion.html'],
+    unidad3: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'mini-evaluacion.html'],
+    unidad4: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'bloque-f.html', 'mini-evaluacion.html']
+  };
+
+  const legacyU4 = {
+    'capitulo1.html': 'bloque-a.html',
+    'capitulo2.html': 'bloque-b.html',
+    'capitulo3.html': 'bloque-c.html',
+    'capitulo4.html': 'bloque-d.html',
+    'capitulo5.html': 'bloque-e.html',
+    'capitulo6.html': 'bloque-f.html'
+  };
+
+  const u4ChecklistLabels = {
+    c1: 'Bloque A — Potenciación',
+    c2: 'Bloque B — Radicación',
+    c3: 'Bloque C — Radicales semejantes',
+    c4: 'Bloque D — Notación científica',
+    c5: 'Bloque E — Mini-app Calculadora',
+    c6: 'Bloque F — Ejercicios finales'
+  };
+
+  function pageLabel(file) {
+    if (file === 'index.html') return 'Introducción';
+    if (file === 'mini-evaluacion.html') return 'Mini-evaluación';
+    const m = file.match(/^bloque-([a-z])\.html$/i);
+    return m ? `Bloque ${m[1].toUpperCase()}` : file;
+  }
+
+  function unitNumber(unitKey) {
+    return Number(unitKey.replace('unidad', ''));
+  }
+
+  function unitHref(unitKey, file) {
+    return `${BASE}${unitKey}/${file}`;
+  }
+
+  function makeButton(href, text, side) {
+    const a = document.createElement('a');
+    a.href = href;
+    a.textContent = text;
+    a.style.cssText = [
+      'text-decoration:none',
+      'color:#783f04',
+      'background:#fff',
+      'border:1px solid #FFD580',
+      'border-radius:10px',
+      'padding:8px 14px',
+      'display:inline-block',
+      side === 'left' ? 'justify-self:start' : 'justify-self:end'
+    ].join(';');
+    return a;
+  }
+
+  function findExistingNavigator() {
+    const candidates = Array.from(document.querySelectorAll('div, section')).filter(el => {
+      const directAnchors = Array.from(el.children).filter(child => child.tagName === 'A');
+      if (!directAnchors.length) return false;
+      return directAnchors.some(a => /Introducción|Bloque|Mini[\s-]?evaluación|Mini Evaluación|Volver al inicio|Capítulo|Unidad\s+\d/i.test(a.textContent || ''));
+    });
+    return candidates[candidates.length - 1] || null;
+  }
+
+  function normalizeBottomNavigation() {
+    const match = window.location.pathname.match(/\/matematica-a-pedal\/(unidad[0-4])\/?([^/]*)$/);
+    if (!match) return;
+
+    const unitKey = match[1];
+    const file = match[2] || 'index.html';
+    const sequence = routes[unitKey];
+    const index = sequence?.indexOf(file) ?? -1;
+    if (!sequence || index < 0) return;
+
+    let previous = null;
+    let next = null;
+
+    if (index > 0) {
+      const prevFile = sequence[index - 1];
+      previous = {
+        href: unitHref(unitKey, prevFile),
+        text: `⬅️ ${pageLabel(prevFile)}`
+      };
+    }
+
+    if (index < sequence.length - 1) {
+      const nextFile = sequence[index + 1];
+      next = {
+        href: unitHref(unitKey, nextFile),
+        text: `${pageLabel(nextFile)} ➡️`
+      };
+    } else {
+      const n = unitNumber(unitKey);
+      if (n < 4) {
+        next = {
+          href: `${BASE}unidad${n + 1}/index.html`,
+          text: `Unidad ${n + 1} ➡️`
+        };
+      } else {
+        next = {
+          href: BASE,
+          text: '🏁 Volver al inicio'
+        };
+      }
+    }
+
+    let nav = findExistingNavigator();
+    if (!nav) {
+      nav = document.createElement('div');
+      const host = document.querySelector('main') || document.body;
+      host.appendChild(nav);
+    }
+
+    nav.classList.add('map-unit-nav');
+    nav.innerHTML = '';
+    nav.style.display = 'grid';
+    nav.style.gridTemplateColumns = 'minmax(0,1fr) auto minmax(0,1fr)';
+    nav.style.alignItems = 'center';
+    nav.style.gap = '8px';
+    nav.style.margin = '12px auto 0';
+    nav.style.maxWidth = '1180px';
+    nav.style.boxSizing = 'border-box';
+    nav.style.background = '#FFF6E6';
+    nav.style.border = '1px solid #FFD580';
+    nav.style.borderRadius = '12px';
+    nav.style.padding = '12px';
+    nav.style.fontFamily = "'Roboto Mono', monospace";
+
+    if (previous) {
+      nav.appendChild(makeButton(previous.href, previous.text, 'left'));
+    } else {
+      const spacer = document.createElement('span');
+      spacer.setAttribute('aria-hidden', 'true');
+      nav.appendChild(spacer);
+    }
+
+    const center = document.createElement('span');
+    center.textContent = 'Continuá pedaleando';
+    center.style.cssText = 'color:#7f6000; font-size:14px; text-align:center; white-space:nowrap;';
+    nav.appendChild(center);
+
+    if (next) {
+      nav.appendChild(makeButton(next.href, next.text, 'right'));
+    } else {
+      const spacer = document.createElement('span');
+      spacer.setAttribute('aria-hidden', 'true');
+      nav.appendChild(spacer);
+    }
+  }
+
+  function fixLegacyU4Links() {
+    document.querySelectorAll('a[href]').forEach(a => {
+      let href = a.getAttribute('href') || '';
+      let fixed = href;
+      Object.entries(legacyU4).forEach(([oldName, newName]) => {
+        fixed = fixed.replace(oldName, newName);
+      });
+      if (fixed !== href) a.setAttribute('href', fixed);
+    });
+  }
+
+  function normalizeU4ChecklistLabels() {
+    document.querySelectorAll('#u4-home .u4-done[data-key]').forEach(input => {
+      const text = input.closest('label')?.querySelector('span');
+      const replacement = u4ChecklistLabels[input.dataset.key];
+      if (text && replacement && /^Cap\.\s*\d/i.test(text.textContent.trim())) {
+        text.textContent = replacement;
+      }
+    });
+  }
+
+  function runNavigationNormalization() {
+    fixLegacyU4Links();
+    normalizeU4ChecklistLabels();
+    normalizeBottomNavigation();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runNavigationNormalization, { once: true });
+  } else {
+    setTimeout(runNavigationNormalization, 0);
+  }
+
+  // La portada de U4 actualiza dinámicamente “Continuar donde quedé”.
+  // Corregimos cualquier URL antigua capituloN.html después de esos cambios.
+  document.addEventListener('change', e => {
+    if (e.target?.matches?.('.u4-done')) setTimeout(fixLegacyU4Links, 0);
+  }, true);
+  window.addEventListener('map:progress-updated', () => setTimeout(fixLegacyU4Links, 0));
+})();
