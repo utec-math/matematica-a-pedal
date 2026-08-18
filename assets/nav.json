@@ -31,7 +31,7 @@
           "href": "/matematica-a-pedal/unidad0/bloque-e.html"
         },
         {
-          "title": "Mini Evaluación",
+          "title": "Mini-evaluación",
           "href": "/matematica-a-pedal/unidad0/mini-evaluacion.html"
         }
       ]
@@ -74,14 +74,14 @@
           "href": "/matematica-a-pedal/unidad1/bloque-g.html"
         },
         {
-          "title": "Mini Evaluación",
+          "title": "Mini-evaluación",
           "href": "/matematica-a-pedal/unidad1/mini-evaluacion.html"
         }
       ]
     },
     {
       "id": "unidad2",
-      "title": "Unidad 2 · Funciones y Gráficas",
+      "title": "Unidad 2 · Factorización y Expresiones",
       "href": "/matematica-a-pedal/unidad2/index.html",
       "bloques": [
         {
@@ -109,7 +109,7 @@
           "href": "/matematica-a-pedal/unidad2/bloque-e.html"
         },
         {
-          "title": "Mini Evaluación",
+          "title": "Mini-evaluación",
           "href": "/matematica-a-pedal/unidad2/mini-evaluacion.html"
         }
       ]
@@ -144,14 +144,14 @@
           "href": "/matematica-a-pedal/unidad3/bloque-e.html"
         },
         {
-          "title": "Mini Evaluación",
+          "title": "Mini-evaluación",
           "href": "/matematica-a-pedal/unidad3/mini-evaluacion.html"
         }
       ]
     },
     {
       "id": "unidad4",
-      "title": "Unidad 4 · Potencias y Raíces",
+      "title": "Unidad 4 · Potenciación, Radicación y Notación Científica",
       "href": "/matematica-a-pedal/unidad4/index.html",
       "bloques": [
         {
@@ -183,7 +183,7 @@
           "href": "/matematica-a-pedal/unidad4/bloque-f.html"
         },
         {
-          "title": "Mini Evaluación",
+          "title": "Mini-evaluación",
           "href": "/matematica-a-pedal/unidad4/mini-evaluacion.html"
         }
       ]
