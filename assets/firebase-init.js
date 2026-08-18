@@ -27,8 +27,23 @@ const db = getFirestore(app);
 
 enableIndexedDbPersistence(db).catch(() => {});
 
-// Login anónimo por defecto (sitio abierto)
-signInAnonymously(auth).catch(() => {});
+// Sitio abierto: conservar primero cualquier sesión persistida.
+// Solo crea una cuenta anónima si Firebase confirma que no hay usuario autenticado.
+async function ensureSignedInUser() {
+  await auth.authStateReady();
+
+  if (auth.currentUser) {
+    return auth.currentUser;
+  }
+
+  const cred = await signInAnonymously(auth);
+  return cred.user;
+}
+
+const authReady = ensureSignedInUser().catch((err) => {
+  console.error("No se pudo inicializar Firebase Authentication:", err);
+  return null;
+});
 
 // Google Provider
 const provider = new GoogleAuthProvider();
@@ -42,7 +57,9 @@ function isAllowedEmail(email) {
 
 // “Ingresar para certificado”
 async function signInForCertificate() {
-  const u = auth.currentUser;
+  // Evita competir con la restauración de una sesión persistida al cargar la página.
+  await auth.authStateReady();
+  const u = auth.currentUser || await authReady;
 
   // si está anónimo → linkea (conserva UID y progreso)
   const cred = (u && u.isAnonymous)
@@ -60,6 +77,7 @@ async function signInForCertificate() {
 
 window.__MAP__ = {
   app, auth, db, onAuthStateChanged,
+  authReady,
   signInForCertificate,
   signOut: () => signOut(auth),
   isAllowedEmail
