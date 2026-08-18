@@ -128,18 +128,24 @@ const authReady = ensureSignedInUser()
     return null;
   });
 
-// Google Provider
+// Google Provider: se permite elegir cuenta para admitir estudiantes y personal UTEC.
 const provider = new GoogleAuthProvider();
-// opcional: sugerir dominio
-provider.setCustomParameters({ hd: "estudiantes.utec.edu.uy" });
+provider.setCustomParameters({ prompt: "select_account" });
 
-const allowedDomain = "@estudiantes.utec.edu.uy";
+const allowedDomains = [
+  "@estudiantes.utec.edu.uy",
+  "@utec.edu.uy"
+];
+
 function isAllowedEmail(email) {
-  return typeof email === "string" && email.toLowerCase().endsWith(allowedDomain);
+  if (typeof email !== "string") return false;
+  const normalizedEmail = email.toLowerCase();
+  return allowedDomains.some(domain => normalizedEmail.endsWith(domain));
 }
 
-// “Ingresar para certificado”
-async function signInForCertificate() {
+// Inicio de sesión institucional UTEC.
+// Si el usuario era anónimo, intenta vincular Google al mismo UID para conservar progreso.
+async function signInWithUtec() {
   await auth.authStateReady();
   const u = auth.currentUser || await authReady;
 
@@ -166,13 +172,13 @@ async function signInForCertificate() {
       const expectedEmail = err?.customData?.email || err?.email || "";
       savePendingMigration(u.uid, expectedEmail, progressDocs);
 
-      // Firebase recomienda iniciar sesión con la credencial ya existente.
+      // Inicia sesión con la cuenta Google ya existente.
       cred = await signInWithCredential(auth, googleCredential);
 
       const email = cred.user?.email || "";
       if (!isAllowedEmail(email)) {
         await signOut(auth);
-        throw new Error("Solo cuentas @estudiantes.utec.edu.uy pueden acceder al certificado.");
+        throw new Error("Solo cuentas institucionales UTEC pueden iniciar sesión.");
       }
 
       // Une avances del UID anónimo y del UID Google, sin borrar ninguno.
@@ -186,7 +192,7 @@ async function signInForCertificate() {
   const email = cred.user?.email || "";
   if (!isAllowedEmail(email)) {
     await signOut(auth);
-    throw new Error("Solo cuentas @estudiantes.utec.edu.uy pueden acceder al certificado.");
+    throw new Error("Solo cuentas institucionales UTEC pueden iniciar sesión.");
   }
 
   return cred.user;
@@ -195,7 +201,7 @@ async function signInForCertificate() {
 window.__MAP__ = {
   app, auth, db, onAuthStateChanged,
   authReady,
-  signInForCertificate,
+  signInWithUtec,
   signOut: () => signOut(auth),
   isAllowedEmail
 };
