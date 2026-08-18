@@ -21,11 +21,11 @@
           Capítulos cortos, ejemplos claros y mini-apps interactivas para pedalear matemática a tu ritmo.
         </p>
 
-        <!-- 🔐 Certificado -->
+        <!-- 🔐 Autenticación UTEC -->
         <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
           <button id="btnCertLogin"
             style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">
-            🎓 Ingresar para certificado
+            🔐 Iniciar sesión con UTEC
           </button>
           <span id="certStatus" style="color:#783f04; font-size:14px;"></span>
         </div>
@@ -161,31 +161,6 @@
   </nav>
 
 </header>
-
-<!-- MODAL -->
-<div id="certModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:9999;">
-  <div style="background:#fff; max-width:520px; margin:10vh auto; padding:16px; border-radius:14px; border:1px solid #FFD580;">
-    <h3 style="margin:0 0 10px; color:#783f04;">Registro para certificado</h3>
-
-    <label style="display:block; margin:10px 0 6px; color:#7f6000;">Curso / cohorte</label>
-    <select id="cohortSelect" style="width:100%; padding:8px; border-radius:10px; border:1px solid #FFD580;"></select>
-
-    <label style="display:block; margin:10px 0 6px; color:#7f6000;">Grupo (opcional)</label>
-    <input id="groupInput" placeholder="Ej: Grupo A / Grupo 1"
-           style="width:100%; padding:8px; border-radius:10px; border:1px solid #FFD580;" />
-
-    <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:14px;">
-      <button id="btnCertClose"
-              style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">
-        Cancelar
-      </button>
-      <button id="btnCertSave"
-              style="background:#783f04;border:1px solid #783f04;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;">
-        Guardar
-      </button>
-    </div>
-  </div>
-</div>
 
 <style>
   .submenu{
