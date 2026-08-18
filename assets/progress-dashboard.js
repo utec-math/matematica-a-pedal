@@ -1,6 +1,8 @@
 import {
   doc,
-  getDoc
+  getDoc,
+  setDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 const UNITS = [
@@ -21,6 +23,7 @@ const UNITS = [
     id: 'unidad1',
     title: 'Unidad 1 · Conjuntos y Operaciones',
     items: [
+      ['Introducción', '/matematica-a-pedal/unidad1/index.html'],
       ['Bloque A', '/matematica-a-pedal/unidad1/bloque-a.html'],
       ['Bloque B', '/matematica-a-pedal/unidad1/bloque-b.html'],
       ['Bloque C', '/matematica-a-pedal/unidad1/bloque-c.html'],
@@ -35,6 +38,7 @@ const UNITS = [
     id: 'unidad2',
     title: 'Unidad 2 · Factorización y Expresiones',
     items: [
+      ['Introducción', '/matematica-a-pedal/unidad2/index.html'],
       ['Bloque A', '/matematica-a-pedal/unidad2/bloque-a.html'],
       ['Bloque B', '/matematica-a-pedal/unidad2/bloque-b.html'],
       ['Bloque C', '/matematica-a-pedal/unidad2/bloque-c.html'],
@@ -47,6 +51,7 @@ const UNITS = [
     id: 'unidad3',
     title: 'Unidad 3 · Trigonometría',
     items: [
+      ['Introducción', '/matematica-a-pedal/unidad3/index.html'],
       ['Bloque A', '/matematica-a-pedal/unidad3/bloque-a.html'],
       ['Bloque B', '/matematica-a-pedal/unidad3/bloque-b.html'],
       ['Bloque C', '/matematica-a-pedal/unidad3/bloque-c.html'],
@@ -59,12 +64,14 @@ const UNITS = [
     id: 'unidad4',
     title: 'Unidad 4 · Potenciación, Radicación y Notación Científica',
     items: [
+      ['Introducción', '/matematica-a-pedal/unidad4/index.html'],
       ['Bloque A', '/matematica-a-pedal/unidad4/bloque-a.html'],
       ['Bloque B', '/matematica-a-pedal/unidad4/bloque-b.html'],
       ['Bloque C', '/matematica-a-pedal/unidad4/bloque-c.html'],
       ['Bloque D', '/matematica-a-pedal/unidad4/bloque-d.html'],
       ['Bloque E', '/matematica-a-pedal/unidad4/bloque-e.html'],
-      ['Bloque F', '/matematica-a-pedal/unidad4/bloque-f.html']
+      ['Bloque F', '/matematica-a-pedal/unidad4/bloque-f.html'],
+      ['Mini-evaluación', '/matematica-a-pedal/unidad4/mini-evaluacion.html']
     ]
   }
 ];
@@ -86,54 +93,107 @@ function waitForMAP() {
   });
 }
 
-function localChecked(unitId) {
+function readJson(key, fallback) {
   try {
-    const value = JSON.parse(localStorage.getItem(`progress:${unitId}`) || '[]');
-    return Array.isArray(value) ? value : [];
+    const value = JSON.parse(localStorage.getItem(key) || 'null');
+    return value ?? fallback;
   } catch (_) {
-    return [];
+    return fallback;
   }
 }
 
-function recognizedIndex(unitId, progressId) {
-  if (typeof progressId !== 'string') return -1;
-
-  const auto = progressId.match(new RegExp(`^${unitId}-chk-(\\d+)$`));
-  if (auto) return Number(auto[1]) - 1;
-
-  const card = progressId.match(new RegExp(`^${unitId}-c(\\d+)$`));
-  if (card) return Number(card[1]) - 1;
-
-  return -1;
+function localChecked(unitId) {
+  const value = readJson(`progress:${unitId}`, []);
+  return Array.isArray(value) ? value : [];
 }
 
-function normalizeChecked(unit, ids) {
-  const total = unit.items.length;
-  const unique = [...new Set((ids || []).filter(Boolean))];
-  const recognized = new Set();
+function localCompleted(unitId) {
+  const value = readJson(`map:completed:${unitId}`, []);
+  return Array.isArray(value) ? value : [];
+}
 
-  unique.forEach(id => {
-    const idx = recognizedIndex(unit.id, id);
-    if (idx >= 0 && idx < total) recognized.add(idx);
+function saveLocalCompleted(unitId, pages) {
+  try {
+    localStorage.setItem(`map:completed:${unitId}`, JSON.stringify([...new Set(pages)]));
+  } catch (_) {}
+}
+
+function pageIdFromHref(href) {
+  const file = new URL(href, location.origin).pathname.split('/').filter(Boolean).pop() || 'index.html';
+  if (file === 'index.html') return 'introduccion';
+  if (file === 'mini-evaluacion.html') return 'mini-evaluacion';
+  return file.replace(/\.html$/i, '');
+}
+
+function legacyPages(unit, checkedIds) {
+  const ids = [...new Set((checkedIds || []).filter(Boolean))];
+  const pages = [];
+  const used = new Set();
+
+  ids.forEach(id => {
+    const match = String(id).match(/(?:chk-|c)(\d+)$/i);
+    if (!match) return;
+    const n = Number(match[1]);
+    if (n >= 1 && n < unit.items.length) {
+      const pageId = pageIdFromHref(unit.items[n][1]);
+      if (!used.has(pageId)) {
+        used.add(pageId);
+        pages.push(pageId);
+      }
+    }
   });
 
-  // Compatibilidad: si encontramos datos antiguos pero no IDs reconocibles,
-  // conservamos al menos la cantidad registrada para mostrar una estimación prudente.
-  if (!recognized.size && unique.length) {
-    for (let i = 0; i < Math.min(unique.length, total); i += 1) recognized.add(i);
+  // Si un formato histórico no tenía numeración reconocible, preservamos solamente
+  // la cantidad, asignándola desde el primer bloque (la introducción no se da por hecha).
+  if (pages.length < ids.length) {
+    for (let i = 1; i < unit.items.length && pages.length < ids.length; i += 1) {
+      const pageId = pageIdFromHref(unit.items[i][1]);
+      if (!used.has(pageId)) {
+        used.add(pageId);
+        pages.push(pageId);
+      }
+    }
   }
 
-  return recognized;
+  return pages;
 }
 
 async function readUnitProgress(db, uid, unit) {
-  const remoteRef = doc(db, 'users', uid, 'progress', unit.id);
-  const snap = await getDoc(remoteRef);
-  const remote = snap.exists() && Array.isArray(snap.data()?.checked)
-    ? snap.data().checked
-    : [];
-  const local = localChecked(unit.id);
-  return normalizeChecked(unit, [...remote, ...local]);
+  const ref = doc(db, 'users', uid, 'progress', unit.id);
+  const snap = await getDoc(ref);
+  const data = snap.exists() ? snap.data() : {};
+  const remotePages = Array.isArray(data?.completedPages) ? data.completedPages : [];
+  const localPages = localCompleted(unit.id);
+  let completedPages = [...new Set([...remotePages, ...localPages])];
+
+  // Migración única del esquema manual anterior. Una vez fijada la versión 2,
+  // marcar viejas casillas ya no puede aumentar el progreso del recorrido.
+  if ((Number(data?.progressModelVersion) || 0) < 2) {
+    const oldChecked = [
+      ...(Array.isArray(data?.checked) ? data.checked : []),
+      ...localChecked(unit.id)
+    ];
+    completedPages = [...new Set([...completedPages, ...legacyPages(unit, oldChecked)])];
+  }
+
+  const needsSync = completedPages.length !== remotePages.length || (Number(data?.progressModelVersion) || 0) < 2;
+  if (needsSync) {
+    await setDoc(ref, {
+      completedPages,
+      progressModelVersion: 2,
+      updatedAt: Date.now(),
+      ts: serverTimestamp()
+    }, { merge: true });
+  }
+
+  saveLocalCompleted(unit.id, completedPages);
+
+  const completedIds = new Set(completedPages);
+  const checked = new Set();
+  unit.items.forEach((item, idx) => {
+    if (completedIds.has(pageIdFromHref(item[1]))) checked.add(idx);
+  });
+  return checked;
 }
 
 function unitState(done, total) {
@@ -155,7 +215,7 @@ function renderUnit(unit, checked) {
   top.style.cssText = 'display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;';
 
   const title = document.createElement('div');
-  title.innerHTML = `<strong style="color:#783f04;">${state.icon} ${unit.title}</strong><div style="margin-top:4px;">${done}/${total} completados · ${pct}%</div>`;
+  title.innerHTML = `<strong style="color:#783f04;">${state.icon} ${unit.title}</strong><div style="margin-top:4px;">${done}/${total} páginas completadas · ${pct}%</div>`;
 
   const badge = document.createElement('span');
   badge.textContent = state.text;
@@ -235,7 +295,7 @@ async function renderDashboard(user) {
     });
 
     const pct = totalAll ? Math.round((doneAll / totalAll) * 100) : 0;
-    $('progress-general-label').textContent = `${doneAll} de ${totalAll} etapas completadas`;
+    $('progress-general-label').textContent = `${doneAll} de ${totalAll} páginas completadas`;
     $('progress-general-percent').textContent = `${pct}%`;
     $('progress-general-bar').style.width = `${pct}%`;
 
@@ -261,6 +321,11 @@ async function renderDashboard(user) {
     if (initialUser) await renderDashboard(initialUser);
 
     map.onAuthStateChanged(map.auth, user => {
+      if (user) renderDashboard(user);
+    });
+
+    window.addEventListener('map:page-completed', () => {
+      const user = map.auth.currentUser;
       if (user) renderDashboard(user);
     });
 
