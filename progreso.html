@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi progreso · Matemática a Pedal</title>
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+</head>
+<body style="background:#FFFDF8; color:#7f6000;">
+
+  <div id="header-placeholder"></div>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
+
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+
+  <main style="font-family:'Roboto Mono', monospace; max-width:1180px; margin:0 auto; padding:18px; line-height:1.55;">
+    <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:14px; padding:20px; border:2px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+      <h1 style="color:#783f04; margin:0; font-size:30px;">🚲 Mi progreso</h1>
+      <p style="margin:8px 0 0;">Acá podés ver cuánto avanzaste en Matemática a Pedal y retomar el recorrido desde el siguiente punto pendiente.</p>
+    </section>
+
+    <section id="progress-identity" style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#fff;">
+      <strong style="color:#783f04;">Tu sesión</strong>
+      <div id="progress-user-status" style="margin-top:6px;">Cargando…</div>
+      <button id="progress-login-btn" type="button"
+              style="display:none; margin-top:10px; background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">
+        🔐 Iniciar sesión con UTEC
+      </button>
+    </section>
+
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#fff;">
+      <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div>
+          <h2 style="color:#783f04; margin:0;">Tu recorrido</h2>
+          <div id="progress-general-label" style="margin-top:4px;">Calculando…</div>
+        </div>
+        <div id="progress-general-percent" style="font-size:30px; font-weight:800; color:#783f04;">0%</div>
+      </div>
+      <div style="height:16px; margin-top:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+        <div id="progress-general-bar" style="height:100%; width:0%; background:#FFA559; transition:width .35s ease;"></div>
+      </div>
+    </section>
+
+    <section id="progress-units" style="display:grid; gap:12px; margin-top:18px;"></section>
+
+    <section style="margin-top:18px; display:flex; justify-content:center;">
+      <a id="progress-continue" href="/matematica-a-pedal/unidad0/index.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:12px; padding:11px 18px; font-weight:700;">
+        ▶️ Continuar donde quedé
+      </a>
+    </section>
+
+    <div id="progress-error" style="display:none; margin-top:16px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;"></div>
+  </main>
+
+  <script type="module" src="/matematica-a-pedal/assets/progress-dashboard.js"></script>
+</body>
+</html>
