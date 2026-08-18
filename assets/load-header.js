@@ -264,3 +264,11 @@
   }, true);
   window.addEventListener('map:progress-updated', () => setTimeout(fixLegacyU4Links, 0));
 })();
+
+// ---- Registro automático de páginas completadas
+// Se carga desde el encabezado para que el mismo criterio funcione en todas las unidades,
+// incluso en páginas antiguas que no incluyen explícitamente los módulos de Firebase.
+if (/\/matematica-a-pedal\/unidad[0-4](?:\/|$)/.test(window.location.pathname)) {
+  import('/matematica-a-pedal/assets/completion-tracker.js?v=1')
+    .catch(err => console.error('No se pudo cargar el seguimiento automático de progreso:', err));
+}
