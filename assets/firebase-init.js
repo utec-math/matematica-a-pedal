@@ -52,13 +52,45 @@ async function ensureSignedInUser() {
   return cred.user;
 }
 
+function normalizeMeta(value) {
+  return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+}
+
+function mergeCompletionMeta(sourceMeta, targetMeta) {
+  const source = normalizeMeta(sourceMeta);
+  const target = normalizeMeta(targetMeta);
+  const merged = { ...source, ...target };
+
+  for (const key of new Set([...Object.keys(source), ...Object.keys(target)])) {
+    const s = normalizeMeta(source[key]);
+    const t = normalizeMeta(target[key]);
+    merged[key] = {
+      ...s,
+      ...t,
+      activeSeconds: Math.max(Number(s.activeSeconds) || 0, Number(t.activeSeconds) || 0),
+      maxScroll: Math.max(Number(s.maxScroll) || 0, Number(t.maxScroll) || 0),
+      completedAt: Math.max(Number(s.completedAt) || 0, Number(t.completedAt) || 0) || undefined
+    };
+
+    if (merged[key].completedAt === undefined) delete merged[key].completedAt;
+  }
+
+  return merged;
+}
+
 // Lee todo el progreso del UID actual antes de cambiar de identidad.
 async function readProgressSnapshot(uid) {
   const snap = await getDocs(collection(db, "users", uid, "progress"));
-  return snap.docs.map(d => ({
-    id: d.id,
-    checked: Array.isArray(d.data()?.checked) ? d.data().checked : []
-  }));
+  return snap.docs.map(d => {
+    const data = d.data() || {};
+    return {
+      id: d.id,
+      checked: Array.isArray(data.checked) ? data.checked : [],
+      completedPages: Array.isArray(data.completedPages) ? data.completedPages : [],
+      completionMeta: normalizeMeta(data.completionMeta),
+      progressModelVersion: Number(data.progressModelVersion) || 0
+    };
+  });
 }
 
 function savePendingMigration(sourceUid, expectedEmail, progressDocs) {
@@ -82,15 +114,25 @@ async function mergeProgressIntoUser(progressDocs, targetUid) {
   for (const item of progressDocs || []) {
     const targetRef = doc(db, "users", targetUid, "progress", item.id);
     const targetSnap = await getDoc(targetRef);
-    const targetChecked = targetSnap.exists() && Array.isArray(targetSnap.data()?.checked)
-      ? targetSnap.data().checked
-      : [];
+    const targetData = targetSnap.exists() ? targetSnap.data() : {};
+
+    const targetChecked = Array.isArray(targetData?.checked) ? targetData.checked : [];
+    const targetCompleted = Array.isArray(targetData?.completedPages) ? targetData.completedPages : [];
 
     // El progreso es acumulativo: nunca pisamos avances existentes.
     const mergedChecked = [...new Set([...(item.checked || []), ...targetChecked])];
+    const mergedCompleted = [...new Set([...(item.completedPages || []), ...targetCompleted])];
+    const mergedMeta = mergeCompletionMeta(item.completionMeta, targetData?.completionMeta);
+    const mergedVersion = Math.max(
+      Number(item.progressModelVersion) || 0,
+      Number(targetData?.progressModelVersion) || 0
+    );
 
     await setDoc(targetRef, {
       checked: mergedChecked,
+      completedPages: mergedCompleted,
+      completionMeta: mergedMeta,
+      progressModelVersion: mergedVersion,
       updatedAt: Date.now(),
       ts: serverTimestamp()
     }, { merge: true });
