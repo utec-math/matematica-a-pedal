@@ -77,6 +77,7 @@ const UNITS = [
 ];
 
 const $ = id => document.getElementById(id);
+const DEMO_COMPLETE = new URLSearchParams(location.search).get('demo') === 'complete';
 
 function waitForMAP() {
   return new Promise((resolve, reject) => {
@@ -371,9 +372,14 @@ async function renderDashboard(user) {
   container.innerHTML = '<div style="padding:12px;">Cargando tu recorrido…</div>';
 
   try {
-    const unitProgress = await Promise.all(
-      UNITS.map(unit => readUnitProgress(window.__MAP__.db, user.uid, unit))
-    );
+    const unitProgress = DEMO_COMPLETE
+      ? UNITS.map(unit => ({
+          checked: new Set(unit.items.map((_, idx) => idx)),
+          completionDate: null
+        }))
+      : await Promise.all(
+          UNITS.map(unit => readUnitProgress(window.__MAP__.db, user.uid, unit))
+        );
 
     container.innerHTML = '';
     let doneAll = 0;
