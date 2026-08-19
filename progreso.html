@@ -16,8 +16,8 @@
 
   <main style="font-family:'Roboto Mono', monospace; max-width:1180px; margin:0 auto; padding:18px; line-height:1.55;">
     <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:14px; padding:20px; border:2px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,.08);">
-      <h1 style="color:#783f04; margin:0; font-size:30px;">🚲 Mi progreso</h1>
-      <p style="margin:8px 0 0;">Acá podés ver cuánto avanzaste en Matemática a Pedal y retomar el recorrido desde el siguiente punto pendiente.</p>
+      <h1 id="progress-hero-title" style="color:#783f04; margin:0; font-size:30px;">🚲 Mi progreso</h1>
+      <p id="progress-hero-text" style="margin:8px 0 0;">Acá podés ver cuánto avanzaste en Matemática a Pedal y retomar el recorrido desde el siguiente punto pendiente.</p>
     </section>
 
     <section id="progress-identity" style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#fff;">
@@ -29,7 +29,7 @@
       </button>
     </section>
 
-    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFF6E6;">
+    <section id="progress-criteria" style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFF6E6;">
       <strong style="color:#783f04;">¿Cuándo cuenta una página como completada?</strong>
       <p style="margin:6px 0 0;">
         Cuando alcanzás el tiempo activo mínimo, recorrés al menos el 75% de la página y pulsás
@@ -38,10 +38,10 @@
       </p>
     </section>
 
-    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#fff;">
+    <section id="progress-general" style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#fff;">
       <div style="display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
         <div>
-          <h2 style="color:#783f04; margin:0;">Tu recorrido</h2>
+          <h2 id="progress-general-title" style="color:#783f04; margin:0;">Tu recorrido</h2>
           <div id="progress-general-label" style="margin-top:4px;">Calculando…</div>
         </div>
         <div id="progress-general-percent" style="font-size:30px; font-weight:800; color:#783f04;">0%</div>
@@ -49,11 +49,33 @@
       <div style="height:16px; margin-top:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
         <div id="progress-general-bar" style="height:100%; width:0%; background:#FFA559; transition:width .35s ease;"></div>
       </div>
+      <div id="progress-complete-actions" style="display:none; margin-top:12px; justify-content:flex-end;">
+        <button id="progress-achievement-toggle" type="button"
+                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px; font-weight:700;">
+          🎓 Ver mi logro
+        </button>
+      </div>
+    </section>
+
+    <section id="progress-achievement" hidden
+             style="margin-top:14px; border:2px solid #FFD580; border-radius:14px; padding:18px; background:#FFF6E6; text-align:center; box-shadow:0 5px 14px rgba(0,0,0,.06);">
+      <div style="font-size:12px; letter-spacing:.12em; font-weight:800; color:#7f6000;">🚲 MATEMÁTICA A PEDAL</div>
+      <h2 style="margin:7px 0 4px; color:#783f04; font-size:24px;">RECORRIDO COMPLETADO</h2>
+      <div id="progress-achievement-count" style="font-size:18px; font-weight:700; color:#783f04;">38 / 38 páginas</div>
+      <div id="progress-achievement-date" style="display:none; margin-top:4px; font-size:13px;"></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(115px,1fr)); gap:7px; max-width:720px; margin:14px auto 0;">
+        <span style="background:#fff; border:1px solid #FFD580; border-radius:999px; padding:6px 8px;">Unidad 0 ✅</span>
+        <span style="background:#fff; border:1px solid #FFD580; border-radius:999px; padding:6px 8px;">Unidad 1 ✅</span>
+        <span style="background:#fff; border:1px solid #FFD580; border-radius:999px; padding:6px 8px;">Unidad 2 ✅</span>
+        <span style="background:#fff; border:1px solid #FFD580; border-radius:999px; padding:6px 8px;">Unidad 3 ✅</span>
+        <span style="background:#fff; border:1px solid #FFD580; border-radius:999px; padding:6px 8px;">Unidad 4 ✅</span>
+      </div>
+      <div style="margin-top:12px; font-size:22px; font-weight:800; color:#783f04;">🏁 100%</div>
     </section>
 
     <section id="progress-units" style="display:grid; gap:12px; margin-top:18px;"></section>
 
-    <section style="margin-top:18px; display:flex; justify-content:center;">
+    <section id="progress-continue-wrap" style="margin-top:18px; display:flex; justify-content:center;">
       <a id="progress-continue" href="/matematica-a-pedal/unidad0/index.html"
          style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:12px; padding:11px 18px; font-weight:700;">
         ▶️ Continuar donde quedé
