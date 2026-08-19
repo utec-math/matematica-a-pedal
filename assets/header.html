@@ -50,17 +50,24 @@
                 display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap; position:relative;">
 
       <!-- SOBRE EL PROYECTO -->
-   <a href="/matematica-a-pedal/sobre.html"
-   style="background:#fff; border:1px solid #FFD580; color:#783f04;
-          border-radius:10px; padding:8px 12px; text-decoration:none;">
-  🚲 Sobre el proyecto
-</a>
+      <a href="/matematica-a-pedal/sobre.html"
+         style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                border-radius:10px; padding:8px 12px; text-decoration:none;">
+        🚲 Sobre el proyecto
+      </a>
 
       <!-- Inicio -->
       <a href="/matematica-a-pedal/index.html"
          style="background:#fff; border:1px solid #FFD580; color:#783f04;
                 border-radius:10px; padding:8px 12px; text-decoration:none;">
         🏠 Inicio
+      </a>
+
+      <!-- Mi progreso -->
+      <a href="/matematica-a-pedal/progreso.html"
+         style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                border-radius:10px; padding:8px 12px; text-decoration:none;">
+        📊 Mi progreso
       </a>
 
       <!-- Unidad 0 -->
@@ -76,7 +83,7 @@
           <a href="/matematica-a-pedal/unidad0/bloque-c.html">Bloque C</a>
           <a href="/matematica-a-pedal/unidad0/bloque-d.html">Bloque D</a>
           <a href="/matematica-a-pedal/unidad0/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html">Mini Evaluación</a>
+          <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html">Mini-evaluación</a>
         </div>
       </div>
 
@@ -95,7 +102,7 @@
           <a href="/matematica-a-pedal/unidad1/bloque-e.html">Bloque E</a>
           <a href="/matematica-a-pedal/unidad1/bloque-f.html">Bloque F</a>
           <a href="/matematica-a-pedal/unidad1/bloque-g.html">Bloque G</a>
-          <a href="/matematica-a-pedal/unidad1/mini-evaluacion.html">Mini Evaluación</a>
+          <a href="/matematica-a-pedal/unidad1/mini-evaluacion.html">Mini-evaluación</a>
         </div>
       </div>
 
@@ -112,7 +119,7 @@
           <a href="/matematica-a-pedal/unidad2/bloque-c.html">Bloque C</a>
           <a href="/matematica-a-pedal/unidad2/bloque-d.html">Bloque D</a>
           <a href="/matematica-a-pedal/unidad2/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad2/mini-evaluacion.html">Mini Evaluación</a>
+          <a href="/matematica-a-pedal/unidad2/mini-evaluacion.html">Mini-evaluación</a>
         </div>
       </div>
 
@@ -129,7 +136,7 @@
           <a href="/matematica-a-pedal/unidad3/bloque-c.html">Bloque C</a>
           <a href="/matematica-a-pedal/unidad3/bloque-d.html">Bloque D</a>
           <a href="/matematica-a-pedal/unidad3/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad3/mini-evaluacion.html">Mini Evaluación</a>
+          <a href="/matematica-a-pedal/unidad3/mini-evaluacion.html">Mini-evaluación</a>
         </div>
       </div>
 
@@ -147,7 +154,7 @@
           <a href="/matematica-a-pedal/unidad4/bloque-d.html">Bloque D</a>
           <a href="/matematica-a-pedal/unidad4/bloque-e.html">Bloque E</a>
           <a href="/matematica-a-pedal/unidad4/bloque-f.html">Bloque F</a>
-          <a href="/matematica-a-pedal/unidad4/mini-evaluacion.html">Mini Evaluación</a>
+          <a href="/matematica-a-pedal/unidad4/mini-evaluacion.html">Mini-evaluación</a>
         </div>
       </div>
 
@@ -177,5 +184,23 @@
   @media (max-width: 720px){
     .hero-inner{ flex-direction:column; align-items:flex-start !important; }
     .hero-art{ display:none !important; }
+
+    /* La navegación de bloques se apila en móvil para evitar botones comprimidos. */
+    .map-unit-nav{
+      grid-template-columns:1fr !important;
+      margin-left:10px !important;
+      margin-right:10px !important;
+    }
+    .map-unit-nav > span{ display:none !important; }
+    .map-unit-nav > a{
+      width:100% !important;
+      box-sizing:border-box !important;
+      text-align:center !important;
+      white-space:normal !important;
+    }
+    #map-completion-status{
+      margin-left:10px !important;
+      margin-right:10px !important;
+    }
   }
 </style>

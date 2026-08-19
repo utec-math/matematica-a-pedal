@@ -3,9 +3,15 @@ import {
   doc, getDoc, setDoc, onSnapshot, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
-// Detectar unidad desde la URL
-const UNIT_ID = (location.pathname.split('/').filter(Boolean).pop() || 'index')
-  .replace('index.html', '') || 'unidad0';
+// Detectar correctamente la unidad/página desde la URL.
+// En las portadas (index.html o /unidadN/) el documento de progreso debe ser unidadN.
+// En otras páginas se conserva el nombre del archivo (por ejemplo mini-evaluacion.html).
+const pathParts = location.pathname.split('/').filter(Boolean);
+const lastPart = pathParts[pathParts.length - 1] || 'index.html';
+const unitFolder = [...pathParts].reverse().find(part => /^unidad\d+$/i.test(part)) || 'unidad0';
+const UNIT_ID = (lastPart === 'index.html' || /^unidad\d+$/i.test(lastPart))
+  ? unitFolder
+  : lastPart;
 
 const STORAGE_KEY = `progress:${UNIT_ID}`;
 const $ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
