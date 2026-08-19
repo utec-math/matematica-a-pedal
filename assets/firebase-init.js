@@ -64,12 +64,18 @@ function mergeCompletionMeta(sourceMeta, targetMeta) {
   for (const key of new Set([...Object.keys(source), ...Object.keys(target)])) {
     const s = normalizeMeta(source[key]);
     const t = normalizeMeta(target[key]);
+    const completedDates = [
+      Number(s.completedAt) || 0,
+      Number(t.completedAt) || 0
+    ].filter(Boolean);
+
     merged[key] = {
       ...s,
       ...t,
       activeSeconds: Math.max(Number(s.activeSeconds) || 0, Number(t.activeSeconds) || 0),
       maxScroll: Math.max(Number(s.maxScroll) || 0, Number(t.maxScroll) || 0),
-      completedAt: Math.max(Number(s.completedAt) || 0, Number(t.completedAt) || 0) || undefined
+      // completedAt representa la primera finalización conocida, no la más reciente.
+      completedAt: completedDates.length ? Math.min(...completedDates) : undefined
     };
 
     if (merged[key].completedAt === undefined) delete merged[key].completedAt;
@@ -123,10 +129,18 @@ async function mergeProgressIntoUser(progressDocs, targetUid) {
     const mergedChecked = [...new Set([...(item.checked || []), ...targetChecked])];
     const mergedCompleted = [...new Set([...(item.completedPages || []), ...targetCompleted])];
     const mergedMeta = mergeCompletionMeta(item.completionMeta, targetData?.completionMeta);
-    const mergedVersion = Math.max(
-      Number(item.progressModelVersion) || 0,
-      Number(targetData?.progressModelVersion) || 0
-    );
+
+    const sourceVersion = Number(item.progressModelVersion) || 0;
+    const targetVersion = Number(targetData?.progressModelVersion) || 0;
+    const hasUnmigratedLegacyProgress =
+      ((item.checked || []).length > 0 && sourceVersion < 2) ||
+      (targetChecked.length > 0 && targetVersion < 2);
+
+    // Si alguno de los dos UID todavía trae marcas del esquema antiguo,
+    // dejamos la versión pendiente para que el panel las convierta una sola vez.
+    const mergedVersion = hasUnmigratedLegacyProgress
+      ? 0
+      : Math.max(sourceVersion, targetVersion);
 
     await setDoc(targetRef, {
       checked: mergedChecked,
