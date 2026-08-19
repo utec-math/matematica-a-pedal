@@ -163,6 +163,24 @@ function legacyPages(unit, checkedIds) {
   return pages;
 }
 
+function unitCompletionDate(unit, data, completedPages) {
+  const completed = new Set(completedPages);
+  if (!unit.items.every(item => completed.has(pageIdFromHref(item[1])))) return null;
+
+  const meta = data?.completionMeta && typeof data.completionMeta === 'object'
+    ? data.completionMeta
+    : {};
+
+  const dates = unit.items.map(item => {
+    const pageId = pageIdFromHref(item[1]);
+    return Number(meta?.[pageId]?.completedAt) || 0;
+  });
+
+  // En progresos históricos migrados puede no existir una fecha verificable.
+  if (dates.some(value => value <= 0)) return null;
+  return Math.max(...dates);
+}
+
 async function readUnitProgress(db, uid, unit) {
   const ref = doc(db, 'users', uid, 'progress', unit.id);
   const snap = await getDoc(ref);
@@ -198,7 +216,11 @@ async function readUnitProgress(db, uid, unit) {
   unit.items.forEach((item, idx) => {
     if (completedIds.has(pageIdFromHref(item[1]))) checked.add(idx);
   });
-  return checked;
+
+  return {
+    checked,
+    completionDate: unitCompletionDate(unit, data, completedPages)
+  };
 }
 
 function unitState(done, total) {
@@ -266,6 +288,73 @@ function setIdentity(user) {
   }
 }
 
+function formatCompletionDate(timestamp) {
+  if (!timestamp) return '';
+  try {
+    return new Intl.DateTimeFormat('es-UY', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(new Date(timestamp));
+  } catch (_) {
+    return '';
+  }
+}
+
+function setJourneyCompletionMode(isComplete, doneAll, totalAll, completionDate) {
+  const heroTitle = $('progress-hero-title');
+  const heroText = $('progress-hero-text');
+  const criteria = $('progress-criteria');
+  const generalTitle = $('progress-general-title');
+  const actions = $('progress-complete-actions');
+  const achievement = $('progress-achievement');
+  const achievementCount = $('progress-achievement-count');
+  const achievementDate = $('progress-achievement-date');
+  const achievementToggle = $('progress-achievement-toggle');
+  const continueWrap = $('progress-continue-wrap');
+
+  if (isComplete) {
+    if (heroTitle) heroTitle.textContent = '🏁 ¡Recorrido completado!';
+    if (heroText) heroText.textContent = `Completaste las ${totalAll} páginas de Matemática a Pedal. Podés revisar cualquier unidad cuando quieras.`;
+    if (criteria) criteria.style.display = 'none';
+    if (generalTitle) generalTitle.textContent = 'Tu recorrido está completo';
+    if (actions) actions.style.display = 'flex';
+    if (continueWrap) continueWrap.style.display = 'none';
+    if (achievementCount) achievementCount.textContent = `${doneAll} / ${totalAll} páginas`;
+
+    const dateText = formatCompletionDate(completionDate);
+    if (achievementDate) {
+      achievementDate.textContent = dateText ? `Finalizado: ${dateText}` : '';
+      achievementDate.style.display = dateText ? 'block' : 'none';
+    }
+  } else {
+    if (heroTitle) heroTitle.textContent = '🚲 Mi progreso';
+    if (heroText) heroText.textContent = 'Acá podés ver cuánto avanzaste en Matemática a Pedal y retomar el recorrido desde el siguiente punto pendiente.';
+    if (criteria) criteria.style.display = '';
+    if (generalTitle) generalTitle.textContent = 'Tu recorrido';
+    if (actions) actions.style.display = 'none';
+    if (continueWrap) continueWrap.style.display = 'flex';
+    if (achievement) achievement.hidden = true;
+    if (achievementToggle) achievementToggle.textContent = '🎓 Ver mi logro';
+  }
+}
+
+function setupAchievementToggle() {
+  const button = $('progress-achievement-toggle');
+  const achievement = $('progress-achievement');
+  if (!button || !achievement || button.dataset.bound === '1') return;
+
+  button.dataset.bound = '1';
+  button.addEventListener('click', () => {
+    achievement.hidden = !achievement.hidden;
+    button.textContent = achievement.hidden ? '🎓 Ver mi logro' : 'Ocultar mi logro';
+
+    if (!achievement.hidden) {
+      achievement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+}
+
 function showError(message) {
   const box = $('progress-error');
   if (!box) return;
@@ -282,7 +371,7 @@ async function renderDashboard(user) {
   container.innerHTML = '<div style="padding:12px;">Cargando tu recorrido…</div>';
 
   try {
-    const checkedSets = await Promise.all(
+    const unitProgress = await Promise.all(
       UNITS.map(unit => readUnitProgress(window.__MAP__.db, user.uid, unit))
     );
 
@@ -290,19 +379,27 @@ async function renderDashboard(user) {
     let doneAll = 0;
     let totalAll = 0;
     let overallNext = null;
+    const completionDates = [];
 
     UNITS.forEach((unit, i) => {
-      const rendered = renderUnit(unit, checkedSets[i]);
+      const rendered = renderUnit(unit, unitProgress[i].checked);
       container.appendChild(rendered.card);
       doneAll += rendered.done;
       totalAll += rendered.total;
       if (!overallNext && rendered.nextHref) overallNext = rendered.nextHref;
+      if (unitProgress[i].completionDate) completionDates.push(unitProgress[i].completionDate);
     });
 
     const pct = totalAll ? Math.round((doneAll / totalAll) * 100) : 0;
     $('progress-general-label').textContent = `${doneAll} de ${totalAll} páginas completadas`;
     $('progress-general-percent').textContent = `${pct}%`;
     $('progress-general-bar').style.width = `${pct}%`;
+
+    const isComplete = totalAll > 0 && doneAll >= totalAll;
+    const completionDate = isComplete && completionDates.length === UNITS.length
+      ? Math.max(...completionDates)
+      : null;
+    setJourneyCompletionMode(isComplete, doneAll, totalAll, completionDate);
 
     const continueA = $('progress-continue');
     if (overallNext) {
@@ -321,6 +418,8 @@ async function renderDashboard(user) {
 
 (async function init() {
   try {
+    setupAchievementToggle();
+
     const map = await waitForMAP();
     const initialUser = await map.authReady;
     if (initialUser) await renderDashboard(initialUser);
