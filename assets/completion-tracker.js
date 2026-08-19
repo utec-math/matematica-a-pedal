@@ -17,6 +17,16 @@ const ROUTES = {
   unidad4: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'bloque-f.html', 'mini-evaluacion.html']
 };
 
+const U0_KEY_TO_PAGE = {
+  intro: 'introduccion',
+  a: 'bloque-a',
+  b: 'bloque-b',
+  c: 'bloque-c',
+  d: 'bloque-d',
+  e: 'bloque-e',
+  mini: 'mini-evaluacion'
+};
+
 function routeInfo() {
   const match = location.pathname.match(/\/matematica-a-pedal\/(unidad[0-4])\/?([^/]*)$/);
   if (!match) return null;
@@ -69,8 +79,64 @@ function readLocalCompleted(unitId) {
   return Array.isArray(value) ? value : [];
 }
 
+function readLegacyLocalChecked(unitId) {
+  const value = readJson(`progress:${unitId}`, []);
+  return Array.isArray(value) ? value : [];
+}
+
 function saveLocalCompleted(unitId, pages) {
   writeJson(localCompletionKey(unitId), [...new Set(pages)]);
+}
+
+function legacyPagesFromChecked(unitId, checkedIds) {
+  const sequence = ROUTES[unitId] || [];
+  const ids = [...new Set((checkedIds || []).filter(Boolean))];
+  const pages = [];
+  const used = new Set();
+
+  ids.forEach(id => {
+    const match = String(id).match(/(?:chk-|c)(\d+)$/i);
+    if (!match) return;
+
+    const n = Number(match[1]);
+    // U0 tenía una casilla histórica adicional para la propia introducción.
+    // En U1-U4 c1/chk-01 corresponde al Bloque A, no a la introducción.
+    const routeIndex = unitId === 'unidad0' ? n - 1 : n;
+    if (routeIndex < 0 || routeIndex >= sequence.length) return;
+
+    const pageId = pageIdFromFile(sequence[routeIndex]);
+    if (!used.has(pageId)) {
+      used.add(pageId);
+      pages.push(pageId);
+    }
+  });
+
+  // Compatibilidad con formatos históricos sin numeración reconocible:
+  // preservamos la cantidad de marcas sin inventar más progreso del que existía.
+  if (pages.length < ids.length) {
+    const start = unitId === 'unidad0' ? 0 : 1;
+    for (let i = start; i < sequence.length && pages.length < ids.length; i += 1) {
+      const pageId = pageIdFromFile(sequence[i]);
+      if (!used.has(pageId)) {
+        used.add(pageId);
+        pages.push(pageId);
+      }
+    }
+  }
+
+  return pages;
+}
+
+function pageIdForChecklistKey(unitId, key) {
+  if (unitId === 'unidad0') return U0_KEY_TO_PAGE[key] || null;
+
+  const sequence = ROUTES[unitId] || [];
+  const match = String(key || '').match(/^c(\d+)$/i);
+  if (!match) return null;
+
+  const n = Number(match[1]);
+  if (n < 1 || n >= sequence.length) return null;
+  return pageIdFromFile(sequence[n]);
 }
 
 async function ensureMAP() {
@@ -155,18 +221,42 @@ function setForwardDisabled(a, disabled) {
   a.style.cursor = disabled ? 'not-allowed' : 'pointer';
 }
 
+function updateUnitProgressBar(unitId, completedPages) {
+  const sequence = ROUTES[unitId] || [];
+  const completed = new Set(completedPages);
+  const done = sequence.filter(file => completed.has(pageIdFromFile(file))).length;
+  const pct = sequence.length ? Math.round((done / sequence.length) * 100) : 0;
+
+  const update = () => {
+    const host = document.getElementById('unit-progress');
+    if (!host) return;
+    const label = host.querySelector('.unit-progress__label');
+    const fill = host.querySelector('.unit-progress__fill');
+    const bike = host.querySelector('.unit-progress__bike');
+    if (label) label.textContent = `${pct}%`;
+    if (fill) fill.style.width = `${pct}%`;
+    if (bike) bike.style.left = `${pct}%`;
+  };
+
+  update();
+  // Algunas portadas inicializan la barra después de este módulo.
+  setTimeout(update, 250);
+  setTimeout(update, 900);
+}
+
 function applyAutomaticChecklist(unitId, completedPages) {
   const indexMatch = location.pathname.match(/\/(unidad[0-4])\/?(?:index\.html)?$/);
   if (!indexMatch || indexMatch[1] !== unitId) return;
 
   const completed = new Set(completedPages);
   const sequence = ROUTES[unitId];
+  const root = document.getElementById(`${unitId.replace('unidad', 'u')}-home`) || document.querySelector('main');
+  if (!root) return;
 
-  document.querySelectorAll('input[data-key^="c"]').forEach(input => {
-    const n = Number(String(input.dataset.key || '').replace(/^c/i, ''));
-    if (!Number.isFinite(n) || n < 1 || n >= sequence.length) return;
+  root.querySelectorAll('input[data-key]').forEach(input => {
+    const targetPageId = pageIdForChecklistKey(unitId, input.dataset.key);
+    if (!targetPageId) return;
 
-    const targetPageId = pageIdFromFile(sequence[n]);
     const done = completed.has(targetPageId);
     const label = input.closest('label');
     const card = input.closest('[data-key]');
@@ -179,10 +269,53 @@ function applyAutomaticChecklist(unitId, completedPages) {
     if (label) {
       label.style.cursor = 'default';
       const span = label.querySelector('span');
-      if (span) span.textContent = done ? '✅ Completado automáticamente' : '⏳ Se completa al finalizar el bloque';
+      if (span) {
+        const current = span.textContent.trim();
+        const isActionLabel = /marcar como completado|completado automáticamente|se completa al finalizar/i.test(current);
+        if (isActionLabel) {
+          span.textContent = done ? '✅ Completado automáticamente' : '⏳ Se completa al finalizar el bloque';
+        } else {
+          if (!span.dataset.mapOriginalLabel) span.dataset.mapOriginalLabel = current.replace(/\s·\s(?:✅ Completado|⏳ Pendiente)$/i, '');
+          span.textContent = `${span.dataset.mapOriginalLabel} · ${done ? '✅ Completado' : '⏳ Pendiente'}`;
+        }
+      }
     }
 
-    if (pill) pill.textContent = done ? '✅ Completado' : '⏳ Pendiente';
+    if (pill) {
+      pill.textContent = done ? '✅ Completado' : '⏳ Pendiente';
+      pill.style.background = done ? '#EFFFF2' : 'transparent';
+    }
+  });
+
+  // Los antiguos botones de reset solo modificaban casillas manuales y ya no representan
+  // el nuevo modelo de progreso. Se ocultan para evitar estados contradictorios.
+  root.querySelectorAll('button[id]').forEach(button => {
+    if (/^u[0-4]-reset$/i.test(button.id)) button.style.display = 'none';
+  });
+
+  // Mantener coherente el antiguo “Continuar donde quedé” de algunas portadas.
+  const continueA = root.querySelector('a[id$="-continue"]');
+  if (continueA) {
+    const nextFile = sequence.slice(1).find(file => !completed.has(pageIdFromFile(file))) || sequence[sequence.length - 1];
+    continueA.href = `${BASE}${unitId}/${nextFile}`;
+  }
+
+  updateUnitProgressBar(unitId, completedPages);
+}
+
+function normalizeLegacyMiniControl(file) {
+  if (file !== 'mini-evaluacion.html') return;
+
+  document.querySelectorAll('label').forEach(label => {
+    if (!/marcar mini-evaluación como completada/i.test(label.textContent || '')) return;
+    const input = label.querySelector('input[type="checkbox"]');
+    const span = label.querySelector('span');
+    if (input) {
+      input.disabled = true;
+      input.style.display = 'none';
+    }
+    label.style.cursor = 'default';
+    if (span) span.textContent = 'ℹ️ Se registra automáticamente al finalizar esta página.';
   });
 }
 
@@ -192,9 +325,24 @@ async function readProgressDoc(db, uid, unitId) {
   const data = snap.exists() ? snap.data() : {};
   const remotePages = Array.isArray(data?.completedPages) ? data.completedPages : [];
   const localPages = readLocalCompleted(unitId);
-  const completedPages = [...new Set([...remotePages, ...localPages])];
+  let completedPages = [...new Set([...remotePages, ...localPages])];
 
-  if (completedPages.length > remotePages.length) {
+  // Migración única del sistema manual anterior. Se hace también desde las páginas
+  // de unidad, para no obligar a visitar “Mi progreso” antes de conservar el historial.
+  const oldVersion = Number(data?.progressModelVersion) || 0;
+  if (oldVersion < 2) {
+    const oldChecked = [
+      ...(Array.isArray(data?.checked) ? data.checked : []),
+      ...readLegacyLocalChecked(unitId)
+    ];
+    completedPages = [...new Set([
+      ...completedPages,
+      ...legacyPagesFromChecked(unitId, oldChecked)
+    ])];
+  }
+
+  const needsSync = completedPages.length !== remotePages.length || oldVersion < 2;
+  if (needsSync) {
     await setDoc(ref, {
       completedPages,
       progressModelVersion: 2,
@@ -257,6 +405,8 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   const nav = await waitForNavigator();
   if (!nav) return;
 
+  normalizeLegacyMiniControl(route.file);
+
   const forward = Array.from(nav.querySelectorAll('a[href]')).at(-1);
   if (!forward) return;
 
@@ -270,6 +420,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   let activeSeconds = Math.max(0, Number(savedSession?.activeSeconds) || 0);
   let maxScroll = Math.max(scrollProgress(), Number(savedSession?.maxScroll) || 0);
   let lastActivityAt = Date.now();
+  let lastPersistSecond = -1;
   let completed = false;
   let busy = false;
 
@@ -345,7 +496,11 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
         activeSeconds += 1;
       }
 
-      if (Math.floor(activeSeconds) % 5 === 0) persistSession();
+      const wholeSeconds = Math.floor(activeSeconds);
+      if (wholeSeconds % 5 === 0 && wholeSeconds !== lastPersistSecond) {
+        lastPersistSecond = wholeSeconds;
+        persistSession();
+      }
       paint();
     }, 1000);
 
@@ -373,7 +528,9 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
         await markCompleted(map.db, currentUser.uid, route.unitId, pageId, activeSeconds, maxScroll);
         completed = true;
         localStorage.removeItem(localSessionKey(route.unitId, pageId));
-        applyAutomaticChecklist(route.unitId, [...readLocalCompleted(route.unitId), pageId]);
+        const updatedPages = [...readLocalCompleted(route.unitId), pageId];
+        saveLocalCompleted(route.unitId, updatedPages);
+        applyAutomaticChecklist(route.unitId, updatedPages);
         location.href = originalHref;
       } catch (err) {
         console.error('completion-tracker: no se pudo guardar la finalización.', err);
