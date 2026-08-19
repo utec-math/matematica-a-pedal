@@ -133,20 +133,25 @@ function legacyPages(unit, checkedIds) {
   ids.forEach(id => {
     const match = String(id).match(/(?:chk-|c)(\d+)$/i);
     if (!match) return;
+
     const n = Number(match[1]);
-    if (n >= 1 && n < unit.items.length) {
-      const pageId = pageIdFromHref(unit.items[n][1]);
-      if (!used.has(pageId)) {
-        used.add(pageId);
-        pages.push(pageId);
-      }
+    // La portada histórica de U0 sí incluía la introducción como primera casilla.
+    // En U1-U4, la primera casilla correspondía al Bloque A.
+    const itemIndex = unit.id === 'unidad0' ? n - 1 : n;
+    if (itemIndex < 0 || itemIndex >= unit.items.length) return;
+
+    const pageId = pageIdFromHref(unit.items[itemIndex][1]);
+    if (!used.has(pageId)) {
+      used.add(pageId);
+      pages.push(pageId);
     }
   });
 
   // Si un formato histórico no tenía numeración reconocible, preservamos solamente
-  // la cantidad, asignándola desde el primer bloque (la introducción no se da por hecha).
+  // la cantidad registrada y respetamos si esa unidad incluía o no la introducción.
   if (pages.length < ids.length) {
-    for (let i = 1; i < unit.items.length && pages.length < ids.length; i += 1) {
+    const start = unit.id === 'unidad0' ? 0 : 1;
+    for (let i = start; i < unit.items.length && pages.length < ids.length; i += 1) {
       const pageId = pageIdFromHref(unit.items[i][1]);
       if (!used.has(pageId)) {
         used.add(pageId);
