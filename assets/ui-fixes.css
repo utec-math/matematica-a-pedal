@@ -1,0 +1,27 @@
+/* Ajustes globales de coherencia visual y navegación */
+
+/* El submenú comienza exactamente donde termina el botón: no queda una franja
+   vacía que pueda cortar el :hover al mover el cursor hacia los temas. */
+.map-menu-item .submenu{
+  top:100% !important;
+  margin-top:0 !important;
+}
+
+/* Fracciones numéricas que aparecen en texto corrido fuera de MathJax. */
+.map-inline-fraction{
+  display:inline-grid;
+  grid-template-rows:auto auto;
+  align-items:center;
+  justify-items:center;
+  vertical-align:middle;
+  line-height:1.05;
+  margin:0 .12em;
+  font-variant-numeric:tabular-nums;
+}
+.map-inline-fraction > span:first-child{
+  border-bottom:1px solid currentColor;
+  padding:0 .14em .06em;
+}
+.map-inline-fraction > span:last-child{
+  padding:.06em .14em 0;
+}
