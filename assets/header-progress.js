@@ -97,9 +97,7 @@ function localTotal() {
   let done = 0;
 
   Object.keys(UNIT_PAGES).forEach(unitId => {
-    const completed = new Set(localCompleted(unitId));
-    legacyPages(unitId, localChecked(unitId)).forEach(pageId => completed.add(pageId));
-    done += recognizedCount(unitId, [...completed]);
+    done += recognizedCount(unitId, localCompleted(unitId));
   });
 
   return done;
