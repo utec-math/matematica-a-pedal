@@ -9,6 +9,10 @@
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
 
+  // Identidad de ruta, nombres coherentes, guía pedagógica y navegador inferior.
+  import('/matematica-a-pedal/assets/route-ui.js?v=1')
+    .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
+
   const dd = document.querySelector('.dropdown');
   const btn = dd?.querySelector('button');
   const menu = dd?.querySelector('.dropdown-menu');
@@ -45,7 +49,7 @@
           const li = document.createElement('li');
           const a = document.createElement('a');
           a.href = b.href ? b.href : ((u.href || "#") + (b.hash || ""));
-          a.textContent = b.title || "Bloque";
+          a.textContent = b.title || "Paso";
           a.style.cssText = "color:#7f6000; text-decoration:none;";
           li.appendChild(a);
           ul.appendChild(li);
@@ -61,7 +65,8 @@
 })();
 window.dispatchEvent(new Event("map:header-ready"));
 
-// ---- Navegación inferior coherente en todas las etapas
+// ---- Compatibilidad de navegación inferior de páginas antiguas
+// route-ui.js vuelve a renderizar el navegador con nombres pedagógicos completos.
 (function () {
   const BASE = '/matematica-a-pedal/';
 
@@ -141,12 +146,12 @@ window.dispatchEvent(new Event("map:header-ready"));
   };
 
   const u4ChecklistLabels = {
-    c1: 'Bloque A — Potenciación',
-    c2: 'Bloque B — Radicación',
-    c3: 'Bloque C — Radicales semejantes',
-    c4: 'Bloque D — Notación científica',
-    c5: 'Bloque E — Mini-app Calculadora',
-    c6: 'Bloque F — Ejercicios finales'
+    c1: 'Paso 1 — Potencias y exponentes',
+    c2: 'Paso 2 — Raíces y exponentes fraccionarios',
+    c3: 'Paso 3 — Simplificar radicales',
+    c4: 'Paso 4 — Notación científica',
+    c5: 'Paso 5 — Laboratorio interactivo',
+    c6: 'Paso 6 — Práctica final'
   };
 
   function pageLabel(unitKey, file) {
@@ -288,9 +293,7 @@ window.dispatchEvent(new Event("map:header-ready"));
     document.querySelectorAll('#u4-home .u4-done[data-key]').forEach(input => {
       const text = input.closest('label')?.querySelector('span');
       const replacement = u4ChecklistLabels[input.dataset.key];
-      if (text && replacement && /^Cap\.\s*\d/i.test(text.textContent.trim())) {
-        text.textContent = replacement;
-      }
+      if (text && replacement) text.textContent = replacement;
     });
   }
 
