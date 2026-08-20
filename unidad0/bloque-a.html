@@ -24,6 +24,9 @@
       <div style="font-size:13px; font-weight:700; color:#7f6000; margin-bottom:6px;">🚲 UNIDAD 0 · CALENTAMIENTO</div>
       <h1 style="color:#783f04; margin:0; font-size:30px;">Chequeo A — Conjuntos numéricos</h1>
       <p style="margin:8px 0 0; max-width:850px;">Este bloque es un <b>chequeo rápido</b>, no una segunda clase completa. La idea es confirmar que reconocés los conjuntos numéricos básicos. Si algo no sale, te llevamos directamente a la explicación paso a paso de la Unidad 1.</p>
+      <div style="margin-top:12px; background:rgba(255,255,255,.72); border:1px solid rgba(120,63,4,.18); border-radius:10px; padding:10px 12px; max-width:900px;">
+        <b>Importante:</b> acá no vamos a demostrar desde cero todos los resultados. Por ejemplo, tomaremos como conocido que \(\sqrt2\) es irracional. Si necesitás entender el porqué o reconstruir las ideas con más calma, usá el enlace de <b>explicación paso a paso</b> al final del chequeo.
+      </div>
     </section>
 
     <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#FFFDF8;">
@@ -35,8 +38,8 @@
       <h2 style="color:#783f04; margin:0 0 10px;">1️⃣ Recordá solamente esto</h2>
       <div style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));">
         <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb N\)</b><br>Naturales: \(0,1,2,3,\dots\)</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Z\)</b><br>Enteros: \(\dots,-2,-1,0,1,2,\dots\)</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Q\)</b><br>Fracciones y decimales finitos o periódicos.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Z\)</b><br>Enteros: \(\dots,-2,-1,0,1,2,\dots\). No tienen una parte fraccionaria distinta de cero.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Q\)</b><br>Números que pueden escribirse como una fracción de enteros \(\tfrac ab\), con \(b\neq0\). Incluyen los decimales finitos o periódicos.</div>
         <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>Irracionales</b><br>Reales que no son racionales, como \(\sqrt2\) o \(\pi\).</div>
       </div>
       <div style="margin-top:10px; background:#fff; border:1px dashed #FFD580; border-radius:10px; padding:10px; text-align:center;">
@@ -48,9 +51,9 @@
       <h2 style="color:#783f04; margin:0 0 10px;">2️⃣ Ejemplo guiado</h2>
       <p style="margin-top:0;">Clasifiquemos \(-2{,}5\) buscando el <b>conjunto más pequeño</b>.</p>
       <div style="display:grid; gap:8px;">
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 1.</b> ¿Es natural? No: es negativo y tiene parte decimal.</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 2.</b> ¿Es entero? No: no es un número entero.</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 3.</b> ¿Es racional? Sí: \(-2{,}5=-\tfrac52\).</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 1.</b> ¿Es natural? No: los naturales que usamos acá son \(0,1,2,3,\dots\), y \(-2{,}5\) no aparece entre ellos.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 2.</b> ¿Es entero? No. Los enteros son \(\dots,-3,-2,-1,0,1,2,3,\dots\): no tienen una parte decimal o fraccionaria distinta de cero. \(-2{,}5\) está entre \(-3\) y \(-2\), por eso no es entero.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 3.</b> ¿Es racional? Sí. Como es un decimal finito podemos escribirlo como fracción: \(-2{,}5=-\tfrac{25}{10}=-\tfrac52\). Al poder expresarse como cociente de dos enteros, pertenece a \(\mathbb Q\).</div>
         <div style="background:#EFFFF2; border:1px solid #B8E8C4; border-radius:10px; padding:10px;"><b>Conclusión:</b> el conjunto más pequeño es \(\mathbb Q\). También pertenece a \(\mathbb R\), pero \(\mathbb Q\) es más específico.</div>
       </div>
     </section>
@@ -71,14 +74,14 @@
         <p>Preguntate en este orden: ¿natural? → ¿entero? → ¿puedo escribirlo como fracción de enteros? Si no, pero es real, será irracional.</p>
       </details>
       <details style="margin-top:8px;">
-        <summary style="cursor:pointer; color:#783f04;">✅ Ver respuestas</summary>
+        <summary style="cursor:pointer; color:#783f04;">✅ Ver respuestas razonadas</summary>
         <ol style="margin:8px 0 0 20px;">
-          <li>\(7\in\mathbb N\)</li>
-          <li>\(-4\in\mathbb Z\)</li>
-          <li>\(\tfrac56\in\mathbb Q\)</li>
-          <li>\(0{,}125=\tfrac18\in\mathbb Q\)</li>
-          <li>\(0{,}\overline3=\tfrac13\in\mathbb Q\)</li>
-          <li>\(\sqrt2\) es irracional.</li>
+          <li><b>\(7\in\mathbb N\).</b> Es un número natural. Como \(\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R\), también pertenece a esos conjuntos, pero \(\mathbb N\) es el más pequeño.</li>
+          <li><b>\(-4\in\mathbb Z\).</b> No es natural porque es negativo, pero sí es entero: no tiene parte fraccionaria. Además \(-4=-\tfrac41\), así que también es racional y real.</li>
+          <li><b>\(\tfrac56\in\mathbb Q\).</b> No es entero, porque \(5\) no es múltiplo de \(6\). Ya está escrito como cociente de dos enteros con denominador distinto de cero, por eso es racional.</li>
+          <li><b>\(0{,}125\in\mathbb Q\).</b> No es entero porque tiene parte decimal distinta de cero. Como es decimal finito, \(0{,}125=\tfrac{125}{1000}=\tfrac18\); por eso es racional.</li>
+          <li><b>\(0{,}\overline3\in\mathbb Q\).</b> Es un decimal periódico y los decimales periódicos pueden escribirse como fracción. En este caso, \(0{,}\overline3=\tfrac13\).</li>
+          <li><b>\(\sqrt2\) es irracional.</b> Es un número real, pero no puede escribirse como una fracción de enteros. Su demostración requiere un argumento un poco más avanzado; en este chequeo alcanza con reconocerlo como uno de los ejemplos clásicos de número irracional.</li>
         </ol>
       </details>
     </section>
