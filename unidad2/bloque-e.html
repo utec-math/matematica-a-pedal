@@ -133,4 +133,41 @@ window.MathJax = {
   </div>
 </div>
 
+<!-- Corrige las fracciones de la guía dinámica de este paso -->
+<script>
+(function () {
+  const replacements = [
+    ['(x²−9)/(x−3).', '\\(\\frac{x^2-9}{x-3}\\).'],
+    ['Factorizamos: (x−3)(x+3)/(x−3).', 'Factorizamos: \\(\\frac{(x-3)(x+3)}{x-3}\\).'],
+    ['Simplificá (x²−4)/(x−2) e indicá la restricción.', 'Simplificá \\(\\frac{x^2-4}{x-2}\\) e indicá la restricción.']
+  ];
+
+  function fixGuide() {
+    const box = document.querySelector('.map-learning-guide');
+    if (!box) return false;
+    let html = box.innerHTML;
+    let changed = false;
+    replacements.forEach(([from, to]) => {
+      if (html.includes(from)) {
+        html = html.split(from).join(to);
+        changed = true;
+      }
+    });
+    if (changed) {
+      box.innerHTML = html;
+      window.MathJax?.typesetPromise?.([box]);
+    }
+    return true;
+  }
+
+  if (!fixGuide()) {
+    const observer = new MutationObserver(() => {
+      if (fixGuide()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    setTimeout(() => observer.disconnect(), 10000);
+  }
+})();
+</script>
+
 <!-- FIN CAPÍTULO 5 -->
