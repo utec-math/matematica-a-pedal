@@ -1,33 +1,37 @@
-<header style="font-family:'Roboto Mono', monospace;">
+<header class="map-header">
+  <div class="map-header-hero">
+    <div class="map-header-inner">
+      <div class="map-header-copy">
+        <h1 class="map-header-title">Matemática a Pedal</h1>
+        <p class="map-header-subtitle">Una ruta guiada con chequeos breves, explicaciones paso a paso, práctica y mini-apps para aprender a tu ritmo.</p>
 
-  <div class="hero" style="background:linear-gradient(105deg,#FFD580,#FFA559); border-bottom:2px solid #FFD580;">
-    <div class="hero-inner" style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 18px;">
-      <div class="hero-text" style="flex:1 1 auto;">
-        <h1 style="margin:0;color:#783f04;font-weight:800;line-height:1.1;font-size:clamp(28px,5vw,52px);">Matemática a Pedal</h1>
-        <p style="margin:6px 0 0;color:#7f6000;font-size:clamp(14px,2.3vw,18px);max-width:640px;">Una ruta guiada con chequeos breves, explicaciones paso a paso, práctica y mini-apps para aprender a tu ritmo.</p>
-        <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-          <button id="btnCertLogin" style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">🔐 Iniciar sesión con UTEC</button>
-          <span id="certStatus" style="color:#783f04; font-size:14px;"></span>
+        <div class="map-header-utilities">
+          <button id="btnCertLogin">🔐 Iniciar sesión con UTEC</button>
+
+          <a id="header-progress-link" class="map-utility" href="/matematica-a-pedal/progreso.html">
+            <span>📊 Mi progreso</span>
+            <span id="header-progress-badge" aria-live="polite">0%</span>
+          </a>
+
+          <a class="map-utility" href="/matematica-a-pedal/sobre.html">🚲 Sobre el proyecto</a>
+
+          <span id="certStatus"></span>
         </div>
-        <div id="certMsg" style="color:#783f04; margin-top:6px; font-size:14px;"></div>
+        <div id="certMsg"></div>
       </div>
-      <div class="hero-art" style="flex:0 0 320px; height:140px; display:flex; align-items:center; justify-content:center;">
-        <img src="/matematica-a-pedal/assets/bici-espiral.png" alt="Bicicleta con espiral áurea" style="max-width:100%; max-height:100%; object-fit:contain;">
+
+      <div class="map-header-art">
+        <img src="/matematica-a-pedal/assets/bici-espiral.png" alt="Bicicleta con espiral áurea">
       </div>
     </div>
   </div>
 
-  <nav style="position:relative; z-index:50;background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
-    <div style="max-width:1180px; margin:0 auto;display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap; position:relative;">
-      <a href="/matematica-a-pedal/sobre.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🚲 Sobre el proyecto</a>
-      <a href="/matematica-a-pedal/index.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🏠 Inicio</a>
-      <a id="header-progress-link" href="/matematica-a-pedal/progreso.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;display:inline-flex; align-items:center; gap:7px; white-space:nowrap;">
-        <span>📊 Mi progreso</span>
-        <span id="header-progress-badge" aria-live="polite" style="display:inline-flex; align-items:center; justify-content:center;min-width:38px; padding:2px 7px; border-radius:999px;background:#FFF6E6; border:1px solid #FFD580;color:#783f04; font-size:12px; font-weight:800; line-height:1.2;">0%</span>
-      </a>
+  <nav class="map-route-nav" aria-label="Ruta de aprendizaje">
+    <div class="map-route-nav-inner">
+      <a class="map-route-link map-route-link--home" href="/matematica-a-pedal/index.html">🏠 Inicio</a>
 
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">🚲 Calentamiento ▾</button>
+      <div class="map-menu-item">
+        <button class="map-menu-button">🚲 Calentamiento ▾</button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad0/index.html"><b>Punto de partida</b></a>
           <a href="/matematica-a-pedal/unidad0/bloque-a.html">Chequeo A · Conjuntos numéricos</a>
@@ -39,8 +43,8 @@
         </div>
       </div>
 
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">1️⃣ Números y operaciones ▾</button>
+      <div class="map-menu-item">
+        <button class="map-menu-button">1️⃣ Números y operaciones ▾</button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad1/index.html"><b>Inicio de la etapa</b></a>
           <a href="/matematica-a-pedal/unidad1/bloque-a.html">Paso 1 · Conjuntos numéricos</a>
@@ -54,8 +58,8 @@
         </div>
       </div>
 
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">2️⃣ Álgebra en acción ▾</button>
+      <div class="map-menu-item">
+        <button class="map-menu-button">2️⃣ Álgebra en acción ▾</button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad2/index.html"><b>Inicio de la etapa</b></a>
           <a href="/matematica-a-pedal/unidad2/bloque-a.html">Paso 1 · Expresiones y polinomios</a>
@@ -67,8 +71,8 @@
         </div>
       </div>
 
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">3️⃣ Trigonometría ▾</button>
+      <div class="map-menu-item">
+        <button class="map-menu-button">3️⃣ Trigonometría ▾</button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad3/index.html"><b>Inicio de la etapa</b></a>
           <a href="/matematica-a-pedal/unidad3/bloque-a.html">Paso 1 · Origen y aplicaciones</a>
@@ -80,8 +84,8 @@
         </div>
       </div>
 
-      <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">4️⃣ Potencias y raíces ▾</button>
+      <div class="map-menu-item">
+        <button class="map-menu-button">4️⃣ Potencias y raíces ▾</button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad4/index.html"><b>Inicio de la etapa</b></a>
           <a href="/matematica-a-pedal/unidad4/bloque-a.html">Paso 1 · Potencias y exponentes</a>
@@ -94,23 +98,7 @@
         </div>
       </div>
 
-      <a href="/matematica-a-pedal/autodiagnostico.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🧠 Parada técnica</a>
+      <a class="map-route-link map-route-link--technical" href="/matematica-a-pedal/autodiagnostico.html">🧠 Parada técnica</a>
     </div>
   </nav>
 </header>
-
-<style>
-  .submenu{display:none; position:absolute; top:38px; left:0; z-index:1000;background:#fff; border:1px solid #FFD580; border-radius:10px;box-shadow:0 6px 12px rgba(0,0,0,.08); min-width:300px; padding:6px 0;}
-  .submenu a{display:block; padding:7px 12px; color:#7f6000; text-decoration:none;}
-  .submenu a:hover{ background:#FFF6E6; }
-  .menu-item:hover .submenu{ display:block; }
-
-  @media (max-width: 720px){
-    .hero-inner{ flex-direction:column; align-items:flex-start !important; }
-    .hero-art{ display:none !important; }
-    .map-unit-nav{grid-template-columns:1fr !important;margin-left:10px !important;margin-right:10px !important;}
-    .map-unit-nav > span{ display:none !important; }
-    .map-unit-nav > a{width:100% !important;box-sizing:border-box !important;text-align:center !important;white-space:normal !important;}
-    #map-completion-status{margin-left:10px !important;margin-right:10px !important;}
-  }
-</style>
