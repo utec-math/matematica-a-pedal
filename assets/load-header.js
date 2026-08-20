@@ -7,6 +7,10 @@
   const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=4", { cache: "no-store" });
   placeholder.innerHTML = await headerRes.text();
 
+  // Mostrar el progreso global apenas el encabezado existe en el DOM.
+  import('/matematica-a-pedal/assets/header-progress.js?v=1')
+    .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
+
   // Dropdown básico
   const dd = document.querySelector('.dropdown');
   const btn = dd?.querySelector('button');
