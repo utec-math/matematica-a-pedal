@@ -1,4 +1,115 @@
 // assets/load-header.js
+
+// ---- Notación global de fracciones
+// Se instala mientras el documento todavía se está parseando, antes de que los
+// scripts defer de MathJax hagan el primer render. Así evitamos barras inclinadas
+// en expresiones simples y también normalizamos fracciones numéricas de texto.
+(function installFractionNotationNormalizer() {
+  if (window.__MAP_FRACTION_NORMALIZER__) return;
+  window.__MAP_FRACTION_NORMALIZER__ = true;
+
+  const skipSelector = [
+    'script','style','code','pre','textarea','input','button','option','a',
+    'mjx-container','#header-placeholder','.map-unit-nav','#map-completion-status',
+    '.unit-progress','.stage-meta'
+  ].join(',');
+
+  function shouldSkip(node) {
+    const parent = node?.parentElement;
+    return !parent || Boolean(parent.closest(skipSelector));
+  }
+
+  function normalizeTex(tex) {
+    // Átomos simples: números, una variable, un comando TeX o una expresión entre paréntesis.
+    // No convertimos palabras completas para no transformar textos como "opuesto / hipotenusa".
+    const atom = String.raw`(?:\\[A-Za-z]+|[A-Za-z]|\d+(?:\.\d+)?)(?:\^\{?[-+A-Za-z0-9]+\}?)?|\([^()]+\)`;
+    const slashFraction = new RegExp(`(${atom})\\s*\\/\\s*(${atom})`, 'g');
+    let previous = '';
+    let current = tex;
+    while (previous !== current) {
+      previous = current;
+      current = current.replace(slashFraction, '\\frac{$1}{$2}');
+    }
+    return current;
+  }
+
+  function normalizeDelimitedMath(text) {
+    return text
+      .replace(/\\\(([\s\S]*?)\\\)/g, (_, tex) => `\\(${normalizeTex(tex)}\\)`)
+      .replace(/\\\[([\s\S]*?)\\\]/g, (_, tex) => `\\[${normalizeTex(tex)}\\]`)
+      .replace(/\$\$([\s\S]*?)\$\$/g, (_, tex) => `$$${normalizeTex(tex)}$$`)
+      .replace(/\$([^$\n]+)\$/g, (_, tex) => `$${normalizeTex(tex)}$`);
+  }
+
+  function replacePlainNumericFractions(node) {
+    const text = node.nodeValue || '';
+    const re = /(?<![\d/])(-?\d{1,3})\s*\/\s*(-?\d{1,3})(?![\d/])/g;
+    if (!re.test(text)) return;
+    re.lastIndex = 0;
+
+    const fragment = document.createDocumentFragment();
+    let last = 0;
+    let match;
+    while ((match = re.exec(text))) {
+      fragment.appendChild(document.createTextNode(text.slice(last, match.index)));
+      const frac = document.createElement('span');
+      frac.className = 'map-inline-fraction';
+      frac.setAttribute('aria-label', `${match[1]} sobre ${match[2]}`);
+      const top = document.createElement('span');
+      const bottom = document.createElement('span');
+      top.textContent = match[1];
+      bottom.textContent = match[2];
+      frac.append(top, bottom);
+      fragment.appendChild(frac);
+      last = match.index + match[0].length;
+    }
+    fragment.appendChild(document.createTextNode(text.slice(last)));
+    node.replaceWith(fragment);
+  }
+
+  function normalizeTextNode(node) {
+    if (!node || node.nodeType !== Node.TEXT_NODE || shouldSkip(node)) return;
+    const original = node.nodeValue || '';
+    if (!original.trim()) return;
+
+    if (/\\\(|\\\[|\$/.test(original)) {
+      const normalized = normalizeDelimitedMath(original);
+      if (normalized !== original) node.nodeValue = normalized;
+      return;
+    }
+
+    replacePlainNumericFractions(node);
+  }
+
+  function scan(root) {
+    if (!root) return;
+    if (root.nodeType === Node.TEXT_NODE) {
+      normalizeTextNode(root);
+      return;
+    }
+    if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) return;
+    if (root.nodeType === Node.ELEMENT_NODE && root.matches?.(skipSelector)) return;
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(normalizeTextNode);
+  }
+
+  scan(document.body);
+
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.type === 'characterData') normalizeTextNode(mutation.target);
+      mutation.addedNodes?.forEach(scan);
+    });
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+
+  document.addEventListener('DOMContentLoaded', () => scan(document.body), { once: true });
+  window.addEventListener('load', () => setTimeout(() => observer.disconnect(), 5000), { once: true });
+})();
+
 (async function () {
   const placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
@@ -10,6 +121,14 @@
     shell.rel = 'stylesheet';
     shell.href = '/matematica-a-pedal/assets/site-shell.css?v=1';
     document.head.appendChild(shell);
+  }
+
+  if (!document.getElementById('map-ui-fixes')) {
+    const fixes = document.createElement('link');
+    fixes.id = 'map-ui-fixes';
+    fixes.rel = 'stylesheet';
+    fixes.href = '/matematica-a-pedal/assets/ui-fixes.css?v=1';
+    document.head.appendChild(fixes);
   }
 
   const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=6", { cache: "no-store" });
@@ -26,8 +145,10 @@
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
 
-  // route-ui.js reutiliza el navegador inferior existente y solo actualiza sus nombres.
+  // route-ui.js reutiliza el navegador existente. nav-fallback.js entra solamente
+  // si una página antigua realmente no trae navegador inferior.
   import('/matematica-a-pedal/assets/route-ui.js?v=2')
+    .then(() => import('/matematica-a-pedal/assets/nav-fallback.js?v=1'))
     .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
 
   // Normaliza vocabulario antiguo visible: Unidad/Bloque/Capítulo -> Etapa/Paso.
