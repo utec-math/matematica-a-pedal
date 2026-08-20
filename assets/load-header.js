@@ -21,9 +21,9 @@
 
   function normalizeTex(tex) {
     // Átomos simples: números, una variable, un comando TeX o una expresión entre paréntesis.
-    // No convertimos palabras completas para no transformar textos como "opuesto / hipotenusa".
-    const atom = String.raw`(?:\\[A-Za-z]+|[A-Za-z]|\d+(?:\.\d+)?)(?:\^\{?[-+A-Za-z0-9]+\}?)?|\([^()]+\)`;
-    const slashFraction = new RegExp(`(${atom})\\s*\\/\\s*(${atom})`, 'g');
+    // Los límites evitan falsos positivos dentro de palabras como "opuesto / hipotenusa".
+    const atom = String.raw`(?:\\[A-Za-z]+|[A-Za-z]|\d+(?:\.\d+)?)(?:\^(?:\{[-+A-Za-z0-9]+\}|[-+A-Za-z0-9]))?|\([^()]+\)`;
+    const slashFraction = new RegExp(`(?<![A-Za-z])(${atom})\\s*\\/\\s*(${atom})(?![A-Za-z])`, 'g');
     let previous = '';
     let current = tex;
     while (previous !== current) {
