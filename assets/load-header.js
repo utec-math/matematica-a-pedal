@@ -15,6 +15,14 @@
   const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=6", { cache: "no-store" });
   placeholder.innerHTML = await headerRes.text();
 
+  // El encabezado es global, así que también debe ser global la sesión UTEC.
+  // Usamos exactamente las mismas URLs que las páginas nuevas: el mapa de módulos
+  // del navegador evita ejecutar dos veces firebase-init.js o cert-auth.js cuando
+  // una página ya los incluye explícitamente.
+  import('/matematica-a-pedal/assets/firebase-init.js')
+    .then(() => import('/matematica-a-pedal/assets/cert-auth.js'))
+    .catch(err => console.error('No se pudo inicializar la sesión UTEC del encabezado:', err));
+
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
 
