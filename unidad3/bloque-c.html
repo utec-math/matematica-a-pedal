@@ -1,6 +1,18 @@
 <!-- Encabezado global -->
 <div id="header-placeholder"></div>
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
+
 <!-- CAPÍTULO 3 — RELACIONES ENTRE ÁNGULOS -->
 <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
 
@@ -14,8 +26,8 @@
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">1️⃣  Ángulos complementarios y suplementarios</h2>
     <ul style="margin:0 0 0 18px;">
-      <li><b>Complementarios:</b> la suma de sus medidas es 90° (π/2 rad).</li>
-      <li><b>Suplementarios:</b> la suma de sus medidas es 180° (π rad).</li>
+      <li><b>Complementarios:</b> la suma de sus medidas es \(90^\circ\) (\(\frac{\pi}{2}\,\text{rad}\)).</li>
+      <li><b>Suplementarios:</b> la suma de sus medidas es \(180^\circ\) (\(\pi\,\text{rad}\)).</li>
     </ul>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
       Ejemplo: 30° y 60° son complementarios; 120° y 60° son suplementarios.
@@ -26,8 +38,8 @@
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">2️⃣  Ángulos coterminales</h2>
     <p>Dos ángulos son <b>coterminales</b> si sus lados coinciden al girar desde el eje inicial, es decir, si difieren en un número entero de vueltas completas.</p>
-    <p>En grados: &nbsp; θ₂ = θ₁ ± 360° · k &nbsp;· (k ∈ ℤ)  
-       En radianes: &nbsp; θ₂ = θ₁ ± 2π · k</p>
+    <p>En grados: &nbsp; \(\theta_2=\theta_1\pm360^\circ\cdot k\), con \(k\in\mathbb Z\).<br>
+       En radianes: &nbsp; \(\theta_2=\theta_1\pm2\pi\cdot k\).</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
       Ejemplo: 45°, 405° y −315° son coterminales.
     </div>
@@ -49,7 +61,7 @@
       <li>¿Cuántos grados tiene el opuesto de −45°?</li>
     </ol>
     <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ol style="margin:8px 0 0 18px;">
+      <ol style="margin:8px 0 0 18px; line-height:1.7;">
         <li>Sí, 25° + 65° = 90°.</li>
         <li>180° − 110° = 70°.</li>
         <li>60° + 360° = 420°, y 60° − 360° = −300°.</li>
