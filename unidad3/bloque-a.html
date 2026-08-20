@@ -83,30 +83,27 @@ window.MathJax = {
 </section>
 </section>
 
-<!-- Corrige las fracciones de la guía dinámica de este paso -->
+<!-- Fuerza la notación matemática correcta en la guía dinámica de este paso -->
 <script>
 (function () {
-  const replacements = [
-    ['La tangente relaciona cateto opuesto y adyacente: tan 35° = h/20.', 'La tangente relaciona cateto opuesto y adyacente: \\(\\tan 35^\\circ=\\frac{h}{20}\\).'],
-    ['Despejamos: h = 20·tan 35°.', 'Despejamos: \\(h=20\\cdot\\tan 35^\\circ\\).'],
-    ['El seno: sen θ = cateto opuesto / hipotenusa.', 'El seno: \\(\\sin\\theta=\\frac{\\text{cateto opuesto}}{\\text{hipotenusa}}\\).']
-  ];
-
   function fixGuide() {
     const box = document.querySelector('.map-learning-guide');
     if (!box) return false;
-    let html = box.innerHTML;
-    let changed = false;
-    replacements.forEach(([from, to]) => {
-      if (html.includes(from)) {
-        html = html.split(from).join(to);
-        changed = true;
-      }
-    });
-    if (changed) {
-      box.innerHTML = html;
-      window.MathJax?.typesetPromise?.([box]);
+
+    const steps = box.querySelectorAll('ol li');
+    if (steps[1]) {
+      steps[1].innerHTML = 'La tangente relaciona cateto opuesto y adyacente: \\(\\tan 35^\\circ=\\frac{h}{20}\\).';
     }
+    if (steps[2]) {
+      steps[2].innerHTML = 'Despejamos: \\(h=20\\cdot\\tan 35^\\circ\\).';
+    }
+
+    const answer = box.querySelector('details p');
+    if (answer) {
+      answer.innerHTML = 'El seno: \\(\\operatorname{sen}\\theta=\\frac{\\text{cateto opuesto}}{\\text{hipotenusa}}\\).';
+    }
+
+    window.MathJax?.typesetPromise?.([box]);
     return true;
   }
 
