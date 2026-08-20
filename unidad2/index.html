@@ -3,246 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 2 — Factorización y Expresiones · Matemática a Pedal</title>
-
-  <!-- Estilo global -->
+  <title>Etapa 2 — Álgebra en acción · Matemática a Pedal</title>
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
-      }
-    };
-  </script>
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/stage-home.css?v=1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
-
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- CONTENIDO -->
-  <main id="u2-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
+  <main id="u2-home" class="stage-home">
+    <section class="stage-hero">
+      <div class="stage-eyebrow">🚲 ETAPA 2 · INICIO</div>
+      <h1>Etapa 2 — Álgebra en acción</h1>
+      <p>Pasá de operar números a trabajar con expresiones: polinomios, productos notables, factorización y fracciones algebraicas, entendiendo qué regla usar y por qué.</p>
+      <div class="stage-meta"><span>5 pasos</span><span>1 parada de control</span><span>Álgebra paso a paso</span></div>
+    </section>
 
-    <!-- Portada -->
-    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
-      <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 2 — Factorización y Manejo de Expresiones Algebraicas</h1>
-      <p style="margin:8px 0 0;">Del lenguaje algebraico al dominio de la factorización: cómo simplificar, desarrollar y operar expresiones con seguridad.</p>
-    </div>
+    <section class="stage-overview-grid">
+      <article class="stage-panel">
+        <h2>🎯 En esta etapa vas a...</h2>
+        <ul>
+          <li>Reconocer términos, variables, coeficientes y grado en expresiones y polinomios.</li>
+          <li>Sumar, restar, multiplicar y dividir expresiones algebraicas.</li>
+          <li>Comprender y aplicar productos notables.</li>
+          <li>Factorizar expresiones usando distintos patrones.</li>
+          <li>Simplificar y operar fracciones algebraicas respetando sus restricciones.</li>
+        </ul>
+      </article>
+      <article class="stage-panel">
+        <h2>🔗 ¿Cómo se conecta?</h2>
+        <p>El álgebra reutiliza todo lo trabajado con números, signos y fracciones en la Etapa 1. Estas herramientas también aparecen después en trigonometría, potencias y en cursos donde necesitás transformar fórmulas con soltura.</p>
+        <p class="stage-note">La clave de esta etapa no es memorizar más reglas, sino aprender a reconocer la estructura de cada expresión.</p>
+      </article>
+    </section>
 
-    <!-- Progreso con bicicleta (una sola barra) -->
-    <div id="unit-progress"></div>
+    <section class="stage-progress-panel">
+      <div class="stage-progress-head"><div><h2>🚲 Tu avance</h2><p>Se actualiza automáticamente a medida que completás cada página.</p></div></div>
+      <div id="unit-progress"></div>
+      <a id="u2-continue" class="stage-primary" href="/matematica-a-pedal/unidad2/bloque-a.html">▶️ Continuar donde quedé</a>
+    </section>
 
-    <!-- Índice -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">📚 Índice de capítulos</h2>
-
-      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-        <!-- Bloque A -->
-        <article class="u2-card" data-key="c1" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque A · Expresiones algebraicas y polinomios</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Definición, clasificación, grado y evaluación de polinomios.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-a.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c1"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque B -->
-        <article class="u2-card" data-key="c2" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque B · Operaciones con expresiones algebraicas</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Suma, resta, multiplicación y división de polinomios. Regla de Ruffini.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-b.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c2"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque C -->
-        <article class="u2-card" data-key="c3" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque C · Productos notables</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Cuadrado de binomio, suma por diferencia, cubo de binomio.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-c.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c3"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque D -->
-        <article class="u2-card" data-key="c4" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque D · Factorización</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Factor común, diferencia de cuadrados, trinomio cuadrado perfecto, suma/resta de cubos.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-d.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c4"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque E -->
-        <article class="u2-card" data-key="c5" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque E · Fracciones algebraicas</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Simplificación, suma, resta, multiplicación y división de fracciones algebraicas.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-e.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c5"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Mini-evaluación -->
-        <article class="u2-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Mini-evaluación · Cierre de la unidad</h3>
-            <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">10 ítems sobre polinomios, productos notables, factorización y fracciones algebraicas.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="mini-evaluacion.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u2-done" data-key="c6"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
+    <section class="stage-route-panel">
+      <h2>🗺️ Ruta de esta etapa</h2>
+      <p>Primero interpretamos expresiones; después aprendemos a transformarlas, desarrollarlas y finalmente factorizarlas y operar con ellas.</p>
+      <div class="stage-route-grid">
+        <article class="stage-card u2-card" data-key="c1"><div class="stage-card-head"><h3>Paso 1 · Expresiones y polinomios</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Definición, clasificación, términos, grado y evaluación de polinomios.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-a.html">Abrir paso</a><input type="checkbox" class="u2-done" data-key="c1" hidden></div></article>
+        <article class="stage-card u2-card" data-key="c2"><div class="stage-card-head"><h3>Paso 2 · Operar expresiones</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Suma, resta, multiplicación y división de polinomios, incluyendo Ruffini.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-b.html">Abrir paso</a><input type="checkbox" class="u2-done" data-key="c2" hidden></div></article>
+        <article class="stage-card u2-card" data-key="c3"><div class="stage-card-head"><h3>Paso 3 · Productos notables</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Cuadrado de binomio, suma por diferencia y otros patrones que conviene reconocer.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-c.html">Abrir paso</a><input type="checkbox" class="u2-done" data-key="c3" hidden></div></article>
+        <article class="stage-card u2-card" data-key="c4"><div class="stage-card-head"><h3>Paso 4 · Factorizar para simplificar</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Factor común, diferencia de cuadrados, trinomios y suma o diferencia de cubos.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-d.html">Abrir paso</a><input type="checkbox" class="u2-done" data-key="c4" hidden></div></article>
+        <article class="stage-card u2-card" data-key="c5"><div class="stage-card-head"><h3>Paso 5 · Fracciones algebraicas</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Simplificación y operaciones con fracciones algebraicas, cuidando cuándo una expresión está definida.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-e.html">Abrir paso</a><input type="checkbox" class="u2-done" data-key="c5" hidden></div></article>
+        <article class="stage-card stage-card--final u2-card" data-key="c6"><div class="stage-card-head"><h3>🏁 Parada de control · Etapa 2</h3><span class="stage-pill u2-pill">⏳ Pendiente</span></div><p>Revisión de polinomios, operaciones, productos notables, factorización y fracciones algebraicas.</p><div class="stage-card-actions"><a class="stage-open" href="mini-evaluacion.html">Ir a la parada</a><input type="checkbox" class="u2-done" data-key="c6" hidden></div></article>
       </div>
-    </div>
+    </section>
 
-    <!-- Pie -->
-    <footer style="margin:18px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-        <div style="color:#783f04; font-weight:600;">Matemática a Pedal</div>
-        <div>·</div>
-        <div>Unidad 2 — Factorización y Expresiones</div>
-      </div>
-      <small style="display:block; margin-top:8px; opacity:.9;">Material abierto para uso educativo · UTEC – Uruguay</small>
-    </footer>
-
-    <!-- Navegador inferior · Unidad 2 -->
-    <div style="display:flex; justify-content:space-between; align-items:center;
-                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-                padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-      <span style="visibility:hidden;">⬅️</span>
-      <span style="position:absolute; left:50%; transform:translateX(-50%); color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-      <a href="/matematica-a-pedal/unidad2/bloque-a.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
-    </div>
-
+    <footer class="stage-footer">Matemática a Pedal · Etapa 2 — Álgebra en acción · Material abierto para uso educativo · UTEC – Uruguay</footer>
+    <div class="map-unit-nav stage-bottom-nav"><span></span><span>Continuá pedaleando</span><a href="/matematica-a-pedal/unidad2/bloque-a.html">Paso 1 ➡️</a></div>
   </main>
 
-  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso (asigna data-progress-id y sincroniza) -->
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Barra de progreso con bicicleta -->
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
-
-  <!-- Acciones de la U2: continuar / reset + actualización de “pills” -->
-  <script>
-  (function(){
-    // Tarjetas y orden
-    const cards   = Array.from(document.querySelectorAll('#u2-home .u2-card'));
-    const order   = cards.map(c => c.dataset.key); // c1..c6
-    const toggles = Array.from(document.querySelectorAll('#u2-home .u2-done'));
-
-    // Botones
-    const continueA = document.getElementById('u2-continue') || (function(){
-      // Si no tenías el botón, lo agregamos después del unit-progress (opcional)
-      const up = document.getElementById('unit-progress');
-      const wrap = document.createElement('div');
-      wrap.style.cssText = "display:flex; gap:8px; margin-top:12px;";
-      wrap.innerHTML = `
-        <a id="u2-continue" href="/matematica-a-pedal/unidad2/bloque-a.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-        <button id="u2-reset" type="button"
-                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-      `;
-      up.insertAdjacentElement('afterend', wrap);
-      return wrap.querySelector('#u2-continue');
-    })();
-    const resetBtn  = document.getElementById('u2-reset') || document.querySelector('#u2-continue')?.nextElementSibling;
-
-    // Mapa key -> href (desde cada card)
-    const links = Object.fromEntries(
-      cards.map(card => [card.dataset.key, (card.querySelector('a[href]')||{}).getAttribute?.('href')])
-    );
-
-    function updatePills(){
-      cards.forEach(card => {
-        const pill = card.querySelector('.u2-pill');
-        const chk  = card.querySelector('.u2-done');
-        const done = !!(chk && chk.checked);
-        if (pill){
-          pill.textContent   = done ? '✅ Completado' : '🔄 En curso';
-          pill.style.background = done ? '#EFFFF2' : 'transparent';
-        }
-      });
-    }
-
-    function updateContinueLink(){
-      const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
-      const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
-      const href     = links[nextKey] || links[order[0]];
-      if (href) continueA.href = href;
-    }
-
-    function resetProgress(){
-      if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
-      toggles.forEach(t => {
-        if (t.checked) {
-          t.checked = false;
-          t.dispatchEvent(new Event('change', { bubbles:true }));
-        }
-      });
-      window.dispatchEvent(new Event('map:progress-updated'));
-      updatePills();
-      updateContinueLink();
-    }
-
-    // Eventos
-    toggles.forEach(t => t.addEventListener('change', () => { updatePills(); updateContinueLink(); }));
-    window.addEventListener('map:progress-updated', () => { updatePills(); updateContinueLink(); });
-    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
-
-    // Inicio
-    updatePills();
-    updateContinueLink();
-  })();
-  </script>
-
 </body>
 </html>

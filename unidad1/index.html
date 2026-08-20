@@ -3,304 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 1 — Conjuntos y Operaciones · Matemática a Pedal</title>
-
-  <!-- Estilo global -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
-      }
-    };
-  </script>
+  <title>Etapa 1 — Números y operaciones · Matemática a Pedal</title>
+  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/stage-home.css?v=1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
-<div id="header-placeholder"></div>
+  <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
-<!-- UNIDAD 1 — PORTADA (Matemática a Pedal) -->
-<main id="u1-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
-  <!-- Portada -->
-  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
-    <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 1 — Conjuntos numéricos y operaciones básicas</h1>
-    <p style="margin:8px 0 0;">Ruta didáctica con capítulos cortos, ejemplos claros y actividades autocorregibles.</p>
-  </div>
+  <main id="u1-home" class="stage-home">
+    <section class="stage-hero">
+      <div class="stage-eyebrow">🚲 ETAPA 1 · INICIO</div>
+      <h1>Etapa 1 — Números y operaciones</h1>
+      <p>Construí una base firme para todo lo que viene después: conjuntos numéricos, signos, propiedades, fracciones y la relación entre decimales y fracciones, siempre con ejemplos y práctica.</p>
+      <div class="stage-meta"><span>7 pasos</span><span>1 parada de control</span><span>Base del recorrido</span></div>
+    </section>
 
-  <!-- 🎯 Objetivos generales -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🎯 Objetivos generales</h2>
-    <ul style="margin:0 0 0 18px;">
-     <li>Clasificar y justificar pertenencia a \( \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R} \).</li>
-     <li>Aplicar y justificar propiedades en expresiones no triviales.</li>
-     <li>Operar con fracciones (m.c.m./m.c.d., equivalencias) en problemas.</li>
-     <li>Conectar decimales ↔ fracciones y explicar el procedimiento.</li>
-     <li>Usar potencias/raíces en contextos de ciencia e ingeniería.</li>
-    </ul>
-  </div>
-
-  <!-- 🔗 Relación con otras unidades -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">🔗 Relación con otras unidades</h2>
-    <p style="margin:0;">
-      Esta unidad cimenta el trabajo de <b>expresiones algebraicas y factorización</b> (U2) y se usa de base en
-      <b>trigonometría</b> (U3) y <b>potenciación/radicación</b> (U4). Las propiedades y el manejo de fracciones
-      reaparecen constantemente en todo el curso.
-    </p>
-  </div>
-
-<!-- Progreso con bicicleta (una sola barra) -->
-<div id="unit-progress"></div>
-
-<!-- Acciones -->
-<div style="display:flex; gap:8px; margin-top:12px;">
-  <a id="u1-continue" href="/matematica-a-pedal/unidad1/bloque-a.html"
-     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-    ▶️ Continuar donde quedé
-  </a>
-  <button id="u1-reset" type="button"
-          style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-    🔄 Reset progreso
-  </button>
-</div>
-
-
-  <!-- Menú índice (Cards) -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-    <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">Índice de capítulos</h2>
-
-    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-      <!-- Bloque A -->
-      <article class="u1-card" data-key="c1" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque A · Conjuntos numéricos</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">\( \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R} \). Inclusiones, ejemplos típicos y criterios rápidos.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-a.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c1"> <span>Marcar como completado</span>
-          </label>
-        </div>
+    <section class="stage-overview-grid">
+      <article class="stage-panel">
+        <h2>🎯 En esta etapa vas a...</h2>
+        <ul>
+          <li>Clasificar números en \(\mathbb{N},\mathbb{Z},\mathbb{Q}\) y \(\mathbb{R}\) y justificar por qué.</li>
+          <li>Usar propiedades de las operaciones para calcular y simplificar mejor.</li>
+          <li>Resolver sumas, restas, multiplicaciones y divisiones atendiendo a los signos.</li>
+          <li>Trabajar con equivalencia, simplificación y operaciones con fracciones.</li>
+          <li>Convertir decimales en fracciones y explicar el procedimiento.</li>
+        </ul>
       </article>
-
-      <!-- Bloque B -->
-      <article class="u1-card" data-key="c2" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque B · Propiedades</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">Conmutativa, asociativa, distributiva; neutros e inversos. Aplicación en simplificaciones.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-b.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c2"> <span>Marcar como completado</span>
-          </label>
-        </div>
+      <article class="stage-panel">
+        <h2>🔗 ¿Por qué viene primero?</h2>
+        <p>Estas herramientas reaparecen en todo el recorrido. El manejo de números, signos y fracciones es la base para trabajar después con expresiones algebraicas, trigonometría y potencias.</p>
+        <p class="stage-note">Si algún concepto ya lo dominás, podés avanzar más rápido; si cuesta, cada paso lo desarrolla desde cero.</p>
       </article>
+    </section>
 
-      <!-- Bloque C -->
-      <article class="u1-card" data-key="c3" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque C · Suma y resta</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">Reglas de signos, paréntesis y estrategias de cálculo mental.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-c.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c3"> <span>Marcar como completado</span>
-          </label>
-        </div>
-      </article>
+    <section class="stage-progress-panel">
+      <div class="stage-progress-head"><div><h2>🚲 Tu avance</h2><p>Se actualiza automáticamente a medida que completás cada página.</p></div></div>
+      <div id="unit-progress"></div>
+      <a id="u1-continue" class="stage-primary" href="/matematica-a-pedal/unidad1/bloque-a.html">▶️ Continuar donde quedé</a>
+    </section>
 
-      <!-- Bloque D -->
-      <article class="u1-card" data-key="c4" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque D · Multiplicación y división</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">Producto, cociente, signos y atajos de cálculo.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-d.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c4"> <span>Marcar como completado</span>
-          </label>
-        </div>
-      </article>
+    <section class="stage-route-panel">
+      <h2>🗺️ Ruta de esta etapa</h2>
+      <p>Avanzá paso a paso. La parada de control final sirve para revisar qué quedó firme y qué conviene volver a mirar.</p>
+      <div class="stage-route-grid">
+        <article class="stage-card u1-card" data-key="c1"><div class="stage-card-head"><h3>Paso 1 · Conjuntos numéricos</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Naturales, enteros, racionales y reales: inclusiones, ejemplos y criterios de clasificación.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-a.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c1" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c2"><div class="stage-card-head"><h3>Paso 2 · Propiedades para calcular mejor</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Conmutativa, asociativa, distributiva, neutros e inversos aplicados a cálculos concretos.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-b.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c2" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c3"><div class="stage-card-head"><h3>Paso 3 · Suma y resta con signos</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Reglas de signos, paréntesis y estrategias para operar con seguridad.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-c.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c3" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c4"><div class="stage-card-head"><h3>Paso 4 · Multiplicación y división</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Producto, cociente, signos y estrategias de cálculo.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-d.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c4" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c5"><div class="stage-card-head"><h3>Paso 5 · Fracciones equivalentes</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Equivalencia, simplificación y uso del máximo común divisor.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-e.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c5" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c6"><div class="stage-card-head"><h3>Paso 6 · Operaciones con fracciones</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Suma, resta, multiplicación y división, incluyendo denominadores diferentes.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-f.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c6" hidden></div></article>
+        <article class="stage-card u1-card" data-key="c7"><div class="stage-card-head"><h3>Paso 7 · Decimales y fracciones</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Conversión entre representaciones decimales y fraccionarias y criterios de finitud.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-g.html">Abrir paso</a><input type="checkbox" class="u1-done" data-key="c7" hidden></div></article>
+        <article class="stage-card stage-card--final u1-card" data-key="c8"><div class="stage-card-head"><h3>🏁 Parada de control · Etapa 1</h3><span class="stage-pill u1-pill">⏳ Pendiente</span></div><p>Revisión de conjuntos, propiedades, operaciones, fracciones y decimales.</p><div class="stage-card-actions"><a class="stage-open" href="mini-evaluacion.html">Ir a la parada</a><input type="checkbox" class="u1-done" data-key="c8" hidden></div></article>
+      </div>
+    </section>
 
-      <!-- Bloque E -->
-      <article class="u1-card" data-key="c5" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque E · Fracciones equivalentes</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">Equivalencia y simplificación con m.c.d.; criterios prácticos.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-e.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c5"> <span>Marcar como completado</span>
-          </label>
-        </div>
-      </article>
+    <footer class="stage-footer">Matemática a Pedal · Etapa 1 — Números y operaciones · Material abierto para uso educativo · UTEC – Uruguay</footer>
+    <div class="map-unit-nav stage-bottom-nav"><span></span><span>Continuá pedaleando</span><a href="/matematica-a-pedal/unidad1/bloque-a.html">Paso 1 ➡️</a></div>
+  </main>
 
-      <!-- Bloque F -->
-      <article class="u1-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque F · Operaciones con fracciones</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">M.C.M., suma/resta con distinto denominador y regla cruzada.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-f.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c6"> <span>Marcar como completado</span>
-          </label>
-        </div>
-      </article>
-
-      <!-- Bloque G -->
-      <article class="u1-card" data-key="c7" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <h3 style="color:#783f04; margin:0;">Bloque G · Decimales ↔ fracciones</h3>
-          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-        </div>
-        <p style="margin:6px 0 8px;">Conversión, periódicos \( \leftrightarrow \) fracciones, criterios de finitud.</p>
-        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-          <a href="bloque-g.html"
-             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-            <input type="checkbox" class="u1-done" data-key="c7"> <span>Marcar como completado</span>
-          </label>
-        </div>
-      </article>
-      <!-- Mini-evaluación (tarjeta) -->
-<article class="u1-card" data-key="c8" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h3 style="color:#783f04; margin:0;">Mini-evaluación · Cierre de la unidad</h3>
-    <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-  </div>
-  <p style="margin:6px 0 8px;">10 ítems para revisar conjuntos, propiedades, operaciones, fracciones y decimales.</p>
-  <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-    <a href="mini-evaluacion.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-      <input type="checkbox" class="u1-done" data-key="c8"> <span>Marcar como completado</span>
-    </label>
-  </div>
-</article>
-    </div>
-  </div>
-
-  
-  <!-- Acciones de la U1: continuar / reset + actualización de “pills” -->
-<script>
-(function(){
-  // Orden de tarjetas (según aparecen)
-  const cards   = Array.from(document.querySelectorAll('#u1-home .u1-card'));
-  const order   = cards.map(c => c.dataset.key); // c1..c8
-  const toggles = Array.from(document.querySelectorAll('#u1-home .u1-done'));
-  const continueA = document.getElementById('u1-continue');
-  const resetBtn  = document.getElementById('u1-reset');
-
-  // Mapea card key -> href (toma el <a> de cada tarjeta)
-  const links = Object.fromEntries(
-    cards.map(card => [card.dataset.key, (card.querySelector('a[href]')||{}).getAttribute?.('href')])
-  );
-
-  function updatePills(){
-    cards.forEach(card => {
-      const pill = card.querySelector('.u1-pill');
-      const chk  = card.querySelector('.u1-done');
-      const done = !!(chk && chk.checked);
-      if (pill){
-        pill.textContent   = done ? '✅ Completado' : '🔄 En curso';
-        pill.style.background = done ? '#EFFFF2' : 'transparent';
-      }
-    });
-  }
-
-  function updateContinueLink(){
-    const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
-    const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
-    const href     = links[nextKey] || links[order[0]];
-    if (href) continueA.href = href;
-  }
-
-  function resetProgress(){
-    if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
-    toggles.forEach(t => {
-      if (t.checked) {
-        t.checked = false;
-        t.dispatchEvent(new Event('change', { bubbles:true }));
-      }
-    });
-    // Avisá a la barra de la bici por si necesita actualizar
-    window.dispatchEvent(new Event('map:progress-updated'));
-    updatePills();
-    updateContinueLink();
-  }
-
-  // Eventos
-  toggles.forEach(t => t.addEventListener('change', () => { updatePills(); updateContinueLink(); }));
-  window.addEventListener('map:progress-updated', () => { updatePills(); updateContinueLink(); });
-  if (resetBtn) resetBtn.addEventListener('click', resetProgress);
-
-  // Inicio
-  updatePills();
-  updateContinueLink();
-})();
-</script>
-
-  <!-- Navegador Unidad 1 - Introducción -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-    
-    <!-- espacio vacío para equilibrar -->
-    <span style="visibility:hidden;">⬅️</span>
-    
-    <!-- texto centrado -->
-    <span style="position:absolute; left:50%; transform:translateX(-50%);
-                 color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    
-    <!-- botón a la derecha -->
-    <a href="/matematica-a-pedal/unidad1/bloque-a.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
-  </div>
-</div>
-
-
-</main>
-<!-- FIN UNIDAD 1 — PORTADA -->
-
-  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso -->
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Barra de progreso con bicicleta -->
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
-
-  <!-- Acciones de la U1 -->
-  <script>
-    // (el código corto que te pasé en el punto 2)
-  </script>
-
-
 </body>
 </html>

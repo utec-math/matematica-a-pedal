@@ -3,265 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 3 — Trigonometría · Matemática a Pedal</title>
-
-  <!-- Estilos globales -->
+  <title>Etapa 3 — Trigonometría · Matemática a Pedal</title>
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
-      }
-    };
-  </script>
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/stage-home.css?v=1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
-
 <body>
-
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- CONTENIDO DE LA UNIDAD -->
-  <main id="u3-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
+  <main id="u3-home" class="stage-home">
+    <section class="stage-hero">
+      <div class="stage-eyebrow">🚲 ETAPA 3 · INICIO</div>
+      <h1>Etapa 3 — Trigonometría</h1>
+      <p>Aprendé a relacionar ángulos y longitudes: desde la medida en grados y radianes hasta las razones trigonométricas y el círculo unitario, siempre conectando la idea matemática con problemas de medida.</p>
+      <div class="stage-meta"><span>5 pasos</span><span>1 parada de control</span><span>Ángulos y medida</span></div>
+    </section>
 
-    <!-- Encabezado -->
-    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
-      <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 3 — Trigonometría</h1>
-      <p style="margin:8px 0 0;">Conecta triángulos, el círculo unitario y funciones sinusoidales para modelar desde la física hasta la biología.</p>
-    </div>
+    <section class="stage-overview-grid">
+      <article class="stage-panel">
+        <h2>🎯 En esta etapa vas a...</h2>
+        <ul>
+          <li>Reconocer para qué sirve la trigonometría y dónde aparece.</li>
+          <li>Medir ángulos en grados y radianes y convertir entre ambas unidades.</li>
+          <li>Identificar relaciones entre ángulos: complementarios, suplementarios y coterminales.</li>
+          <li>Usar seno, coseno y tangente en triángulos rectángulos.</li>
+          <li>Extender esas razones a todos los ángulos mediante el círculo unitario.</li>
+        </ul>
+      </article>
+      <article class="stage-panel">
+        <h2>🔗 ¿Cómo se conecta?</h2>
+        <p>La trigonometría usa constantemente álgebra, fracciones, raíces y despejes. A cambio, aporta herramientas para medir alturas, distancias, pendientes y orientar fenómenos periódicos que aparecen en ciencia e ingeniería.</p>
+        <p class="stage-note">Esta portada refleja exactamente los cinco desarrollos que hoy contiene la etapa.</p>
+      </article>
+    </section>
 
-    <!-- Objetivos -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🎯 Objetivos generales</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Comprender la <b>medida de ángulos</b> (grados y radianes) y sus conversiones.</li>
-        <li>Definir y usar <b>razones trigonométricas</b> en triángulos rectángulos.</li>
-        <li>Relacionar el <b>círculo unitario</b> con seno, coseno y tangente.</li>
-        <li>Aplicar <b>identidades trigonométricas</b> básicas para simplificar y resolver.</li>
-        <li>Modelar situaciones reales con <b>funciones trigonométricas</b> (amplitud, fase, período).</li>
-      </ul>
-    </div>
+    <section class="stage-progress-panel">
+      <div class="stage-progress-head"><div><h2>🚲 Tu avance</h2><p>Se actualiza automáticamente a medida que completás cada página.</p></div></div>
+      <div id="unit-progress"></div>
+      <a id="u3-continue" class="stage-primary" href="/matematica-a-pedal/unidad3/bloque-a.html">▶️ Continuar donde quedé</a>
+    </section>
 
-    <!-- Relación con otras unidades -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🔗 Relación con otras unidades</h2>
-      <p>
-        Continúa conceptos de <b>Geometría y Expresiones Algebraicas</b> (Unidad 2) y se articula con 
-        <b>Potenciación y Notación Científica</b> (Unidad 4) al trabajar escalas, precisión y modelado.
-        Prepara el terreno para <b>Funciones</b> y <b>Ecuaciones Diferenciales</b> al estudiar señales periódicas.
-      </p>
-    </div>
-
-    <!-- Progreso con bicicleta (una sola barra) -->
-    <div id="unit-progress"></div>
-
-    <!-- Índice de capítulos -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">📚 Índice de capítulos</h2>
-
-      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-
-        <!-- Bloque A -->
-        <article class="u3-card" data-key="c1" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque A · Origen y aplicaciones</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">De las pirámides a los satélites: panorama histórico y usos actuales.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-a.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c1"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque B -->
-        <article class="u3-card" data-key="c2" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque B · Medida de ángulos</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Grados ↔ radianes, orientación, ángulos notables y conversión.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-b.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c2"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque C -->
-        <article class="u3-card" data-key="c3" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque C · Razones en triángulos</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Seno, coseno, tangente; problemas de alturas, sombras y pendientes.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-c.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c3"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque D -->
-        <article class="u3-card" data-key="c4" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque D · Círculo unitario</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Coordenadas, signos por cuadrantes y valores notables de (sin, cos, tan).</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-d.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c4"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Bloque E -->
-        <article class="u3-card" data-key="c5" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Bloque E · Identidades básicas</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">Pitagóricas, ángulos complementarios/opuestos, suma y diferencia.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="bloque-e.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c5"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
-        <!-- Mini-evaluación -->
-        <article class="u3-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="color:#783f04; margin:0;">Mini-evaluación · Cierre de la unidad</h3>
-            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-          </div>
-          <p style="margin:6px 0 8px;">10 ítems: ángulos, triángulos, círculo unitario e identidades básicas.</p>
-          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-            <a href="mini-evaluacion.html"
-               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" class="u3-done" data-key="c6"> <span>Marcar como completado</span>
-            </label>
-          </div>
-        </article>
-
+    <section class="stage-route-panel">
+      <h2>🗺️ Ruta de esta etapa</h2>
+      <p>Primero ubicamos el problema y aprendemos a medir ángulos; después construimos las relaciones y razones que permiten resolver situaciones concretas.</p>
+      <div class="stage-route-grid">
+        <article class="stage-card u3-card" data-key="c1"><div class="stage-card-head"><h3>Paso 1 · Origen y aplicaciones</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>De los problemas históricos de medida a usos actuales de la trigonometría.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-a.html">Abrir paso</a><input type="checkbox" class="u3-done" data-key="c1" hidden></div></article>
+        <article class="stage-card u3-card" data-key="c2"><div class="stage-card-head"><h3>Paso 2 · Medir ángulos</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>Grados, radianes, equivalencias, orientación y conversiones.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-b.html">Abrir paso</a><input type="checkbox" class="u3-done" data-key="c2" hidden></div></article>
+        <article class="stage-card u3-card" data-key="c3"><div class="stage-card-head"><h3>Paso 3 · Relaciones entre ángulos</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>Ángulos complementarios, suplementarios, coterminales y opuestos.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-c.html">Abrir paso</a><input type="checkbox" class="u3-done" data-key="c3" hidden></div></article>
+        <article class="stage-card u3-card" data-key="c4"><div class="stage-card-head"><h3>Paso 4 · Razones trigonométricas</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>Triángulo rectángulo, Pitágoras, seno, coseno, tangente y aplicaciones.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-d.html">Abrir paso</a><input type="checkbox" class="u3-done" data-key="c4" hidden></div></article>
+        <article class="stage-card u3-card" data-key="c5"><div class="stage-card-head"><h3>Paso 5 · Círculo unitario</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>Coordenadas, signos por cuadrantes, periodicidad y extensión a cualquier ángulo.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-e.html">Abrir paso</a><input type="checkbox" class="u3-done" data-key="c5" hidden></div></article>
+        <article class="stage-card stage-card--final u3-card" data-key="c6"><div class="stage-card-head"><h3>🏁 Parada de control · Etapa 3</h3><span class="stage-pill u3-pill">⏳ Pendiente</span></div><p>Revisión de medida de ángulos, relaciones, razones trigonométricas y círculo unitario.</p><div class="stage-card-actions"><a class="stage-open" href="mini-evaluacion.html">Ir a la parada</a><input type="checkbox" class="u3-done" data-key="c6" hidden></div></article>
       </div>
-    </div>
+    </section>
 
-    <!-- Pie -->
-    <footer style="margin:18px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:14px; padding:14px;">
-      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-        <div style="color:#783f04; font-weight:600;">Matemática a Pedal</div>
-        <div>·</div>
-        <div>Unidad 3 — Trigonometría</div>
-      </div>
-      <small style="display:block; margin-top:8px; opacity:.9;">Material abierto para uso educativo · UTEC – Uruguay</small>
-    </footer>
-
-    <!-- Navegador inferior · Unidad 3 -->
-    <div style="display:flex; justify-content:space-between; align-items:center;
-                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-                padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-      <span style="visibility:hidden;">⬅️</span>
-      <span style="position:absolute; left:50%; transform:translateX(-50%); color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-      <a href="/matematica-a-pedal/unidad3/bloque-a.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
-    </div>
-
+    <footer class="stage-footer">Matemática a Pedal · Etapa 3 — Trigonometría · Material abierto para uso educativo · UTEC – Uruguay</footer>
+    <div class="map-unit-nav stage-bottom-nav"><span></span><span>Continuá pedaleando</span><a href="/matematica-a-pedal/unidad3/bloque-a.html">Paso 1 ➡️</a></div>
   </main>
 
-  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso (asigna data-progress-id y sincroniza) -->
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Barra de progreso con bicicleta -->
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
-
-  <!-- Acciones de la U3: continuar / reset + actualización de “pills” -->
-  <script>
-  (function(){
-    // Tarjetas y orden
-    const cards   = Array.from(document.querySelectorAll('#u3-home .u3-card'));
-    const order   = cards.map(c => c.dataset.key); // c1..c6
-    const toggles = Array.from(document.querySelectorAll('#u3-home .u3-done'));
-
-    // Botones (si no existen, se insertan debajo de la barra)
-    const continueA = document.getElementById('u3-continue') || (function(){
-      const up = document.getElementById('unit-progress');
-      const wrap = document.createElement('div');
-      wrap.style.cssText = "display:flex; gap:8px; margin-top:12px;";
-      wrap.innerHTML = `
-        <a id="u3-continue" href="/matematica-a-pedal/unidad3/bloque-a.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-        <button id="u3-reset" type="button"
-                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-      `;
-      up.insertAdjacentElement('afterend', wrap);
-      return wrap.querySelector('#u3-continue');
-    })();
-    const resetBtn  = document.getElementById('u3-reset') || document.querySelector('#u3-continue')?.nextElementSibling;
-
-    // Mapa key -> href (desde cada card)
-    const links = Object.fromEntries(
-      cards.map(card => [card.dataset.key, (card.querySelector('a[href]')||{}).getAttribute?.('href')])
-    );
-
-    function updatePills(){
-      cards.forEach(card => {
-        const pill = card.querySelector('.u3-pill');
-        const chk  = card.querySelector('.u3-done');
-        const done = !!(chk && chk.checked);
-        if (pill){
-          pill.textContent   = done ? '✅ Completado' : '🔄 En curso';
-          pill.style.background = done ? '#EFFFF2' : 'transparent';
-        }
-      });
-    }
-
-    function updateContinueLink(){
-      const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
-      const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
-      const href     = links[nextKey] || links[order[0]];
-      if (href) continueA.href = href;
-    }
-
-    function resetProgress(){
-      if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
-      toggles.forEach(t => {
-        if (t.checked) {
-          t.checked = false;
-          t.dispatchEvent(new Event('change', { bubbles:true }));
-        }
-      });
-      window.dispatchEvent(new Event('map:progress-updated'));
-      updatePills();
-      updateContinueLink();
-    }
-
-    // Eventos
-    toggles.forEach(t => t.addEventListener('change', () => { updatePills(); updateContinueLink(); }));
-    window.addEventListener('map:progress-updated', () => { updatePills(); updateContinueLink(); });
-    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
-
-    // Inicio
-    updatePills();
-    updateContinueLink();
-  })();
-  </script>
-
 </body>
 </html>
