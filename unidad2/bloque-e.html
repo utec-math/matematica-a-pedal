@@ -1,6 +1,18 @@
 <!-- Encabezado global -->
 <div id="header-placeholder"></div>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 <!-- CAPÍTULO 5 — FRACCIONES ALGEBRAICAS (Matemática a Pedal) -->
 <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
 
@@ -23,11 +35,11 @@
   <!-- Concepto -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">1️⃣  Definición y dominio</h2>
-    <p>Una <b>fracción algebraica</b> es una expresión de la forma A(x)/B(x), donde A y B son polinomios y B(x) ≠ 0.</p>
+    <p>Una <b>fracción algebraica</b> es una expresión de la forma \(\frac{A(x)}{B(x)}\), donde \(A\) y \(B\) son polinomios y \(B(x)\neq0\).</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo 1: (3x + 6)/(x² − 4)  Ejemplo 2: (2a² − 8a)/(a² + a − 6)
+      Ejemplo 1: \(\frac{3x+6}{x^2-4}\)  Ejemplo 2: \(\frac{2a^2-8a}{a^2+a-6}\)
     </div>
-    <p>El dominio excluye los valores que anulan B(x).</p>
+    <p>El dominio excluye los valores que anulan \(B(x)\).</p>
   </div>
 
   <!-- Simplificación -->
@@ -35,7 +47,7 @@
     <h2 style="color:#783f04;">2️⃣  Simplificación</h2>
     <p>Se factorizan numerador y denominador y se eliminan factores comunes (no términos, solo factores).</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: (3x + 6)/(x² − 4) = 3(x + 2)/[(x + 2)(x − 2)] = 3/(x − 2), con x ≠ ±2.
+      Ejemplo: \(\frac{3x+6}{x^2-4}=\frac{3(x+2)}{(x+2)(x-2)}=\frac{3}{x-2}\), con \(x\neq\pm2\).
     </div>
   </div>
 
@@ -43,11 +55,11 @@
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">3️⃣  Multiplicación y división</h2>
     <ul style="margin:0 0 0 18px;">
-      <li><b>Multiplicación:</b> (a/b) × (c/d) = (ac)/(bd)</li>
-      <li><b>División:</b> (a/b) ÷ (c/d) = (a/b) × (d/c)</li>
+      <li><b>Multiplicación:</b> \(\frac{a}{b}\times\frac{c}{d}=\frac{ac}{bd}\)</li>
+      <li><b>División:</b> \(\frac{a}{b}\div\frac{c}{d}=\frac{a}{b}\times\frac{d}{c}\)</li>
     </ul>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px; margin-top:6px;">
-      Ejemplo: (2x)/(3y) × (9y²)/(4x²) = (18y)/(12x) = 3y/(2x)
+      Ejemplo: \(\frac{2x}{3y}\times\frac{9y^2}{4x^2}=\frac{18y}{12x}=\frac{3y}{2x}\)
     </div>
   </div>
 
@@ -56,11 +68,11 @@
     <h2 style="color:#783f04;">4️⃣  Suma y resta</h2>
     <p>Requieren denominador común (igual que las fracciones numéricas).</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: 1/x + 2/x² = (x + 2)/x²
+      Ejemplo: \(\frac{1}{x}+\frac{2}{x^2}=\frac{x+2}{x^2}\)
     </div>
     <p>Si los denominadores son distintos, usamos el mínimo común múltiplo (MCM).</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: (3/(x + 1)) − (2/x) → MCM = x(x + 1) → [3x − 2(x + 1)]/[x(x + 1)] = (x − 2)/[x(x + 1)]
+      Ejemplo: \(\frac{3}{x+1}-\frac{2}{x}\) → MCM = \(x(x+1)\) → \(\frac{3x-2(x+1)}{x(x+1)}=\frac{x-2}{x(x+1)}\)
     </div>
   </div>
 
@@ -69,7 +81,7 @@
     <h2 style="color:#783f04;">5️⃣  Restricciones del dominio</h2>
     <p>Recordá indicar qué valores anulan el denominador y por tanto no pertenecen al dominio de la fracción.</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: (2x − 1)/(x² − 9) → x ≠ 3, x ≠ −3.
+      Ejemplo: \(\frac{2x-1}{x^2-9}\) → \(x\neq3\), \(x\neq-3\).
     </div>
   </div>
 
@@ -77,19 +89,19 @@
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">Mini-actividad · Simplificación y operaciones</h2>
     <ol style="margin:0 0 0 18px;">
-      <li>(4x² − 12x)/(8x)</li>
-      <li>(x² − 9)/(x − 3)</li>
-      <li>(a² − b²)/(a − b)</li>
-      <li>(3x)/(x + 2) + (2)/(x + 2)</li>
-      <li>(x² − 4)/(x² − x − 6)</li>
+      <li>\(\frac{4x^2-12x}{8x}\)</li>
+      <li>\(\frac{x^2-9}{x-3}\)</li>
+      <li>\(\frac{a^2-b^2}{a-b}\)</li>
+      <li>\(\frac{3x}{x+2}+\frac{2}{x+2}\)</li>
+      <li>\(\frac{x^2-4}{x^2-x-6}\)</li>
     </ol>
     <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
       <ol style="margin:8px 0 0 18px;">
-        <li>(4x² − 12x)/(8x) = 4x(x − 3)/(8x) = (x − 3)/2</li>
-        <li>(x² − 9)/(x − 3) = (x − 3)(x + 3)/(x − 3) = x + 3, x ≠ 3</li>
-        <li>(a² − b²)/(a − b) = (a + b), a ≠ b</li>
-        <li>Denominador común (x + 2): (3x + 2)/(x + 2)</li>
-        <li>(x² − 4)/(x² − x − 6) = (x − 2)(x + 2)/[(x − 3)(x + 2)] = (x − 2)/(x − 3), x ≠ −2, 3</li>
+        <li>\(\frac{4x^2-12x}{8x}=\frac{4x(x-3)}{8x}=\frac{x-3}{2}\)</li>
+        <li>\(\frac{x^2-9}{x-3}=\frac{(x-3)(x+3)}{x-3}=x+3\), con \(x\neq3\)</li>
+        <li>\(\frac{a^2-b^2}{a-b}=a+b\), con \(a\neq b\)</li>
+        <li>Denominador común \(x+2\): \(\frac{3x+2}{x+2}\)</li>
+        <li>\(\frac{x^2-4}{x^2-x-6}=\frac{(x-2)(x+2)}{(x-3)(x+2)}=\frac{x-2}{x-3}\), con \(x\neq-2,3\)</li>
       </ol>
     </details>
   </div>
