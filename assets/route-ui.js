@@ -378,12 +378,23 @@ function guideBox(meta) {
 function findNavigator() {
   const ready = document.querySelector('[data-map-route-nav="true"]');
   if (ready) return ready;
-  const candidates = Array.from(document.querySelectorAll('.map-unit-nav, div, section')).filter(el => {
+
+  const candidates = Array.from(document.querySelectorAll('div, section')).filter(el => {
     if (el.closest('#header-placeholder')) return false;
     const direct = Array.from(el.children).filter(ch => ch.tagName === 'A');
-    if (!direct.length) return false;
-    return direct.some(a => /Bloque|Capítulo|Unidad|Etapa|Chequeo|Mini|Punto de partida|Volver al inicio|Paso/i.test(a.textContent || ''));
+    if (!direct.length || direct.length > 2) return false;
+
+    const routeAnchors = direct.filter(a => {
+      const href = a.getAttribute('href') || '';
+      return /\/matematica-a-pedal\/(?:unidad[0-4]\/|progreso\.html|index\.html)/.test(href);
+    });
+
+    if (routeAnchors.length !== direct.length) return false;
+
+    const text = (el.textContent || '').trim();
+    return /Continu|Pedale|Bloque|Capítulo|Unidad|Etapa|Chequeo|Mini|Punto de partida|Paso|Volver|inicio/i.test(text);
   });
+
   return candidates[candidates.length - 1] || null;
 }
 
@@ -402,14 +413,19 @@ function makeNavButton(href, text, side) {
 function rebuildBottomNav(meta) {
   const currentIndex = routes.findIndex(r => r.path === meta.path);
   if (currentIndex < 0) return;
+
   const previous = currentIndex > 0 ? routes[currentIndex - 1] : null;
   const next = currentIndex < routes.length - 1 ? routes[currentIndex + 1] : null;
+  const nav = findNavigator();
 
-  let nav = findNavigator();
-  if (!nav) {
-    nav = document.createElement('div');
-    (document.querySelector('main') || document.body).appendChild(nav);
-  }
+  // Nunca creamos un segundo navegador. Si la página ya trae el navegador que usa
+  // completion-tracker.js, reutilizamos ese mismo elemento y solo cambiamos sus nombres.
+  if (!nav) return;
+
+  // En ejecuciones posteriores no tocamos de nuevo sus hijos: el tracker puede haber
+  // conectado el contador y el bloqueo al botón de avance.
+  if (nav.dataset.mapRouteNav === 'true') return;
+
   nav.dataset.mapRouteNav = 'true';
   nav.classList.add('map-unit-nav');
   nav.innerHTML = '';

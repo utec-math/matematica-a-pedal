@@ -9,8 +9,8 @@
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
 
-  // route-ui.js es la única fuente del navegador inferior del recorrido.
-  import('/matematica-a-pedal/assets/route-ui.js?v=1')
+  // route-ui.js reutiliza el navegador inferior existente y solo actualiza sus nombres.
+  import('/matematica-a-pedal/assets/route-ui.js?v=2')
     .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
 
   // Normaliza vocabulario antiguo visible: Unidad/Bloque/Capítulo -> Etapa/Paso.
