@@ -3,194 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 4 — Potenciación, Radicación y Notación Científica · Matemática a Pedal</title>
-
-  <!-- Estilos globales -->
+  <title>Etapa 4 — Potencias y raíces · Matemática a Pedal</title>
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/stage-home.css?v=1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
-
 <body>
-
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- CONTENIDO DE LA UNIDAD -->
-  <main id="u4-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
+  <main id="u4-home" class="stage-home">
+    <section class="stage-hero">
+      <div class="stage-eyebrow">🚲 ETAPA 4 · INICIO</div>
+      <h1>Etapa 4 — Potencias y raíces</h1>
+      <p>Explorá cómo los exponentes y las raíces permiten simplificar expresiones, representar escalas y trabajar con números muy grandes o muy pequeños en ciencia, tecnología e ingeniería.</p>
+      <div class="stage-meta"><span>6 pasos</span><span>1 parada de control</span><span>Incluye laboratorio interactivo</span></div>
+    </section>
 
-    <!-- Encabezado -->
-    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:20px; border:2px solid #fff; margin-top:16px;">
-      <h1 style="color:#783f04; margin:0;">Unidad 4 — Potenciación, Radicación y Notación Científica</h1>
-      <p style="margin:8px 0 0;">
-        En esta unidad vas a explorar cómo los exponentes permiten modelar crecimientos, transformaciones
-        y escalas en ciencia e ingeniería.  
-        Aprenderás a manejar potencias, raíces, exponentes fraccionarios y notación científica para simplificar
-        la escritura de números muy grandes o muy pequeños.
-      </p>
-    </div>
+    <section class="stage-overview-grid">
+      <article class="stage-panel">
+        <h2>🎯 En esta etapa vas a...</h2>
+        <ul>
+          <li>Comprender qué significa elevar a una potencia y extraer una raíz.</li>
+          <li>Aplicar propiedades de los exponentes para simplificar expresiones.</li>
+          <li>Relacionar raíces con exponentes fraccionarios.</li>
+          <li>Simplificar y operar radicales semejantes.</li>
+          <li>Usar notación científica y potencias de diez en problemas reales.</li>
+          <li>Experimentar con una herramienta interactiva y cerrar con práctica de síntesis.</li>
+        </ul>
+      </article>
+      <article class="stage-panel">
+        <h2>🔗 ¿Cómo se conecta?</h2>
+        <p>Esta etapa retoma las propiedades numéricas y algebraicas trabajadas antes. Las potencias y raíces aparecen en fórmulas, modelos, escalas, mediciones y más adelante en funciones exponenciales y logarítmicas.</p>
+        <p class="stage-note">El calentamiento ya permite comprobar algunas de estas ideas; acá se desarrollan con profundidad.</p>
+      </article>
+    </section>
 
-    <!-- 🎯 Objetivos generales -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🎯 Objetivos generales</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Comprender la definición y significado de potencia y raíz.</li>
-        <li>Aplicar las propiedades de los exponentes para simplificar expresiones.</li>
-        <li>Relacionar exponentes fraccionarios con raíces de orden n.</li>
-        <li>Emplear la notación científica en problemas de las ciencias naturales y la tecnología.</li>
-        <li>Usar una herramienta interactiva para explorar y verificar resultados.</li>
-      </ul>
-    </div>
+    <section class="stage-progress-panel">
+      <div class="stage-progress-head"><div><h2>🚲 Tu avance</h2><p>Se actualiza automáticamente a medida que completás cada página.</p></div></div>
+      <div id="unit-progress"></div>
+      <a id="u4-continue" class="stage-primary" href="/matematica-a-pedal/unidad4/bloque-a.html">▶️ Continuar donde quedé</a>
+    </section>
 
-    <!-- 🔗 Relación con otras unidades -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🔗 Relación con otras unidades</h2>
-      <p>
-        Esta unidad continúa el trabajo de <b>Expresiones Algebraicas</b> (Unidad 2)
-        y se vincula con la <b>Trigonometría</b> (Unidad 3) mediante el uso de potencias
-        en fórmulas trigonométricas y físicas.  
-        Además, introduce ideas que luego reaparecen en el estudio de <b>funciones exponenciales</b> y <b>logarítmicas</b>.
-      </p>
-    </div>
-
-    <!-- Progreso con bicicleta (una sola barra) -->
-    <div id="unit-progress"></div>
-
-    <!-- 📚 Índice de capítulos -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">📚 Índice de capítulos</h2>
-      <ol style="margin:0 0 0 18px;">
-        <li><b>Capítulo 1 · Potenciación y propiedades de los exponentes</b><br>
-            Definición, casos especiales y leyes de los exponentes con ejemplos guiados.</li>
-        <li><b>Capítulo 2 · Radicación y su relación con las potencias</b><br>
-            Concepto de raíz n-ésima, raíces reales posibles y exponentes fraccionarios.</li>
-        <li><b>Capítulo 3 · Simplificación y operaciones con radicales semejantes</b><br>
-            Forma simplificada de una raíz y sumas/restas de radicales iguales.</li>
-        <li><b>Capítulo 4 · Notación científica y aplicaciones</b><br>
-            Escritura de números en forma a·10ⁿ y operaciones con potencias de diez.</li>
-        <li><b>Capítulo 5 · Mini-app “Calculadora de Potencias y Raíces”</b><br>
-            Aplicación interactiva para experimentar con los conceptos de la unidad.</li>
-        <li><b>Capítulo 6 · Ejercicios finales y autoevaluación</b><br>
-            Problemas de síntesis y verificación de comprensión conceptual.</li>
-      </ol>
-    </div>
-
-    <!-- Progreso: checklist (los mismos capítulos) -->
-    <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <div style="margin-top:4px; display:grid; gap:6px;">
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c1"> <span>Cap. 1 — Potenciación</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c2"> <span>Cap. 2 — Radicación</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c3"> <span>Cap. 3 — Radicales semejantes</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c4"> <span>Cap. 4 — Notación científica</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c5"> <span>Cap. 5 — Mini-app Calculadora</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u4-done" data-key="c6"> <span>Cap. 6 — Ejercicios finales</span>
-        </label>
+    <section class="stage-route-panel">
+      <h2>🗺️ Ruta de esta etapa</h2>
+      <p>Partimos de las potencias, conectamos con las raíces, simplificamos radicales y terminamos aplicando todo en notación científica, laboratorio y práctica final.</p>
+      <div class="stage-route-grid">
+        <article class="stage-card u4-card" data-key="c1"><div class="stage-card-head"><h3>Paso 1 · Potencias y exponentes</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Definición, casos especiales y propiedades de los exponentes con ejemplos guiados.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-a.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c1" hidden></div></article>
+        <article class="stage-card u4-card" data-key="c2"><div class="stage-card-head"><h3>Paso 2 · Raíces y exponentes fraccionarios</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Raíz n-ésima, raíces reales posibles y su relación con exponentes fraccionarios.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-b.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c2" hidden></div></article>
+        <article class="stage-card u4-card" data-key="c3"><div class="stage-card-head"><h3>Paso 3 · Simplificar radicales</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Forma simplificada de una raíz y operaciones con radicales semejantes.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-c.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c3" hidden></div></article>
+        <article class="stage-card u4-card" data-key="c4"><div class="stage-card-head"><h3>Paso 4 · Notación científica</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Escritura de números como a·10ⁿ y operaciones con potencias de diez.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-d.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c4" hidden></div></article>
+        <article class="stage-card u4-card" data-key="c5"><div class="stage-card-head"><h3>Paso 5 · Laboratorio interactivo</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Calculadora de potencias y raíces para predecir, experimentar y verificar resultados.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-e.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c5" hidden></div></article>
+        <article class="stage-card u4-card" data-key="c6"><div class="stage-card-head"><h3>Paso 6 · Práctica final</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Ejercicios de síntesis para elegir propiedades, resolver y comprobar resultados.</p><div class="stage-card-actions"><a class="stage-open" href="bloque-f.html">Abrir paso</a><input type="checkbox" class="u4-done" data-key="c6" hidden></div></article>
+        <article class="stage-card stage-card--final u4-card" data-key="c7"><div class="stage-card-head"><h3>🏁 Parada de control · Etapa 4</h3><span class="stage-pill u4-pill">⏳ Pendiente</span></div><p>Revisión final de potencias, raíces, radicales y notación científica.</p><div class="stage-card-actions"><a class="stage-open" href="mini-evaluacion.html">Ir a la parada</a><input type="checkbox" class="u4-done" data-key="c7" hidden></div></article>
       </div>
-    </div>
+    </section>
 
+    <footer class="stage-footer">Matemática a Pedal · Etapa 4 — Potencias y raíces · Material abierto para uso educativo · UTEC – Uruguay</footer>
+    <div class="map-unit-nav stage-bottom-nav"><span></span><span>Continuá pedaleando</span><a href="/matematica-a-pedal/unidad4/bloque-a.html">Paso 1 ➡️</a></div>
   </main>
-  <!-- FIN UNIDAD 4 -->
 
-  <!-- Navegador inferior · Unidad 4 -->
-  <div style="max-width:1180px; margin:12px auto 0;">
-    <div style="display:flex; justify-content:space-between; align-items:center;
-                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-                padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-      <!-- espacio vacío para equilibrar -->
-      <span style="visibility:hidden;">⬅️</span>
-      <!-- texto centrado -->
-      <span style="position:absolute; left:50%; transform:translateX(-50%);
-                   color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-      <!-- botón a la derecha (apunta al primer capítulo) -->
-      <a href="/matematica-a-pedal/unidad4/capitulo1.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                border-radius:10px; padding:8px 14px;">Capítulo 1 ➡️</a>
-    </div>
-  </div>
-
-  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso -->
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Barra de progreso con bicicleta -->
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
-
-  <!-- Acciones de la U4: continuar / reset -->
-  <script>
-  (function(){
-    // Checkboxes de la unidad 4
-    const toggles = Array.from(document.querySelectorAll('#u4-home .u4-done'));
-    const order   = ['c1','c2','c3','c4','c5','c6'];
-
-    // Mapa capítulo -> URL
-    const links = {
-      c1: '/matematica-a-pedal/unidad4/capitulo1.html',
-      c2: '/matematica-a-pedal/unidad4/capitulo2.html',
-      c3: '/matematica-a-pedal/unidad4/capitulo3.html',
-      c4: '/matematica-a-pedal/unidad4/capitulo4.html',
-      c5: '/matematica-a-pedal/unidad4/capitulo5.html',
-      c6: '/matematica-a-pedal/unidad4/capitulo6.html'
-    };
-
-    // Botones: si no existen en el HTML, los creamos debajo de la barra
-    const continueA = document.getElementById('u4-continue') || (function(){
-      const up = document.getElementById('unit-progress');
-      const wrap = document.createElement('div');
-      wrap.style.cssText = "display:flex; gap:8px; margin-top:12px;";
-      wrap.innerHTML = `
-        <a id="u4-continue" href="/matematica-a-pedal/unidad4/capitulo1.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                  border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-        <button id="u4-reset" type="button"
-                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580;
-                       border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-      `;
-      up.insertAdjacentElement('afterend', wrap);
-      return wrap.querySelector('#u4-continue');
-    })();
-    const resetBtn = document.getElementById('u4-reset') || document.querySelector('#u4-continue')?.nextElementSibling;
-
-    function updateContinueLink(){
-      const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
-      const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
-      const href     = links[nextKey] || links[order[0]];
-      if (href) continueA.href = href;
-    }
-
-    function resetProgress(){
-      if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
-      toggles.forEach(t => {
-        if (t.checked) {
-          t.checked = false;
-          t.dispatchEvent(new Event('change', { bubbles:true }));
-        }
-      });
-      // Avisamos a la barra de la bici que cambió el progreso
-      window.dispatchEvent(new Event('map:progress-updated'));
-      updateContinueLink();
-    }
-
-    // Eventos
-    toggles.forEach(t => t.addEventListener('change', () => { updateContinueLink(); }));
-    window.addEventListener('map:progress-updated', () => { updateContinueLink(); });
-    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
-
-    // Inicio
-    updateContinueLink();
-  })();
-  </script>
-
 </body>
 </html>
