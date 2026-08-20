@@ -3,169 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 0 — Calentamiento Matemático · Matemática a Pedal</title>
-
-  <!-- Estilo global -->
+  <title>Punto de partida — Calentamiento matemático · Matemática a Pedal</title>
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
-
-  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        inlineMath: [['\\(','\\)'], ['$', '$']],
         displayMath: [['\\[','\\]'], ['$$','$$']]
       }
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
-
-  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-<script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
-  
 <body>
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- UNIDAD 0 · INTRODUCCIÓN E ÍNDICE -->
   <main id="u0-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
-    <!-- Encabezado -->
-    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:14px; padding:20px; border:2px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
-      <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 0 — Calentamiento Matemático</h1>
-      <p style="margin:8px 0 0;">
-        Antes de pedalear fuerte, hagamos una vuelta de reconocimiento 🧮  
-        Este bloque te ayuda a revisar los conceptos base de los números, operaciones, potencias y raíces.  
-        Ideal para nivelar y activar conocimientos previos antes de entrar en las unidades principales.
+    <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:14px; padding:22px; border:2px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
+      <div style="font-size:13px; font-weight:800; letter-spacing:.08em; color:#7f6000;">🚲 PUNTO DE PARTIDA</div>
+      <h1 style="color:#783f04; margin:5px 0 0; font-size:32px;">Calentamiento matemático</h1>
+      <p style="margin:10px 0 0; max-width:900px;">
+        Esto <b>no es una unidad de estudio</b>. Es una serie de chequeos breves para descubrir qué conceptos ya tenés firmes y cuáles conviene repasar antes de seguir. Si algo no sale, te vamos a indicar exactamente dónde está la explicación completa y guiada.
       </p>
-    </div>
+    </section>
 
-    <!-- 🎯 Objetivos del calentamiento -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🎯 Objetivos del calentamiento</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Clasificar y justificar pertenencia a \( \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R} \).</li>
-        <li>Aplicar y justificar propiedades en expresiones no triviales.</li>
-        <li>Operar con fracciones (m.c.m./m.c.d., equivalencias) en problemas.</li>
-        <li>Conectar decimales ↔ fracciones y explicar el procedimiento.</li>
-        <li>Usar potencias/raíces en contextos de ciencia e ingeniería.</li>
-      </ul>
-    </div>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#FFFDF8;">
+      <h2 style="color:#783f04; margin:0 0 8px;">🧭 ¿Cómo usar este calentamiento?</h2>
+      <div style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>1 · Probá</b><br>Resolvé el chequeo sin volver a estudiar todo el tema.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>2 · Mirá el razonamiento</b><br>Las respuestas explican por qué cada resultado es correcto.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>3 · Decidí</b><br>Si salió bien, seguís. Si costó, pasás al desarrollo completo correspondiente.</div>
+      </div>
+    </section>
 
-    <!-- 🔗 Relación con el curso -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🔗 Relación con el curso</h2>
-      <p style="margin:0;">
-        Este calentamiento retoma temas trabajados en cursos propedéuticos y 
-        prepara el terreno para la <b>Unidad 1 — Conjuntos Numéricos y Operaciones Básicas</b>.  
-        Podés usarlo como repaso o diagnóstico inicial.
-      </p>
-    </div>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px;">Los cinco chequeos</h2>
+      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+        <a href="/matematica-a-pedal/unidad0/bloque-a.html" style="display:block; text-decoration:none; color:#7f6000; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFFDF8;">
+          <b style="color:#783f04;">Chequeo A · Conjuntos numéricos</b><br>
+          <span style="font-size:14px;">Naturales, enteros, racionales, irracionales y reales.</span>
+        </a>
+        <a href="/matematica-a-pedal/unidad0/bloque-b.html" style="display:block; text-decoration:none; color:#7f6000; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFFDF8;">
+          <b style="color:#783f04;">Chequeo B · Propiedades</b><br>
+          <span style="font-size:14px;">Conmutativa, asociativa, distributiva, neutros e inversos.</span>
+        </a>
+        <a href="/matematica-a-pedal/unidad0/bloque-c.html" style="display:block; text-decoration:none; color:#7f6000; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFFDF8;">
+          <b style="color:#783f04;">Chequeo C · Fracciones</b><br>
+          <span style="font-size:14px;">Equivalencias, simplificación y operaciones básicas.</span>
+        </a>
+        <a href="/matematica-a-pedal/unidad0/bloque-d.html" style="display:block; text-decoration:none; color:#7f6000; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFFDF8;">
+          <b style="color:#783f04;">Chequeo D · Potencias y raíces</b><br>
+          <span style="font-size:14px;">Exponentes, propiedades y relación entre potencias y radicales.</span>
+        </a>
+        <a href="/matematica-a-pedal/unidad0/bloque-e.html" style="display:block; text-decoration:none; color:#7f6000; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFFDF8;">
+          <b style="color:#783f04;">Chequeo E · Notación científica</b><br>
+          <span style="font-size:14px;">Números grandes y pequeños, potencias de 10 y operaciones.</span>
+        </a>
+        <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html" style="display:block; text-decoration:none; color:#7f6000; border:1px dashed #FFA559; border-radius:12px; padding:14px; background:#FFF6E6;">
+          <b style="color:#783f04;">🏁 Chequeo final</b><br>
+          <span style="font-size:14px;">Una mirada global para decidir con qué etapa conviene seguir.</span>
+        </a>
+      </div>
+    </section>
 
-    <!-- 📚 Índice de bloques -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">📚 Índice de bloques</h2>
-      <ol style="margin:0 0 0 18px;">
-        <li><b>Bloque A — Conjuntos numéricos y clasificación de números</b><br>
-            Naturales, enteros, racionales, irracionales y reales. Inclusiones y ejemplos.</li>
-        <li><b>Bloque B — Propiedades de las operaciones</b><br>
-            Conmutativa, asociativa, distributiva. Ejercicios de aplicación.</li>
-        <li><b>Bloque C — Fracciones y operaciones con racionales</b><br>
-            Suma, resta, multiplicación, división y simplificación.</li>
-        <li><b>Bloque D — Potenciación y radicación</b><br>
-            Potencias de exponente entero, fraccionario y raíces principales.</li>
-        <li><b>Bloque E — Notación científica y números grandes o pequeños</b><br>
-            Conversión, operaciones y aplicaciones simples en ciencia y tecnología.</li>
-        <li><b>Bloque F — Mini-evaluación final del calentamiento</b><br>
-            Ejercicios integradores y reflexión sobre fortalezas y puntos a reforzar.</li>
-      </ol>
-    </div>
-
-    <!-- Progreso con bicicleta (una sola barra) -->
     <div id="unit-progress"></div>
 
-    <!-- Checklist de U0 -->
-    <div style="margin-top:12px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <section style="margin-top:12px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">📍 Tu recorrido en el calentamiento</h2>
       <div style="display:grid; gap:6px;">
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="intro"> <span>Introducción (esta página)</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="a"> <span>Bloque A — Conjuntos numéricos</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="b"> <span>Bloque B — Propiedades de las operaciones</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="c"> <span>Bloque C — Fracciones y racionales</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="d"> <span>Bloque D — Potenciación y radicación</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="e"> <span>Bloque E — Notación científica</span>
-        </label>
-        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-          <input type="checkbox" class="u0-done" data-key="mini"> <span>Mini-evaluación final</span>
-        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="intro"> <span>Punto de partida</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="a"> <span>Chequeo A — Conjuntos numéricos</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="b"> <span>Chequeo B — Propiedades</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="c"> <span>Chequeo C — Fracciones</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="d"> <span>Chequeo D — Potencias y raíces</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="e"> <span>Chequeo E — Notación científica</span></label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" class="u0-done" data-key="mini"> <span>Chequeo final</span></label>
       </div>
 
-      <!-- Acciones -->
-      <div style="display:flex; gap:8px; margin-top:12px;">
-        <a id="u0-continue" href="/matematica-a-pedal/unidad0/bloque-a.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-          ▶️ Continuar donde quedé
-        </a>
-        <button id="u0-reset" type="button"
-                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-          🔄 Reset progreso
-        </button>
+      <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+        <a id="u0-continue" href="/matematica-a-pedal/unidad0/bloque-a.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+        <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reiniciar calentamiento</button>
       </div>
-    </div>
+    </section>
 
-    <div style="margin-top:20px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">🪜 Puente hacia la Unidad 1</h2>
-      <ul style="margin:0 0 10px 18px;">
-        <li>Identifico N, Z, Q, R en ejemplos típicos.</li>
-        <li>Aplico con seguridad conmutativa, asociativa y distributiva en cálculos simples.</li>
-        <li>Me siento cómodo con fracciones básicas y notación científica.</li>
-      </ul>
-      <a href="/matematica-a-pedal/unidad1/index.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                border-radius:10px; padding:10px 14px; display:inline-block;">
-        🚀 Genial, Comienza en la Unidad 1
-      </a>
-    </div>
+    <section style="margin-top:20px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">🚴 Cuando estés pronto</h2>
+      <p style="margin:0 0 10px;">La primera etapa del recorrido desarrolla con calma los números y las operaciones. No necesitás “aprobar” este calentamiento para entrar: podés usarlo como orientación.</p>
+      <a href="/matematica-a-pedal/unidad1/index.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:10px 14px; display:inline-block;">1️⃣ Ir a Números y operaciones ➡️</a>
+    </section>
 
-    <!-- Navegador Unidad 0 - Introducción -->
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;
-                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
       <span></span>
-      <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-      <a href="/matematica-a-pedal/unidad0/bloque-a.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                border-radius:10px; padding:8px 14px;">
-        Bloque A ➡️
-      </a>
+      <span style="color:#7f6000; font-size:14px;">Prepará la bici y arrancamos</span>
+      <a href="/matematica-a-pedal/unidad0/bloque-a.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">Chequeo A ➡️</a>
     </div>
 
   </main>
-  <!-- FIN INTRODUCCIÓN UNIDAD 0 -->
 
-  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso (asigna data-progress-id y sincroniza) -->
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Barra de progreso con bicicleta -->
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
 
-  <!-- Acciones de la U0: continuar / reset  -->
   <script>
     (function(){
-      // Orden lógico de avance y sus URLs
       const order = ['intro','a','b','c','d','e','mini'];
       const links = {
         intro: '/matematica-a-pedal/unidad0/index.html',
@@ -182,35 +125,28 @@
       const resetBtn = document.getElementById('u0-reset');
 
       function updateContinueLink(){
-        // primer ítem no marcado
         const done = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
         const nextKey = order.find(k => !done.has(k)) || order[order.length-1];
         continueA.href = links[nextKey] || links.intro;
       }
 
       function resetProgress(){
-        if (!confirm('¿Reiniciar tu progreso en la Unidad 0?')) return;
-        // desmarcamos todo y disparamos 'change' para que progress-sync guarde
+        if (!confirm('¿Reiniciar tu progreso en el calentamiento?')) return;
         toggles.forEach(t => {
           if (t.checked) {
             t.checked = false;
             t.dispatchEvent(new Event('change', { bubbles:true }));
           }
         });
-        // notificar a la barra de la bici (si corresponde)
         window.dispatchEvent(new Event('map:progress-updated'));
         updateContinueLink();
       }
 
-      // Eventos
       toggles.forEach(t => t.addEventListener('change', updateContinueLink));
-      window.addEventListener('map:progress-updated', updateContinueLink); // cuando llega desde Firestore
+      window.addEventListener('map:progress-updated', updateContinueLink);
       resetBtn.addEventListener('click', resetProgress);
-
-      // Init
       updateContinueLink();
     })();
   </script>
-
-</>
+</body>
 </html>
