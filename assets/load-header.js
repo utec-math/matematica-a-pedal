@@ -13,6 +13,10 @@
   import('/matematica-a-pedal/assets/route-ui.js?v=1')
     .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
 
+  // Normaliza vocabulario antiguo visible: Unidad/Bloque/Capítulo -> Etapa/Paso.
+  import('/matematica-a-pedal/assets/route-vocabulary.js?v=1')
+    .catch(err => console.error('No se pudo normalizar el vocabulario del recorrido:', err));
+
   const dd = document.querySelector('.dropdown');
   const btn = dd?.querySelector('button');
   const menu = dd?.querySelector('.dropdown-menu');
