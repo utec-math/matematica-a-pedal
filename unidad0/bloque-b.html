@@ -3,156 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Unidad 0 · Bloque B — Propiedades de las Operaciones | Matemática a Pedal</title>
-
-  <!-- Estilo global -->
-  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
-
-  <!-- MathJax: configuración + carga -->
+  <title>Chequeo B · Propiedades de las operaciones | Matemática a Pedal</title>
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=3" />
   <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(','\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
-      }
-    };
+    window.MathJax = { tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] } };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
-
 <body>
-  <!-- Encabezado global -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- UNIDAD 0 · BLOQUE B — PROPIEDADES DE LAS OPERACIONES -->
-  <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+  <main style="max-width:1180px; margin:0 auto; font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.6;">
+    <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:20px; margin-top:16px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+      <div style="font-size:13px; font-weight:800; letter-spacing:.06em; color:#7f6000;">🚲 CALENTAMIENTO · CHEQUEO B</div>
+      <h1 style="color:#783f04; margin:5px 0 0; font-size:30px;">Propiedades de las operaciones</h1>
+      <p style="margin:8px 0 0; max-width:900px;">Esto es un <b>chequeo rápido</b>. La idea no es volver a estudiar todas las propiedades, sino comprobar si las reconocés y sabés cuándo usarlas. Si algo cuesta, al final tenés el enlace a la explicación completa de la Etapa 1.</p>
+    </section>
 
-    <!-- Encabezado -->
-    <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
-      <h1 style="color:#783f04; margin:0;">Unidad 0 · Bloque B — Propiedades de las Operaciones</h1>
-      <p style="margin:8px 0 0;">
-        Las operaciones en \( \mathbb{R} \) tienen propiedades que permiten <i>reordenar</i> y <i>simplificar</i> cálculos.
-        Saber detectarlas acelera muchísimo el trabajo con expresiones.
-      </p>
-    </div>
-
-    <!-- Propiedades fundamentales -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">📘 Propiedades fundamentales</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li><b>Conmutativa</b> (suma y producto): \(a+b=b+a\), \(a\cdot b=b\cdot a\).</li>
-        <li><b>Asociativa</b> (suma y producto): \((a+b)+c=a+(b+c)\), \((a\cdot b)\cdot c=a\cdot(b\cdot c)\).</li>
-        <li><b>Distributiva</b> (del producto sobre suma/resta): \(a(b+c)=ab+ac\), \(a(b-c)=ab-ac\).</li>
-        <li><b>Neutro</b>: \(a+0=a\), \(a\cdot1=a\).</li>
-        <li><b>Inversos</b>: \(a+(-a)=0\); si \(a\neq0\), entonces \(a\cdot \tfrac{1}{a}=1\).</li>
-      </ul>
-      <div style="background:#FFF6E6; border-radius:8px; padding:10px; margin-top:8px;">
-        <b>Tip</b>: La resta y la división <i>no</i> son conmutativas ni asociativas. Usá distributiva para
-        eliminar paréntesis y asociativa/conmutativa para reordenar factores/sumandos.
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px;">1️⃣ Recordá solamente esto</h2>
+      <div style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>Conmutativa</b><br>Cambia el orden, no el resultado: \(a+b=b+a\), \(ab=ba\).</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>Asociativa</b><br>Cambia la agrupación: \((a+b)+c=a+(b+c)\).</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>Distributiva</b><br>Multiplica a cada término: \(a(b+c)=ab+ac\).</div>
       </div>
-    </div>
+      <p style="margin:10px 0 0;"><b>Ojo:</b> la resta y la división no son conmutativas ni asociativas.</p>
+    </section>
 
-    <!-- Ejercicio 1: identificar -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">1) Identificá la propiedad aplicada</h2>
-      <ol style="margin:0 0 0 18px;">
-        <li>\(5+8=8+5\)</li>
-        <li>\((2+3)+4=2+(3+4)\)</li>
-        <li>\(7\,(3+2)=7\cdot3+7\cdot2\)</li>
-        <li>\((-6)+6=0\)</li>
-        <li>\(5\cdot\tfrac{1}{5}=1\)</li>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px;">2️⃣ Ejemplo guiado</h2>
+      <p style="margin-top:0;">¿Qué propiedad aparece en \(7(3+2)=7\cdot3+7\cdot2\)?</p>
+      <div style="display:grid; gap:8px;">
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 1.</b> Hay un factor, 7, fuera de un paréntesis.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 2.</b> Ese 7 multiplica por separado a 3 y a 2.</div>
+        <div style="background:#EFFFF2; border:1px solid #B8E8C4; border-radius:10px; padding:10px;"><b>Conclusión:</b> es la propiedad distributiva.</div>
+      </div>
+    </section>
+
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">3️⃣ Ahora vos</h2>
+      <ol style="margin-left:20px;">
+        <li>\(5+9=9+5\)</li>
+        <li>\((2+4)+6=2+(4+6)\)</li>
+        <li>\(-3(x-4)=-3x+12\)</li>
+        <li>\(8+0=8\)</li>
+        <li>\(6+(-6)=0\)</li>
       </ol>
-      <details style="margin-top:8px;">
-        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-        <ul style="margin:8px 0 0 18px;">
-          <li>Conmutativa de la suma.</li>
-          <li>Asociativa de la suma.</li>
-          <li>Distributiva del producto respecto de la suma.</li>
-          <li>Inverso aditivo.</li>
-          <li>Inverso multiplicativo.</li>
-        </ul>
+      <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">💡 Necesito una pista</summary><p>Preguntate qué cambió: ¿el orden?, ¿la agrupación?, ¿un factor se repartió?, ¿apareció un neutro o un inverso?</p></details>
+      <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">✅ Ver respuestas razonadas</summary>
+        <ol style="margin:8px 0 0 20px;">
+          <li><b>Conmutativa.</b> Solo cambió el orden de los sumandos.</li>
+          <li><b>Asociativa.</b> Los números mantienen el orden; cambia únicamente la agrupación.</li>
+          <li><b>Distributiva.</b> El factor \(-3\) multiplica a cada término del paréntesis; por eso \(-3\cdot(-4)=+12\).</li>
+          <li><b>Neutro aditivo.</b> Sumar 0 no modifica el número.</li>
+          <li><b>Inverso aditivo.</b> Un número más su opuesto da 0.</li>
+        </ol>
       </details>
-    </div>
+    </section>
 
-    <!-- Ejercicio 2: simplificar -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">2) Aplicá propiedades para simplificar</h2>
-      <ol style="margin:0 0 0 18px;">
-        <li>\(3\,(\,4+6\,)\)</li>
-        <li>\((5+8)+(-8)\)</li>
-        <li>\(7\,(2\cdot5)\)</li>
-        <li>\((-3)\,(4+(-4))\)</li>
-        <li>\((6\cdot2)\cdot\tfrac{1}{2}\)</li>
-      </ol>
-      <details style="margin-top:8px;">
-        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-        <ul style="margin:8px 0 0 18px;">
-          <li>\(3(4+6)=3\cdot10=30\) (o \(3\cdot4+3\cdot6=12+18=30\)) — Distributiva.</li>
-          <li>\((5+8)+(-8)=5+(8+(-8))=5+0=5\) — Asociativa + inverso aditivo.</li>
-          <li>\(7(2\cdot5)=(7\cdot2)\cdot5=14\cdot5=70\) — Asociativa del producto.</li>
-          <li>\((-3)(4+(-4))=(-3)\cdot0=0\) — Distributiva + neutro aditivo.</li>
-          <li>\((6\cdot2)\cdot\tfrac{1}{2}=12\cdot\tfrac{1}{2}=6\) — Asociativa + inverso multiplicativo.</li>
-        </ul>
-      </details>
-    </div>
+    <section style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">⚠️ Error frecuente</h2>
+      <p style="margin:0;">Pensar que \(8-3=3-8\). La resta no es conmutativa: \(8-3=5\), mientras que \(3-8=-5\).</p>
+    </section>
 
-    <!-- Ejercicio 3: combinadas paso a paso -->
-    <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">3) Propiedades combinadas</h2>
-      <p>Reescribí y resolvé paso a paso aplicando las propiedades necesarias:</p>
-      <ol style="margin:0 0 0 18px;">
-        <li>\((2+3)\cdot4=\ ?\)</li>
-        <li>\(5\,(3+(-3))=\ ?\)</li>
-        <li>\((-7)\,(2\cdot5)=\ ?\)</li>
-        <li>\((4+5)+(-5)=\ ?\)</li>
-      </ol>
-      <details style="margin-top:8px;">
-        <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-        <ul style="margin:8px 0 0 18px;">
-          <li>\((2+3)4=4(2+3)=4\cdot2+4\cdot3=8+12=20\) — Conmutativa + distributiva.</li>
-          <li>\(5(3+(-3))=5\cdot0=0\) — Inverso aditivo + neutro multiplicativo.</li>
-          <li>\((-7)(2\cdot5)=(-7\cdot2)\cdot5=(-14)\cdot5=-70\) — Asociativa.</li>
-          <li>\((4+5)+(-5)=4+(5+(-5))=4+0=4\) — Asociativa + inverso aditivo.</li>
-        </ul>
-      </details>
-    </div>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">4️⃣ ¿Cómo te fue?</h2>
+      <p style="margin-top:0;">Si reconociste las propiedades sin adivinar, seguí con el chequeo de fracciones. Si tuviste dudas, hacé primero la explicación guiada de la Etapa 1.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="/matematica-a-pedal/unidad0/bloque-c.html" style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:10px 14px; text-decoration:none;">✅ Me salió bien · seguir</a>
+        <a href="/matematica-a-pedal/unidad1/bloque-b.html" style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:10px 14px; text-decoration:none;">🪜 Necesito repaso · explicación paso a paso</a>
+      </div>
+    </section>
+  </main>
 
-    <!-- Mini-desafío -->
-    <div style="margin-top:18px; background:#FFF6E6; border:1px dashed #FFD580; border-radius:12px; padding:14px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Mini-desafío</h3>
-      <p>Escribí una expresión donde uses <i>al menos dos</i> propiedades (p.ej., conmutativa y distributiva), resolvela de dos maneras distintas y verificá que el resultado coincide.</p>
-    </div>
-
-    <!-- Cierre -->
-    <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🚴‍♀️ Para seguir</h2>
-      <p>Pasá al <b>Bloque C — Fracciones y operaciones con racionales</b> para aplicar estas propiedades con denominadores distintos.</p>
-    </div>
-
-  </section>
-  <!-- FIN BLOQUE B -->
-
-  <!-- Navegador inferior -->
-  <div style="max-width:1180px; margin:12px auto 0;">
-    <div style="display:flex; justify-content:space-between; align-items:center;
-                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-                padding:12px; font-family:'Roboto Mono', monospace;">
-      <a href="/matematica-a-pedal/unidad0/index.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                border-radius:10px; padding:8px 14px;"> ⬅️ Bloque A</a>
-      <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-      <a href="/matematica-a-pedal/unidad0/bloque-c.html"
-         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-                border-radius:10px; padding:8px 14px;">Bloque C ➡️</a>
-    </div>
-  </div>
-
-  <!-- TOC (si corresponde) -->
-  <script src="/matematica-a-pedal/assets/toc.js"></script>
-
-  <!-- Scripts globales (siempre al final) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>

@@ -3,156 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matemática a Pedal — Inicio</title>
-
-  <!-- Estilos globales -->
+  <title>Matemática a Pedal — Tu ruta de aprendizaje</title>
   <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY88YE7ZJJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZY88YE7ZJJ');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY88YE7ZJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZY88YE7ZJJ');
+  </script>
 </head>
-
 <body>
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <main style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
-    <!-- HERO / BIENVENIDA -->
     <header style="position:relative; overflow:hidden; border-radius:18px; margin-top:8px; box-shadow:0 8px 20px rgba(0,0,0,.08);">
-      <div style="background:linear-gradient(105deg,#FFD580 0%, #FFA559 55%, #FFC06A 100%);
-                  padding:36px 28px; border:2px solid #fff; text-align:center;">
-        <h1 style="color:#783f04; margin:0; font-size:38px;">Bienvenidos a <em>Matemática a Pedal</em></h1>
-        <p style="margin:16px auto 0; max-width:760px; font-size:18px;">
-          Este sito pedalea contigo por capítulos cortos, ejemplos claros, ejercicios con soluciones
-          y mini-apps interactivas. La idea es que puedas cursar y repasar a tu ritmo, con foco en
-          lo esencial y evitando errores típicos.
+      <div style="background:linear-gradient(105deg,#FFD580 0%, #FFA559 55%, #FFC06A 100%); padding:34px 28px; border:2px solid #fff; text-align:center;">
+        <div style="font-size:13px; font-weight:800; letter-spacing:.08em; color:#7f6000;">🚲 TU RECORRIDO</div>
+        <h1 style="color:#783f04; margin:6px 0 0; font-size:38px;">Aprender matemática, paso a paso</h1>
+        <p style="margin:14px auto 0; max-width:800px; font-size:18px;">
+          Empezá con un calentamiento breve para descubrir qué ya dominás. Después avanzá por etapas con explicaciones claras, ejemplos guiados, práctica y cierres de autoevaluación.
         </p>
-        <p style="margin:14px auto 0; max-width:760px; font-size:18px;">
-          Para comenzar, usá el menú superior (<strong>Unidades ▾</strong>) o retomá donde dejaste:
-          el progreso se sincroniza automáticamente.
-        </p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:18px;">
+          <a href="unidad0/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700;">🚲 Empezar por el calentamiento</a>
+          <a href="progreso.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:10px 14px; border-radius:10px; text-decoration:none;">📊 Retomar mi recorrido</a>
+        </div>
       </div>
     </header>
 
-    <!-- QUÉ VAS A ENCONTRAR -->
-    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:14px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px; font-size:24px;">Qué vas a encontrar</h2>
-      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-        <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <h3 style="color:#783f04; margin:0 0 6px;">Capítulos cortos</h3>
-          <p style="margin:0;">Cada tema en pequeñas dosis, con ejemplos paso a paso y errores típicos a evitar.</p>
-        </div>
-        <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <h3 style="color:#783f04; margin:0 0 6px;">Actividades con soluciones</h3>
-          <p style="margin:0;">Mini-actividades con “Mostrar soluciones” para autocorregir y afianzar.</p>
-        </div>
-        <div style="background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;">
-          <h3 style="color:#783f04; margin:0 0 6px;">Apps interactivas</h3>
-          <p style="margin:0;">Simulaciones en Streamlit para explorar ideas matemáticas en tiempo real.</p>
-        </div>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:14px; padding:16px; background:#FFFDF8;">
+      <h2 style="color:#783f04; margin:0 0 8px; font-size:24px;">🧭 Cómo funciona la ruta</h2>
+      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        <div style="background:#FFF6E6; border-radius:12px; padding:12px;"><b>1 · Chequeá</b><br>En el calentamiento comprobás rápidamente qué conceptos ya manejás.</div>
+        <div style="background:#FFF6E6; border-radius:12px; padding:12px;"><b>2 · Aprendé</b><br>Si algo cuesta, cada etapa desarrolla el tema desde cero y paso a paso.</div>
+        <div style="background:#FFF6E6; border-radius:12px; padding:12px;"><b>3 · Practicá</b><br>Pasás de ejemplos guiados a ejercicios básicos, intermedios y desafíos.</div>
+        <div style="background:#FFF6E6; border-radius:12px; padding:12px;"><b>4 · Verificá</b><br>Cada etapa termina con un chequeo para saber qué quedó firme y qué conviene repasar.</div>
       </div>
     </section>
 
-    <!-- TARJETAS DE UNIDADES -->
-    <section style="margin-top:18px;">
-      <h2 style="color:#783f04; margin:0 0 8px; font-size:24px;">Unidades disponibles</h2>
-      <div style="display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+    <section style="margin-top:20px;">
+      <h2 style="color:#783f04; margin:0 0 10px; font-size:26px;">Tu ruta de aprendizaje</h2>
+      <div style="display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(270px,1fr));">
 
-        <!-- Unidad 0 -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">Unidad 0 — Calentamiento Matemático</h3>
-            <p style="margin:6px 0 0;">Repaso general de conjuntos, operaciones, fracciones, potencias y notación científica.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Bloques A–E con soluciones</li>
-            <li>Mini-evaluación y checklist final</li>
-          </ul>
-          <a href="unidad0/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Ver Unidad 0</a>
+        <article style="border:2px solid #FFA559; border-radius:16px; padding:15px; background:#FFFDF8;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">PUNTO DE PARTIDA</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">🚲 Calentamiento matemático</h3>
+          <p style="margin:0 0 10px;">No es una unidad de estudio. Son chequeos rápidos de conjuntos, propiedades, fracciones, potencias, raíces y notación científica.</p>
+          <div style="background:#FFF6E6; border-radius:10px; padding:9px; margin-bottom:10px; font-size:14px;">Si algo no sale, te indicamos exactamente qué explicación completa conviene visitar.</div>
+          <a href="unidad0/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Entrar al calentamiento ➡️</a>
         </article>
 
-        <!-- Unidad 1 -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">Unidad 1 — Conjuntos y Operaciones</h3>
-            <p style="margin:6px 0 0;">Conjuntos numéricos, propiedades, operaciones, fracciones y decimales.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Cap. 1–7 con índice</li>
-            <li>Mini-evaluación final</li>
-          </ul>
-          <a href="unidad1/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Ver Unidad 1</a>
+        <article style="border:1px solid #FFD580; border-radius:16px; padding:15px;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">ETAPA 1</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">1️⃣ Números y operaciones</h3>
+          <p style="margin:0 0 10px;">Conjuntos numéricos, propiedades, signos, operaciones, fracciones y relación entre decimales y fracciones.</p>
+          <a href="unidad1/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Recorrer la etapa ➡️</a>
         </article>
 
-        <!-- Unidad 2 -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">Unidad 2 — Factorización y Expresiones</h3>
-            <p style="margin:6px 0 0;">Expresiones y polinomios, productos notables, factorización y fracciones algebraicas.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Cap. 1–5 con índice</li>
-            <li>Mini-evaluación final</li>
-          </ul>
-          <a href="unidad2/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Ver Unidad 2</a>
+        <article style="border:1px solid #FFD580; border-radius:16px; padding:15px;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">ETAPA 2</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">2️⃣ Álgebra en acción</h3>
+          <p style="margin:0 0 10px;">Expresiones algebraicas, polinomios, productos notables, factorización y fracciones algebraicas.</p>
+          <a href="unidad2/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Recorrer la etapa ➡️</a>
         </article>
 
-        <!-- Unidad 3 -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">Unidad 3 — Trigonometría</h3>
-            <p style="margin:6px 0 0;">Ángulos, razones trigonométricas, círculo unitario, identidades y aplicaciones.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Cap. 1–8 con índice</li>
-            <li>Ejercicios y mini-evaluación</li>
-          </ul>
-          <a href="unidad3/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Ver Unidad 3</a>
+        <article style="border:1px solid #FFD580; border-radius:16px; padding:15px;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">ETAPA 3</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">3️⃣ Trigonometría</h3>
+          <p style="margin:0 0 10px;">Ángulos, razones trigonométricas, relaciones entre ángulos, círculo unitario y aplicaciones.</p>
+          <a href="unidad3/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Recorrer la etapa ➡️</a>
         </article>
 
-        <!-- Unidad 4 -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">Unidad 4 — Potenciación y Radicación</h3>
-            <p style="margin:6px 0 0;">Potencias, raíces, propiedades, notación científica y calculadora interactiva.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Cap. 1–6 con índice</li>
-            <li>Mini-app y autoevaluación</li>
-          </ul>
-          <a href="unidad4/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Ver Unidad 4</a>
+        <article style="border:1px solid #FFD580; border-radius:16px; padding:15px;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">ETAPA 4</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">4️⃣ Potencias y raíces</h3>
+          <p style="margin:0 0 10px;">Potenciación, radicación, radicales, exponentes fraccionarios, notación científica y práctica interactiva.</p>
+          <a href="unidad4/index.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Recorrer la etapa ➡️</a>
         </article>
 
-        <!-- Autodiagnóstico -->
-        <article style="border:1px solid #FFD580; border-radius:14px; padding:14px;">
-          <div style="background:#FFF6E6; border-radius:10px; padding:10px; margin-bottom:8px;">
-            <h3 style="color:#783f04; margin:0;">🧠 Autodiagnóstico</h3>
-            <p style="margin:6px 0 0;">Cuestionarios interactivos para repasar los principales temas.</p>
-          </div>
-          <ul style="margin:0 0 10px 18px;">
-            <li>Pruebas breves por tema</li>
-            <li>Retroalimentación automática</li>
-          </ul>
-          <a href="autodiagnostico.html"
-             style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">
-            Ver Autodiagnóstico
-          </a>
+        <article style="border:1px dashed #FFA559; border-radius:16px; padding:15px; background:#FFFDF8;">
+          <div style="font-size:13px; font-weight:800; color:#7f6000;">PARADA TÉCNICA</div>
+          <h3 style="color:#783f04; margin:4px 0 6px; font-size:22px;">🧠 Autodiagnóstico</h3>
+          <p style="margin:0 0 10px;">Cuestionarios breves para detectar qué temas conviene reforzar sin alterar tu recorrido.</p>
+          <a href="autodiagnostico.html" style="background:#fff; color:#783f04; border:1px solid #FFD580; padding:8px 12px; border-radius:10px; text-decoration:none;">Hacer un autodiagnóstico</a>
         </article>
 
       </div>
     </section>
 
-    <!-- PIE -->
-    <footer style="margin:18px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:14px; padding:14px;">
+    <footer style="margin:20px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:14px; padding:14px;">
       <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
         <div style="color:#783f04; font-weight:600;">Matemática a Pedal</div>
         <div>·</div>
@@ -165,10 +106,8 @@
 
   </main>
 
-  <!-- Scripts (al final, sin duplicados) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
-
 </body>
 </html>

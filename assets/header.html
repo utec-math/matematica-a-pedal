@@ -1,214 +1,116 @@
 <header style="font-family:'Roboto Mono', monospace;">
 
-  <!-- PORTADA TIPOGRÁFICA -->
-  <div class="hero"
-       style="background:linear-gradient(105deg,#FFD580,#FFA559);
-              border-bottom:2px solid #FFD580;">
-    <div class="hero-inner"
-         style="max-width:1180px;margin:0 auto;
-                display:flex;align-items:center;justify-content:space-between;
-                gap:24px; padding:28px 18px;">
-
-      <!-- Texto -->
+  <div class="hero" style="background:linear-gradient(105deg,#FFD580,#FFA559); border-bottom:2px solid #FFD580;">
+    <div class="hero-inner" style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 18px;">
       <div class="hero-text" style="flex:1 1 auto;">
-        <h1 style="margin:0;color:#783f04;
-                   font-weight:800;line-height:1.1;
-                   font-size:clamp(28px,5vw,52px);">
-          Matemática a Pedal
-        </h1>
-        <p style="margin:6px 0 0;color:#7f6000;
-                  font-size:clamp(14px,2.3vw,18px);max-width:640px;">
-          Capítulos cortos, ejemplos claros y mini-apps interactivas para pedalear matemática a tu ritmo.
-        </p>
-
-        <!-- 🔐 Autenticación UTEC -->
+        <h1 style="margin:0;color:#783f04;font-weight:800;line-height:1.1;font-size:clamp(28px,5vw,52px);">Matemática a Pedal</h1>
+        <p style="margin:6px 0 0;color:#7f6000;font-size:clamp(14px,2.3vw,18px);max-width:640px;">Una ruta guiada con chequeos breves, explicaciones paso a paso, práctica y mini-apps para aprender a tu ritmo.</p>
         <div style="margin-top:14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-          <button id="btnCertLogin"
-            style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">
-            🔐 Iniciar sesión con UTEC
-          </button>
+          <button id="btnCertLogin" style="background:#fff;border:1px solid #FFD580;color:#783f04;border-radius:10px;padding:8px 12px;cursor:pointer;">🔐 Iniciar sesión con UTEC</button>
           <span id="certStatus" style="color:#783f04; font-size:14px;"></span>
         </div>
         <div id="certMsg" style="color:#783f04; margin-top:6px; font-size:14px;"></div>
-
       </div>
-
-      <!-- Imagen lateral -->
-      <div class="hero-art"
-           style="flex:0 0 320px; height:140px; display:flex; align-items:center; justify-content:center;">
-        <img src="/matematica-a-pedal/assets/bici-espiral.png"
-             alt="Bicicleta con espiral áurea"
-             style="max-width:100%; max-height:100%; object-fit:contain;">
+      <div class="hero-art" style="flex:0 0 320px; height:140px; display:flex; align-items:center; justify-content:center;">
+        <img src="/matematica-a-pedal/assets/bici-espiral.png" alt="Bicicleta con espiral áurea" style="max-width:100%; max-height:100%; object-fit:contain;">
       </div>
     </div>
   </div>
 
-  <!-- MENÚ HORIZONTAL DE UNIDADES -->
-  <nav style="position:relative; z-index:50;
-              background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
-    <div style="max-width:1180px; margin:0 auto;
-                display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap; position:relative;">
-
-      <!-- SOBRE EL PROYECTO -->
-      <a href="/matematica-a-pedal/sobre.html"
-         style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                border-radius:10px; padding:8px 12px; text-decoration:none;">
-        🚲 Sobre el proyecto
-      </a>
-
-      <!-- Inicio -->
-      <a href="/matematica-a-pedal/index.html"
-         style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                border-radius:10px; padding:8px 12px; text-decoration:none;">
-        🏠 Inicio
-      </a>
-
-      <!-- Mi progreso -->
-      <a id="header-progress-link" href="/matematica-a-pedal/progreso.html"
-         style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                border-radius:10px; padding:8px 12px; text-decoration:none;
-                display:inline-flex; align-items:center; gap:7px; white-space:nowrap;">
+  <nav style="position:relative; z-index:50;background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
+    <div style="max-width:1180px; margin:0 auto;display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap; position:relative;">
+      <a href="/matematica-a-pedal/sobre.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🚲 Sobre el proyecto</a>
+      <a href="/matematica-a-pedal/index.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🏠 Inicio</a>
+      <a id="header-progress-link" href="/matematica-a-pedal/progreso.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;display:inline-flex; align-items:center; gap:7px; white-space:nowrap;">
         <span>📊 Mi progreso</span>
-        <span id="header-progress-badge" aria-live="polite"
-              style="display:inline-flex; align-items:center; justify-content:center;
-                     min-width:38px; padding:2px 7px; border-radius:999px;
-                     background:#FFF6E6; border:1px solid #FFD580;
-                     color:#783f04; font-size:12px; font-weight:800; line-height:1.2;">
-          0%
-        </span>
+        <span id="header-progress-badge" aria-live="polite" style="display:inline-flex; align-items:center; justify-content:center;min-width:38px; padding:2px 7px; border-radius:999px;background:#FFF6E6; border:1px solid #FFD580;color:#783f04; font-size:12px; font-weight:800; line-height:1.2;">0%</span>
       </a>
 
-      <!-- Unidad 0 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-          🧮 Unidad 0 ▾
-        </button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">🚲 Calentamiento ▾</button>
         <div class="submenu">
-          <a href="/matematica-a-pedal/unidad0/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad0/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html">Mini-evaluación</a>
+          <a href="/matematica-a-pedal/unidad0/index.html"><b>Punto de partida</b></a>
+          <a href="/matematica-a-pedal/unidad0/bloque-a.html">Chequeo A · Conjuntos numéricos</a>
+          <a href="/matematica-a-pedal/unidad0/bloque-b.html">Chequeo B · Propiedades de las operaciones</a>
+          <a href="/matematica-a-pedal/unidad0/bloque-c.html">Chequeo C · Fracciones</a>
+          <a href="/matematica-a-pedal/unidad0/bloque-d.html">Chequeo D · Potencias y raíces</a>
+          <a href="/matematica-a-pedal/unidad0/bloque-e.html">Chequeo E · Notación científica</a>
+          <a href="/matematica-a-pedal/unidad0/mini-evaluacion.html">Chequeo final</a>
         </div>
       </div>
 
-      <!-- Unidad 1 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-          🧮 Unidad 1 ▾
-        </button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">1️⃣ Números y operaciones ▾</button>
         <div class="submenu">
-          <a href="/matematica-a-pedal/unidad1/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-f.html">Bloque F</a>
-          <a href="/matematica-a-pedal/unidad1/bloque-g.html">Bloque G</a>
-          <a href="/matematica-a-pedal/unidad1/mini-evaluacion.html">Mini-evaluación</a>
+          <a href="/matematica-a-pedal/unidad1/index.html"><b>Inicio de la etapa</b></a>
+          <a href="/matematica-a-pedal/unidad1/bloque-a.html">Paso 1 · Conjuntos numéricos</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-b.html">Paso 2 · Propiedades para calcular mejor</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-c.html">Paso 3 · Suma y resta con signos</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-d.html">Paso 4 · Multiplicación y división</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-e.html">Paso 5 · Fracciones equivalentes</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-f.html">Paso 6 · Operaciones con fracciones</a>
+          <a href="/matematica-a-pedal/unidad1/bloque-g.html">Paso 7 · Decimales y fracciones</a>
+          <a href="/matematica-a-pedal/unidad1/mini-evaluacion.html">Parada de control</a>
         </div>
       </div>
 
-      <!-- Unidad 2 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-          🧮 Unidad 2 ▾
-        </button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">2️⃣ Álgebra en acción ▾</button>
         <div class="submenu">
-          <a href="/matematica-a-pedal/unidad2/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad2/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad2/mini-evaluacion.html">Mini-evaluación</a>
+          <a href="/matematica-a-pedal/unidad2/index.html"><b>Inicio de la etapa</b></a>
+          <a href="/matematica-a-pedal/unidad2/bloque-a.html">Paso 1 · Expresiones y polinomios</a>
+          <a href="/matematica-a-pedal/unidad2/bloque-b.html">Paso 2 · Operar expresiones</a>
+          <a href="/matematica-a-pedal/unidad2/bloque-c.html">Paso 3 · Productos notables</a>
+          <a href="/matematica-a-pedal/unidad2/bloque-d.html">Paso 4 · Factorizar para simplificar</a>
+          <a href="/matematica-a-pedal/unidad2/bloque-e.html">Paso 5 · Fracciones algebraicas</a>
+          <a href="/matematica-a-pedal/unidad2/mini-evaluacion.html">Parada de control</a>
         </div>
       </div>
 
-      <!-- Unidad 3 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-          🧮 Unidad 3 ▾
-        </button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">3️⃣ Trigonometría ▾</button>
         <div class="submenu">
-          <a href="/matematica-a-pedal/unidad3/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad3/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad3/mini-evaluacion.html">Mini-evaluación</a>
+          <a href="/matematica-a-pedal/unidad3/index.html"><b>Inicio de la etapa</b></a>
+          <a href="/matematica-a-pedal/unidad3/bloque-a.html">Paso 1 · Origen y aplicaciones</a>
+          <a href="/matematica-a-pedal/unidad3/bloque-b.html">Paso 2 · Medir ángulos</a>
+          <a href="/matematica-a-pedal/unidad3/bloque-c.html">Paso 3 · Relaciones entre ángulos</a>
+          <a href="/matematica-a-pedal/unidad3/bloque-d.html">Paso 4 · Razones trigonométricas</a>
+          <a href="/matematica-a-pedal/unidad3/bloque-e.html">Paso 5 · Círculo unitario</a>
+          <a href="/matematica-a-pedal/unidad3/mini-evaluacion.html">Parada de control</a>
         </div>
       </div>
 
-      <!-- Unidad 4 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                       border-radius:10px; padding:8px 12px; cursor:pointer;">
-          🧮 Unidad 4 ▾
-        </button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; cursor:pointer;">4️⃣ Potencias y raíces ▾</button>
         <div class="submenu">
-          <a href="/matematica-a-pedal/unidad4/index.html">Introducción</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-a.html">Bloque A</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-b.html">Bloque B</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-c.html">Bloque C</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-d.html">Bloque D</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-e.html">Bloque E</a>
-          <a href="/matematica-a-pedal/unidad4/bloque-f.html">Bloque F</a>
-          <a href="/matematica-a-pedal/unidad4/mini-evaluacion.html">Mini-evaluación</a>
+          <a href="/matematica-a-pedal/unidad4/index.html"><b>Inicio de la etapa</b></a>
+          <a href="/matematica-a-pedal/unidad4/bloque-a.html">Paso 1 · Potencias y exponentes</a>
+          <a href="/matematica-a-pedal/unidad4/bloque-b.html">Paso 2 · Raíces y exponentes fraccionarios</a>
+          <a href="/matematica-a-pedal/unidad4/bloque-c.html">Paso 3 · Simplificar radicales</a>
+          <a href="/matematica-a-pedal/unidad4/bloque-d.html">Paso 4 · Notación científica</a>
+          <a href="/matematica-a-pedal/unidad4/bloque-e.html">Paso 5 · Laboratorio interactivo</a>
+          <a href="/matematica-a-pedal/unidad4/bloque-f.html">Paso 6 · Práctica final</a>
+          <a href="/matematica-a-pedal/unidad4/mini-evaluacion.html">Parada de control</a>
         </div>
       </div>
 
-      <!-- Autodiagnóstico -->
-      <a href="/matematica-a-pedal/autodiagnostico.html"
-         style="background:#fff; border:1px solid #FFD580; color:#783f04;
-                border-radius:10px; padding:8px 12px; text-decoration:none;">
-        🧠 Autodiagnóstico
-      </a>
+      <a href="/matematica-a-pedal/autodiagnostico.html" style="background:#fff; border:1px solid #FFD580; color:#783f04;border-radius:10px; padding:8px 12px; text-decoration:none;">🧠 Parada técnica</a>
     </div>
   </nav>
-
 </header>
 
 <style>
-  .submenu{
-    display:none; position:absolute; top:38px; left:0; z-index:1000;
-    background:#fff; border:1px solid #FFD580; border-radius:10px;
-    box-shadow:0 6px 12px rgba(0,0,0,.08); min-width:240px; padding:6px 0;
-  }
-  .submenu a{
-    display:block; padding:6px 12px; color:#7f6000; text-decoration:none;
-  }
+  .submenu{display:none; position:absolute; top:38px; left:0; z-index:1000;background:#fff; border:1px solid #FFD580; border-radius:10px;box-shadow:0 6px 12px rgba(0,0,0,.08); min-width:300px; padding:6px 0;}
+  .submenu a{display:block; padding:7px 12px; color:#7f6000; text-decoration:none;}
   .submenu a:hover{ background:#FFF6E6; }
   .menu-item:hover .submenu{ display:block; }
 
   @media (max-width: 720px){
     .hero-inner{ flex-direction:column; align-items:flex-start !important; }
     .hero-art{ display:none !important; }
-
-    /* La navegación de bloques se apila en móvil para evitar botones comprimidos. */
-    .map-unit-nav{
-      grid-template-columns:1fr !important;
-      margin-left:10px !important;
-      margin-right:10px !important;
-    }
+    .map-unit-nav{grid-template-columns:1fr !important;margin-left:10px !important;margin-right:10px !important;}
     .map-unit-nav > span{ display:none !important; }
-    .map-unit-nav > a{
-      width:100% !important;
-      box-sizing:border-box !important;
-      text-align:center !important;
-      white-space:normal !important;
-    }
-    #map-completion-status{
-      margin-left:10px !important;
-      margin-right:10px !important;
-    }
+    .map-unit-nav > a{width:100% !important;box-sizing:border-box !important;text-align:center !important;white-space:normal !important;}
+    #map-completion-status{margin-left:10px !important;margin-right:10px !important;}
   }
 </style>

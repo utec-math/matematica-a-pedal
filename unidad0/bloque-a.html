@@ -2,13 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unidad 0 · Bloque A — Conjuntos numéricos y clasificación</title>
-
-  <!-- Estilos globales -->
-  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=2">
-
-  <!-- MathJax -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punto de partida · Chequeo A — Conjuntos numéricos | Matemática a Pedal</title>
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=3" />
   <script>
     window.MathJax = {
       tex: {
@@ -18,139 +14,100 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
-  <!-- Firebase + Auth -->
-  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso -->
-  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 </head>
-
-<script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-<script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
-  
-<body data-toc="inline">
-
-  <!-- Encabezado global -->
+<body>
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- Contenido principal -->
-  <main>
-
-    <!-- UNIDAD 0 · BLOQUE A — CONJUNTOS NUMÉRICOS Y CLASIFICACIÓN -->
-    <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
-
-      <!-- Encabezado -->
-      <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px;
-                  padding:18px 20px; border:2px solid #fff;">
-        <h1 style="color:#783f04; margin:0;">Unidad 0 · Bloque A — Conjuntos numéricos y clasificación</h1>
-        <p style="margin:8px 0 0;">
-          Recordamos los conjuntos \( \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R} \) y practicamos a clasificar números típicos:
-          fracciones, decimales, raíces, potencias y expresiones mixtas.
-        </p>
+  <main style="max-width:1180px; margin:0 auto; font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.6;">
+    <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:20px; margin-top:16px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+      <div style="font-size:13px; font-weight:700; color:#7f6000; margin-bottom:6px;">🚲 PUNTO DE PARTIDA · CALENTAMIENTO</div>
+      <h1 style="color:#783f04; margin:0; font-size:30px;">Chequeo A — Conjuntos numéricos</h1>
+      <p style="margin:8px 0 0; max-width:850px;">Este bloque es un <b>chequeo rápido</b>, no una segunda clase completa. La idea es confirmar que reconocés los conjuntos numéricos básicos. Si algo no sale, te llevamos directamente a la explicación paso a paso de la Etapa 1.</p>
+      <div style="margin-top:12px; background:rgba(255,255,255,.72); border:1px solid rgba(120,63,4,.18); border-radius:10px; padding:10px 12px; max-width:900px;">
+        <b>Importante:</b> acá no vamos a demostrar desde cero todos los resultados. Por ejemplo, tomaremos como conocido que \(\sqrt2\) es irracional. Si necesitás entender el porqué o reconstruir las ideas con más calma, usá el enlace de <b>explicación paso a paso</b> al final del chequeo.
       </div>
-
-      <!-- Tarjeta: Mapa rápido -->
-      <div style="margin-top:22px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-        <h2 id="mapa-rapido" style="color:#783f04;">🗺️ Mapa rápido</h2>
-        <ul style="margin:0 0 0 18px;">
-          <li><b>\(\mathbb{N}\)</b>: naturales \((0,1,2,3,\dots)\) <span style="opacity:.8;">(aquí incluimos el 0)</span></li>
-          <li><b>\(\mathbb{Z}\)</b>: enteros \((\dots,-2,-1,0,1,2,\dots)\)</li>
-          <li><b>\(\mathbb{Q}\)</b>: racionales \(\left(\tfrac{p}{q}\text{ con }p,q\in\mathbb{Z},\ q\neq 0\right)\); incluyen decimales finitos o periódicos.</li>
-          <li><b>\(\mathbb{R}\)</b>: reales \(\left(\mathbb{Q}\cup\{\sqrt2,\ \pi,\ e,\dots\}\right)\).</li>
-        </ul>
-        <div style="background:#FFF6E6; border-radius:8px; padding:10px; margin-top:10px;">
-          <b>Tip:</b> \( \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \).<br/>
-          Si el decimal termina o es periódico, es racional.  
-          Raíces de enteros que no son cuadrados perfectos suelen ser irracionales (p.ej., \( \sqrt2 \)).
-        </div>
-      </div>
-
-      <!-- Ejercicio 1 -->
-      <div style="margin-top:22px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-        <h2 id="ej1-clasificacion" style="color:#783f04;">1) Clasificación: ¿a qué conjuntos pertenece cada número?</h2>
-        <p>Marcá si pertenece a \( \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R} \). Si no pertenece, explicá el motivo.</p>
-        <ol style="margin:0 0 0 18px;">
-          <li>\(7\)</li>
-          <li>\(-3\)</li>
-          <li>\(\tfrac{5}{2}\)</li>
-          <li>\(-\tfrac{12}{5}\)</li>
-          <li>\(0{,}125\)</li>
-          <li>\(0{,}\overline{3}\)\; (decimal periódico)</li>
-          <li>\(\sqrt{16}\)</li>
-          <li>\(\sqrt{2}\)</li>
-          <li>\(-\sqrt{9}\)</li>
-          <li>\(\tfrac{1}{0}\)</li>
-        </ol>
-        <details style="margin-top:8px;">
-          <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-          <ul style="margin:8px 0 0 18px;">
-            <li>\(7 \in \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R}\)</li>
-            <li>\(-3 \in \mathbb{Z},\mathbb{Q},\mathbb{R}\)</li>
-            <li>\(\tfrac{5}{2}=2{,}5 \in \mathbb{Q},\mathbb{R}\)</li>
-            <li>\(-\tfrac{12}{5}=-2{,}4 \in \mathbb{Q},\mathbb{R}\)</li>
-            <li>\(0{,}125\) (finito) \( \in \mathbb{Q},\mathbb{R}\)</li>
-            <li>\(0{,}\overline{3}\) (periódico) \( \in \mathbb{Q},\mathbb{R}\)</li>
-            <li>\(\sqrt{16}=4 \in \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R}\)</li>
-            <li>\(\sqrt{2}\) irracional ⇒ \( \in \mathbb{R}\setminus\mathbb{Q}\)</li>
-            <li>\(-\sqrt{9}=-3 \in \mathbb{Z},\mathbb{Q},\mathbb{R}\)</li>
-            <li>\(\tfrac{1}{0}\): <b>no definido</b>.</li>
-          </ul>
-        </details>
-      </div>
-
-      <!-- Ejercicio 2 -->
-      <div style="margin-top:22px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-        <h2 id="ej2-decimal-fraccion" style="color:#783f04;">2) Pasá de decimal a fracción</h2>
-        <ol style="margin:0 0 0 18px;">
-          <li>\(0{,}\overline{6}\)</li>
-          <li>\(2{,}375\)</li>
-          <li>\(0{,}1\overline{4}\)</li>
-          <li>\(\sqrt{5}\)</li>
-        </ol>
-        <details style="margin-top:8px;">
-          <summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-          <ul style="margin:8px 0 0 18px;">
-            <li>\(0{,}\overline{6}=\tfrac{6}{9}=\tfrac{2}{3}\)</li>
-            <li>\(2{,}375=\tfrac{19}{8}\)</li>
-            <li>\(0{,}1\overline{4}=\tfrac{13}{90}\)</li>
-            <li>\(\sqrt{5}\) irracional.</li>
-          </ul>
-        </details>
-      </div>
-
-      <!-- Cierre del bloque -->
-      <div style="margin-top:22px; background:#FFF6E6; border:1px solid #FFD580;
-                  border-radius:12px; padding:16px;">
-        <h2 id="para-seguir" style="color:#783f04;">🚴‍♂️ Para seguir</h2>
-        <p>
-          Pasá al <b>Bloque B — Propiedades de las operaciones</b> o practicá más clasificación con ejemplos propios.
-        </p>
-      </div>
-
     </section>
 
-    <!-- Navegador inferior -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace;">
-    <a href="/matematica-a-pedal/unidad0/index.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">⬅️ Introducción</a>
-    <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    <a href="/matematica-a-pedal/unidad0/bloque-b.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">➡️ Bloque B</a>
-  </div>
-</div>
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px; background:#FFFDF8;">
+      <h2 style="color:#783f04; margin:0 0 8px;">🎯 Para superar este chequeo</h2>
+      <p style="margin:0;">Al terminar deberías poder mirar un número y decidir cuál es el <b>conjunto más pequeño</b> al que pertenece: \(\mathbb N\), \(\mathbb Z\), \(\mathbb Q\), irracionales o \(\mathbb R\).</p>
+    </section>
 
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px;">1️⃣ Recordá solamente esto</h2>
+      <div style="display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));">
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb N\)</b><br>Naturales: \(0,1,2,3,\dots\)</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Z\)</b><br>Enteros: \(\dots,-2,-1,0,1,2,\dots\). No tienen una parte fraccionaria distinta de cero.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>\(\mathbb Q\)</b><br>Números que pueden escribirse como una fracción de enteros \(\tfrac ab\), con \(b\neq0\). Incluyen los decimales finitos o periódicos.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:12px;"><b>Irracionales</b><br>Reales que no son racionales, como \(\sqrt2\) o \(\pi\).</div>
+      </div>
+      <div style="margin-top:10px; background:#fff; border:1px dashed #FFD580; border-radius:10px; padding:10px; text-align:center;">
+        \(\mathbb N \subset \mathbb Z \subset \mathbb Q \subset \mathbb R\)
+      </div>
+    </section>
+
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 10px;">2️⃣ Ejemplo guiado</h2>
+      <p style="margin-top:0;">Clasifiquemos \(-2{,}5\) buscando el <b>conjunto más pequeño</b>.</p>
+      <div style="display:grid; gap:8px;">
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 1.</b> ¿Es natural? No: los naturales que usamos acá son \(0,1,2,3,\dots\), y \(-2{,}5\) no aparece entre ellos.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 2.</b> ¿Es entero? No. Los enteros son \(\dots,-3,-2,-1,0,1,2,3,\dots\): no tienen una parte decimal o fraccionaria distinta de cero. \(-2{,}5\) está entre \(-3\) y \(-2\), por eso no es entero.</div>
+        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 3.</b> ¿Es racional? Sí. Como es un decimal finito podemos escribirlo como fracción: \(-2{,}5=-\tfrac{25}{10}=-\tfrac52\). Al poder expresarse como cociente de dos enteros, pertenece a \(\mathbb Q\).</div>
+        <div style="background:#EFFFF2; border:1px solid #B8E8C4; border-radius:10px; padding:10px;"><b>Conclusión:</b> el conjunto más pequeño es \(\mathbb Q\). También pertenece a \(\mathbb R\), pero \(\mathbb Q\) es más específico.</div>
+      </div>
+    </section>
+
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">3️⃣ Ahora vos</h2>
+      <p style="margin-top:0;">Indicá el conjunto más pequeño al que pertenece cada número:</p>
+      <ol style="margin-left:20px;">
+        <li>\(7\)</li>
+        <li>\(-4\)</li>
+        <li>\(\tfrac{5}{6}\)</li>
+        <li>\(0{,}125\)</li>
+        <li>\(0{,}\overline{3}\)</li>
+        <li>\(\sqrt2\)</li>
+      </ol>
+      <details style="margin-top:10px;">
+        <summary style="cursor:pointer; color:#783f04;">💡 Necesito una pista</summary>
+        <p>Preguntate en este orden: ¿natural? → ¿entero? → ¿puedo escribirlo como fracción de enteros? Si no, pero es real, será irracional.</p>
+      </details>
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; color:#783f04;">✅ Ver respuestas razonadas</summary>
+        <ol style="margin:8px 0 0 20px;">
+          <li><b>\(7\in\mathbb N\).</b> Es un número natural. Como \(\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R\), también pertenece a esos conjuntos, pero \(\mathbb N\) es el más pequeño.</li>
+          <li><b>\(-4\in\mathbb Z\).</b> No es natural porque es negativo, pero sí es entero: no tiene parte fraccionaria. Además \(-4=-\tfrac41\), así que también es racional y real.</li>
+          <li><b>\(\tfrac56\in\mathbb Q\).</b> No es entero, porque \(5\) no es múltiplo de \(6\). Ya está escrito como cociente de dos enteros con denominador distinto de cero, por eso es racional.</li>
+          <li><b>\(0{,}125\in\mathbb Q\).</b> No es entero porque tiene parte decimal distinta de cero. Como es decimal finito, \(0{,}125=\tfrac{125}{1000}=\tfrac18\); por eso es racional.</li>
+          <li><b>\(0{,}\overline3\in\mathbb Q\).</b> Es un decimal periódico y los decimales periódicos pueden escribirse como fracción. En este caso, \(0{,}\overline3=\tfrac13\).</li>
+          <li><b>\(\sqrt2\) es irracional.</b> Es un número real, pero no puede escribirse como una fracción de enteros. Su demostración requiere un argumento un poco más avanzado; en este chequeo alcanza con reconocerlo como uno de los ejemplos clásicos de número irracional.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">⚠️ Error frecuente</h2>
+      <p style="margin:0;">Decir solamente que \(7\) es real no es falso, pero si te piden el conjunto <b>más pequeño</b>, la respuesta es \(\mathbb N\). Pensá siempre de lo más específico a lo más general.</p>
+    </section>
+
+    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+      <h2 style="color:#783f04; margin:0 0 8px;">4️⃣ ¿Cómo te fue?</h2>
+      <p style="margin-top:0;">Elegí la opción que mejor describa lo que pasó. No cambia tu progreso: solamente te orienta.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="/matematica-a-pedal/unidad0/bloque-b.html" style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:10px 14px; text-decoration:none;">✅ Me salió bien · seguir al Chequeo B</a>
+        <a href="/matematica-a-pedal/unidad1/bloque-a.html" style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:10px 14px; text-decoration:none;">🪜 Necesito repaso · explicación paso a paso</a>
+      </div>
+    </section>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin:20px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px; gap:8px;">
+      <a href="/matematica-a-pedal/unidad0/index.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">⬅️ Punto de partida</a>
+      <span style="font-size:14px; text-align:center;">Chequeo 1 de 5</span>
+      <a href="/matematica-a-pedal/unidad0/bloque-b.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">Chequeo B ➡️</a>
+    </div>
   </main>
 
-  <!-- Índice lateral automático -->
-  <script src="/matematica-a-pedal/assets/toc.js"></script>
-
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
 </body>
 </html>

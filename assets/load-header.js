@@ -3,15 +3,20 @@
   const placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
-  // Cargar el header sin caché
-  const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=4", { cache: "no-store" });
+  const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=5", { cache: "no-store" });
   placeholder.innerHTML = await headerRes.text();
 
-  // Mostrar el progreso global apenas el encabezado existe en el DOM.
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));
 
-  // Dropdown básico
+  // Identidad de ruta, nombres coherentes, guía pedagógica y navegador inferior.
+  import('/matematica-a-pedal/assets/route-ui.js?v=1')
+    .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
+
+  // Normaliza vocabulario antiguo visible: Unidad/Bloque/Capítulo -> Etapa/Paso.
+  import('/matematica-a-pedal/assets/route-vocabulary.js?v=1')
+    .catch(err => console.error('No se pudo normalizar el vocabulario del recorrido:', err));
+
   const dd = document.querySelector('.dropdown');
   const btn = dd?.querySelector('button');
   const menu = dd?.querySelector('.dropdown-menu');
@@ -24,37 +29,31 @@
     if(dd && !dd.contains(e.target)) { menu.style.display = 'none'; btn?.setAttribute('aria-expanded','false'); }
   });
 
-  // ---- Render dinámico del listado de unidades y sus bloques desde nav.json
   try {
     const navRes = await fetch("/matematica-a-pedal/assets/nav.json?v=1", { cache: "no-store" });
     const nav = await navRes.json();
     const container = document.getElementById("units-list");
     if (!container || !nav?.unidades?.length) return;
 
-    // Limpio y vuelco
     container.innerHTML = "";
     nav.unidades.forEach(u => {
-      // Tarjeta de cada unidad
       const card = document.createElement('div');
       card.style.cssText = "border:1px solid #FFD580; border-radius:10px; padding:8px; background:#FFF6E6;";
 
-      // Título de unidad (link)
       const h = document.createElement('a');
       h.href = u.href || "#";
       h.textContent = u.title || u.id;
       h.style.cssText = "display:block; color:#783f04; font-weight:700; margin-bottom:6px; text-decoration:none;";
       card.appendChild(h);
 
-      // Bloques internos (si existen)
       if (Array.isArray(u.bloques) && u.bloques.length) {
         const ul = document.createElement('ul');
         ul.style.cssText = "list-style:none; padding-left:0; margin:0; display:flex; flex-direction:column; gap:4px;";
         u.bloques.forEach(b => {
           const li = document.createElement('li');
           const a = document.createElement('a');
-          // Si el bloque trae hash, lo concatenamos; si no, usamos href directo
           a.href = b.href ? b.href : ((u.href || "#") + (b.hash || ""));
-          a.textContent = b.title || "Bloque";
+          a.textContent = b.title || "Paso";
           a.style.cssText = "color:#7f6000; text-decoration:none;";
           li.appendChild(a);
           ul.appendChild(li);
@@ -68,10 +67,10 @@
     console.error("No se pudo cargar nav.json", e);
   }
 })();
-  // Avisar que el header ya está cargado e inyectado en el DOM
-  window.dispatchEvent(new Event("map:header-ready"));
+window.dispatchEvent(new Event("map:header-ready"));
 
-// ---- Navegación inferior coherente en todas las unidades
+// ---- Compatibilidad de navegación inferior de páginas antiguas
+// route-ui.js vuelve a renderizar el navegador con nombres pedagógicos completos.
 (function () {
   const BASE = '/matematica-a-pedal/';
 
@@ -81,6 +80,64 @@
     unidad2: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'mini-evaluacion.html'],
     unidad3: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'mini-evaluacion.html'],
     unidad4: ['index.html', 'bloque-a.html', 'bloque-b.html', 'bloque-c.html', 'bloque-d.html', 'bloque-e.html', 'bloque-f.html', 'mini-evaluacion.html']
+  };
+
+  const routeLabels = {
+    unidad0: {
+      'index.html': 'Punto de partida',
+      'bloque-a.html': 'Chequeo A',
+      'bloque-b.html': 'Chequeo B',
+      'bloque-c.html': 'Chequeo C',
+      'bloque-d.html': 'Chequeo D',
+      'bloque-e.html': 'Chequeo E',
+      'mini-evaluacion.html': 'Chequeo final'
+    },
+    unidad1: {
+      'index.html': 'Inicio de etapa',
+      'bloque-a.html': 'Conjuntos numéricos',
+      'bloque-b.html': 'Propiedades',
+      'bloque-c.html': 'Suma y resta',
+      'bloque-d.html': 'Multiplicación y división',
+      'bloque-e.html': 'Fracciones equivalentes',
+      'bloque-f.html': 'Operaciones con fracciones',
+      'bloque-g.html': 'Decimales ↔ fracciones',
+      'mini-evaluacion.html': 'Cierre de etapa'
+    },
+    unidad2: {
+      'index.html': 'Inicio de etapa',
+      'bloque-a.html': 'Expresiones y polinomios',
+      'bloque-b.html': 'Operaciones algebraicas',
+      'bloque-c.html': 'Productos notables',
+      'bloque-d.html': 'Factorización',
+      'bloque-e.html': 'Fracciones algebraicas',
+      'mini-evaluacion.html': 'Cierre de etapa'
+    },
+    unidad3: {
+      'index.html': 'Inicio de etapa',
+      'bloque-a.html': 'Origen y aplicaciones',
+      'bloque-b.html': 'Medida de ángulos',
+      'bloque-c.html': 'Relaciones entre ángulos',
+      'bloque-d.html': 'Razones trigonométricas',
+      'bloque-e.html': 'Círculo unitario',
+      'mini-evaluacion.html': 'Cierre de etapa'
+    },
+    unidad4: {
+      'index.html': 'Inicio de etapa',
+      'bloque-a.html': 'Potenciación',
+      'bloque-b.html': 'Radicación',
+      'bloque-c.html': 'Radicales semejantes',
+      'bloque-d.html': 'Notación científica',
+      'bloque-e.html': 'Calculadora interactiva',
+      'bloque-f.html': 'Práctica y autoevaluación',
+      'mini-evaluacion.html': 'Cierre de etapa'
+    }
+  };
+
+  const nextStageLabels = {
+    0: '1️⃣ Números y operaciones ➡️',
+    1: '2️⃣ Álgebra en acción ➡️',
+    2: '3️⃣ Trigonometría ➡️',
+    3: '4️⃣ Potencias y raíces ➡️'
   };
 
   const legacyU4 = {
@@ -93,19 +150,16 @@
   };
 
   const u4ChecklistLabels = {
-    c1: 'Bloque A — Potenciación',
-    c2: 'Bloque B — Radicación',
-    c3: 'Bloque C — Radicales semejantes',
-    c4: 'Bloque D — Notación científica',
-    c5: 'Bloque E — Mini-app Calculadora',
-    c6: 'Bloque F — Ejercicios finales'
+    c1: 'Paso 1 — Potencias y exponentes',
+    c2: 'Paso 2 — Raíces y exponentes fraccionarios',
+    c3: 'Paso 3 — Simplificar radicales',
+    c4: 'Paso 4 — Notación científica',
+    c5: 'Paso 5 — Laboratorio interactivo',
+    c6: 'Paso 6 — Práctica final'
   };
 
-  function pageLabel(file) {
-    if (file === 'index.html') return 'Introducción';
-    if (file === 'mini-evaluacion.html') return 'Mini-evaluación';
-    const m = file.match(/^bloque-([a-z])\.html$/i);
-    return m ? `Bloque ${m[1].toUpperCase()}` : file;
+  function pageLabel(unitKey, file) {
+    return routeLabels[unitKey]?.[file] || file;
   }
 
   function unitNumber(unitKey) {
@@ -137,7 +191,7 @@
     const candidates = Array.from(document.querySelectorAll('div, section')).filter(el => {
       const directAnchors = Array.from(el.children).filter(child => child.tagName === 'A');
       if (!directAnchors.length) return false;
-      return directAnchors.some(a => /Introducción|Bloque|Mini[\s-]?evaluación|Mini Evaluación|Volver al inicio|Capítulo|Unidad\s+\d/i.test(a.textContent || ''));
+      return directAnchors.some(a => /Introducción|Bloque|Mini[\s-]?evaluación|Volver al inicio|Capítulo|Unidad\s+\d|Punto de partida|Chequeo|Etapa/i.test(a.textContent || ''));
     });
     return candidates[candidates.length - 1] || null;
   }
@@ -159,7 +213,7 @@
       const prevFile = sequence[index - 1];
       previous = {
         href: unitHref(unitKey, prevFile),
-        text: `⬅️ ${pageLabel(prevFile)}`
+        text: `⬅️ ${pageLabel(unitKey, prevFile)}`
       };
     }
 
@@ -167,14 +221,14 @@
       const nextFile = sequence[index + 1];
       next = {
         href: unitHref(unitKey, nextFile),
-        text: `${pageLabel(nextFile)} ➡️`
+        text: `${pageLabel(unitKey, nextFile)} ➡️`
       };
     } else {
       const n = unitNumber(unitKey);
       if (n < 4) {
         next = {
           href: `${BASE}unidad${n + 1}/index.html`,
-          text: `Unidad ${n + 1} ➡️`
+          text: nextStageLabels[n] || `Etapa ${n + 1} ➡️`
         };
       } else {
         next = {
@@ -215,7 +269,7 @@
     }
 
     const center = document.createElement('span');
-    center.textContent = 'Continuá pedaleando';
+    center.textContent = unitKey === 'unidad0' ? 'Seguí calentando' : 'Continuá pedaleando';
     center.style.cssText = 'color:#7f6000; font-size:14px; text-align:center; white-space:nowrap;';
     nav.appendChild(center);
 
@@ -243,9 +297,7 @@
     document.querySelectorAll('#u4-home .u4-done[data-key]').forEach(input => {
       const text = input.closest('label')?.querySelector('span');
       const replacement = u4ChecklistLabels[input.dataset.key];
-      if (text && replacement && /^Cap\.\s*\d/i.test(text.textContent.trim())) {
-        text.textContent = replacement;
-      }
+      if (text && replacement) text.textContent = replacement;
     });
   }
 
@@ -261,8 +313,6 @@
     setTimeout(runNavigationNormalization, 0);
   }
 
-  // La portada de U4 actualiza dinámicamente “Continuar donde quedé”.
-  // Corregimos cualquier URL antigua capituloN.html después de esos cambios.
   document.addEventListener('change', e => {
     if (e.target?.matches?.('.u4-done')) setTimeout(fixLegacyU4Links, 0);
   }, true);
@@ -270,8 +320,6 @@
 })();
 
 // ---- Registro automático de páginas completadas
-// Se carga desde el encabezado para que el mismo criterio funcione en todas las unidades,
-// incluso en páginas antiguas que no incluyen explícitamente los módulos de Firebase.
 if (/\/matematica-a-pedal\/unidad[0-4](?:\/|$)/.test(window.location.pathname)) {
   import('/matematica-a-pedal/assets/completion-tracker.js?v=1')
     .catch(err => console.error('No se pudo cargar el seguimiento automático de progreso:', err));
