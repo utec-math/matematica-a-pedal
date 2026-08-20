@@ -3,7 +3,16 @@
   const placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
-  const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=5", { cache: "no-store" });
+  // Unifica fondo, navegación y utilidades incluso en páginas antiguas que no cargan style.css.
+  if (!document.getElementById('map-site-shell')) {
+    const shell = document.createElement('link');
+    shell.id = 'map-site-shell';
+    shell.rel = 'stylesheet';
+    shell.href = '/matematica-a-pedal/assets/site-shell.css?v=1';
+    document.head.appendChild(shell);
+  }
+
+  const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=6", { cache: "no-store" });
   placeholder.innerHTML = await headerRes.text();
 
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
