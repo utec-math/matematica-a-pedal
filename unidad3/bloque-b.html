@@ -1,6 +1,18 @@
 <!-- Encabezado global -->
 <div id="header-placeholder"></div>
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)'], ['$', '$']],
+    displayMath: [['\\[','\\]'], ['$$','$$']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
+
 <!-- CAPÍTULO 2 — MEDIDA DE ÁNGULOS -->
 <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
 
@@ -34,9 +46,9 @@
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">3️⃣ Sistema circular (radianes)</h2>
     <p>Un radián es el ángulo que abarca un arco de longitud igual al radio del círculo.  
-    Una vuelta completa = 2π rad ≈ 6,283 rad.</p>
+    Una vuelta completa = \(2\pi\) rad ≈ 6,283 rad.</p>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Equivalencia: 180° = π rad → 1 rad ≈ 57,3°.
+      Equivalencia: \(180^\circ=\pi\) rad → 1 rad ≈ 57,3°.
     </div>
   </div>
 
@@ -44,11 +56,11 @@
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">4️⃣ Conversión entre grados y radianes</h2>
     <ul style="margin:0 0 0 18px;">
-      <li>Para pasar de grados a radianes: multiplicá por π/180.</li>
-      <li>Para pasar de radianes a grados: multiplicá por 180/π.</li>
+      <li>Para pasar de grados a radianes: multiplicá por \(\frac{\pi}{180}\).</li>
+      <li>Para pasar de radianes a grados: multiplicá por \(\frac{180}{\pi}\).</li>
     </ul>
     <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: 60° × π/180 = π/3 rad · 2 rad × 180/π ≈ 114,6°.
+      Ejemplo: \(60^\circ\times\frac{\pi}{180}=\frac{\pi}{3}\,\text{rad}\) · \(2\,\text{rad}\times\frac{180}{\pi}\approx114{,}6^\circ\).
     </div>
   </div>
 
@@ -56,15 +68,15 @@
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">Mini-actividad · Conversión</h2>
     <ol style="margin:0 0 0 18px;">
-      <li>Convierte 120° a radianes.</li>
-      <li>Convierte 3π/4 rad a grados.</li>
+      <li>Convertí 120° a radianes.</li>
+      <li>Convertí \(\frac{3\pi}{4}\) rad a grados.</li>
       <li>Expresá 0,5 rad en grados.</li>
     </ol>
     <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
-      <ol style="margin:8px 0 0 18px;">
-        <li>120° × π/180 = 2π/3 rad.</li>
-        <li>(3π/4) × 180/π = 135°.</li>
-        <li>0,5 × 180/π ≈ 28,65°.</li>
+      <ol style="margin:8px 0 0 18px; line-height:1.7;">
+        <li>\(120^\circ\times\frac{\pi}{180}=\frac{2\pi}{3}\,\text{rad}\).</li>
+        <li>\(\frac{3\pi}{4}\times\frac{180}{\pi}=135^\circ\).</li>
+        <li>\(0{,}5\times\frac{180}{\pi}\approx28{,}65^\circ\).</li>
       </ol>
     </details>
   </div>
@@ -90,5 +102,38 @@
 </div>
 </section>
 
+<!-- Fuerza la notación matemática correcta en la guía dinámica de este paso -->
+<script>
+(function () {
+  function fixGuide() {
+    const box = document.querySelector('.map-learning-guide');
+    if (!box) return false;
+
+    const steps = box.querySelectorAll('ol li');
+    if (steps[1]) {
+      steps[1].innerHTML = 'Multiplicamos por \\(\\frac{\\pi}{180}\\): \\(120^\\circ\\cdot\\frac{\\pi}{180}\\).';
+    }
+    if (steps[2]) {
+      steps[2].innerHTML = 'Simplificamos: \\(\\frac{2\\pi}{3}\\,\\text{rad}\\).';
+    }
+
+    const answer = box.querySelector('details p');
+    if (answer) {
+      answer.innerHTML = '\\(45^\\circ\\cdot\\frac{\\pi}{180}=\\frac{\\pi}{4}\\,\\text{rad}\\).';
+    }
+
+    window.MathJax?.typesetPromise?.([box]);
+    return true;
+  }
+
+  if (!fixGuide()) {
+    const observer = new MutationObserver(() => {
+      if (fixGuide()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    setTimeout(() => observer.disconnect(), 10000);
+  }
+})();
+</script>
 
 <!-- FIN CAPÍTULO 2 -->
