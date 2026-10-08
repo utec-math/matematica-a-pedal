@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "b5b441288776f8c20a4380d09bda0f02ed994641",
+  "sourceCommit": "44109d42779b28f3b0a9b5303d88a52ba806ecf0",
   "units": [
     {
       "id": 1,
@@ -957,7 +957,7 @@
             ],
             [
               "Sustituimos el valor notable y simplificamos.",
-              "L=\\frac{4{,}5}{\\sqrt3/2}=\\frac9{\\sqrt3}=3\\sqrt3\\ \\mathrm m",
+              "L=\\frac{4{,}5}{\\frac{\\sqrt3}{2}}=\\frac9{\\sqrt3}=3\\sqrt3\\ \\mathrm m",
               "P8"
             ],
             [
@@ -1050,7 +1050,7 @@
             ],
             [
               "La tangente es seno dividido por coseno; este no es cero.",
-              "\\tan\\theta=\\frac{-4/5}{3/5}=-\\frac45\\cdot\\frac53=-\\frac43",
+              "\\tan\\theta=\\frac{-\\frac45}{\\frac35}=-\\frac45\\cdot\\frac53=-\\frac43",
               "P7"
             ],
             [
