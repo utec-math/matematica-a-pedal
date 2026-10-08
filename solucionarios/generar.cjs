@@ -27,6 +27,7 @@ if(cmd==="{"||cmd==="}")return {type:"char",char:cmd,font:"F3"};
 throw Error("Comando matematico no soportado: "+cmd);
 }
 if(ch===" ")return {type:"space",em:.15};
+if(ch==="-")return {type:"sym",code:45};
 return {type:"char",char:ch,font:/[A-Za-z]/.test(ch)?"F4":"F3"};}
 function seq(end){let nodes=[];while(i<src.length&&(!end||src[i]!==end)){if(src[i]==="^"||src[i]==="_"){let isup=src[i++]==="^",base=nodes.pop()||{type:"space",em:0},script=group();if(base.type==="scripts")base[isup?"sup":"sub"]=script;else base={type:"scripts",a:base,[isup?"sup":"sub"]:script};nodes.push(base);}else nodes.push(atom());}if(end){if(src[i]!==end)throw Error("Grupo sin cierre: "+src);i++;}return {type:"seq",nodes};}return seq();}
 function layout(node,s,forced){let n={...node};if(n.type==="space")return {...n,w:n.em*s,up:0,down:0};
@@ -49,7 +50,34 @@ function wrap(t,size,max){const words=t.split(/\s+/);let lines=[],line="";for(le
 const hex=bytes=>bytes.map(b=>b.toString(16).padStart(2,"0")).join("");
 function buildPDF(unit,png){let pages=[],ops="",y=0,overflows=[],formulaStats=[];
 function page(label){if(ops)pages.push(ops);ops="";ops+=textOp("MATEMÁTICA A PEDAL",LEFT,792,10,"F2","0.48 0.25 0.06");ops+=textOp("Etapa "+unit.id+" · "+unit.title,LEFT,769,17,"F2");ops+=`q 89 0 0 ${f(89*png.h/png.w)} 462 760 cm /Logo Do Q\n`;ops+=`0.91 0.73 0.46 RG 0.7 w 48 749 m 547 749 l S\n`;ops+=textOp(label,LEFT,730,9,"F1","0.38 0.42 0.47");y=704;}
-function para(t,size=11,font="F1",indent=0,color){const lines=wrap(t,size,RIGHT-LEFT-indent);for(let line of lines){if(y<78){overflows.push({page:pages.length+1,reason:"texto",text:line});throw Error("Desborde de pagina: "+unit.id+" "+line);}ops+=textOp(line,LEFT+indent,y,size,font,color);y-=size*1.48;}y-=5;}
+function para(t,size=11,font="F1",indent=0,color){
+const max=RIGHT-LEFT-indent,space=width(" ",size,font),items=[];let pendingSpace=false;
+for(const part of t.split(/(\$[^$]+\$)/g)){
+ if(!part)continue;
+ if(part[0]==="$"){
+ const formula=part.slice(1,-1),box=layout(parseMath(formula),size+1.5);
+ if(box.w>max)throw Error("Formula inline demasiado ancha: "+formula);
+ items.push({box,formula,w:box.w,spaceBefore:pendingSpace});pendingSpace=false;
+ formulaStats.push({text:formula,size:size+1.5,w:box.w,inline:true});
+ }else for(const word of part.match(/\s+|\S+/g)||[]){
+ if(/^\s+$/.test(word)){pendingSpace=true;continue;}
+ items.push({text:word,w:width(word,size,font),spaceBefore:pendingSpace});pendingSpace=false;
+ }
+}
+let line=[],used=0;
+function flush(){
+ if(!line.length)return;
+ const up=Math.max(size*.76,...line.map(a=>a.box?.up||0)),down=Math.max(size*.18,...line.map(a=>a.box?.down||0));
+ y-=Math.max(0,up-size*.76);
+ if(y-down<78)throw Error("Desborde de texto enriquecido: "+unit.id+" "+t);
+ let x=LEFT+indent;
+ for(const item of line){if(item.spaceBefore&&x>LEFT+indent)x+=space;ops+=item.box?drawMath(item.box,x,y):textOp(item.text,x,y,size,font,color);x+=item.w;}
+ y-=Math.max(size*1.48,down+size*.76+6);
+ line=[];used=0;
+}
+for(const item of items){const gap=line.length&&item.spaceBefore?space:0;if(used+gap+item.w>max)flush();line.push(item);used+=(line.length>1&&item.spaceBefore?space:0)+item.w;}
+flush();y-=5;
+}
 function math(t,size=15,indent=18){let ast=parseMath(t),n=layout(ast,size);if(n.w>RIGHT-LEFT-indent){size*=((RIGHT-LEFT-indent)/n.w);n=layout(ast,size);}if(size<9)throw Error("Formula demasiado pequena: "+t);formulaStats.push({text:t,size,w:n.w});y-=n.up;ops+=drawMath(n,LEFT+indent,y);y-=n.down+12;if(y<78)throw Error("Desborde formula: "+unit.id+" "+t);}
 for(let eidx=0;eidx<unit.ex.length;eidx++){const ex=unit.ex[eidx];page("PARADA DE CONTROL · SOLUCIONES PASO A PASO");para(String(eidx+1).padStart(2,"0")+"  "+ex.title,20,"F2");para("ENUNCIADO",9,"F2",0,"0.48 0.25 0.06");for(const t of ex.prompt)para(t,11);for(const m of ex.pm||[])math(m,14);y-=7;para("RESOLUCIÓN",9,"F2",0,"0.48 0.25 0.06");for(let k=0;k<ex.steps.length;k++){const [t,m,r]=ex.steps[k];para((k+1)+". "+t,11);if(m)math(m);if(r){para("Propiedades: "+r+".",8,"F1",18,"0.38 0.42 0.47");}y-=4;}
 y-=6;para("COMPROBACIÓN / IDEA CLAVE",9,"F2",0,"0.48 0.25 0.06");para(ex.check,10);if(eidx===0){para("Las propiedades P1, P2, ... se resumen al final del documento.",9,"F1",0,"0.38 0.42 0.47");}}
