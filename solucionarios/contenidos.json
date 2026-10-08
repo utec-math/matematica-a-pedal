@@ -1,0 +1,1394 @@
+{
+  "sourceCommit": "44109d42779b28f3b0a9b5303d88a52ba806ecf0",
+  "units": [
+    {
+      "id": 1,
+      "title": "Números y operaciones",
+      "properties": [
+        [
+          "P1",
+          "Conjuntos numéricos",
+          "Los naturales son enteros; los enteros son racionales; los racionales y los irracionales son reales. Un decimal finito es racional. La raíz cuadrada de un entero positivo que no es cuadrado perfecto es irracional.",
+          "N \\subset Z \\subset Q \\subset R"
+        ],
+        [
+          "P2",
+          "Propiedades de las operaciones",
+          "Conmutativa: cambia el orden. Asociativa: cambia la agrupación, conservando el orden. Distributiva: multiplica cada término de una suma o resta.",
+          "a+b=b+a;\\quad (ab)c=a(bc);\\quad k(m+n)=km+kn"
+        ],
+        [
+          "P3",
+          "Suma, resta y opuesto",
+          "Restar un número equivale a sumar su opuesto. Con signos diferentes, se restan los valores absolutos y se conserva el signo del de mayor valor absoluto.",
+          "a-b=a+(-b)"
+        ],
+        [
+          "P4",
+          "Signos en productos y cocientes",
+          "Signos iguales dan resultado positivo; signos diferentes, negativo. En una división, el divisor debe ser distinto de cero.",
+          "(-a)(-b)=ab;\\quad a\\div(-b)=-(a\\div b)"
+        ],
+        [
+          "P5",
+          "Fracciones equivalentes",
+          "Multiplicar o dividir numerador y denominador por un mismo número no nulo conserva el valor. Para simplificar por división entera, se usa un divisor común.",
+          "\\frac{a}{b}=\\frac{ka}{kb},\\quad b\\ne0,\\ k\\ne0"
+        ],
+        [
+          "P6",
+          "Producto y división de fracciones",
+          "Se multiplican numeradores y denominadores. Dividir por una fracción no nula equivale a multiplicar por su recíproco. Las cancelaciones corresponden a factores.",
+          "\\frac{a}{b}\\cdot\\frac{c}{d}=\\frac{ac}{bd};\\quad \\frac{a}{b}\\div\\frac{c}{d}=\\frac{a}{b}\\cdot\\frac{d}{c}"
+        ],
+        [
+          "P7",
+          "Suma y resta de fracciones",
+          "Se llevan las fracciones a un denominador común, por ejemplo el mínimo común múltiplo. Luego se operan los numeradores y se conserva el denominador.",
+          "\\frac{a}{m}\\pm\\frac{b}{m}=\\frac{a\\pm b}{m}"
+        ],
+        [
+          "P8",
+          "Decimales finitos y periódicos",
+          "Un decimal finito se escribe sobre una potencia de 10. Para uno periódico, desplazar el período permite eliminarlo por resta. Una fracción irreducible tiene decimal finito si su denominador solo tiene factores primos 2 y 5.",
+          "0{,}6=\\frac{6}{10};\\quad 0{,}\\overline{72}=\\frac{72}{99}"
+        ]
+      ],
+      "ex": [
+        {
+          "title": "Clasificar números",
+          "prompt": [
+            "Indicá el conjunto más pequeño al que pertenece cada número.",
+            "a) 7   b) -4   c) 5/6   d) raíz cuadrada de 3   e) 0,125"
+          ],
+          "steps": [
+            [
+              "a) 7 es un entero positivo. Ya pertenece a los naturales, el menor conjunto de la lista que lo contiene.",
+              "7\\in N",
+              "P1"
+            ],
+            [
+              "b) -4 es un entero negativo. No es natural; el conjunto más pequeño es el de los enteros.",
+              "-4\\in Z",
+              "P1"
+            ],
+            [
+              "c) 5/6 es un cociente de enteros con denominador no nulo. No es entero.",
+              "\\frac56\\in Q",
+              "P1"
+            ],
+            [
+              "d) 3 no es un cuadrado perfecto. Su raíz cuadrada es irracional.",
+              "\\sqrt3\\in I",
+              "P1"
+            ],
+            [
+              "e) El decimal finito 0,125 puede escribirse como fracción.",
+              "0{,}125=\\frac{125}{1000}=\\frac18\\in Q",
+              "P1, P5"
+            ]
+          ],
+          "check": "La consigna pide el conjunto más pequeño, aunque cada número también pertenezca a conjuntos más amplios."
+        },
+        {
+          "title": "Reconocer propiedades",
+          "prompt": [
+            "Identificá la propiedad usada en cada igualdad."
+          ],
+          "pm": [
+            "8+11=11+8",
+            "(2\\cdot5)\\cdot3=2\\cdot(5\\cdot3)",
+            "k(m+n)=km+kn"
+          ],
+          "steps": [
+            [
+              "a) Los sumandos intercambian su orden; la operación sigue siendo una suma. Es la propiedad conmutativa de la suma.",
+              "8+11=19=11+8",
+              "P2"
+            ],
+            [
+              "b) Se conserva el orden 2, 5, 3 y solo cambia la agrupación. Es la propiedad asociativa del producto.",
+              "(2\\cdot5)\\cdot3=10\\cdot3=30",
+              "P2"
+            ],
+            [
+              "La otra agrupación produce el mismo resultado.",
+              "2\\cdot(5\\cdot3)=2\\cdot15=30",
+              "P2"
+            ],
+            [
+              "c) k multiplica cada sumando del paréntesis. Es la propiedad distributiva.",
+              "k(m+n)=km+kn",
+              "P2"
+            ]
+          ],
+          "check": "Cambiar el orden y cambiar la agrupación son operaciones diferentes."
+        },
+        {
+          "title": "Calcular con signos",
+          "prompt": [
+            "Calculá los tres apartados."
+          ],
+          "pm": [
+            "a)\\ 12+(-19)\\qquad b)\\ -7-(-5)\\qquad c)\\ -3+9-12"
+          ],
+          "steps": [
+            [
+              "a) Los sumandos tienen signos diferentes. Restamos 19 - 12 y conservamos el signo negativo, porque 19 tiene mayor valor absoluto.",
+              "12+(-19)=-(19-12)=-7",
+              "P3"
+            ],
+            [
+              "b) El opuesto de -5 es +5. Restar -5 equivale a sumar 5.",
+              "-7-(-5)=-7+5=-(7-5)=-2",
+              "P3"
+            ],
+            [
+              "c) Primero calculamos -3 + 9; luego restamos 12.",
+              "-3+9-12=6-12=-6",
+              "P3"
+            ]
+          ],
+          "check": "Los resultados son -7, -2 y -6. En el apartado b), el doble signo negativo se transforma en una suma."
+        },
+        {
+          "title": "Eliminar paréntesis",
+          "prompt": [
+            "Simplificá la expresión."
+          ],
+          "pm": [
+            "-(x-4)+(2x-1)"
+          ],
+          "steps": [
+            [
+              "El signo menos delante del primer paréntesis equivale a multiplicar por -1. Se distribuye a los dos términos.",
+              "-(x-4)=(-1)x+(-1)(-4)=-x+4",
+              "P2, P4"
+            ],
+            [
+              "El segundo paréntesis está precedido por un signo más; sus signos se conservan.",
+              "-(x-4)+(2x-1)=-x+4+2x-1",
+              "P2"
+            ],
+            [
+              "Agrupamos términos en x y términos constantes.",
+              "(-x+2x)+(4-1)=x+3",
+              "P2, P3"
+            ]
+          ],
+          "check": "Si x = 2, la expresión original vale 5 y x + 3 también vale 5. Es una comprobación numérica, además de la derivación algebraica."
+        },
+        {
+          "title": "Multiplicar y dividir",
+          "prompt": [
+            "Calculá los tres apartados."
+          ],
+          "pm": [
+            "a)\\ (-6)(-7)\\qquad b)\\ 24\\div(-3)\\qquad c)\\ 9\\div\\left(-\\frac13\\right)"
+          ],
+          "steps": [
+            [
+              "a) El producto de dos negativos es positivo. Multiplicamos sus valores absolutos.",
+              "(-6)(-7)=6\\cdot7=42",
+              "P4"
+            ],
+            [
+              "b) Los signos son diferentes; el cociente es negativo.",
+              "24\\div(-3)=-(24\\div3)=-8",
+              "P4"
+            ],
+            [
+              "c) El recíproco de -1/3 es -3. Dividir por -1/3 equivale a multiplicar por -3.",
+              "9\\div\\left(-\\frac13\\right)=9\\cdot(-3)=-27",
+              "P6, P4"
+            ],
+            [
+              "Comprobamos el cociente multiplicándolo por el divisor.",
+              "(-27)\\cdot\\left(-\\frac13\\right)=9",
+              "P6, P4"
+            ]
+          ],
+          "check": "El resultado del apartado c) es -27. Dividir por un tercio triplica el valor absoluto; no lo divide entre tres."
+        },
+        {
+          "title": "Multiplicar fracciones",
+          "prompt": [
+            "Multiplicá y simplificá."
+          ],
+          "pm": [
+            "\\frac{14}{15}\\times\\frac97"
+          ],
+          "steps": [
+            [
+              "Multiplicamos numeradores entre sí y denominadores entre sí.",
+              "\\frac{14}{15}\\times\\frac97=\\frac{14\\cdot9}{15\\cdot7}=\\frac{126}{105}",
+              "P6"
+            ],
+            [
+              "El máximo común divisor de 126 y 105 es 21. Dividimos ambos por 21.",
+              "\\frac{126}{105}=\\frac{126\\div21}{105\\div21}=\\frac65",
+              "P5"
+            ],
+            [
+              "También se puede simplificar antes de multiplicar: 14 y 7 por 7; 9 y 15 por 3.",
+              "\\frac{2\\cdot3}{5\\cdot1}=\\frac65",
+              "P5, P6"
+            ]
+          ],
+          "check": "6/5 es irreducible y vale 1,2. Las cancelaciones se hacen entre factores del numerador y del denominador."
+        },
+        {
+          "title": "Dividir fracciones",
+          "prompt": [
+            "Dividí y simplificá."
+          ],
+          "pm": [
+            "\\frac5{12}\\div\\frac{25}{18}"
+          ],
+          "steps": [
+            [
+              "La fracción divisora no es cero. Invertimos únicamente esa fracción y cambiamos la división por un producto.",
+              "\\frac5{12}\\div\\frac{25}{18}=\\frac5{12}\\cdot\\frac{18}{25}",
+              "P6"
+            ],
+            [
+              "Multiplicamos numeradores y denominadores.",
+              "\\frac{5\\cdot18}{12\\cdot25}=\\frac{90}{300}",
+              "P6"
+            ],
+            [
+              "Simplificamos dividiendo numerador y denominador por 30.",
+              "\\frac{90}{300}=\\frac3{10}",
+              "P5"
+            ],
+            [
+              "Comprobamos multiplicando el cociente por la fracción divisora.",
+              "\\frac3{10}\\cdot\\frac{25}{18}=\\frac{75}{180}=\\frac5{12}",
+              "P6, P5"
+            ]
+          ],
+          "check": "El resultado es 3/10. Invertir la primera fracción cambiaría el problema."
+        },
+        {
+          "title": "Sumar y restar fracciones",
+          "prompt": [
+            "Calculá las dos operaciones."
+          ],
+          "pm": [
+            "a)\\ \\frac7{10}+\\frac{11}{15}\\qquad b)\\ \\frac5{12}-\\frac18"
+          ],
+          "steps": [
+            [
+              "a) Buscamos un denominador común: el mínimo común múltiplo de 10 y 15 es 30.",
+              "\\frac7{10}=\\frac{21}{30};\\qquad \\frac{11}{15}=\\frac{22}{30}",
+              "P5, P7"
+            ],
+            [
+              "Sumamos los numeradores y conservamos el denominador.",
+              "\\frac{21}{30}+\\frac{22}{30}=\\frac{43}{30}",
+              "P7"
+            ],
+            [
+              "b) El mínimo común múltiplo de 12 y 8 es 24.",
+              "\\frac5{12}=\\frac{10}{24};\\qquad \\frac18=\\frac3{24}",
+              "P5, P7"
+            ],
+            [
+              "Restamos los numeradores.",
+              "\\frac{10}{24}-\\frac3{24}=\\frac7{24}",
+              "P7"
+            ]
+          ],
+          "check": "Ambos resultados son irreducibles. En una suma o resta no se suman ni restan los denominadores."
+        },
+        {
+          "title": "Convertir decimales a fracciones",
+          "prompt": [
+            "Pasá a fracción: a) 0,6; b) 0,727272...",
+            "En b), el enunciado de la web muestra 0,72 seguido del período 72: representa el mismo decimal periódico 0,727272..."
+          ],
+          "steps": [
+            [
+              "a) Hay una cifra decimal. Escribimos seis décimos y simplificamos por 2.",
+              "0{,}6=\\frac6{10}=\\frac35",
+              "P8, P5"
+            ],
+            [
+              "b) Llamamos u al número periódico. Al multiplicar por 100, el período se desplaza dos lugares.",
+              "u=0{,}\\overline{72};\\qquad 100u=72{,}\\overline{72}",
+              "P8"
+            ],
+            [
+              "Restamos las dos igualdades: las partes decimales repetidas se cancelan.",
+              "100u-u=72;\\qquad 99u=72",
+              "P8, P3"
+            ],
+            [
+              "Dividimos por 99 y simplificamos por 9.",
+              "u=\\frac{72}{99}=\\frac8{11}",
+              "P5, P8"
+            ]
+          ],
+          "check": "0,72 exacto sería 18/25. El período cambia el número y, por tanto, su fracción."
+        },
+        {
+          "title": "Convertir fracciones a decimales",
+          "prompt": [
+            "Indicá si el decimal es finito o periódico y calculá."
+          ],
+          "pm": [
+            "a)\\ \\frac7{25}\\qquad b)\\ \\frac9{11}"
+          ],
+          "steps": [
+            [
+              "a) Transformamos el denominador 25 en 100 multiplicando ambos términos por 4.",
+              "\\frac7{25}=\\frac{28}{100}=0{,}28",
+              "P5, P8"
+            ],
+            [
+              "El decimal es finito: el denominador irreducible es 25 = 5².",
+              "25=5^2",
+              "P8"
+            ],
+            [
+              "b) En la división 9 entre 11, 90 entre 11 da 8 y deja resto 2. Luego 20 entre 11 da 1 y deja resto 9.",
+              "90=11\\cdot8+2;\\qquad 20=11\\cdot1+9",
+              "P8"
+            ],
+            [
+              "El resto 9 se repite; por eso vuelven a aparecer las cifras 81. El decimal es periódico.",
+              "\\frac9{11}=0{,}818181\\ldots=0{,}\\overline{81}",
+              "P8"
+            ]
+          ],
+          "check": "La fracción 9/11 es irreducible y su denominador incluye el primo 11; su decimal no puede ser finito."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Álgebra en acción",
+      "properties": [
+        [
+          "P1",
+          "Términos y grado",
+          "El grado de un monomio es la suma de los exponentes de sus variables. El grado total de un polinomio es el máximo de los grados de sus términos no nulos.",
+          "\\deg(x^ay^b)=a+b"
+        ],
+        [
+          "P2",
+          "Términos semejantes",
+          "Se suman o restan los coeficientes de términos con la misma parte literal.",
+          "ax^n+bx^n=(a+b)x^n"
+        ],
+        [
+          "P3",
+          "Distributiva",
+          "Multiplicar una suma implica multiplicar cada término; un producto de polinomios se desarrolla distribuyendo sucesivamente.",
+          "a(b+c)=ab+ac"
+        ],
+        [
+          "P4",
+          "Cuadrado de un binomio",
+          "El cuadrado de una suma incluye el doble producto. No equivale a sumar solo los cuadrados.",
+          "(a+b)^2=a^2+2ab+b^2"
+        ],
+        [
+          "P5",
+          "Diferencia de cuadrados",
+          "Una diferencia de dos cuadrados se factoriza como suma por diferencia.",
+          "a^2-b^2=(a+b)(a-b)"
+        ],
+        [
+          "P6",
+          "Suma de cubos",
+          "La suma de cubos se factoriza mediante un factor lineal y otro cuadrático.",
+          "a^3+b^3=(a+b)(a^2-ab+b^2)"
+        ],
+        [
+          "P7",
+          "Factor común y cancelación",
+          "Se extrae un factor que multiplica a todos los términos. Cancelar factores exige que sean no nulos. Las restricciones del denominador original se mantienen.",
+          "\\frac{AB}{A}=B,\\quad A\\ne0"
+        ],
+        [
+          "P8",
+          "Fracciones algebraicas y dominio",
+          "Para sumar fracciones se construye un denominador común. En expresiones reales, se excluyen todos los ceros del denominador original.",
+          "\\frac{A}{B}+\\frac{C}{D}=\\frac{AD+CB}{BD},\\quad B\\ne0,\\ D\\ne0"
+        ]
+      ],
+      "ex": [
+        {
+          "title": "Clasificar y hallar el grado",
+          "prompt": [
+            "Clasificá y hallá el grado del polinomio."
+          ],
+          "pm": [
+            "3x^2y^3-4xy"
+          ],
+          "steps": [
+            [
+              "La expresión contiene dos términos separados por una resta: 3x²y³ y -4xy. Es un binomio en dos variables.",
+              null,
+              "P1"
+            ],
+            [
+              "Sumamos los exponentes del primer término.",
+              "\\deg(3x^2y^3)=2+3=5",
+              "P1"
+            ],
+            [
+              "En el segundo término, los exponentes de x e y son 1.",
+              "\\deg(-4xy)=1+1=2",
+              "P1"
+            ],
+            [
+              "El grado total del polinomio es el máximo de 5 y 2: vale 5.",
+              null,
+              "P1"
+            ]
+          ],
+          "check": "Clasificación: binomio. Grado total: 5; grado respecto de x: 2; respecto de y: 3."
+        },
+        {
+          "title": "Sumar polinomios",
+          "prompt": [
+            "Simplificá."
+          ],
+          "pm": [
+            "(5x^2-3x+2)+(2x^2-x-4)"
+          ],
+          "steps": [
+            [
+              "Los paréntesis están precedidos por signos positivos. Se conservan los signos de todos los términos.",
+              "5x^2-3x+2+2x^2-x-4",
+              "P3"
+            ],
+            [
+              "Agrupamos términos semejantes.",
+              "(5+2)x^2+(-3-1)x+(2-4)",
+              "P2"
+            ],
+            [
+              "Operamos los coeficientes y las constantes.",
+              "7x^2-4x-2",
+              "P2"
+            ]
+          ],
+          "check": "Solo se reúnen términos con la misma parte literal. No se suma x² con x."
+        },
+        {
+          "title": "Desarrollar un cuadrado",
+          "prompt": [
+            "Expandí."
+          ],
+          "pm": [
+            "(x+3)^2"
+          ],
+          "steps": [
+            [
+              "Usamos el cuadrado de una suma: cuadrado del primero, doble producto y cuadrado del segundo.",
+              "(x+3)^2=x^2+2\\cdot x\\cdot3+3^2",
+              "P4"
+            ],
+            [
+              "Calculamos los productos y la potencia numérica.",
+              "(x+3)^2=x^2+6x+9",
+              "P4"
+            ],
+            [
+              "También se obtiene multiplicando los dos binomios por distributiva.",
+              "(x+3)(x+3)=x^2+3x+3x+9",
+              "P3, P2"
+            ]
+          ],
+          "check": "El término 6x no se puede omitir. Si x = 1, ambos lados valen 16."
+        },
+        {
+          "title": "Factorizar una diferencia",
+          "prompt": [
+            "Factorizá."
+          ],
+          "pm": [
+            "9x^2-16"
+          ],
+          "steps": [
+            [
+              "Reconocemos dos cuadrados: 9x² es (3x)² y 16 es 4².",
+              "9x^2-16=(3x)^2-4^2",
+              "P5"
+            ],
+            [
+              "Aplicamos diferencia de cuadrados.",
+              "9x^2-16=(3x+4)(3x-4)",
+              "P5"
+            ],
+            [
+              "Verificamos desarrollando: los términos cruzados se cancelan.",
+              "(3x+4)(3x-4)=9x^2-12x+12x-16=9x^2-16",
+              "P3, P2"
+            ]
+          ],
+          "check": "La factorización se aplica a una diferencia de cuadrados. Una suma de cuadrados no tiene esta misma regla."
+        },
+        {
+          "title": "Reconocer una suma de cubos",
+          "prompt": [
+            "Reconocé el caso notable."
+          ],
+          "pm": [
+            "a^3+27"
+          ],
+          "steps": [
+            [
+              "Escribimos 27 como cubo de 3.",
+              "a^3+27=a^3+3^3",
+              "P6"
+            ],
+            [
+              "Identificamos una suma de cubos y aplicamos su factorización.",
+              "a^3+3^3=(a+3)(a^2-3a+3^2)",
+              "P6"
+            ],
+            [
+              "Evaluamos el cuadrado de 3.",
+              "a^3+27=(a+3)(a^2-3a+9)",
+              "P6"
+            ]
+          ],
+          "check": "En el factor cuadrático, el término central lleva signo negativo. La identidad es válida para todo a real."
+        },
+        {
+          "title": "Simplificar una fracción algebraica",
+          "prompt": [
+            "Simplificá."
+          ],
+          "pm": [
+            "\\frac{6x^3-9x^2}{3x^2}"
+          ],
+          "steps": [
+            [
+              "Antes de simplificar, exigimos que el denominador no sea cero.",
+              "3x^2\\ne0;\\qquad x\\ne0",
+              "P8"
+            ],
+            [
+              "Extraemos el factor común 3x² del numerador.",
+              "6x^3-9x^2=3x^2(2x-3)",
+              "P7"
+            ],
+            [
+              "Cancelamos el factor 3x², permitido porque x es distinto de cero.",
+              "\\frac{3x^2(2x-3)}{3x^2}=2x-3,\\qquad x\\ne0",
+              "P7"
+            ]
+          ],
+          "check": "El resultado conserva x ≠ 0. La fórmula 2x - 3 existe en x = 0, pero la fracción original no."
+        },
+        {
+          "title": "Multiplicar una suma de cubos",
+          "prompt": [
+            "Calculá."
+          ],
+          "pm": [
+            "(x+2)(x^2-2x+4)"
+          ],
+          "steps": [
+            [
+              "Reconocemos el producto de la identidad de suma de cubos, con a = x y b = 2.",
+              "(x+2)(x^2-2x+2^2)=x^3+2^3",
+              "P6"
+            ],
+            [
+              "Evaluamos 2³.",
+              "(x+2)(x^2-2x+4)=x^3+8",
+              "P6"
+            ],
+            [
+              "Para comprobar, distribuimos ambos términos del primer factor.",
+              "x^3-2x^2+4x+2x^2-4x+8",
+              "P3"
+            ],
+            [
+              "Los términos en x² y en x se cancelan.",
+              "x^3+(-2x^2+2x^2)+(4x-4x)+8=x^3+8",
+              "P2"
+            ]
+          ],
+          "check": "El resultado es una suma de cubos, no el cubo del binomio x + 2."
+        },
+        {
+          "title": "Simplificar y conservar el dominio",
+          "prompt": [
+            "Simplificá."
+          ],
+          "pm": [
+            "\\frac{x^2-9}{x-3}"
+          ],
+          "steps": [
+            [
+              "El denominador excluye x = 3.",
+              "x-3\\ne0;\\qquad x\\ne3",
+              "P8"
+            ],
+            [
+              "Factorizamos el numerador como diferencia de cuadrados.",
+              "x^2-9=(x+3)(x-3)",
+              "P5"
+            ],
+            [
+              "Cancelamos el factor no nulo x - 3.",
+              "\\frac{(x+3)(x-3)}{x-3}=x+3,\\qquad x\\ne3",
+              "P7"
+            ]
+          ],
+          "check": "La restricción x ≠ 3 permanece. No se cancelan términos separados por una suma; primero se factoriza."
+        },
+        {
+          "title": "Sumar fracciones algebraicas",
+          "prompt": [
+            "Sumá."
+          ],
+          "pm": [
+            "\\frac3{x+1}+\\frac2x"
+          ],
+          "steps": [
+            [
+              "Los denominadores originales exigen x distinto de -1 y de 0.",
+              "x\\ne-1;\\qquad x\\ne0",
+              "P8"
+            ],
+            [
+              "Tomamos como denominador común x(x + 1). Multiplicamos cada numerador por el factor que le falta.",
+              "\\frac3{x+1}=\\frac{3x}{x(x+1)};\\quad \\frac2x=\\frac{2(x+1)}{x(x+1)}",
+              "P8"
+            ],
+            [
+              "Sumamos los numeradores.",
+              "\\frac{3x+2(x+1)}{x(x+1)}",
+              "P8"
+            ],
+            [
+              "Distribuimos y reunimos términos semejantes.",
+              "\\frac{3x+2x+2}{x(x+1)}=\\frac{5x+2}{x(x+1)},\\quad x\\ne0,-1",
+              "P3, P2"
+            ]
+          ],
+          "check": "5x + 2 no contiene un factor x que multiplique a todo el numerador: no se cancela con el denominador."
+        },
+        {
+          "title": "Determinar el dominio",
+          "prompt": [
+            "Indicá el dominio real."
+          ],
+          "pm": [
+            "\\frac{2x-1}{x^2-4}"
+          ],
+          "steps": [
+            [
+              "Una fracción algebraica está definida cuando su denominador no vale cero.",
+              "x^2-4\\ne0",
+              "P8"
+            ],
+            [
+              "Factorizamos el denominador.",
+              "x^2-4=(x-2)(x+2)",
+              "P5"
+            ],
+            [
+              "El producto se anula en x = 2 o x = -2. Excluimos ambos valores.",
+              "x\\ne2;\\qquad x\\ne-2",
+              "P8"
+            ],
+            [
+              "Todos los demás reales están permitidos.",
+              "D=R\\setminus\\{-2,2\\}",
+              "P8"
+            ]
+          ],
+          "check": "El cero del numerador, x = 1/2, sí pertenece al dominio: produce el valor 0, con denominador no nulo."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Trigonometría",
+      "properties": [
+        [
+          "P1",
+          "Modelar antes de calcular",
+          "Un problema de medición debe explicitar su modelo geométrico y los datos. Las razones trigonométricas permiten relacionar lados y ángulos de triángulos rectángulos.",
+          null
+        ],
+        [
+          "P2",
+          "Grados y radianes",
+          "Una vuelta completa equivale a 360 grados o 2 pi radianes. Se convierte multiplicando por el factor correspondiente.",
+          "180^\\circ=\\pi\\ \\mathrm{rad};\\quad \\alpha_{rad}=\\alpha_{grados}\\cdot\\frac\\pi{180}"
+        ],
+        [
+          "P3",
+          "Relaciones entre ángulos",
+          "Los complementarios suman 90 grados y los suplementarios 180. Los coterminales difieren en un múltiplo entero de 360 grados.",
+          "\\theta_{cot}=\\theta+360^\\circ k,\\quad k\\in Z"
+        ],
+        [
+          "P4",
+          "Teorema de Pitágoras",
+          "En un triángulo rectángulo, el cuadrado de la hipotenusa es la suma de los cuadrados de los catetos. Las longitudes son positivas.",
+          "c^2=a^2+b^2"
+        ],
+        [
+          "P5",
+          "Razones trigonométricas",
+          "Para un ángulo agudo de un triángulo rectángulo: seno es opuesto/hipotenusa; coseno es adyacente/hipotenusa; tangente es opuesto/adyacente.",
+          "\\sin\\theta=\\frac{opuesto}{hipotenusa};\\quad \\cos\\theta=\\frac{adyacente}{hipotenusa}"
+        ],
+        [
+          "P6",
+          "Cuadrantes y círculo unitario",
+          "En el círculo unitario, la coordenada horizontal es coseno y la vertical es seno. Los signos se determinan por el cuadrante. I: (+,+); II: (-,+); III: (-,-); IV: (+,-).",
+          "P=(\\cos\\theta,\\sin\\theta)"
+        ],
+        [
+          "P7",
+          "Identidades básicas",
+          "La identidad pitagórica vale para todo ángulo real. La tangente es el cociente entre seno y coseno cuando el coseno no es cero.",
+          "\\sin^2\\theta+\\cos^2\\theta=1;\\quad \\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}"
+        ],
+        [
+          "P8",
+          "Valores notables",
+          "Se obtienen de un triángulo rectángulo isósceles y de la mitad de un triángulo equilátero. Se puede racionalizar multiplicando arriba y abajo por la misma raíz no nula.",
+          "\\sin45^\\circ=\\frac{\\sqrt2}2;\\quad \\cos60^\\circ=\\frac12;\\quad \\tan30^\\circ=\\frac{\\sqrt3}3"
+        ]
+      ],
+      "ex": [
+        {
+          "title": "Reconocer aplicaciones",
+          "prompt": [
+            "Nombrá dos áreas donde la trigonometría sea central y describí un ejemplo de uso en cada una."
+          ],
+          "steps": [
+            [
+              "Primer ejemplo: topografía. Se quiere estimar la altura de un objeto midiendo una distancia horizontal d y el ángulo de elevación del extremo superior.",
+              null,
+              "P1"
+            ],
+            [
+              "En un modelo de triángulo rectángulo, h es la diferencia de altura entre el extremo y el instrumento. La altura del instrumento se suma luego si se mide desde el suelo.",
+              "\\tan\\theta=\\frac hd;\\qquad h=d\\tan\\theta",
+              "P5"
+            ],
+            [
+              "Segundo ejemplo: robótica. Un brazo de longitud L gira un ángulo theta respecto de la horizontal. Se busca la posición de su extremo respecto del punto de giro.",
+              null,
+              "P1"
+            ],
+            [
+              "Las proyecciones horizontal y vertical se calculan con coseno y seno.",
+              "x=L\\cos\\theta;\\qquad y=L\\sin\\theta",
+              "P6"
+            ]
+          ],
+          "check": "La respuesta es abierta: otras áreas y ejemplos correctos también son válidos. Conviene indicar qué se mide y qué se calcula."
+        },
+        {
+          "title": "Convertir grados y radianes",
+          "prompt": [
+            "Convertí a) 120 grados a radianes; b) 3pi/5 rad a grados; c) 0,4 rad a grados."
+          ],
+          "steps": [
+            [
+              "a) Multiplicamos 120 grados por pi/180. Los grados se cancelan.",
+              "120\\cdot\\frac\\pi{180}=\\frac{2\\pi}3\\ \\mathrm{rad}",
+              "P2"
+            ],
+            [
+              "b) Para pasar de radianes a grados, multiplicamos por 180/pi.",
+              "\\frac{3\\pi}5\\cdot\\frac{180}\\pi=\\frac{540}5=108^\\circ",
+              "P2"
+            ],
+            [
+              "c) Aplicamos el mismo factor. Conservamos pi hasta el cálculo final.",
+              "0{,}4\\cdot\\frac{180}\\pi=\\frac{72}\\pi\\approx22{,}918^\\circ",
+              "P2"
+            ]
+          ],
+          "check": "2pi/3 rad está entre pi/2 y pi, como 120 grados está entre 90 y 180. El último resultado es una aproximación."
+        },
+        {
+          "title": "Relacionar ángulos",
+          "prompt": [
+            "Indicá si son complementarios, suplementarios o ninguno.",
+            "a) 25 y 65 grados; b) 140 y 40 grados; c) 95 y 85 grados."
+          ],
+          "steps": [
+            [
+              "a) Sumamos las medidas. El resultado es 90 grados: son complementarios.",
+              "25^\\circ+65^\\circ=90^\\circ",
+              "P3"
+            ],
+            [
+              "b) La suma es 180 grados: son suplementarios.",
+              "140^\\circ+40^\\circ=180^\\circ",
+              "P3"
+            ],
+            [
+              "c) La suma también es 180 grados: son suplementarios.",
+              "95^\\circ+85^\\circ=180^\\circ",
+              "P3"
+            ]
+          ],
+          "check": "La clasificación depende de la suma, no de que los ángulos sean ambos agudos."
+        },
+        {
+          "title": "Encontrar ángulos coterminales",
+          "prompt": [
+            "Dado theta = -30 grados, escribí dos ángulos coterminales: uno positivo y otro negativo."
+          ],
+          "steps": [
+            [
+              "Los coterminales se obtienen sumando vueltas completas. La familia general usa un entero k.",
+              "\\theta_{cot}=-30^\\circ+360^\\circ k,\\quad k\\in Z",
+              "P3"
+            ],
+            [
+              "Para un representante positivo, usamos k = 1.",
+              "-30^\\circ+360^\\circ=330^\\circ",
+              "P3"
+            ],
+            [
+              "Para otro representante negativo, usamos k = -1.",
+              "-30^\\circ-360^\\circ=-390^\\circ",
+              "P3"
+            ]
+          ],
+          "check": "330 grados y -390 grados terminan en el mismo lado que -30 grados. Hay infinitas respuestas posibles."
+        },
+        {
+          "title": "Calcular una hipotenusa",
+          "prompt": [
+            "Un triángulo rectángulo tiene catetos 6 y 8. Hallá la hipotenusa."
+          ],
+          "steps": [
+            [
+              "Denotamos por c la hipotenusa. Aplicamos Pitágoras.",
+              "c^2=6^2+8^2",
+              "P4"
+            ],
+            [
+              "Calculamos los cuadrados y sumamos.",
+              "c^2=36+64=100",
+              "P4"
+            ],
+            [
+              "Tomamos la raíz positiva porque c es una longitud.",
+              "c=\\sqrt{100}=10",
+              "P4"
+            ]
+          ],
+          "check": "10 es mayor que ambos catetos. Si no se indicaron unidades, se conserva la misma unidad de longitud de los datos."
+        },
+        {
+          "title": "Calcular las tres razones",
+          "prompt": [
+            "Para un ángulo agudo theta, el cateto opuesto mide 9 y la hipotenusa 15. Calculá seno, coseno y tangente."
+          ],
+          "steps": [
+            [
+              "El seno es el cociente entre cateto opuesto e hipotenusa.",
+              "\\sin\\theta=\\frac9{15}=\\frac35",
+              "P5"
+            ],
+            [
+              "Hallamos el cateto adyacente a por Pitágoras. Su longitud es positiva.",
+              "a=\\sqrt{15^2-9^2}=\\sqrt{225-81}=\\sqrt{144}=12",
+              "P4"
+            ],
+            [
+              "El coseno es el cateto adyacente sobre la hipotenusa.",
+              "\\cos\\theta=\\frac{12}{15}=\\frac45",
+              "P5"
+            ],
+            [
+              "La tangente es el opuesto sobre el adyacente.",
+              "\\tan\\theta=\\frac9{12}=\\frac34",
+              "P5"
+            ],
+            [
+              "Comprobamos la identidad pitagórica.",
+              "\\left(\\frac35\\right)^2+\\left(\\frac45\\right)^2=\\frac9{25}+\\frac{16}{25}=1",
+              "P7"
+            ]
+          ],
+          "check": "Como theta es agudo, las tres razones son positivas."
+        },
+        {
+          "title": "Calcular la longitud de una escalera",
+          "prompt": [
+            "Una escalera apoya a 4,5 m de altura formando 60 grados con el suelo. ¿Qué longitud tiene?"
+          ],
+          "steps": [
+            [
+              "Modelamos la pared perpendicular al suelo. La escalera es la hipotenusa L y la altura 4,5 m es el cateto opuesto al ángulo de 60 grados.",
+              null,
+              "P1"
+            ],
+            [
+              "Usamos seno para relacionar el opuesto y la hipotenusa.",
+              "\\sin60^\\circ=\\frac{4{,}5}{L}",
+              "P5"
+            ],
+            [
+              "Despejamos L, dividiendo por el seno, que es positivo y no nulo.",
+              "L=\\frac{4{,}5}{\\sin60^\\circ}",
+              "P5"
+            ],
+            [
+              "Sustituimos el valor notable y simplificamos.",
+              "L=\\frac{4{,}5}{\\sqrt3/2}=\\frac9{\\sqrt3}=3\\sqrt3\\ \\mathrm m",
+              "P8"
+            ],
+            [
+              "Aproximamos al final.",
+              "L\\approx5{,}196\\ \\mathrm m",
+              "P8"
+            ]
+          ],
+          "check": "La escalera mide aproximadamente 5,20 m. Su longitud es mayor que la altura de 4,5 m, como debe ser."
+        },
+        {
+          "title": "Ubicar ángulos por cuadrante",
+          "prompt": [
+            "Determiná el cuadrante de a) 210 grados; b) -75 grados; c) 5pi/6."
+          ],
+          "steps": [
+            [
+              "a) 210 grados está entre 180 y 270 grados: pertenece al tercer cuadrante.",
+              "180^\\circ<210^\\circ<270^\\circ",
+              "P6"
+            ],
+            [
+              "b) Sumamos una vuelta completa para obtener un ángulo positivo coterminal.",
+              "-75^\\circ+360^\\circ=285^\\circ",
+              "P3"
+            ],
+            [
+              "285 grados está entre 270 y 360 grados: pertenece al cuarto cuadrante.",
+              "270^\\circ<285^\\circ<360^\\circ",
+              "P6"
+            ],
+            [
+              "c) Convertimos a grados y ubicamos: 150 grados está entre 90 y 180 grados.",
+              "\\frac{5\\pi}6\\cdot\\frac{180}\\pi=150^\\circ",
+              "P2, P6"
+            ]
+          ],
+          "check": "Resultados: III, IV y II. Los ángulos sobre los ejes no pertenecen al interior de un cuadrante."
+        },
+        {
+          "title": "Obtener valores notables",
+          "prompt": [
+            "Usando el círculo unitario, evaluá seno de 45 grados, coseno de 60 grados y tangente de 30 grados."
+          ],
+          "steps": [
+            [
+              "a) Un triángulo rectángulo isósceles con catetos 1 tiene hipotenusa raíz de 2. Al normalizar la hipotenusa a 1, se obtienen las coordenadas del círculo unitario.",
+              "\\sin45^\\circ=\\frac1{\\sqrt2}=\\frac{\\sqrt2}2",
+              "P4, P5, P8"
+            ],
+            [
+              "b) Dividimos un triángulo equilátero de lado 2 por su altura. Para 60 grados, el cateto adyacente vale 1 y la hipotenusa 2.",
+              "\\cos60^\\circ=\\frac12",
+              "P5, P8"
+            ],
+            [
+              "c) En el mismo triángulo rectángulo, el cateto restante vale raíz de 3 por Pitágoras. Para 30 grados, el opuesto vale 1 y el adyacente raíz de 3.",
+              "\\tan30^\\circ=\\frac1{\\sqrt3}",
+              "P4, P5, P8"
+            ],
+            [
+              "Racionalizamos multiplicando numerador y denominador por raíz de 3.",
+              "\\frac1{\\sqrt3}=\\frac{\\sqrt3}{\\sqrt3\\cdot\\sqrt3}=\\frac{\\sqrt3}3",
+              "P8"
+            ]
+          ],
+          "check": "En el primer cuadrante, estos valores son positivos. La expresión 1/raíz de 3 es equivalente a raíz de 3/3."
+        },
+        {
+          "title": "Usar una identidad y el cuadrante",
+          "prompt": [
+            "Si coseno de theta = 3/5 y theta está en el cuarto cuadrante, hallá seno y tangente."
+          ],
+          "steps": [
+            [
+              "Aplicamos la identidad pitagórica y despejamos el cuadrado del seno.",
+              "\\sin^2\\theta=1-\\cos^2\\theta=1-\\frac9{25}=\\frac{16}{25}",
+              "P7"
+            ],
+            [
+              "El valor absoluto del seno es 4/5. En el cuarto cuadrante, la coordenada vertical es negativa.",
+              "\\sin\\theta=-\\sqrt{\\frac{16}{25}}=-\\frac45",
+              "P6, P7"
+            ],
+            [
+              "La tangente es seno dividido por coseno; este no es cero.",
+              "\\tan\\theta=\\frac{-4/5}{3/5}=-\\frac45\\cdot\\frac53=-\\frac43",
+              "P7"
+            ],
+            [
+              "Verificamos que los cuadrados de seno y coseno suman 1.",
+              "\\frac{16}{25}+\\frac9{25}=1",
+              "P7"
+            ]
+          ],
+          "check": "En el cuarto cuadrante: coseno positivo, seno negativo y tangente negativa."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Potencias y raíces",
+      "properties": [
+        [
+          "P1",
+          "Producto y cociente de potencias",
+          "Con base común se suman los exponentes al multiplicar y se restan al dividir. Para exponentes negativos o cocientes, la base debe ser no nula.",
+          "a^m a^n=a^{m+n};\\quad \\frac{a^m}{a^n}=a^{m-n}"
+        ],
+        [
+          "P2",
+          "Exponente negativo y cero",
+          "Una potencia de exponente negativo es el recíproco de la potencia de exponente positivo. La base debe ser distinta de cero.",
+          "a^{-n}=\\frac1{a^n};\\quad a^0=1,\\quad a\\ne0"
+        ],
+        [
+          "P3",
+          "Potencia de potencia y producto",
+          "Los exponentes se multiplican en una potencia de potencia. Para exponentes enteros, una potencia se distribuye sobre factores multiplicando sus potencias. Con exponentes racionales, se requieren condiciones de dominio.",
+          "(a^m)^n=a^{mn};\\quad (ab)^n=a^n b^n"
+        ],
+        [
+          "P4",
+          "Raíces y exponentes racionales",
+          "Para base positiva, a elevado a m/n equivale a la raíz n-ésima elevada a m. En los reales, las raíces pares requieren radicando no negativo. Con denominador impar se pueden definir potencias racionales de bases negativas mediante la raíz real impar.",
+          "a^{m/n}=(\\sqrt[n]a)^m"
+        ],
+        [
+          "P5",
+          "Simplificar y combinar radicales",
+          "Para radicandos no negativos, la raíz cuadrada de un producto se separa en producto de raíces. Se extraen factores cuadrados perfectos. Solo se suman directamente radicales semejantes.",
+          "\\sqrt{ab}=\\sqrt a\\sqrt b;\\quad c\\sqrt a+d\\sqrt a=(c+d)\\sqrt a"
+        ],
+        [
+          "P6",
+          "Notación científica",
+          "Un número positivo se escribe como c por 10 elevado a k, donde 1 ≤ c < 10 y k es entero. Al mover la coma se ajusta el exponente para conservar el valor.",
+          "N=c\\cdot10^k,\\quad 1\\le c<10,\\quad k\\in Z"
+        ],
+        [
+          "P7",
+          "Producto y cociente en notación científica",
+          "Se operan los coeficientes y las potencias de 10 por separado; luego se normaliza. El cociente de dos cantidades con la misma unidad es una razón sin unidad.",
+          "\\frac{c\\cdot10^m}{d\\cdot10^n}=\\frac cd\\cdot10^{m-n},\\quad d\\ne0"
+        ]
+      ],
+      "ex": [
+        {
+          "title": "Multiplicar potencias",
+          "prompt": [
+            "Simplificá."
+          ],
+          "pm": [
+            "5^3\\cdot5^{-4}"
+          ],
+          "steps": [
+            [
+              "La base común es 5. Sumamos los exponentes.",
+              "5^3\\cdot5^{-4}=5^{3+(-4)}=5^{-1}",
+              "P1"
+            ],
+            [
+              "El exponente -1 indica el recíproco de la base.",
+              "5^{-1}=\\frac15",
+              "P2"
+            ],
+            [
+              "También podemos comprobar con valores numéricos.",
+              "5^3\\cdot5^{-4}=125\\cdot\\frac1{625}=\\frac15",
+              "P2"
+            ]
+          ],
+          "check": "El resultado es 1/5, no -5. Un exponente negativo no vuelve negativo al número."
+        },
+        {
+          "title": "Reunir producto y cociente",
+          "prompt": [
+            "Escribí como una sola potencia."
+          ],
+          "pm": [
+            "\\frac{2^7\\cdot2^{-3}}{2^{-5}}"
+          ],
+          "steps": [
+            [
+              "Primero reunimos el producto del numerador.",
+              "2^7\\cdot2^{-3}=2^{7-3}=2^4",
+              "P1"
+            ],
+            [
+              "Al dividir potencias de igual base, restamos el exponente del denominador. Aquí se resta -5.",
+              "\\frac{2^4}{2^{-5}}=2^{4-(-5)}=2^9",
+              "P1"
+            ],
+            [
+              "La potencia pedida es 2 elevado a 9; su valor numérico es 512.",
+              "2^9=512",
+              "P1"
+            ]
+          ],
+          "check": "Dividir por 2 elevado a -5 equivale a multiplicar por 2 elevado a 5."
+        },
+        {
+          "title": "Evaluar un exponente fraccionario",
+          "prompt": [
+            "Calculá de forma exacta."
+          ],
+          "pm": [
+            "81^{3/4}"
+          ],
+          "steps": [
+            [
+              "El denominador 4 indica raíz cuarta; el numerador 3, elevar al cubo. La base 81 es positiva.",
+              "81^{3/4}=(\\sqrt[4]{81})^3",
+              "P4"
+            ],
+            [
+              "Buscamos la raíz cuarta positiva: 3 elevado a 4 vale 81.",
+              "3^4=81;\\qquad \\sqrt[4]{81}=3",
+              "P4"
+            ],
+            [
+              "Elevamos ese resultado al cubo.",
+              "81^{3/4}=3^3=27",
+              "P4"
+            ]
+          ],
+          "check": "Como la raíz es de índice par, se usa la raíz principal no negativa. El resultado exacto es 27."
+        },
+        {
+          "title": "Combinar radicales",
+          "prompt": [
+            "Simplificá."
+          ],
+          "pm": [
+            "\\sqrt{72}-2\\sqrt8+3\\sqrt{18}"
+          ],
+          "steps": [
+            [
+              "Descomponemos cada radicando usando su mayor factor cuadrado perfecto.",
+              "72=36\\cdot2;\\quad 8=4\\cdot2;\\quad 18=9\\cdot2",
+              "P5"
+            ],
+            [
+              "Extraemos esos factores de las raíces.",
+              "\\sqrt{72}=6\\sqrt2;\\quad \\sqrt8=2\\sqrt2;\\quad \\sqrt{18}=3\\sqrt2",
+              "P5"
+            ],
+            [
+              "Sustituimos sin perder los coeficientes externos -2 y 3.",
+              "6\\sqrt2-2\\cdot2\\sqrt2+3\\cdot3\\sqrt2",
+              "P5"
+            ],
+            [
+              "Los radicales son semejantes. Operamos sus coeficientes.",
+              "(6-4+9)\\sqrt2=11\\sqrt2",
+              "P5"
+            ]
+          ],
+          "check": "No se suman los radicandos. La raíz de una suma no se distribuye en general."
+        },
+        {
+          "title": "Escribir una raíz como potencia",
+          "prompt": [
+            "Escribí como potencia."
+          ],
+          "pm": [
+            "\\sqrt[3]{x^{10}}"
+          ],
+          "steps": [
+            [
+              "El índice 3 corresponde al exponente 1/3. En los reales, la raíz cúbica admite cualquier radicando real.",
+              "\\sqrt[3]{x^{10}}=x^{10/3}",
+              "P4"
+            ],
+            [
+              "Se entiende x elevado a 10/3 mediante la raíz cúbica real: (raíz cúbica de x) elevado a 10. Esta convención también cubre x negativo.",
+              "x^{10/3}=(\\sqrt[3]x)^{10}",
+              "P4"
+            ],
+            [
+              "Si queremos extraer la parte entera del exponente, 10 = 9 + 1. La raíz cúbica de x elevado a 9 es x elevado a 3.",
+              "\\sqrt[3]{x^{10}}=x^3\\sqrt[3]x",
+              "P4"
+            ]
+          ],
+          "check": "La potencia pedida es x elevado a 10/3. La forma x³ por raíz cúbica de x es equivalente para todo x real."
+        },
+        {
+          "title": "Pasar de potencia a raíz",
+          "prompt": [
+            "Reescribí como raíz y evaluá."
+          ],
+          "pm": [
+            "27^{2/3}"
+          ],
+          "steps": [
+            [
+              "El exponente 2/3 puede interpretarse como raíz cúbica, seguida de un cuadrado.",
+              "27^{2/3}=(\\sqrt[3]{27})^2",
+              "P4"
+            ],
+            [
+              "La raíz cúbica de 27 es 3.",
+              "\\sqrt[3]{27}=3",
+              "P4"
+            ],
+            [
+              "Elevamos 3 al cuadrado.",
+              "27^{2/3}=3^2=9",
+              "P4"
+            ],
+            [
+              "También se puede elevar primero al cuadrado y tomar luego la raíz cúbica.",
+              "\\sqrt[3]{27^2}=\\sqrt[3]{729}=9",
+              "P4"
+            ]
+          ],
+          "check": "Ambos recorridos dan 9 porque la base 27 es positiva."
+        },
+        {
+          "title": "Justificar una propiedad falsa",
+          "prompt": [
+            "Verdadero o falso: justificá la afirmación."
+          ],
+          "pm": [
+            "(ab)^n=a^n+b^n"
+          ],
+          "steps": [
+            [
+              "La afirmación es falsa en general. La potencia de un producto se distribuye como producto de potencias, no como suma.",
+              "(ab)^n=a^n b^n",
+              "P3"
+            ],
+            [
+              "Para refutar una afirmación general basta un contraejemplo. Elegimos a = 2, b = 3 y n = 2.",
+              null,
+              "P3"
+            ],
+            [
+              "Calculamos el lado izquierdo.",
+              "(2\\cdot3)^2=6^2=36",
+              "P3"
+            ],
+            [
+              "Calculamos el lado derecho propuesto.",
+              "2^2+3^2=4+9=13",
+              "P3"
+            ],
+            [
+              "Como 36 y 13 son diferentes, la igualdad propuesta no es una identidad.",
+              "36\\ne13",
+              "P3"
+            ]
+          ],
+          "check": "La regla correcta sí da 2² por 3² = 4 por 9 = 36. Puede haber coincidencias particulares, pero no validan la afirmación general."
+        },
+        {
+          "title": "Convertir a notación científica",
+          "prompt": [
+            "Convertí a notación científica."
+          ],
+          "pm": [
+            "0{,}000000092"
+          ],
+          "steps": [
+            [
+              "El coeficiente debe quedar entre 1 y 10. Movemos la coma hasta obtener 9,2.",
+              null,
+              "P6"
+            ],
+            [
+              "La coma se desplazó ocho lugares a la derecha. Para conservar el valor, usamos 10 elevado a -8.",
+              "0{,}000000092=9{,}2\\cdot10^{-8}",
+              "P6"
+            ],
+            [
+              "Comprobamos interpretando la potencia como un divisor.",
+              "9{,}2\\cdot10^{-8}=\\frac{9{,}2}{100000000}",
+              "P2, P6"
+            ]
+          ],
+          "check": "El coeficiente 9,2 está normalizado. El exponente es negativo porque el número original es menor que 1."
+        },
+        {
+          "title": "Multiplicar y normalizar",
+          "prompt": [
+            "Calculá y dejá en notación científica normalizada."
+          ],
+          "pm": [
+            "(3{,}2\\cdot10^{-5})(4\\cdot10^2)"
+          ],
+          "steps": [
+            [
+              "Multiplicamos los coeficientes y sumamos los exponentes de 10.",
+              "(3{,}2\\cdot4)\\cdot10^{-5+2}=12{,}8\\cdot10^{-3}",
+              "P1, P7"
+            ],
+            [
+              "12,8 no está entre 1 y 10. Lo reescribimos como 1,28 por 10.",
+              "12{,}8=1{,}28\\cdot10",
+              "P6"
+            ],
+            [
+              "Reunimos nuevamente las potencias de 10.",
+              "1{,}28\\cdot10^1\\cdot10^{-3}=1{,}28\\cdot10^{-2}",
+              "P1, P6"
+            ]
+          ],
+          "check": "El resultado vale 0,0128. Cambiar 12,8 por 1,28 exige aumentar el exponente en 1."
+        },
+        {
+          "title": "Calcular un factor de crecimiento",
+          "prompt": [
+            "Una muestra pasa de 2 por 10 elevado a 6 a 6 por 10 elevado a 7 unidades. ¿Cuántas veces se multiplicó?"
+          ],
+          "steps": [
+            [
+              "El factor multiplicativo se obtiene dividiendo la cantidad final por la inicial. Ambas están expresadas en la misma unidad.",
+              "f=\\frac{6\\cdot10^7}{2\\cdot10^6}",
+              "P7"
+            ],
+            [
+              "Dividimos los coeficientes y restamos los exponentes.",
+              "f=\\frac62\\cdot10^{7-6}=3\\cdot10^1",
+              "P1, P7"
+            ],
+            [
+              "Evaluamos la potencia.",
+              "f=30",
+              "P7"
+            ],
+            [
+              "Verificamos multiplicando la cantidad inicial por el factor.",
+              "30\\cdot(2\\cdot10^6)=60\\cdot10^6=6\\cdot10^7",
+              "P6, P7"
+            ]
+          ],
+          "check": "La cantidad final es 30 veces la inicial. El factor es una razón sin unidad; no es la diferencia entre ambas cantidades."
+        }
+      ]
+    }
+  ]
+}
