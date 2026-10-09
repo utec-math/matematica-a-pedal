@@ -79,7 +79,16 @@ for(const item of items){const gap=line.length&&item.spaceBefore?space:0;if(used
 flush();y-=5;
 }
 function math(t,size=15,indent=18){let ast=parseMath(t),n=layout(ast,size);if(n.w>RIGHT-LEFT-indent){size*=((RIGHT-LEFT-indent)/n.w);n=layout(ast,size);}if(size<9)throw Error("Formula demasiado pequena: "+t);formulaStats.push({text:t,size,w:n.w});y-=n.up;ops+=drawMath(n,LEFT+indent,y);y-=n.down+12;if(y<78)throw Error("Desborde formula: "+unit.id+" "+t);}
-for(let eidx=0;eidx<unit.ex.length;eidx++){const ex=unit.ex[eidx];page("PARADA DE CONTROL · SOLUCIONES PASO A PASO");para(String(eidx+1).padStart(2,"0")+"  "+ex.title,20,"F2");para("ENUNCIADO",9,"F2",0,"0.48 0.25 0.06");for(const t of ex.prompt)para(t,11);for(const m of ex.pm||[])math(m,14);y-=7;para("RESOLUCIÓN",9,"F2",0,"0.48 0.25 0.06");for(let k=0;k<ex.steps.length;k++){const [t,m,r]=ex.steps[k];para((k+1)+". "+t,11);if(m)math(m);if(r){para("Propiedades: "+r+".",8,"F1",18,"0.38 0.42 0.47");}y-=4;}
+for(let eidx=0;eidx<unit.ex.length;eidx++){const ex=unit.ex[eidx];page("PARADA DE CONTROL · SOLUCIONES PASO A PASO");para("Problema "+(eidx+1)+" · "+ex.title,20,"F2");para("ENUNCIADO",9,"F2",0,"0.48 0.25 0.06");for(const t of ex.prompt)para(t,11);for(const m of ex.pm||[])math(m,14);y-=7;para("RESOLUCIÓN",9,"F2",0,"0.48 0.25 0.06");if(ex.groups){
+for(const group of ex.groups){
+const references=new Set();
+for(let k=0;k<group.indices.length;k++){const[t,m,r]=ex.steps[group.indices[k]];
+const prefix=k===0?group.title+" — ":"";
+para(prefix+(group.indices.length>1?"Paso "+(k+1)+". ":"")+t,11);if(m)math(m,15);if(r)r.split(",").forEach(p=>references.add(p.trim()));}
+if(references.size)para("Propiedades: "+Array.from(references).join(", ")+".",8,"F1",18,"0.38 0.42 0.47");
+y-=3;
+}
+}else for(let k=0;k<ex.steps.length;k++){const[t,m,r]=ex.steps[k];para((k+1)+". "+t,11);if(m)math(m);if(r)para("Propiedades: "+r+".",8,"F1",18,"0.38 0.42 0.47");y-=4;}
 y-=6;para("COMPROBACIÓN / IDEA CLAVE",9,"F2",0,"0.48 0.25 0.06");para(ex.check,10);if(eidx===0){para("Las propiedades P1, P2, ... se resumen al final del documento.",9,"F1",0,"0.38 0.42 0.47");}}
 for(let start=0;start<unit.properties.length;start+=4){page("RESUMEN DE PROPIEDADES · CONSULTA");para("Propiedades aplicadas",20,"F2");para("Usá los códigos indicados en cada paso para encontrar la regla y sus condiciones.",10);for(let j=start;j<Math.min(start+4,unit.properties.length);j++){let [id,title,t,m]=unit.properties[j];y-=6;para(id+"  "+title,13,"F2");para(t,10.5);if(m)math(m,14);y-=10;}}
 if(ops)pages.push(ops);
