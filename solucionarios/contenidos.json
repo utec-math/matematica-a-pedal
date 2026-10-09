@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "44109d42779b28f3b0a9b5303d88a52ba806ecf0",
+  "sourceCommit": "f34bff605199a6caf0fdbf4d875cca3d7e53f863",
   "units": [
     {
       "id": 1,
@@ -58,58 +58,82 @@
         {
           "title": "Clasificar números",
           "prompt": [
-            "Indicá el conjunto más pequeño al que pertenece cada número."
+            "(Clasificación) Indicar el conjunto más pequeño al que pertenece cada número: a) 7 b) -4 c) $\\tfrac{5}{6}$ d) $\\sqrt{3}$ e) 0,125"
           ],
           "steps": [
             [
-              "a) 7 es un entero positivo. Ya pertenece a los naturales, el menor conjunto de la lista que lo contiene.",
+              "Es un entero positivo; el conjunto más pequeño que lo contiene es el de los naturales.",
               "7\\in \\mathbb{N}",
               "P1"
             ],
             [
-              "b) -4 es un entero negativo. No es natural; el conjunto más pequeño es el de los enteros.",
+              "Es un entero negativo. No es natural; pertenece a los enteros.",
               "-4\\in \\mathbb{Z}",
               "P1"
             ],
             [
-              "c) $\\frac{5}{6}$ es un cociente de enteros con denominador no nulo. No es entero.",
+              "Es un cociente de enteros con denominador no nulo, pero no es entero: es racional.",
               "\\frac56\\in \\mathbb{Q}",
               "P1"
             ],
             [
-              "d) 3 no es un cuadrado perfecto. Su raíz cuadrada es irracional.",
+              "3 no es un cuadrado perfecto; por eso su raíz cuadrada es irracional.",
               "\\sqrt3\\in \\mathbb{I}",
               "P1"
             ],
             [
-              "e) El decimal finito 0,125 puede escribirse como fracción.",
+              "Es un decimal finito. Lo escribimos como fracción y simplificamos.",
               "0{,}125=\\frac{125}{1000}=\\frac18\\in \\mathbb{Q}",
               "P1, P5"
             ]
           ],
           "check": "La consigna pide el conjunto más pequeño, aunque cada número también pertenezca a conjuntos más amplios.",
-          "pm": [
-            "a)\\ 7\\qquad b)\\ -4\\qquad c)\\ \\frac56\\qquad d)\\ \\sqrt3\\qquad e)\\ 0{,}125"
+          "groups": [
+            {
+              "title": "a) $7$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $-4$",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $\\frac56$",
+              "indices": [
+                2
+              ]
+            },
+            {
+              "title": "d) $\\sqrt3$",
+              "indices": [
+                3
+              ]
+            },
+            {
+              "title": "e) $0{,}125$",
+              "indices": [
+                4
+              ]
+            }
           ]
         },
         {
           "title": "Reconocer propiedades",
           "prompt": [
-            "Identificá la propiedad usada en cada igualdad."
-          ],
-          "pm": [
-            "8+11=11+8",
-            "(2\\cdot5)\\cdot3=2\\cdot(5\\cdot3)",
-            "k(m+n)=km+kn"
+            "(Propiedad) Identificá la propiedad usada: a) $8 + 11 = 11 + 8$ b) $(2\\cdot5)\\cdot3 = 2\\cdot(5\\cdot3)$ c) $k(m+n) = km + kn$"
           ],
           "steps": [
             [
-              "a) Los sumandos intercambian su orden; la operación sigue siendo una suma. Es la propiedad conmutativa de la suma.",
+              "Los sumandos intercambian su orden; la operación sigue siendo una suma. Es la propiedad conmutativa de la suma.",
               "8+11=19=11+8",
               "P2"
             ],
             [
-              "b) Se conserva el orden 2, 5, 3 y solo cambia la agrupación. Es la propiedad asociativa del producto.",
+              "Se conserva el orden 2, 5, 3 y solo cambia la agrupación. Es la propiedad asociativa del producto.",
               "(2\\cdot5)\\cdot3=10\\cdot3=30",
               "P2"
             ],
@@ -119,47 +143,82 @@
               "P2"
             ],
             [
-              "c) k multiplica cada sumando del paréntesis. Es la propiedad distributiva.",
+              "k multiplica cada sumando del paréntesis. Es la propiedad distributiva.",
               "k(m+n)=km+kn",
               "P2"
             ]
           ],
-          "check": "Cambiar el orden y cambiar la agrupación son operaciones diferentes."
+          "check": "Cambiar el orden y cambiar la agrupación son operaciones diferentes.",
+          "groups": [
+            {
+              "title": "a) $8+11=11+8$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $(2\\cdot5)\\cdot3=2\\cdot(5\\cdot3)$",
+              "indices": [
+                1,
+                2
+              ]
+            },
+            {
+              "title": "c) $k(m+n)=km+kn$",
+              "indices": [
+                3
+              ]
+            }
+          ]
         },
         {
           "title": "Calcular con signos",
           "prompt": [
-            "Calculá los tres apartados."
-          ],
-          "pm": [
-            "a)\\ 12+(-19)\\qquad b)\\ -7-(-5)\\qquad c)\\ -3+9-12"
+            "(Signos) Calculá: a) $12 + (-19)$ b) $-7 - (-5)$ c) $-3 + 9 - 12$"
           ],
           "steps": [
             [
-              "a) Los sumandos tienen signos diferentes. Restamos 19 - 12 y conservamos el signo negativo, porque 19 tiene mayor valor absoluto.",
+              "Los sumandos tienen signos diferentes. Restamos 19 - 12 y conservamos el signo negativo, porque 19 tiene mayor valor absoluto.",
               "12+(-19)=-(19-12)=-7",
               "P3"
             ],
             [
-              "b) El opuesto de -5 es +5. Restar -5 equivale a sumar 5.",
+              "El opuesto de -5 es +5. Restar -5 equivale a sumar 5.",
               "-7-(-5)=-7+5=-(7-5)=-2",
               "P3"
             ],
             [
-              "c) Primero calculamos -3 + 9; luego restamos 12.",
+              "Primero calculamos -3 + 9; luego restamos 12.",
               "-3+9-12=6-12=-6",
               "P3"
             ]
           ],
-          "check": "Los resultados son -7, -2 y -6. En el apartado b), el doble signo negativo se transforma en una suma."
+          "check": "Los resultados son -7, -2 y -6. En el apartado b), el doble signo negativo se transforma en una suma.",
+          "groups": [
+            {
+              "title": "a) $12+(-19)$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $-7-(-5)$",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $-3+9-12$",
+              "indices": [
+                2
+              ]
+            }
+          ]
         },
         {
           "title": "Eliminar paréntesis",
           "prompt": [
-            "Simplificá la expresión."
-          ],
-          "pm": [
-            "-(x-4)+(2x-1)"
+            "(Paréntesis) Simplificá: $-\\,(x-4) + (2x-1)$"
           ],
           "steps": [
             [
@@ -183,24 +242,21 @@
         {
           "title": "Multiplicar y dividir",
           "prompt": [
-            "Calculá los tres apartados."
-          ],
-          "pm": [
-            "a)\\ (-6)(-7)\\qquad b)\\ 24\\div(-3)\\qquad c)\\ 9\\div\\left(-\\frac13\\right)"
+            "(Producto/Cociente) Calculá: a) $(-6)\\cdot(-7)$ b) $24 \\div (-3)$ c) $9 \\div \\left(-\\tfrac13\\right)$"
           ],
           "steps": [
             [
-              "a) El producto de dos negativos es positivo. Multiplicamos sus valores absolutos.",
+              "El producto de dos negativos es positivo. Multiplicamos sus valores absolutos.",
               "(-6)(-7)=6\\cdot7=42",
               "P4"
             ],
             [
-              "b) Los signos son diferentes; el cociente es negativo.",
+              "Los signos son diferentes; el cociente es negativo.",
               "24\\div(-3)=-(24\\div3)=-8",
               "P4"
             ],
             [
-              "c) El recíproco de $\\frac{-1}{3}$ es -3. Dividir por $\\frac{-1}{3}$ equivale a multiplicar por -3.",
+              "El recíproco de $\\frac{-1}{3}$ es -3. Dividir por $\\frac{-1}{3}$ equivale a multiplicar por -3.",
               "9\\div\\left(-\\frac13\\right)=9\\cdot(-3)=-27",
               "P6, P4"
             ],
@@ -210,15 +266,33 @@
               "P6, P4"
             ]
           ],
-          "check": "El resultado del apartado c) es -27. Dividir por un tercio triplica el valor absoluto; no lo divide entre tres."
+          "check": "El resultado del apartado c) es -27. Dividir por un tercio triplica el valor absoluto; no lo divide entre tres.",
+          "groups": [
+            {
+              "title": "a) $(-6)\\cdot(-7)$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $24\\div(-3)$",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $9\\div\\left(-\\frac13\\right)$",
+              "indices": [
+                2,
+                3
+              ]
+            }
+          ]
         },
         {
           "title": "Multiplicar fracciones",
           "prompt": [
-            "Multiplicá y simplificá."
-          ],
-          "pm": [
-            "\\frac{14}{15}\\times\\frac97"
+            "(Fracciones) Multiplicá y simplificá: $\\tfrac{14}{15} \\times \\tfrac{9}{7}$"
           ],
           "steps": [
             [
@@ -242,10 +316,7 @@
         {
           "title": "Dividir fracciones",
           "prompt": [
-            "Dividí y simplificá."
-          ],
-          "pm": [
-            "\\frac5{12}\\div\\frac{25}{18}"
+            "(Fracciones) Dividí y simplificá: $\\tfrac{5}{12} \\div \\tfrac{25}{18}$"
           ],
           "steps": [
             [
@@ -274,14 +345,11 @@
         {
           "title": "Sumar y restar fracciones",
           "prompt": [
-            "Calculá las dos operaciones."
-          ],
-          "pm": [
-            "a)\\ \\frac7{10}+\\frac{11}{15}\\qquad b)\\ \\frac5{12}-\\frac18"
+            "(Suma/Resta fracc.) $\\tfrac{7}{10} + \\tfrac{11}{15}$ y $\\tfrac{5}{12} - \\tfrac{1}{8}$"
           ],
           "steps": [
             [
-              "a) Buscamos un denominador común: el mínimo común múltiplo de 10 y 15 es 30.",
+              "Buscamos un denominador común: el mínimo común múltiplo de 10 y 15 es 30.",
               "\\frac7{10}=\\frac{21}{30};\\qquad \\frac{11}{15}=\\frac{22}{30}",
               "P5, P7"
             ],
@@ -291,7 +359,7 @@
               "P7"
             ],
             [
-              "b) El mínimo común múltiplo de 12 y 8 es 24.",
+              "El mínimo común múltiplo de 12 y 8 es 24.",
               "\\frac5{12}=\\frac{10}{24};\\qquad \\frac18=\\frac3{24}",
               "P5, P7"
             ],
@@ -301,21 +369,37 @@
               "P7"
             ]
           ],
-          "check": "Ambos resultados son irreducibles. En una suma o resta no se suman ni restan los denominadores."
+          "check": "Ambos resultados son irreducibles. En una suma o resta no se suman ni restan los denominadores.",
+          "groups": [
+            {
+              "title": "Primera operación: $\\frac7{10}+\\frac{11}{15}$",
+              "indices": [
+                0,
+                1
+              ]
+            },
+            {
+              "title": "Segunda operación: $\\frac5{12}-\\frac18$",
+              "indices": [
+                2,
+                3
+              ]
+            }
+          ]
         },
         {
           "title": "Convertir decimales a fracciones",
           "prompt": [
-            "Pasá a fracción los siguientes decimales."
+            "(Decimal a fracción) Pasá a fracción: a) 0,6 b) $0,72\\overline{72}$"
           ],
           "steps": [
             [
-              "a) Hay una cifra decimal. Escribimos seis décimos y simplificamos por 2.",
+              "Hay una cifra decimal. Escribimos seis décimos y simplificamos por 2.",
               "0{,}6=\\frac6{10}=\\frac35",
               "P8, P5"
             ],
             [
-              "b) Llamamos u al número periódico. Al multiplicar por 100, el período se desplaza dos lugares.",
+              "Llamamos u al número periódico. Al multiplicar por 100, el período se desplaza dos lugares.",
               "u=0{,}\\overline{72};\\qquad 100u=72{,}\\overline{72}",
               "P8"
             ],
@@ -331,21 +415,31 @@
             ]
           ],
           "check": "El decimal exacto $0{,}72$ sería $\\frac{18}{25}$. La barra sobre 72 indica que esas cifras se repiten indefinidamente.",
-          "pm": [
-            "a)\\ 0{,}6\\qquad b)\\ 0{,}\\overline{72}"
+          "groups": [
+            {
+              "title": "a) $0{,}6$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $0{,}72\\overline{72}$",
+              "indices": [
+                1,
+                2,
+                3
+              ]
+            }
           ]
         },
         {
           "title": "Convertir fracciones a decimales",
           "prompt": [
-            "Indicá si el decimal es finito o periódico y calculá."
-          ],
-          "pm": [
-            "a)\\ \\frac7{25}\\qquad b)\\ \\frac9{11}"
+            "(Fracción a decimal) Indicá si es finito o periódico y calculá: a) $\\tfrac{7}{25}$ b) $\\tfrac{9}{11}$"
           ],
           "steps": [
             [
-              "a) Transformamos el denominador 25 en 100 multiplicando ambos términos por 4.",
+              "Transformamos el denominador 25 en 100 multiplicando ambos términos por 4.",
               "\\frac7{25}=\\frac{28}{100}=0{,}28",
               "P5, P8"
             ],
@@ -355,7 +449,7 @@
               "P8"
             ],
             [
-              "b) En la división 9 entre 11, 90 entre 11 da 8 y deja resto 2. Luego 20 entre 11 da 1 y deja resto 9.",
+              "En la división 9 entre 11, 90 entre 11 da 8 y deja resto 2. Luego 20 entre 11 da 1 y deja resto 9.",
               "90=11\\cdot8+2;\\qquad 20=11\\cdot1+9",
               "P8"
             ],
@@ -365,7 +459,23 @@
               "P8"
             ]
           ],
-          "check": "La fracción $\\frac{9}{11}$ es irreducible y su denominador incluye el primo 11; su decimal no puede ser finito."
+          "check": "La fracción $\\frac{9}{11}$ es irreducible y su denominador incluye el primo 11; su decimal no puede ser finito.",
+          "groups": [
+            {
+              "title": "a) $\\frac7{25}$",
+              "indices": [
+                0,
+                1
+              ]
+            },
+            {
+              "title": "b) $\\frac9{11}$",
+              "indices": [
+                2,
+                3
+              ]
+            }
+          ]
         }
       ]
     },
@@ -426,10 +536,7 @@
         {
           "title": "Clasificar y hallar el grado",
           "prompt": [
-            "Clasificá y hallá el grado del polinomio."
-          ],
-          "pm": [
-            "3x^2y^3-4xy"
+            "Clasificá y hallá el grado: $3x^2y^3 - 4xy$."
           ],
           "steps": [
             [
@@ -458,10 +565,7 @@
         {
           "title": "Sumar polinomios",
           "prompt": [
-            "Simplificá."
-          ],
-          "pm": [
-            "(5x^2-3x+2)+(2x^2-x-4)"
+            "Simplificá: $(5x^2 - 3x + 2) + (2x^2 - x - 4)$."
           ],
           "steps": [
             [
@@ -485,10 +589,7 @@
         {
           "title": "Desarrollar un cuadrado",
           "prompt": [
-            "Expandí."
-          ],
-          "pm": [
-            "(x+3)^2"
+            "Expandí: $(x + 3)^2$."
           ],
           "steps": [
             [
@@ -512,10 +613,7 @@
         {
           "title": "Factorizar una diferencia",
           "prompt": [
-            "Factorizá."
-          ],
-          "pm": [
-            "9x^2-16"
+            "Factorizá: $9x^2 - 16$."
           ],
           "steps": [
             [
@@ -539,10 +637,7 @@
         {
           "title": "Reconocer una suma de cubos",
           "prompt": [
-            "Reconocé el caso notable."
-          ],
-          "pm": [
-            "a^3+27"
+            "Reconocé el caso notable en $a^3 + 27$."
           ],
           "steps": [
             [
@@ -566,10 +661,7 @@
         {
           "title": "Simplificar una fracción algebraica",
           "prompt": [
-            "Simplificá."
-          ],
-          "pm": [
-            "\\frac{6x^3-9x^2}{3x^2}"
+            "Simplificá: $\\dfrac{6x^3 - 9x^2}{3x^2}$."
           ],
           "steps": [
             [
@@ -593,10 +685,7 @@
         {
           "title": "Multiplicar una suma de cubos",
           "prompt": [
-            "Calculá."
-          ],
-          "pm": [
-            "(x+2)(x^2-2x+4)"
+            "Calculá: $(x + 2)(x^2 - 2x + 4)$."
           ],
           "steps": [
             [
@@ -625,10 +714,7 @@
         {
           "title": "Simplificar y conservar el dominio",
           "prompt": [
-            "Simplificá."
-          ],
-          "pm": [
-            "\\frac{x^2-9}{x-3}"
+            "Simplificá: $\\dfrac{x^2 - 9}{x - 3}$."
           ],
           "steps": [
             [
@@ -652,10 +738,7 @@
         {
           "title": "Sumar fracciones algebraicas",
           "prompt": [
-            "Sumá."
-          ],
-          "pm": [
-            "\\frac3{x+1}+\\frac2x"
+            "Sumá: $\\dfrac{3}{x + 1} + \\dfrac{2}{x}$."
           ],
           "steps": [
             [
@@ -684,10 +767,7 @@
         {
           "title": "Determinar el dominio",
           "prompt": [
-            "Indicá el dominio real."
-          ],
-          "pm": [
-            "\\frac{2x-1}{x^2-4}"
+            "Indicá el dominio de $\\dfrac{2x - 1}{x^2 - 4}$."
           ],
           "steps": [
             [
@@ -772,7 +852,7 @@
         {
           "title": "Reconocer aplicaciones",
           "prompt": [
-            "Nombrá dos áreas donde la trigonometría sea central y describí un ejemplo de uso en cada una."
+            "(Contexto) Nombrá dos áreas donde la trigonometría sea central y describí brevemente un ejemplo de uso en cada una."
           ],
           "steps": [
             [
@@ -801,61 +881,95 @@
         {
           "title": "Convertir grados y radianes",
           "prompt": [
-            "Convertí a radianes el apartado a), y a grados los apartados b) y c)."
+            "(Conversión) Convertí: a) $120^\\circ$ a radianes · b) $\\tfrac{3\\pi}{5}$ rad a grados · c) $0{,}4$ rad a grados."
           ],
           "steps": [
             [
-              "a) Multiplicamos $120^\\circ$ por $\\frac{\\pi}{180^\\circ}$. Los grados se cancelan.",
+              "Multiplicamos $120^\\circ$ por $\\frac{\\pi}{180^\\circ}$. Los grados se cancelan.",
               "120\\cdot\\frac\\pi{180}=\\frac{2\\pi}3\\ \\mathrm{rad}",
               "P2"
             ],
             [
-              "b) Para pasar de radianes a grados, multiplicamos por $\\frac{180^\\circ}{\\pi}$.",
+              "Para pasar de radianes a grados, multiplicamos por $\\frac{180^\\circ}{\\pi}$.",
               "\\frac{3\\pi}5\\cdot\\frac{180}\\pi=\\frac{540}5=108^\\circ",
               "P2"
             ],
             [
-              "c) Aplicamos el mismo factor. Conservamos $\\pi$ hasta el cálculo final.",
+              "Aplicamos el mismo factor. Conservamos $\\pi$ hasta el cálculo final.",
               "0{,}4\\cdot\\frac{180}\\pi=\\frac{72}\\pi\\approx22{,}918^\\circ",
               "P2"
             ]
           ],
           "check": "$\\frac{2\\pi}{3}$ rad está entre $\\frac{\\pi}{2}$ y $\\pi$, como $120^\\circ$ está entre $90^\\circ$ y $180^\\circ$. El último resultado es una aproximación.",
-          "pm": [
-            "a)\\ 120^\\circ\\qquad b)\\ \\frac{3\\pi}{5}\\ \\mathrm{rad}\\qquad c)\\ 0{,}4\\ \\mathrm{rad}"
+          "groups": [
+            {
+              "title": "a) $120^\\circ$ a radianes",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $\\frac{3\\pi}{5}$ rad a grados",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $0{,}4$ rad a grados",
+              "indices": [
+                2
+              ]
+            }
           ]
         },
         {
           "title": "Relacionar ángulos",
           "prompt": [
-            "Indicá si son complementarios, suplementarios o ninguno."
+            "(Relaciones) Indicá si son complementarios, suplementarios o ninguno: a) $25^\\circ$ y $65^\\circ$ · b) $140^\\circ$ y $40^\\circ$ · c) $95^\\circ$ y $85^\\circ$."
           ],
           "steps": [
             [
-              "a) Sumamos las medidas. El resultado es $90^\\circ$: son complementarios.",
+              "Sumamos las medidas. El resultado es $90^\\circ$: son complementarios.",
               "25^\\circ+65^\\circ=90^\\circ",
               "P3"
             ],
             [
-              "b) La suma es $180^\\circ$: son suplementarios.",
+              "La suma es $180^\\circ$: son suplementarios.",
               "140^\\circ+40^\\circ=180^\\circ",
               "P3"
             ],
             [
-              "c) La suma también es $180^\\circ$: son suplementarios.",
+              "La suma también es $180^\\circ$: son suplementarios.",
               "95^\\circ+85^\\circ=180^\\circ",
               "P3"
             ]
           ],
           "check": "La clasificación depende de la suma, no de que los ángulos sean ambos agudos.",
-          "pm": [
-            "a)\\ 25^\\circ\\ \\mathrm{y}\\ 65^\\circ\\qquad b)\\ 140^\\circ\\ \\mathrm{y}\\ 40^\\circ\\qquad c)\\ 95^\\circ\\ \\mathrm{y}\\ 85^\\circ"
+          "groups": [
+            {
+              "title": "a) $25^\\circ$ y $65^\\circ$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $140^\\circ$ y $40^\\circ$",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $95^\\circ$ y $85^\\circ$",
+              "indices": [
+                2
+              ]
+            }
           ]
         },
         {
           "title": "Encontrar ángulos coterminales",
           "prompt": [
-            "Dado $\\theta$ = -$30^\\circ$, escribí dos ángulos coterminales: uno positivo y otro negativo."
+            "(Coterminales) Dado $\\theta = -30^\\circ$, escribí dos ángulos coterminales (uno positivo y otro negativo)."
           ],
           "steps": [
             [
@@ -879,7 +993,7 @@
         {
           "title": "Calcular una hipotenusa",
           "prompt": [
-            "Un triángulo rectángulo tiene catetos 6 y 8. Hallá la hipotenusa."
+            "(Pitágoras) Un triángulo rectángulo tiene catetos 6 y 8. Hallá la hipotenusa."
           ],
           "steps": [
             [
@@ -903,7 +1017,7 @@
         {
           "title": "Calcular las tres razones",
           "prompt": [
-            "Para un ángulo agudo $\\theta$, el cateto opuesto mide 9 y la hipotenusa 15. Calculá seno, coseno y tangente."
+            "(Razones) En un triángulo rectángulo, para $\\theta$ agudo, el cateto opuesto mide 9 y la hipotenusa 15. Calculá $\\sin\\theta, \\cos\\theta, \\tan\\theta$."
           ],
           "steps": [
             [
@@ -937,7 +1051,7 @@
         {
           "title": "Calcular la longitud de una escalera",
           "prompt": [
-            "Una escalera apoya a 4,5 m de altura formando $60^\\circ$ con el suelo. ¿Qué longitud tiene?"
+            "(Aplicación) Una escalera apoya a 4,5 m de altura formando $60^\\circ$ con el suelo. ¿Qué longitud tiene?"
           ],
           "steps": [
             [
@@ -971,16 +1085,16 @@
         {
           "title": "Ubicar ángulos por cuadrante",
           "prompt": [
-            "Determiná el cuadrante de cada ángulo."
+            "(Cuadrantes) Determiná el cuadrante de: a) $210^\\circ$ · b) $-75^\\circ$ · c) $\\tfrac{5\\pi}{6}$."
           ],
           "steps": [
             [
-              "a) $210^\\circ$ está entre 180 y $270^\\circ$: pertenece al tercer cuadrante.",
+              "$210^\\circ$ está entre 180 y $270^\\circ$: pertenece al tercer cuadrante.",
               "180^\\circ<210^\\circ<270^\\circ",
               "P6"
             ],
             [
-              "b) Sumamos una vuelta completa para obtener un ángulo positivo coterminal.",
+              "Sumamos una vuelta completa para obtener un ángulo positivo coterminal.",
               "-75^\\circ+360^\\circ=285^\\circ",
               "P3"
             ],
@@ -990,34 +1104,52 @@
               "P6"
             ],
             [
-              "c) Convertimos a grados y ubicamos: $150^\\circ$ está entre 90 y $180^\\circ$.",
+              "Convertimos a grados y ubicamos: $150^\\circ$ está entre 90 y $180^\\circ$.",
               "\\frac{5\\pi}6\\cdot\\frac{180}\\pi=150^\\circ",
               "P2, P6"
             ]
           ],
           "check": "Resultados: III, IV y II. Los ángulos sobre los ejes no pertenecen al interior de un cuadrante.",
-          "pm": [
-            "a)\\ 210^\\circ\\qquad b)\\ -75^\\circ\\qquad c)\\ \\frac{5\\pi}{6}"
+          "groups": [
+            {
+              "title": "a) $210^\\circ$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $-75^\\circ$",
+              "indices": [
+                1,
+                2
+              ]
+            },
+            {
+              "title": "c) $\\frac{5\\pi}{6}$",
+              "indices": [
+                3
+              ]
+            }
           ]
         },
         {
           "title": "Obtener valores notables",
           "prompt": [
-            "Usando el círculo unitario, evaluá las siguientes razones."
+            "(Valores notables) Usando el círculo unitario, evaluá: a) $\\sin 45^\\circ$ · b) $\\cos 60^\\circ$ · c) $\\tan 30^\\circ$."
           ],
           "steps": [
             [
-              "a) Un triángulo rectángulo isósceles con catetos 1 tiene hipotenusa $\\sqrt2$. Al normalizar la hipotenusa a 1, se obtienen las coordenadas del círculo unitario.",
+              "Un triángulo rectángulo isósceles con catetos 1 tiene hipotenusa $\\sqrt2$. El seno es cateto opuesto sobre hipotenusa.",
               "\\sin45^\\circ=\\frac1{\\sqrt2}=\\frac{\\sqrt2}2",
               "P4, P5, P8"
             ],
             [
-              "b) Dividimos un triángulo equilátero de lado 2 por su altura. Para $60^\\circ$, el cateto adyacente vale 1 y la hipotenusa 2.",
+              "Al dividir un triángulo equilátero de lado 2 por su altura, para $60^\\circ$ el adyacente mide 1 y la hipotenusa 2.",
               "\\cos60^\\circ=\\frac12",
               "P5, P8"
             ],
             [
-              "c) En el mismo triángulo rectángulo, el cateto restante vale $\\sqrt3$ por Pitágoras. Para $30^\\circ$, el opuesto vale 1 y el adyacente $\\sqrt3$.",
+              "En ese triángulo, Pitágoras da un cateto de longitud $\\sqrt3$. Para $30^\\circ$, el opuesto mide 1 y el adyacente $\\sqrt3$.",
               "\\tan30^\\circ=\\frac1{\\sqrt3}",
               "P4, P5, P8"
             ],
@@ -1028,14 +1160,32 @@
             ]
           ],
           "check": "En el primer cuadrante, estos valores son positivos. La expresión $\\frac1{\\sqrt3}$ es equivalente a $\\frac{\\sqrt3}{3}$.",
-          "pm": [
-            "a)\\ \\sin45^\\circ\\qquad b)\\ \\cos60^\\circ\\qquad c)\\ \\tan30^\\circ"
+          "groups": [
+            {
+              "title": "a) $\\sin45^\\circ$",
+              "indices": [
+                0
+              ]
+            },
+            {
+              "title": "b) $\\cos60^\\circ$",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "title": "c) $\\tan30^\\circ$",
+              "indices": [
+                2,
+                3
+              ]
+            }
           ]
         },
         {
           "title": "Usar una identidad y el cuadrante",
           "prompt": [
-            "Si $\\cos\\theta=\\frac35$ y $\\theta$ está en el cuarto cuadrante, hallá $\\sin\\theta$ y $\\tan\\theta$."
+            "(Identidades) Si $\\cos\\theta = \\tfrac{3}{5}$ y $\\theta$ está en el IV cuadrante, hallá $\\sin\\theta$ y $\\tan\\theta$."
           ],
           "steps": [
             [
@@ -1114,10 +1264,7 @@
         {
           "title": "Multiplicar potencias",
           "prompt": [
-            "Simplificá."
-          ],
-          "pm": [
-            "5^3\\cdot5^{-4}"
+            "(Potencias) Simplificá: $5^3 \\cdot 5^{-4}$."
           ],
           "steps": [
             [
@@ -1141,10 +1288,7 @@
         {
           "title": "Reunir producto y cociente",
           "prompt": [
-            "Escribí como una sola potencia."
-          ],
-          "pm": [
-            "\\frac{2^7\\cdot2^{-3}}{2^{-5}}"
+            "(Potencias) Escribí como una sola potencia: $\\dfrac{2^7\\cdot 2^{-3}}{2^{-5}}$."
           ],
           "steps": [
             [
@@ -1168,10 +1312,7 @@
         {
           "title": "Evaluar un exponente fraccionario",
           "prompt": [
-            "Calculá de forma exacta."
-          ],
-          "pm": [
-            "81^{\\frac{3}{4}}"
+            "(Exponentes fraccionarios) Calculá de forma exacta: $81^{\\tfrac{3}{4}}$."
           ],
           "steps": [
             [
@@ -1195,10 +1336,7 @@
         {
           "title": "Combinar radicales",
           "prompt": [
-            "Simplificá."
-          ],
-          "pm": [
-            "\\sqrt{72}-2\\sqrt8+3\\sqrt{18}"
+            "(Raíces) Simplificá: $\\sqrt{72} - 2\\sqrt{8} + 3\\sqrt{18}$."
           ],
           "steps": [
             [
@@ -1227,10 +1365,7 @@
         {
           "title": "Escribir una raíz como potencia",
           "prompt": [
-            "Escribí como potencia."
-          ],
-          "pm": [
-            "\\sqrt[3]{x^{10}}"
+            "(Raíces) Escribí como potencia: $\\sqrt[3]{x^{10}}$."
           ],
           "steps": [
             [
@@ -1254,10 +1389,7 @@
         {
           "title": "Pasar de potencia a raíz",
           "prompt": [
-            "Reescribí como raíz y evaluá."
-          ],
-          "pm": [
-            "27^{\\frac{2}{3}}"
+            "(Relación raíz-potencia) Reescribí $27^{\\frac{2}{3}}$ como raíz y evaluá."
           ],
           "steps": [
             [
@@ -1286,10 +1418,7 @@
         {
           "title": "Justificar una propiedad falsa",
           "prompt": [
-            "Verdadero o falso: justificá la afirmación."
-          ],
-          "pm": [
-            "(ab)^n=a^n+b^n"
+            "(Propiedades) Verdadero/Falso (justificá): $(ab)^n = a^n + b^n$."
           ],
           "steps": [
             [
@@ -1323,10 +1452,7 @@
         {
           "title": "Convertir a notación científica",
           "prompt": [
-            "Convertí a notación científica."
-          ],
-          "pm": [
-            "0{,}000000092"
+            "(Notación científica) Convertí a notación científica: $0{,}000\\,000\\,092$."
           ],
           "steps": [
             [
@@ -1350,10 +1476,7 @@
         {
           "title": "Multiplicar y normalizar",
           "prompt": [
-            "Calculá y dejá en notación científica normalizada."
-          ],
-          "pm": [
-            "(3{,}2\\cdot10^{-5})(4\\cdot10^2)"
+            "(Notación científica) Calculá: $(3{,}2\\cdot 10^{-5})(4\\cdot 10^{2})$ y dejá en notación científica normalizada."
           ],
           "steps": [
             [
@@ -1377,7 +1500,7 @@
         {
           "title": "Calcular un factor de crecimiento",
           "prompt": [
-            "Una muestra pasa de $2\\cdot10^6$ a $6\\cdot10^7$ unidades. ¿Cuántas veces se multiplicó?"
+            "(Aplicación) Una muestra pasa de $2\\cdot 10^{6}$ a $6\\cdot 10^{7}$ unidades. ¿Cuántas veces se multiplicó?"
           ],
           "steps": [
             [
