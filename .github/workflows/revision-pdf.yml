@@ -24,6 +24,15 @@ jobs:
           from PIL import Image, ImageDraw
           out=Path('work/pdf-review')
           out.mkdir(parents=True,exist_ok=True)
+          metrics={}
+          for key,name in [('F1','helv'),('F2','hebo'),('F3','tiro'),('F4','tiit')]:
+              font=fitz.Font(name)
+              chars=list(range(32,256))+[8212,8211,8216,8217,8220,8221,8230]
+              metrics[key]={str(c):font.glyph_advance(c) for c in chars}
+          sym=fitz.Font('symb')
+          smap={45:0x2212,97:0x03B1,112:0x03C0,113:0x03B8,215:0x22C5,180:0x00D7,184:0x00F7,185:0x2260,163:0x2264,179:0x2265,206:0x2208,204:0x2282,177:0x00B1,187:0x2248}
+          metrics['F5']={str(k):sym.glyph_advance(v) for k,v in smap.items()}
+          (out/'font-metrics.json').write_text(json.dumps(metrics))
           report=[]
           for n in range(1,5):
               path=Path(f'descargas/etapa-{n}-soluciones-paso-a-paso.pdf')
