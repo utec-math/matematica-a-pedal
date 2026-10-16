@@ -22,14 +22,102 @@ window.MathJax = {
     <p style="margin:8px 0 0;">Las razones trigonométricas permiten relacionar los lados de un triángulo rectángulo con sus ángulos. Son la base de la trigonometría.</p>
   </div>
 
-  <!-- Pitágoras -->
-  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <h2 style="color:#783f04;">1️⃣  Teorema de Pitágoras</h2>
-    <p>En todo triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos:</p>
+  <!-- Pitágoras: del dibujo al modelo -->
+  <div id="pitagoras" style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">1️⃣ Teorema de Pitágoras · Reconocer antes de calcular</h2>
+    <p>En todo <strong>triángulo rectángulo</strong>, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos:</p>
     <p style="text-align:center;">\[c^2=a^2+b^2\]</p>
-    <div style="background:#FFF6E6; border-radius:8px; padding:10px;">Ejemplo:  
-      Si \(a=3\) y \(b=4\), entonces \(c=\sqrt{3^2+4^2}=5\).
+    <svg viewBox="0 0 640 310" role="img" aria-labelledby="pit-title pit-desc" style="display:block; width:100%; max-width:640px; margin:auto; background:#FFF9EF; border-radius:12px;">
+      <title id="pit-title">Catetos e hipotenusa de un triángulo rectángulo</title>
+      <desc id="pit-desc">Los catetos a y b forman el ángulo recto. La hipotenusa c está enfrente de ese ángulo.</desc>
+      <path d="M125 55 L125 245 L505 245 Z" fill="#fff0cf" stroke="#80550b" stroke-width="3"/>
+      <path d="M125 220 L150 220 L150 245" fill="none" stroke="#80550b" stroke-width="2"/>
+      <path d="M125 55 L505 245" stroke="#006b73" stroke-width="5"/>
+      <g font-family="Arial, sans-serif" font-size="21" fill="#513b15">
+        <text x="32" y="154">cateto a</text><text x="255" y="282">cateto b</text>
+        <text x="332" y="111" fill="#006b73">hipotenusa c</text>
+        <text x="165" y="225" font-size="17">90°</text>
+      </g>
+    </svg>
+    <p><strong>La hipotenusa está enfrente del ángulo recto</strong> y es el lado más largo. Puede aparecer inclinada, horizontal o vertical: su nombre depende del ángulo recto, no de cómo esté girado el dibujo.</p>
+    <div style="background:#FFF6E6; border-radius:8px; padding:12px;">
+      <strong>¿Qué longitud buscás?</strong>
+      <p>Si buscás la hipotenusa: \(c=\sqrt{a^2+b^2}\).</p>
+      <p>Si buscás un cateto: \(a=\sqrt{c^2-b^2}\). Primero identificá qué lado representa cada medida; después elegí la relación.</p>
     </div>
+
+    <h3 id="arbol-quebrado" style="color:#783f04; margin-top:26px;">Un árbol después de la tormenta</h3>
+    <p>Un árbol se quebró a <strong>3 m del suelo</strong>. La parte superior quedó apoyada en el punto de quiebre, con su punta tocando el suelo a <strong>8 m de la base</strong>. <strong>¿Qué altura tenía el árbol antes de quebrarse?</strong></p>
+    <p style="font-size:0.93em;">Para modelar la situación, suponemos que el terreno es horizontal, que el árbol era vertical y recto, y que el tramo caído sigue recto y no perdió longitud al quebrarse.</p>
+    <figure style="margin:16px 0;">
+      <svg viewBox="0 0 760 345" role="img" aria-labelledby="tree-title tree-desc" style="display:block; width:100%; background:#FFF9EF; border-radius:12px;">
+        <title id="tree-title">El árbol quebrado y las medidas que podemos tomar</title>
+        <desc id="tree-desc">Un tronco vertical de tres metros llega al punto de quiebre. Desde allí el tramo caído se inclina hasta tocar el suelo a ocho metros de la base. Su longitud no se conoce.</desc>
+        <path d="M45 250 H715" stroke="#61744a" stroke-width="4"/>
+        <path d="M170 250 V100 L570 250" fill="none" stroke="#96602d" stroke-width="18" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M165 105 l10 -14 l-10 -10 l9 -12" fill="none" stroke="#513b15" stroke-width="3"/>
+        <g fill="#93b07a" stroke="#59734b" stroke-width="2">
+          <path d="M480 215 Q470 170 495 166 Q526 171 520 229 Z"/>
+          <path d="M515 230 Q536 188 555 202 Q575 222 553 243 Z"/>
+          <path d="M545 240 Q585 210 607 236 Q600 260 570 250 Z"/>
+        </g>
+        <g fill="none" stroke="#80550b" stroke-width="2">
+          <path d="M110 100 V250 M102 100 H118 M102 250 H118"/>
+          <path d="M170 293 H570 M170 285 V301 M570 285 V301"/>
+        </g>
+        <g font-family="Arial, sans-serif" fill="#513b15" font-size="21">
+          <text x="57" y="183">3 m</text><text x="348" y="326">8 m</text>
+          <text x="193" y="70">Punto de quiebre</text><path d="M215 77 L182 95" stroke="#80550b" stroke-width="1.5"/>
+          <text x="312" y="136">Tramo caído</text><text x="589" y="282" font-size="17">Punta</text>
+          <text x="139" y="275" font-size="17">Base</text>
+        </g>
+      </svg>
+      <figcaption style="font-size:0.88em; margin-top:6px;">Esquema de la situación. Las medidas corresponden al suelo y al tronco que quedó de pie.</figcaption>
+    </figure>
+    <p><strong>Antes de abrir las ayudas:</strong> hacé una estimación y dibujá qué longitud necesitás averiguar. ¿Alcanza con sumar 3 y 8? ¿Por qué?</p>
+
+    <details style="margin-top:12px; padding:12px; background:#FFF6E6; border-radius:8px;">
+      <summary style="cursor:pointer; font-weight:bold;">Ayuda 1 · Encontrar el triángulo</summary>
+      <p>Uní el punto de quiebre, la base y el lugar donde la punta toca el suelo. ¿Dónde está el ángulo recto? ¿Qué representa cada lado?</p>
+      <p>Los 3 m del tronco vertical y los 8 m sobre el suelo son los catetos. El tramo caído es la hipotenusa, que llamaremos \(x\). Los 8 m <strong>no</strong> son la longitud del tramo caído: son su alcance horizontal.</p>
+    </details>
+    <details style="margin-top:12px; padding:12px; background:#FFF6E6; border-radius:8px;">
+      <summary style="cursor:pointer; font-weight:bold;">Ayuda 2 · Del árbol al modelo matemático</summary>
+      <p>Quitamos los detalles del árbol y conservamos las longitudes y el ángulo recto:</p>
+      <svg viewBox="0 0 760 310" role="img" aria-labelledby="model-title model-desc" style="display:block; width:100%; max-width:760px; margin:auto;">
+        <title id="model-title">Triángulo rectángulo que modela el árbol quebrado</title>
+        <desc id="model-desc">Cateto vertical de tres metros, cateto horizontal de ocho metros e hipotenusa x que representa el tramo caído. La relación es x al cuadrado igual a tres al cuadrado más ocho al cuadrado.</desc>
+        <path d="M155 60 V210 H555 Z" fill="#fff0cf" stroke="#80550b" stroke-width="3"/>
+        <path d="M155 185 H180 V210" fill="none" stroke="#80550b" stroke-width="2"/>
+        <path d="M155 60 L555 210" stroke="#006b73" stroke-width="5"/>
+        <g font-family="Arial, sans-serif" fill="#513b15" font-size="22">
+          <text x="86" y="146">3 m</text><text x="330" y="250">8 m</text>
+          <text x="332" y="96" fill="#006b73">x = tramo caído</text>
+          <text x="200" y="202" font-size="17">90°</text>
+          <text x="230" y="291">x² = 3² + 8²</text>
+        </g>
+      </svg>
+      <p><strong>Tu turno:</strong> escribí la relación entre los tres lados y calculá \(x\). Antes de seguir, preguntate: ¿ese resultado ya responde a la altura original?</p>
+    </details>
+    <details style="margin-top:12px; padding:12px; background:#FFF6E6; border-radius:8px;">
+      <summary style="cursor:pointer; font-weight:bold;">Resolución · Calcular e interpretar</summary>
+      <p>Como \(x\) es la hipotenusa:</p>
+      <p>\[x^2=3^2+8^2=9+64=73\]</p>
+      <p>\[x=\sqrt{73}\text{ m}\approx8{,}54\text{ m}\]</p>
+      <p>Eso mide el <strong>tramo caído</strong>. La altura original incluía también los 3 m que quedaron de pie:</p>
+      <p>\[H=3+\sqrt{73}\text{ m}\approx11{,}54\text{ m}\]</p>
+      <p><strong>Comprobación:</strong> el tramo inclinado debe medir más de 8 m y menos de \(3+8=11\) m. Nuestro resultado cumple esas condiciones. Conservamos \(\sqrt{73}\) hasta el final para no acumular redondeos.</p>
+    </details>
+    <details style="margin-top:12px; padding:12px; background:#FFF6E6; border-radius:8px;">
+      <summary style="cursor:pointer; font-weight:bold;">Otro desafío · Ahora falta un cateto</summary>
+      <p>En otro árbol, el tramo caído mide <strong>10 m</strong> y la punta toca el suelo a <strong>8 m de la base</strong>. Con las mismas condiciones del modelo, ¿a qué altura se quebró? ¿Cuánto medía originalmente?</p>
+      <p>Identificá primero la hipotenusa. ¿Esta vez tenés que sumar o restar los cuadrados de las medidas conocidas?</p>
+      <details style="margin-top:10px;">
+        <summary style="cursor:pointer;">Contrastar mi respuesta</summary>
+        <p>\(h^2+8^2=10^2\), por lo tanto \(h=\sqrt{100-64}=6\text{ m}\). Se quebró a 6 m y su altura original era \(6+10=16\text{ m}\).</p>
+      </details>
+    </details>
+    <p style="margin-top:18px;"><strong>Para llevar a otro problema:</strong> ¿dónde aparece un ángulo recto? ¿Qué representa cada lado? ¿Busco una hipotenusa o un cateto? ¿La longitud calculada responde a la pregunta o necesito otro paso?</p>
   </div>
 
   <!-- Razones trigonométricas -->
