@@ -1,0 +1,59 @@
+.map-signs-practice {
+  margin-top: 18px;
+  padding: 16px;
+  border: 2px solid #ffa559;
+  border-radius: 12px;
+  background: #fffdf8;
+  overflow-wrap: anywhere;
+}
+.map-signs-practice h2, .map-signs-practice h3 { color: #783f04; }
+.map-signs-practice [hidden] { display: none !important; }
+.map-signs-progress { font-size: .9em; }
+.map-signs-expression { font-size: 1.4em; font-weight: 700; color: #783f04; }
+.map-signs-fieldset { border: 0; padding: 0; margin: 0 0 12px; min-width: 0; }
+.map-signs-fieldset legend { padding: 0; margin-bottom: 10px; font-weight: 700; }
+.map-signs-options { display: grid; gap: 8px; }
+.map-signs-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #d7b270;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.map-signs-option:has(input:checked) { background: #fff0d6; border-color: #a56324; }
+.map-signs-option input { flex: 0 0 auto; margin: 0; accent-color: #783f04; }
+.map-signs-practice button {
+  padding: 10px 14px;
+  border: 1px solid #a56324;
+  border-radius: 8px;
+  background: #fff0d6;
+  color: #783f04;
+  font: inherit;
+  white-space: normal;
+  cursor: pointer;
+}
+.map-signs-practice button:disabled { opacity: .65; cursor: default; }
+.map-signs-practice :is(button, input, summary):focus-visible { outline: 3px solid #783f04; outline-offset: 3px; }
+.map-signs-answer-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+.map-signs-answer-row input {
+  box-sizing: border-box;
+  width: 150px;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #a56324;
+  border-radius: 8px;
+  background: #fff;
+  color: #783f04;
+  font: inherit;
+}
+.map-signs-answer-row input[aria-invalid="true"] { border: 2px solid #a13b24; }
+.map-signs-help { font-size: .85em; }
+.map-signs-feedback, .map-signs-solution, .map-signs-summary { padding: 12px; border-radius: 8px; }
+.map-signs-feedback[data-state="retry"] { background: #fff0d6; border-left: 4px solid #a56324; }
+.map-signs-feedback[data-state="correct"], .map-signs-summary { background: #effff2; border-left: 4px solid #477b50; }
+.map-signs-solution { background: #fff6e6; }
+.map-signs-hint { margin: 14px 0; }
+.map-signs-hint summary { cursor: pointer; color: #783f04; }

@@ -7,6 +7,7 @@
 
   <!-- Estilo global -->
   <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/signs-practice.css?v=1" />
 
   <!-- MathJax -->
   <script>
@@ -67,7 +68,7 @@
       </div>
       <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
         <h4 style="color:#783f04;">Suma de signos distintos</h4>
-        <p>Se restan los valores absolutos y se conserva el signo del mayor.</p>
+        <p>Se restan los valores absolutos y se conserva el signo del número de <b>mayor valor absoluto</b>. Si los valores absolutos son iguales, la suma da cero.</p>
         <p>(+8) + (−5) = +3<br>(−10) + (+4) = −6</p>
       </div>
     </div>
@@ -104,6 +105,48 @@
     </div>
   </div>
 
+  <section id="practica-signos" class="map-signs-practice" aria-labelledby="signs-practice-title">
+    <h2 id="signs-practice-title">🚲 Probá transformar antes de calcular</h2>
+    <p>Son cuatro ejercicios. Primero revisá los signos y después calculá. Podés pedir una pista y volver a intentar las veces que necesites.</p>
+    <div data-signs-interactive hidden>
+      <p class="map-signs-progress" data-signs-progress></p>
+      <h3 data-signs-title></h3>
+      <p class="map-signs-expression" data-signs-expression></p>
+      <form data-signs-transform-form>
+        <fieldset class="map-signs-fieldset">
+          <legend data-signs-question></legend>
+          <div class="map-signs-options" data-signs-options></div>
+        </fieldset>
+        <button type="submit" data-signs-check-transform>Comprobar transformación</button>
+      </form>
+      <p class="map-signs-feedback" data-signs-transform-feedback role="status" aria-live="polite" aria-atomic="true" hidden></p>
+      <form data-signs-answer-form hidden>
+        <label for="signs-result"><b>2. Ahora calculá el resultado de <span data-signs-equivalent></span>.</b></label>
+        <div class="map-signs-answer-row">
+          <input id="signs-result" name="signs-result" type="text" inputmode="text" maxlength="16" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="signs-result-help signs-answer-feedback" />
+          <button type="submit" data-signs-check-answer>Comprobar resultado</button>
+        </div>
+        <p id="signs-result-help" class="map-signs-help">Escribí un número entero. Para un resultado negativo, usá el signo − o -.</p>
+      </form>
+      <p id="signs-answer-feedback" class="map-signs-feedback" data-signs-answer-feedback role="status" aria-live="polite" aria-atomic="true" hidden></p>
+      <details class="map-signs-hint" data-signs-hint>
+        <summary>💡 Ver una pista</summary>
+        <p data-signs-hint-text></p>
+      </details>
+      <p class="map-signs-solution" data-signs-solution hidden></p>
+      <button type="button" data-signs-next hidden>Siguiente ejercicio →</button>
+      <div class="map-signs-summary" data-signs-summary role="status" aria-live="polite" hidden>
+        <h3>✅ Completaste los cuatro ejercicios</h3>
+        <p>Practicaste cómo sumar el opuesto, sumar dos negativos, reconocer números opuestos y cambiar todos los signos de un paréntesis.</p>
+        <button type="button" data-signs-restart>Volver a practicar</button>
+      </div>
+    </div>
+    <noscript>
+      <p>Practicalos en papel: −6 − (−4), −7 − 2, −5 − (−5) y 5 − (2 − 4). Transformá cada expresión y después calculá.</p>
+      <details><summary>Comprobar las cuentas</summary><p>−6 + 4 = −2; −7 + (−2) = −9; −5 + 5 = 0; 5 − 2 + 4 = 7.</p></details>
+    </noscript>
+  </section>
+
   <!-- Recordatorio -->
   <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">Para recordar</h2>
@@ -133,6 +176,7 @@
 <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
 <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/signs-practice.js?v=1"></script>
 
 </body>
 </html>
