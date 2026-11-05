@@ -1,5 +1,10 @@
 // assets/load-header.js
 
+// Todas las páginas del recorrido cargan este archivo. La medición no depende
+// de que la descarga o la construcción del encabezado termine correctamente.
+import('/matematica-a-pedal/assets/analytics.js?v=1')
+  .catch(err => console.warn('No se pudo cargar la medición de visitas:', err));
+
 // ---- Notación global de fracciones
 // Se instala mientras el documento todavía se está parseando, antes de que los
 // scripts defer de MathJax hagan el primer render. Así evitamos barras inclinadas

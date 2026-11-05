@@ -4,6 +4,7 @@ import {
   getAuth,
   signInAnonymously,
   onAuthStateChanged,
+  onIdTokenChanged,
   GoogleAuthProvider,
   signInWithPopup,
   signInWithCredential,
@@ -255,7 +256,7 @@ async function signInWithUtec() {
 }
 
 window.__MAP__ = {
-  app, auth, db, onAuthStateChanged,
+  app, auth, db, onAuthStateChanged, onIdTokenChanged,
   authReady,
   signInWithUtec,
   signOut: () => signOut(auth),
