@@ -133,12 +133,90 @@
       <h3 style="color:#783f04; margin:12px 0 4px;">🟡 Intermedia</h3>
       <p>Clasificá: \(\sqrt{49}\), \(-\sqrt{16}\), \(0{,}\overline{27}\), \(\sqrt5\).</p>
       <h3 style="color:#783f04; margin:12px 0 4px;">🔴 Desafío</h3>
-      <p>Decidí si \(\tfrac{\sqrt{36}}{3}\) y \(\tfrac{\sqrt2}{2}\) son racionales o irracionales. Justificá simplificando primero.</p>
+      <p>Decidí si \(\tfrac{\sqrt{36}}{3}\) y \(\tfrac{\sqrt2}{2}\) son racionales o irracionales. Simplificá cuando sea posible y justificá tu decisión.</p>
       <details style="margin-top:10px;">
         <summary style="cursor:pointer; color:#783f04;">✅ Ver respuestas</summary>
         <p><b>Básica:</b> \(\mathbb N,\mathbb Z,\mathbb Q,\mathbb Q\).</p>
         <p><b>Intermedia:</b> \(\mathbb N,\mathbb Z,\mathbb Q\), irracional.</p>
         <p><b>Desafío:</b> \(\tfrac{\sqrt{36}}3=\tfrac63=2\in\mathbb N\); \(\tfrac{\sqrt2}{2}\) es irracional.</p>
+      </details>
+
+      <aside aria-labelledby="clasificar-y-demostrar" style="margin-top:16px; background:#FFF6E6; border:1px solid #FFD580; border-radius:10px; padding:14px;">
+        <h3 id="clasificar-y-demostrar" style="color:#783f04; margin:0 0 8px;">🔎 Clasificar y demostrar: dos tareas diferentes</h3>
+        <p><b>Demostrar que un número es irracional no siempre es una tarea sencilla.</b> Puede requerir un argumento especial. En esta práctica podés apoyarte en resultados conocidos, como que \(\sqrt2\) y \(\sqrt5\) son irracionales.</p>
+        <p>Que una expresión tenga una raíz no alcanza para afirmar que es irracional: por ejemplo, \(\sqrt{49}=7\). Tampoco alcanza con mirar muchos decimales en una calculadora: eso no demuestra que el desarrollo sea infinito y no periódico.</p>
+        <p style="margin-bottom:0;">Si querés saber de dónde sale uno de esos resultados, abrí la demostración que sigue. Es una <b>lectura opcional</b> para profundizar.</p>
+      </aside>
+
+      <details id="demostracion-raiz-de-dos" style="margin-top:12px; border:1px solid #FFD580; border-radius:10px; padding:14px; background:#FFFDF8;">
+        <summary style="cursor:pointer; color:#783f04; font-weight:700;">💡 ¿Por qué \(\sqrt2\) es irracional? Demostración paso a paso</summary>
+        <p>Queremos demostrar que \(\sqrt2\) no puede escribirse como una fracción de enteros. Vamos a suponer, por un momento, que sí se puede, y a seguir las consecuencias de esa suposición.</p>
+
+        <ol style="padding-left:24px;">
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Suponemos que existe una fracción y la simplificamos</h4>
+            <p>Si \(\sqrt2\) fuera racional, existirían dos enteros \(a\) y \(b\), con \(b\neq0\), tales que:</p>
+            <p>\[\sqrt2=\frac{a}{b}.\]</p>
+            <p>Podemos elegir esa fracción <b>simplificada al máximo</b>: si el numerador y el denominador tienen un divisor común mayor que 1, dividimos ambos por él hasta obtener una fracción irreducible. Por ejemplo, \(\tfrac68=\tfrac34\).</p>
+            <p>Esto significa que \(a\) y \(b\) son <b>primos entre sí</b>: no tienen ningún divisor común mayor que 1. No hace falta que ambos sean números primos; por ejemplo, 8 y 15 son primos entre sí, aunque ninguno es primo.</p>
+          </li>
+
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Elevamos al cuadrado y observamos que \(a^2\) es par</h4>
+            <p>Elevamos los dos lados de la igualdad al cuadrado:</p>
+            <p>\[(\sqrt2)^2=\left(\frac{a}{b}\right)^2.\]</p>
+            <p>Como el cuadrado de \(\sqrt2\) es 2 y el cuadrado de una fracción se obtiene elevando al cuadrado su numerador y su denominador:</p>
+            <p>\[2=\frac{a^2}{b^2}.\]</p>
+            <p>Multiplicamos ambos lados por \(b^2\). Como \(b\neq0\), el denominador \(b^2\) tampoco es cero y podemos simplificarlo. Obtenemos \(2b^2=a^2\), que también podemos escribir así:</p>
+            <p>\[a^2=2b^2.\]</p>
+            <p>El número \(b^2\) es entero. Por eso, \(a^2\) es <b>dos veces un entero</b>: es un número par.</p>
+          </li>
+
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Explicamos por qué \(a\) también tiene que ser par</h4>
+            <p>Acá hay una idea que conviene justificar: <b>si el cuadrado de un entero es par, ese entero también es par.</b></p>
+            <p>Todo entero es par o impar. Si \(a\) fuera impar, podríamos escribirlo como \(a=2m+1\), con \(m\) entero. Al elevar al cuadrado y desarrollar el producto, tendríamos:</p>
+            <p>\[a^2=(2m+1)^2=4m^2+4m+1.\]</p>
+            <p>Los dos primeros términos tienen un factor 2 en común, así que podemos escribir:</p>
+            <p>\[a^2=2(2m^2+2m)+1.\]</p>
+            <p>Como \(2m^2+2m\) es entero, esta expresión es <b>dos veces un entero, más 1</b>: sería impar. Pero acabamos de demostrar que \(a^2\) es par. Entonces \(a\) no puede ser impar y, por lo tanto, <b>es par</b>.</p>
+          </li>
+
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Reemplazamos \(a\) por una expresión de número par</h4>
+            <p>Como \(a\) es par, existe un entero \(k\) tal que \(a=2k\). Sustituimos esa expresión en \(a^2=2b^2\):</p>
+            <p>\[(2k)^2=2b^2.\]</p>
+            <p>Al elevar el producto al cuadrado, obtenemos \((2k)^2=4k^2\). Entonces:</p>
+            <p>\[4k^2=2b^2.\]</p>
+            <p>Dividimos los dos lados entre 2 y obtenemos \(2k^2=b^2\). Intercambiando los dos lados de la igualdad, queda:</p>
+            <p>\[b^2=2k^2.\]</p>
+          </li>
+
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Concluimos que \(b\) también es par</h4>
+            <p>Como \(k^2\) es entero, la igualdad \(b^2=2k^2\) muestra que \(b^2\) es par.</p>
+            <p>Aplicamos la idea que justificamos en el paso 3: un entero impar tiene cuadrado impar. Como \(b^2\) es par, \(b\) no puede ser impar. Por lo tanto, <b>\(b\) también es par</b>.</p>
+          </li>
+
+          <li style="margin-top:16px;">
+            <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Encontramos la contradicción</h4>
+            <p>Llegamos a que <b>\(a\) y \(b\) son pares</b>. Entonces ambos son divisibles entre 2: tienen al 2 como divisor común.</p>
+            <p>Pero en el paso 1 habíamos elegido \(a\) y \(b\) primos entre sí. Si ambos se pueden dividir entre 2, la fracción todavía se puede simplificar. <b>No puede estar simplificada al máximo y, al mismo tiempo, admitir esa simplificación.</b></p>
+            <p>La suposición inicial de que \(\sqrt2\) se podía escribir como fracción de enteros nos llevó a una imposibilidad. Por eso, esa suposición es falsa.</p>
+            <p style="background:#EFFFF2; border:1px solid #B8E8C4; border-radius:10px; padding:12px;"><b>Conclusión:</b> \(\sqrt2\) es un número real que no puede escribirse como cociente de enteros. Por lo tanto, <b>\(\sqrt2\) es irracional</b>.</p>
+          </li>
+        </ol>
+
+        <p>Esta forma de razonar se llama <b>demostración por contradicción</b>: suponemos lo contrario de lo que queremos demostrar y mostramos que esa suposición conduce a una imposibilidad.</p>
+
+        <div style="margin-top:16px; background:#FFF6E6; border-radius:10px; padding:12px;">
+          <h4 style="color:#783f04; margin:0 0 8px; font-size:18px;">Volvamos al desafío: ¿por qué \(\tfrac{\sqrt2}{2}\) es irracional?</h4>
+          <p>Si \(\tfrac{\sqrt2}{2}\) fuera racional, podríamos escribirlo como \(\tfrac{p}{q}\), con \(p\) y \(q\) enteros y \(q\neq0\):</p>
+          <p>\[\frac{\sqrt2}{2}=\frac{p}{q}.\]</p>
+          <p>Al multiplicar ambos lados por 2, obtendríamos:</p>
+          <p>\[\sqrt2=\frac{2p}{q}.\]</p>
+          <p>Como \(2p\) y \(q\) son enteros y \(q\neq0\), esta sería una fracción de enteros que representa a \(\sqrt2\). Eso contradice lo que acabamos de demostrar. Por lo tanto, <b>\(\tfrac{\sqrt2}{2}\) también es irracional</b>.</p>
+        </div>
       </details>
     </section>
 
