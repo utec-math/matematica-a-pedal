@@ -152,7 +152,7 @@ import('/matematica-a-pedal/assets/analytics.js?v=1')
 
   // route-ui.js reutiliza el navegador existente. nav-fallback.js entra solamente
   // si una página antigua realmente no trae navegador inferior.
-  import('/matematica-a-pedal/assets/route-ui.js?v=2')
+  import('/matematica-a-pedal/assets/route-ui.js?v=3')
     .then(() => import('/matematica-a-pedal/assets/nav-fallback.js?v=1'))
     .catch(err => console.error('No se pudo cargar la interfaz del recorrido:', err));
 

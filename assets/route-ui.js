@@ -121,7 +121,7 @@ const guides = {
     answer: 'Tiene 3 términos y grado 3.'
   },
   '/matematica-a-pedal/unidad2/bloque-b.html': {
-    idea: 'Solo se combinan términos semejantes: deben tener exactamente la misma parte literal.',
+    idea: 'Para combinar términos sumando o restando sus coeficientes, deben tener la misma parte literal: las mismas variables con los mismos exponentes.',
     steps: ['Sumamos (3x²+5x−2)+(4x²−3x+7).', 'Agrupamos semejantes: (3+4)x² +(5−3)x + (−2+7).', 'Resultado: 7x² + 2x + 5.'],
     try: 'Simplificá (2x²+3x−1)+(5x²−x+4).',
     answer: '7x² + 2x + 3.'
@@ -363,7 +363,7 @@ function guideBox(meta) {
       <span style="font-size:12px;border:1px solid #FFD580;border-radius:999px;padding:3px 8px;background:#FFF6E6;">idea → ejemplo → práctica</span>
     </div>
     <p style="margin:10px 0 0;"><b>Idea clave.</b> ${guide.idea}</p>
-    <div style="margin-top:12px;background:#FFF6E6;border-radius:10px;padding:12px;">
+    <div data-map-guide-example style="margin-top:12px;background:#FFF6E6;border-radius:10px;padding:12px;">
       <b style="color:#783f04;">Ejemplo guiado</b>
       <ol style="margin:8px 0 0 20px;">${guide.steps.map(step => `<li>${step}</li>`).join('')}</ol>
     </div>
@@ -371,6 +371,10 @@ function guideBox(meta) {
       <b style="color:#783f04;">Ahora vos.</b> ${guide.try}
       <details style="margin-top:8px;"><summary style="cursor:pointer;color:#783f04;">✅ Comprobar</summary><p style="margin:8px 0 0;">${guide.answer}</p></details>
     </div>`;
+  // Algunas páginas explican primero el vocabulario necesario para el ejemplo.
+  // Reutilizamos su contenido local, que también se puede leer sin esta guía.
+  const explainer = document.querySelector('[data-map-guide-explainer]');
+  if (explainer) box.querySelector('[data-map-guide-example]').before(explainer);
   hero.insertAdjacentElement('afterend', box);
   try { window.MathJax?.typesetPromise?.([box]); } catch (_) {}
 }

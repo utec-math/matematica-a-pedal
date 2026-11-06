@@ -1,0 +1,23 @@
+.map-term-parts {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid #ffd580;
+  border-radius: 10px;
+  background: #fffdf8;
+}
+.map-term-parts h3 { color: #783f04; margin: 0 0 8px; }
+.map-term-parts .map-polynomial-reading svg { max-width: 400px; }
+.map-term-parts .map-polynomial-reading figcaption {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+}
+.map-term-exponent { fill: #783f04; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; }
+.map-term-definitions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.map-term-definitions dt { color: #783f04; font-weight: 700; }
+.map-term-definitions dd { margin: 6px 0 0; }
+.map-term-parts summary { cursor: pointer; color: #783f04; }
