@@ -1,0 +1,51 @@
+.map-polynomial-guide {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid #ffd580;
+  border-radius: 12px;
+}
+.map-polynomial-guide h3 { color: #783f04; margin: 0 0 8px; }
+.map-polynomial-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 12px;
+}
+.map-polynomial-types > div {
+  padding: 12px;
+  border: 1px solid #ffd580;
+  border-radius: 10px;
+  background: #fffdf8;
+}
+.map-polynomial-types h4 { margin: 0 0 6px; color: #783f04; }
+.map-polynomial-types p { margin: 6px 0; }
+.map-polynomial-note {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff6e6;
+}
+.map-polynomial-note > p:first-child { margin-top: 0; }
+.map-polynomial-note > p:last-child { margin-bottom: 0; }
+.map-polynomial-reading {
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid #ffd580;
+  border-radius: 12px;
+  background: #fff6e6;
+  color: #783f04;
+}
+.map-polynomial-reading svg { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+.map-polynomial-reading figcaption { text-align: center; margin-top: 8px; }
+.map-polynomial-label { fill: #783f04; font: 18px 'Roboto Mono', monospace; }
+.map-polynomial-symbol { fill: #783f04; font-family: Georgia, 'Times New Roman', serif; font-size: 44px; }
+.map-polynomial-arrow { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.map-polynomial-highlight { fill: #ffdfa4; }
+.map-polynomial-formula {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(18px, 3vw, 24px);
+  color: #783f04;
+  overflow-wrap: anywhere;
+}
+.map-polynomial-evaluation { margin: 8px 0; padding-left: 24px; }
+.map-polynomial-evaluation li { margin-top: 14px; }
+.map-polynomial-evaluation .map-polynomial-formula { margin: 8px 0; }

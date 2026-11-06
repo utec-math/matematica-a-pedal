@@ -1,4 +1,5 @@
 <!-- Encabezado global -->
+<link rel="stylesheet" href="/matematica-a-pedal/assets/polynomial-guide.css?v=1" />
 <div id="header-placeholder"></div>
 <script src="/matematica-a-pedal/assets/load-header.js"></script>
 <!-- CAPÍTULO 1 — EXPRESIONES ALGEBRAICAS Y POLINOMIOS (Matemática a Pedal) -->
@@ -15,7 +16,7 @@
     <h2 style="color:#783f04; margin:0 0 8px;">Objetivos</h2>
     <ul style="margin:0 0 0 18px;">
       <li>Reconocer los elementos de una expresión algebraica.</li>
-      <li>Distinguir monomios, binomios, trinomios y polinomios.</li>
+      <li>Reconocer a monomios, binomios y trinomios como casos de polinomios y clasificarlos por su cantidad de términos.</li>
       <li>Calcular el grado de un término y de un polinomio.</li>
       <li>Evaluar expresiones sustituyendo valores.</li>
     </ul>
@@ -31,25 +32,39 @@
     <p>Cuando las letras toman valores, la expresión se puede evaluar.</p>
   </div>
 
-  <!-- Términos y tipos -->
-  <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
-    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Monomio</h3>
-      <p>Un solo término: 7x, −3y², 0,5a³b.</p>
+  <!-- Términos y tipos: todos pertenecen a la misma familia -->
+  <section id="familia-polinomios" class="map-polynomial-guide" aria-labelledby="polynomial-family-title">
+    <h3 id="polynomial-family-title">🧩 Polinomio: el nombre de la familia</h3>
+    <p>Un <b>polinomio</b> es una suma finita de monomios: puede tener uno, dos, tres o más términos. En los monomios que usamos aquí, las variables tienen exponentes enteros no negativos: 0, 1, 2, 3, …</p>
+    <p>Dentro de esta familia usamos nombres más específicos según la cantidad de términos:</p>
+    <div class="map-polynomial-types">
+      <div>
+        <h4>Monomio</h4>
+        <p>Un término.</p>
+        <p>Ejemplos: 7x, −3y², 0,5a³b.</p>
+      </div>
+      <div>
+        <h4>Binomio</h4>
+        <p>Dos términos.</p>
+        <p>Ejemplos: x + 5, a² − b².</p>
+      </div>
+      <div>
+        <h4>Trinomio</h4>
+        <p>Tres términos.</p>
+        <p>Ejemplo: x² + 3x + 2.</p>
+      </div>
+      <div>
+        <h4>Polinomio de cuatro términos</h4>
+        <p>También llamado <b>cuatrinomio</b>.</p>
+        <p>Ejemplo: 2x³ − 5x² + 3x − 1.</p>
+      </div>
     </div>
-    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Binomio</h3>
-      <p>Dos términos: x + 5, a² − b².</p>
+    <div class="map-polynomial-note">
+      <p><b>Un nombre general y otro específico pueden ser correctos a la vez.</b> Por ejemplo, x² + 3x + 2 es un polinomio y, más específicamente, un trinomio. Un monomio y un binomio también son polinomios.</p>
+      <p>Podés usar el nombre general <b>polinomio</b> cuando no haga falta precisar la cantidad de términos. Si la consigna pide clasificar por esa cantidad, conviene dar el nombre específico.</p>
+      <p><b>Antes de contar, simplificá los términos semejantes.</b> Por ejemplo, x + x + 1 = 2x + 1: después de simplificar quedan dos términos, así que es un binomio.</p>
     </div>
-    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Trinomio</h3>
-      <p>Tres términos: x² + 3x + 2.</p>
-    </div>
-    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-      <h3 style="color:#783f04; margin:0 0 6px;">Polinomio</h3>
-      <p>Suma de varios monomios: 2x³ − 5x² + 3x − 1.</p>
-    </div>
-  </div>
+  </section>
 
   <!-- Grado -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
@@ -63,12 +78,63 @@
     </div>
   </div>
 
+  <!-- Lectura de la notación antes de evaluar -->
+  <section id="notacion-polinomios" class="map-polynomial-guide" aria-labelledby="polynomial-notation-title">
+    <h3 id="polynomial-notation-title">🔎 ¿Cómo leemos P(x)?</h3>
+    <p>Para referirnos a un polinomio podemos darle un nombre. Si elegimos <b>P</b> y la variable es <b>x</b>, usamos la notación <b>P(x)</b>.</p>
+    <figure class="map-polynomial-reading">
+      <svg viewBox="0 0 360 190" role="img" aria-labelledby="polynomial-diagram-title polynomial-diagram-description">
+        <title id="polynomial-diagram-title">Las partes de P(x)</title>
+        <desc id="polynomial-diagram-description">Una flecha señala la P como nombre del polinomio. Otra flecha señala la x entre paréntesis como variable.</desc>
+        <defs>
+          <marker id="polynomial-arrowhead" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L6,3 L0,6 Z" fill="currentColor" />
+          </marker>
+        </defs>
+        <text class="map-polynomial-label" x="126" y="24" text-anchor="middle">Nombre del polinomio</text>
+        <path class="map-polynomial-arrow" d="M126,37 V74" marker-end="url(#polynomial-arrowhead)" />
+        <rect class="map-polynomial-highlight" x="108" y="78" width="36" height="45" rx="7" />
+        <rect class="map-polynomial-highlight" x="158" y="78" width="36" height="45" rx="7" />
+        <text class="map-polynomial-symbol" x="126" y="112" text-anchor="middle" font-style="italic">P</text>
+        <text class="map-polynomial-symbol" x="149" y="112" text-anchor="middle">(</text>
+        <text class="map-polynomial-symbol" x="176" y="112" text-anchor="middle" font-style="italic">x</text>
+        <text class="map-polynomial-symbol" x="201" y="112" text-anchor="middle">)</text>
+        <path class="map-polynomial-arrow" d="M255,150 V137 H176 V126" marker-end="url(#polynomial-arrowhead)" />
+        <text class="map-polynomial-label" x="255" y="177" text-anchor="middle">Variable</text>
+      </svg>
+      <figcaption>Se lee <b>«P de x»</b>.</figcaption>
+    </figure>
+    <ul>
+      <li><b>P es el nombre elegido.</b> También podríamos llamar al polinomio Q, R u otra letra.</li>
+      <li><b>x es la variable.</b> Aparece entre paréntesis para indicar en qué variable está expresado el polinomio.</li>
+      <li><b>P(x) no significa P multiplicado por x.</b> Los paréntesis forman parte de esta notación.</li>
+    </ul>
+    <p>Por ejemplo, podemos llamar P al polinomio 2x² − 3x + 1 y escribir:</p>
+    <p class="map-polynomial-formula"><i>P</i>(<i>x</i>) = 2<i>x</i>² − 3<i>x</i> + 1.</p>
+    <p><b>P(4)</b>, que se lee «P de cuatro», indica el <b>valor que obtenemos al reemplazar x por 4</b> en esa expresión. Es el mismo polinomio evaluado en un valor concreto de la variable.</p>
+  </section>
+
   <!-- Evaluación -->
   <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">3️⃣  Evaluar expresiones</h2>
-    <p>Reemplazamos las variables por valores numéricos y realizamos las operaciones.</p>
-    <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
-      Ejemplo: P(x) = 2x² − 3x + 1 y x = 4 → P(4) = 2·16 − 12 + 1 = 21.
+    <p>Reemplazamos las variables por valores numéricos y realizamos las operaciones, respetando su orden.</p>
+    <div class="map-polynomial-note">
+      <p><b>Ejemplo guiado.</b> Si P(x) = 2x² − 3x + 1, calculemos P(4):</p>
+      <ol class="map-polynomial-evaluation">
+        <li><b>Sustituimos cada x por 4.</b> Conservamos los coeficientes y las operaciones; usamos paréntesis alrededor del valor que reemplaza a x.
+          <p class="map-polynomial-formula">P(4) = 2·(4)² − 3·(4) + 1.</p>
+        </li>
+        <li><b>Calculamos la potencia:</b> 4² = 16.
+          <p class="map-polynomial-formula">P(4) = 2·16 − 3·4 + 1.</p>
+        </li>
+        <li><b>Resolvemos las multiplicaciones:</b> 2·16 = 32 y 3·4 = 12.
+          <p class="map-polynomial-formula">P(4) = 32 − 12 + 1.</p>
+        </li>
+        <li><b>Sumamos y restamos:</b> 32 − 12 = 20; luego 20 + 1 = 21.
+          <p class="map-polynomial-formula">P(4) = 21.</p>
+        </li>
+      </ol>
+      <p><b>Interpretación:</b> el valor del polinomio P cuando x vale 4 es 21.</p>
     </div>
   </div>
 
@@ -76,15 +142,15 @@
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04;">Mini-actividad · Clasificación y grado</h2>
     <ol style="margin:0 0 0 18px;">
-      <li>Identificá tipo y grado: 5x³ − 2x² + 1.</li>
-      <li>Identificá tipo y grado: −7ab².</li>
+      <li>Clasificá por cantidad de términos e indicá el grado: 5x³ − 2x² + 1.</li>
+      <li>Clasificá por cantidad de términos e indicá el grado: −7ab².</li>
       <li>Evaluá P(x) = x² − 5x + 6 en x = 3.</li>
     </ol>
     <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
       <ol style="margin:8px 0 0 18px;">
-        <li>Polinomio de 3 términos (trinomio), grado 3.</li>
-        <li>Monomio, grado 3 (1 + 2).</li>
-        <li>P(3) = 9 − 15 + 6 = 0.</li>
+        <li>Trinomio (un polinomio de tres términos), grado 3.</li>
+        <li>Monomio (un polinomio de un término), grado 3 (1 + 2).</li>
+        <li>P(3) = (3)² − 5·(3) + 6 = 9 − 15 + 6 = 0.</li>
       </ol>
     </details>
   </div>
