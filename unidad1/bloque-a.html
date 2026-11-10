@@ -80,32 +80,95 @@
       </div>
     </section>
 
-    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 10px;">3️⃣ Ejemplo guiado 1 · \(\sqrt{16}\)</h2>
-      <div style="display:grid; gap:8px;">
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 1.</b> Antes de clasificar, simplificamos: \(\sqrt{16}=4\).</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 2.</b> El 4 es un número natural.</div>
-        <div style="background:#FFF6E6; border-radius:10px; padding:10px;"><b>Paso 3.</b> Como \(\mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R\), también es entero, racional y real.</div>
-        <div style="background:#EFFFF2; border:1px solid #B8E8C4; border-radius:10px; padding:10px;"><b>Respuesta si piden el conjunto más pequeño:</b> \(\mathbb N\).</div>
+    <style>
+    #pedal-a{margin:18px 0 0;color-scheme:light dark;--ink:light-dark(#142b2a,#e7f1ea);--quiet:light-dark(#4b635e,#acc2b9);--paper:light-dark(#f6f8f2,#172521);--panel:light-dark(#fff,#22332e);--line:light-dark(#d5dfd5,#42574f);--green:light-dark(#205f4b,#a6e6bf);--soft:light-dark(#e4f2e7,#293f34);--action-ink:light-dark(#fff,#133124);background:var(--paper);color:var(--ink);font:15px/1.52 system-ui,sans-serif;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    #pedal-a *{box-sizing:border-box}
+    #pedal-a .intro{padding:20px clamp(16px,4vw,38px) 22px}
+    #pedal-a .eyebrow{color:var(--green);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    #pedal-a p{margin:0}
+    #pedal-a .sub{color:var(--quiet);max-width:62ch}
+    #pedal-a .layout{display:grid;grid-template-columns:minmax(155px,1fr) minmax(0,3fr);gap:20px;padding:0 clamp(16px,4vw,38px) 28px}
+    #pedal-a nav{display:flex;flex-direction:column;gap:5px}
+    #pedal-a button{font:inherit;cursor:pointer}
+    #pedal-a .step{display:flex;text-align:left;align-items:center;gap:9px;padding:10px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--quiet)}
+    #pedal-a .step[aria-pressed=true]{background:var(--soft);color:var(--green);font-weight:650}
+    #pedal-a .num{display:grid;place-items:center;width:24px;height:24px;flex:none;border:1px solid var(--line);border-radius:50%;font-size:12px}
+    #pedal-a .panel{background:var(--panel);padding:clamp(15px,3vw,27px);border:1px solid var(--line);border-radius:14px;min-height:320px}
+    #pedal-a h2{font-size:clamp(22px,3vw,28px);line-height:1.16;letter-spacing:-.025em;margin:6px 0 12px;color:var(--ink)}
+    #pedal-a .sets{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:17px 0;color:var(--green);font-size:21px}
+    #pedal-a .sets b{background:var(--soft);border-radius:9px;padding:5px 12px}
+    #pedal-a .note{margin:14px 0;padding:10px 13px;background:var(--soft);border-radius:8px}
+    #pedal-a .action{margin-top:14px;padding:9px 14px;border:1px solid var(--green);border-radius:8px;background:var(--green);color:var(--action-ink);font-weight:650}
+    #pedal-a details{margin:14px 0;color:var(--green)}
+    #pedal-a details p{margin-top:7px;color:var(--ink)}
+    #pedal-a .options{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+    #pedal-a .options label{padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+    #pedal-a input{accent-color:var(--green)}
+    #pedal-a output{display:block;margin-top:8px;color:var(--green)}
+    #pedal-a [hidden]{display:none}
+    @media(max-width:590px){#pedal-a .layout{grid-template-columns:1fr;gap:11px}#pedal-a nav{flex-direction:row;flex-wrap:wrap}#pedal-a .step{padding:6px}</style>
+    <section id="pedal-a" aria-labelledby="pedal-a-title">
+      <div class="intro"><h2 id="pedal-a-title">Clasificá paso a paso</h2><p class="sub">Pasá de la idea a un ejemplo y después probá por tu cuenta.</p></div>
+      <div class="layout">
+        <nav aria-label="Recorrido del bloque">
+          <button type="button" class="step" data-step="0" aria-pressed="true"><span class="num">1</span> La idea</button>
+          <button type="button" class="step" data-step="1" aria-pressed="false"><span class="num">2</span> Ejemplo guiado</button>
+          <button type="button" class="step" data-step="2" aria-pressed="false"><span class="num">3</span> Ahora vos</button>
+        </nav>
+        <div class="panel">
+          <section data-screen="0">
+            <div class="eyebrow">La idea</div><h2>Una familia de números</h2>
+            <p>Para contar alcanza con los naturales. Para representar −3 °C necesitamos los enteros. Y para escribir ¾ de litro usamos los racionales.</p>
+            <div class="sets" aria-label="Naturales incluidos en enteros, incluidos en racionales, incluidos en reales"><b>ℕ</b> ⊂ <b>ℤ</b> ⊂ <b>ℚ</b> ⊂ <b>ℝ</b></div>
+            <p class="sub">Los reales también incluyen los irracionales, como √2.</p>
+            <button class="action" type="button" data-step="1">Ver el ejemplo →</button>
+          </section>
+          <section data-screen="1" hidden>
+            <div class="eyebrow">Ejemplo guiado</div><h2>¿Dónde queda √16?</h2>
+            <p>Primero simplificamos: <strong>√16 = 4</strong>. El 4 sirve para contar, así que pertenece a ℕ. Por inclusión también pertenece a ℤ, ℚ y ℝ.</p>
+            <div class="note"><strong>Conjunto más pequeño:</strong> ℕ.</div>
+            <p class="sub">Ahora aplicá el mismo método a una expresión con un signo menos delante de la raíz.</p>
+            <button class="action" type="button" data-step="2">Probar uno parecido →</button>
+          </section>
+          <section data-screen="2" hidden>
+            <div class="eyebrow">Ahora vos</div><h2>¿Dónde queda −√9?</h2>
+            <form><p>Elegí el conjunto más pequeño al que pertenece.</p>
+              <div class="options" role="group" aria-label="Conjunto más pequeño"><label><input type="radio" name="conjunto" value="n"> ℕ</label><label><input type="radio" name="conjunto" value="z"> ℤ</label><label><input type="radio" name="conjunto" value="q"> ℚ</label><label><input type="radio" name="conjunto" value="r"> ℝ</label></div>
+              <details><summary class="cursor-interaction">Ver una pista</summary><p>Primero calculá √9. Después aplicá el signo menos que está delante.</p></details>
+              <details><summary>Ver otra pista</summary><p>−√9 = −3. ¿El −3 es natural, entero o racional?</p></details>
+              <button class="action" type="submit">Verificar</button>
+              <details><summary>Ver solución</summary><p>−√9 = −3. El conjunto más pequeño es ℤ.</p></details>
+              <output aria-live="polite"></output>
+            </form>
+          </section>
+        </div>
       </div>
     </section>
-
-    <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">4️⃣ Ahora vos · uno parecido</h2>
-      <p>¿Cuál es el conjunto más pequeño al que pertenece \(-\sqrt9\)?</p>
-      <details>
-        <summary style="cursor:pointer; color:#783f04;">💡 Pista 1</summary>
-        <p>Primero calculá la raíz y recién después mirá el signo que está afuera.</p>
-      </details>
-      <details style="margin-top:6px;">
-        <summary style="cursor:pointer; color:#783f04;">💡 Pista 2</summary>
-        <p>\(-\sqrt9=-3\). ¿El −3 es natural, entero o racional?</p>
-      </details>
-      <details style="margin-top:6px;">
-        <summary style="cursor:pointer; color:#783f04;">✅ Solución</summary>
-        <p>\(-\sqrt9=-3\), por lo tanto el conjunto más pequeño es \(\mathbb Z\).</p>
-      </details>
-    </section>
+    <script>
+    {
+      const page = document.getElementById('pedal-a');
+      const nav = page.querySelectorAll('nav button');
+      const screens = page.querySelectorAll('[data-screen]');
+      function show(step) {
+        nav.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.step === step)));
+        screens.forEach(screen => { screen.hidden = screen.dataset.screen !== step; });
+      }
+      page.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click', () => {
+        show(button.dataset.step);
+        nav[Number(button.dataset.step)].focus();
+      }));
+      page.querySelector('form').addEventListener('submit', event => {
+        event.preventDefault();
+        const choice = page.querySelector('input:checked')?.value;
+        page.querySelector('output').textContent = {
+          n: 'Revisá el signo. ¿Los números negativos pertenecen a ℕ?',
+          z: 'Correcto. −√9 = −3. El conjunto más pequeño es ℤ.',
+          q: '−3 es racional. ¿Podés elegir un conjunto más pequeño?',
+          r: '−3 es real. ¿Podés elegir un conjunto más pequeño?'
+        }[choice] || 'Elegí un conjunto para verificar tu respuesta.';
+      });
+    }
+    </script>
 
     <section style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
       <h2 style="color:#783f04; margin:0 0 10px;">5️⃣ Ejemplo guiado 2 · un decimal</h2>
