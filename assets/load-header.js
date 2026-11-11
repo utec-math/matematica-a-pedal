@@ -124,7 +124,7 @@ import('/matematica-a-pedal/assets/analytics.js?v=1')
     const shell = document.createElement('link');
     shell.id = 'map-site-shell';
     shell.rel = 'stylesheet';
-    shell.href = '/matematica-a-pedal/assets/site-shell.css?v=1';
+    shell.href = '/matematica-a-pedal/assets/site-shell.css?v=2';
     document.head.appendChild(shell);
   }
 
