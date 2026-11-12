@@ -7,6 +7,7 @@
 
   <!-- Estilo global -->
   <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/properties-practice.css" />
 
   <!-- MathJax -->
   <script>
@@ -118,6 +119,119 @@
     </ul>
   </div>
 
+  <section id="practica-propiedades" aria-labelledby="practica-propiedades-titulo">
+    <header class="practice-intro">
+      <h2 id="practica-propiedades-titulo">Ejemplo guiado · Tu turno de pedalear</h2>
+      <p>Elegí una forma de reescribir la cuenta para que sea más fácil de resolver.</p>
+    </header>
+
+    <div class="practice-layout">
+      <nav class="practice-nav" aria-label="Recorrido de la práctica" hidden>
+        <button type="button" class="practice-step" data-practice-go="propiedades-idea"
+                aria-controls="propiedades-idea" aria-pressed="true">La idea</button>
+        <button type="button" class="practice-step" data-practice-go="propiedades-ejemplo"
+                aria-controls="propiedades-ejemplo" aria-pressed="false">Ejemplo guiado</button>
+        <button type="button" class="practice-step" data-practice-go="propiedades-ejercicios"
+                aria-controls="propiedades-ejercicios" aria-pressed="false">Ahora vos</button>
+      </nav>
+
+      <div class="practice-panel">
+        <section id="propiedades-idea" data-practice-screen>
+          <h3 tabindex="-1">Elegí qué cambiar</h3>
+          <ul>
+            <li><b>Conmutativa.</b> Cambiá el orden de los sumandos o de los factores.</li>
+            <li><b>Asociativa.</b> Agrupá primero los sumandos o factores que te convengan.</li>
+            <li><b>Distributiva.</b> Si un factor multiplica una suma o una resta, multiplicalo por cada término del paréntesis.</li>
+          </ul>
+          <button type="button" class="practice-action" data-practice-go="propiedades-ejemplo" hidden>Ver el ejemplo →</button>
+        </section>
+
+        <section id="propiedades-ejemplo" data-practice-screen>
+          <h3 tabindex="-1">¿Cómo conviene sumar 18 + 7 + 2?</h3>
+          <p>Buscamos que el 18 y el 2 queden juntos para sumar 20 primero.</p>
+          <ol>
+            <li><b>Agrupamos 7 y 2</b> con la asociativa. (18 + 7) + 2 = 18 + (7 + 2).</li>
+            <li><b>Cambiamos el orden</b> dentro del paréntesis con la conmutativa. 18 + (7 + 2) = 18 + (2 + 7).</li>
+            <li><b>Reagrupamos</b> con la asociativa. 18 + (2 + 7) = (18 + 2) + 7.</li>
+            <li><b>Calculamos.</b> (18 + 2) + 7 = 20 + 7 = 27.</li>
+          </ol>
+          <button type="button" class="practice-action" data-practice-go="propiedades-ejercicios" hidden>Ir a la práctica →</button>
+        </section>
+
+        <section id="propiedades-ejercicios" data-practice-screen>
+          <h3 tabindex="-1">Probá dos cuentas</h3>
+          <p>Elegí cómo reescribir cada cuenta, calculá y pensá qué propiedad justifica el cambio.</p>
+
+          <div class="practice-exercise">
+            <h4>26 + 19 + 4</h4>
+            <details>
+              <summary>Ver una pista para la suma</summary>
+              <p>Buscá cuánto le falta a 26 para llegar a 30.</p>
+            </details>
+            <form data-practice-form data-result="49"
+                  data-explanation="Reordenaste con la conmutativa y agrupaste con la asociativa. 30 + 19 = 49." hidden>
+              <fieldset>
+                <legend>¿Qué reescritura te permite sumar 26 y 4 primero?</legend>
+                <label>
+                  <input type="radio" name="estrategia" value="agrupacion"
+                         data-feedback="Esa reescritura conserva el resultado. Buscá ahora la que junta 26 y 4.">
+                  26 + (19 + 4)
+                </label>
+                <label><input type="radio" name="estrategia" value="correcta"> (26 + 4) + 19</label>
+                <label>
+                  <input type="radio" name="estrategia" value="resta"
+                         data-feedback="Al pasar de sumar 4 a restarlo cambia el resultado. Conservá los tres sumandos con su signo.">
+                  (26 + 19) − 4
+                </label>
+              </fieldset>
+              <label class="practice-result">Resultado de la suma <input type="number" inputmode="numeric" name="resultado"></label>
+              <button type="submit" class="practice-action">Comprobar suma</button>
+              <output aria-live="polite"></output>
+            </form>
+            <details>
+              <summary>Ver solución de la suma</summary>
+              <p>26 + 19 + 4 = 26 + 4 + 19 = (26 + 4) + 19 = 30 + 19 = 49.
+                Usamos la conmutativa para reordenar y la asociativa para agrupar 26 y 4.</p>
+            </details>
+          </div>
+
+          <div class="practice-exercise">
+            <h4>6 · 19</h4>
+            <details>
+              <summary>Ver una pista para el producto</summary>
+              <p>Escribí 19 como 20 − 1 y distribuí el 6.</p>
+            </details>
+            <form data-practice-form data-result="114"
+                  data-explanation="Aplicaste la distributiva a 6 · (20 − 1). 120 − 6 = 114." hidden>
+              <fieldset>
+                <legend>¿Qué reescritura te permite usar 6 · 20 y ajustar?</legend>
+                <label>
+                  <input type="radio" name="estrategia" value="factor"
+                         data-feedback="El 6 también multiplica al 1. Si calculás seis veces 20, sobra un 1 por cada una de esas seis veces.">
+                  6 · 20 − 1
+                </label>
+                <label>
+                  <input type="radio" name="estrategia" value="signo"
+                         data-feedback="Como 19 = 20 − 1, hay que restar el segundo producto.">
+                  6 · 20 + 6 · 1
+                </label>
+                <label><input type="radio" name="estrategia" value="correcta"> 6 · 20 − 6 · 1</label>
+              </fieldset>
+              <label class="practice-result">Resultado del producto <input type="number" inputmode="numeric" name="resultado"></label>
+              <button type="submit" class="practice-action">Comprobar producto</button>
+              <output aria-live="polite"></output>
+            </form>
+            <details>
+              <summary>Ver solución del producto</summary>
+              <p>6 · 19 = 6 · (20 − 1) = 6 · 20 − 6 · 1 = 120 − 6 = 114.
+                Usamos la distributiva para multiplicar el 6 por 20 y por 1, y luego restamos los productos.</p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
 </section>
 
 <!-- Navegador inferior -->
@@ -136,6 +250,7 @@
 </div>
 
 <!-- Scripts globales (SIEMPRE al final) -->
+<script type="module" src="/matematica-a-pedal/assets/properties-practice.js"></script>
 <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
 <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>

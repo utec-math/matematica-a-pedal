@@ -1,0 +1,188 @@
+#practica-propiedades {
+  --practice-ink: #783f04;
+  --practice-muted: #7f6000;
+  --practice-line: #ffd580;
+  --practice-soft: #fff6e6;
+  margin-top: 18px;
+  background: #fffdf8;
+  color: var(--practice-ink);
+  border: 1px solid var(--practice-line);
+  border-radius: 12px;
+}
+
+#practica-propiedades .practice-intro {
+  padding: 18px clamp(14px, 4vw, 36px) 12px;
+}
+
+#practica-propiedades :is(h2, h3, h4) {
+  margin: 0 0 8px;
+  color: var(--practice-ink);
+  line-height: 1.25;
+}
+
+#practica-propiedades p {
+  margin: 0 0 8px;
+}
+
+#practica-propiedades .practice-intro p {
+  color: var(--practice-muted);
+}
+
+#practica-propiedades .practice-layout {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(0, 3fr);
+  gap: 16px;
+  padding: 0 clamp(14px, 4vw, 36px) 18px;
+}
+
+#practica-propiedades .practice-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#practica-propiedades button {
+  font: inherit;
+  cursor: pointer;
+}
+
+#practica-propiedades .practice-step {
+  padding: 8px 10px;
+  text-align: left;
+  color: var(--practice-ink);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+#practica-propiedades .practice-step[aria-pressed="true"] {
+  background: var(--practice-soft);
+  border-color: var(--practice-line);
+  font-weight: 700;
+}
+
+#practica-propiedades .practice-panel {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--practice-line);
+  border-radius: 10px;
+  padding: clamp(14px, 3vw, 24px);
+}
+
+#practica-propiedades .practice-nav[hidden] + .practice-panel {
+  grid-column: 1 / -1;
+}
+
+#practica-propiedades .practice-nav[hidden] + .practice-panel section + section {
+  margin-top: 24px;
+}
+
+#practica-propiedades :is(ol, ul) {
+  margin: 10px 0;
+  padding-left: 24px;
+}
+
+#practica-propiedades li + li {
+  margin-top: 7px;
+}
+
+#practica-propiedades .practice-action {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--practice-ink);
+  border: 1px solid var(--practice-ink);
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+}
+
+#practica-propiedades .practice-exercise {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--practice-line);
+  border-radius: 8px;
+}
+
+#practica-propiedades details {
+  margin: 8px 0;
+}
+
+#practica-propiedades details p {
+  margin: 6px 0 0;
+}
+
+#practica-propiedades summary {
+  cursor: pointer;
+}
+
+#practica-propiedades fieldset {
+  border: 0;
+  margin: 12px 0;
+  padding: 0;
+  min-width: 0;
+}
+
+#practica-propiedades legend {
+  font-weight: 700;
+  padding: 0;
+}
+
+#practica-propiedades fieldset label {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+#practica-propiedades [type="radio"] {
+  accent-color: var(--practice-ink);
+}
+
+#practica-propiedades .practice-result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+#practica-propiedades [type="number"] {
+  box-sizing: border-box;
+  width: min(8rem, 100%);
+  padding: 6px 8px;
+  border: 1px solid var(--practice-muted);
+  border-radius: 6px;
+  font: inherit;
+}
+
+#practica-propiedades output {
+  display: block;
+}
+
+#practica-propiedades output:not(:empty) {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--practice-soft);
+  border-radius: 6px;
+}
+
+#practica-propiedades :focus-visible {
+  outline: 2px solid var(--practice-ink);
+  outline-offset: 2px;
+}
+
+#practica-propiedades [hidden] {
+  display: none;
+}
+
+@media (max-width: 590px) {
+  #practica-propiedades .practice-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  #practica-propiedades .practice-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
