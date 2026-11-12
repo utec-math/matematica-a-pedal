@@ -1,0 +1,186 @@
+#practica-multiplicacion {
+  --multiplication-ink: #783f04;
+  --multiplication-muted: #7f6000;
+  --multiplication-border: #ffd580;
+  --multiplication-soft: #fff6e6;
+  margin-top: 18px;
+  padding: clamp(14px, 3vw, 26px);
+  background: #fffdf8;
+  color: var(--multiplication-ink);
+  border: 1px solid var(--multiplication-border);
+  border-radius: 12px;
+}
+
+#practica-multiplicacion :is(h2, h3, p) {
+  margin: 0;
+}
+
+#practica-multiplicacion .multiplication-intro p {
+  margin-top: 4px;
+  color: var(--multiplication-muted);
+}
+
+#practica-multiplicacion .multiplication-topics,
+#practica-multiplicacion .multiplication-options,
+#practica-multiplicacion .multiplication-fields,
+#practica-multiplicacion .multiplication-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#practica-multiplicacion .multiplication-topics {
+  margin: 14px 0;
+}
+
+#practica-multiplicacion button {
+  min-height: 38px;
+  padding: 7px 11px;
+  font: inherit;
+  text-align: left;
+  color: var(--multiplication-ink);
+  background: #fff;
+  border: 1px solid var(--multiplication-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#practica-multiplicacion button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+#practica-multiplicacion button[aria-pressed="true"],
+#practica-multiplicacion .multiplication-check {
+  background: var(--multiplication-ink);
+  color: #fff;
+  border-color: var(--multiplication-ink);
+  font-weight: 700;
+}
+
+#multiplication-exercise {
+  display: grid;
+  gap: 12px;
+  padding: clamp(12px, 3vw, 20px);
+  background: #fff;
+  border: 1px solid var(--multiplication-border);
+  border-radius: 10px;
+}
+
+#practica-multiplicacion .multiplication-expression {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 8px 12px;
+  background: var(--multiplication-soft);
+  border-radius: 8px;
+  font: 24px/1.4 Georgia, "Times New Roman", serif;
+}
+
+#practica-multiplicacion math {
+  font-size: inherit;
+}
+
+#practica-multiplicacion fieldset {
+  min-width: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#practica-multiplicacion legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+#practica-multiplicacion .multiplication-options label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 9px;
+  border: 1px solid var(--multiplication-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#practica-multiplicacion .multiplication-options label:has(:checked) {
+  background: var(--multiplication-soft);
+}
+
+#practica-multiplicacion [type="radio"] {
+  accent-color: var(--multiplication-ink);
+}
+
+#practica-multiplicacion details p,
+#practica-multiplicacion .multiplication-check,
+#practica-multiplicacion [data-hint-details] {
+  margin-top: 8px;
+}
+
+#practica-multiplicacion summary {
+  cursor: pointer;
+}
+
+#practica-multiplicacion [data-answer-form] {
+  padding-top: 12px;
+  border-top: 1px solid var(--multiplication-border);
+}
+
+#practica-multiplicacion .multiplication-fields label {
+  display: grid;
+  gap: 4px;
+}
+
+#practica-multiplicacion [type="text"] {
+  box-sizing: border-box;
+  width: min(12rem, 100%);
+  padding: 6px 8px;
+  border: 1px solid var(--multiplication-muted);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 16px;
+}
+
+#practica-multiplicacion .multiplication-feedback:not(:empty) {
+  margin-top: 8px;
+  padding: 7px 9px;
+  background: var(--multiplication-soft);
+  border-radius: 6px;
+}
+
+#practica-multiplicacion .multiplication-feedback[data-state="correct"] {
+  color: #245237;
+}
+
+#practica-multiplicacion .multiplication-navigation {
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--multiplication-border);
+}
+
+#practica-multiplicacion :focus-visible {
+  outline: 2px solid var(--multiplication-ink);
+  outline-offset: 2px;
+}
+
+#practica-multiplicacion[hidden],
+#practica-multiplicacion [hidden] {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  #practica-multiplicacion :is(button, .multiplication-options label, [type="text"]) {
+    min-height: 44px;
+  }
+}
+
+@media print {
+  #practica-multiplicacion {
+    display: none;
+  }
+
+  #multiplication-practice-fallback[hidden] {
+    display: block;
+  }
+}

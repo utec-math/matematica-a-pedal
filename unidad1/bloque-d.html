@@ -14,6 +14,7 @@ window.MathJax = {
 };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="stylesheet" href="/matematica-a-pedal/assets/multiplication-practice.css">
 <style>
   .solution-steps { line-height:1.75; }
   .solution-steps > li { margin-bottom:12px; }
@@ -129,6 +130,57 @@ window.MathJax = {
     </div>
   </div>
 
+  <section id="practica-multiplicacion" aria-labelledby="practica-multiplicacion-titulo" hidden>
+    <header class="multiplication-intro">
+      <h2 id="practica-multiplicacion-titulo">Tu turno de pedalear</h2>
+      <p>Comprobá el primer paso y después calculá el resultado.</p>
+    </header>
+
+    <nav class="multiplication-topics" aria-label="Mini actividades">
+      <button type="button" data-topic="signos" aria-controls="multiplication-exercise" aria-pressed="true">Regla de signos</button>
+      <button type="button" data-topic="fracciones" aria-controls="multiplication-exercise" aria-pressed="false">Fracciones</button>
+      <button type="button" data-topic="distributiva" aria-controls="multiplication-exercise" aria-pressed="false">Distributiva</button>
+    </nav>
+
+    <article id="multiplication-exercise" aria-labelledby="multiplication-exercise-position">
+      <h3 id="multiplication-exercise-position" data-position tabindex="-1"></h3>
+      <div class="multiplication-expression" data-expression></div>
+
+      <form data-step-form>
+        <fieldset>
+          <legend data-question></legend>
+          <div class="multiplication-options" data-options></div>
+        </fieldset>
+        <details data-hint-details>
+          <summary>Ver una pista</summary>
+          <p data-hint></p>
+        </details>
+        <button type="submit" class="multiplication-check" data-step-submit>Comprobar el paso</button>
+        <p class="multiplication-feedback" data-step-feedback role="status"></p>
+      </form>
+
+      <form data-answer-form hidden>
+        <fieldset>
+          <legend data-result-prompt></legend>
+          <div class="multiplication-fields" data-fields></div>
+        </fieldset>
+        <button type="submit" class="multiplication-check">Comprobar resultado</button>
+        <p class="multiplication-feedback" data-answer-feedback role="status"></p>
+      </form>
+
+      <details data-solution-details>
+        <summary>Ver solución paso a paso</summary>
+        <p data-solution></p>
+      </details>
+
+      <div class="multiplication-navigation" role="group" aria-label="Cambiar de ejercicio">
+        <button type="button" data-previous>← Anterior</button>
+        <button type="button" data-next>Siguiente →</button>
+      </div>
+    </article>
+  </section>
+
+  <div id="multiplication-practice-fallback">
   <!-- Mini-actividad 1 -->
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 1 · Regla de signos</h2>
@@ -191,6 +243,9 @@ window.MathJax = {
       </ol>
     </details>
   </div>
+
+  </div>
+  <script type="module" src="/matematica-a-pedal/assets/multiplication-practice.js"></script>
 
   <!-- Cierre -->
   <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
