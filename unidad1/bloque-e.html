@@ -13,6 +13,7 @@ window.MathJax = {
 };
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="stylesheet" href="/matematica-a-pedal/assets/multiplication-practice.css?v=2">
 
   <!-- Encabezado -->
   <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
@@ -101,6 +102,57 @@ window.MathJax = {
     </ul>
   </div>
 
+  <section id="practica-fracciones" aria-labelledby="practica-fracciones-titulo" hidden>
+    <header class="multiplication-intro">
+      <h2 id="practica-fracciones-titulo">Tu turno de pedalear</h2>
+      <p>Identificá las equivalencias o elegí un divisor. Después escribí la fracción en su forma más simple.</p>
+    </header>
+
+    <nav class="multiplication-topics" aria-label="Mini actividades">
+      <button type="button" data-topic="equivalencias" aria-controls="fraction-equivalence-exercise" aria-pressed="true">Fracciones equivalentes</button>
+      <button type="button" data-topic="simplificacion" aria-controls="fraction-equivalence-exercise" aria-pressed="false">Simplificación</button>
+      <button type="button" data-topic="mcd" aria-controls="fraction-equivalence-exercise" aria-pressed="false">Método del MCD</button>
+    </nav>
+
+    <article id="fraction-equivalence-exercise" aria-labelledby="fraction-equivalence-exercise-position">
+      <h3 id="fraction-equivalence-exercise-position" data-position tabindex="-1"></h3>
+      <div class="multiplication-expression" data-expression></div>
+
+      <form data-step-form>
+        <fieldset>
+          <legend data-question></legend>
+          <div class="multiplication-options" data-options></div>
+        </fieldset>
+        <details data-hint-details>
+          <summary>Ver una pista</summary>
+          <p data-hint></p>
+        </details>
+        <button type="submit" class="multiplication-check" data-step-submit>Comprobar el paso</button>
+        <p class="multiplication-feedback" data-step-feedback role="status"></p>
+      </form>
+
+      <form data-answer-form hidden>
+        <fieldset>
+          <legend data-result-prompt></legend>
+          <div class="multiplication-fields" data-fields></div>
+        </fieldset>
+        <button type="submit" class="multiplication-check">Comprobar resultado</button>
+        <p class="multiplication-feedback" data-answer-feedback role="status"></p>
+      </form>
+
+      <details data-solution-details>
+        <summary>Ver solución paso a paso</summary>
+        <p data-solution></p>
+      </details>
+
+      <div class="multiplication-navigation" role="group" aria-label="Cambiar de ejercicio">
+        <button type="button" data-previous>← Anterior</button>
+        <button type="button" data-next>Siguiente →</button>
+      </div>
+    </article>
+  </section>
+
+  <div id="fraction-equivalence-practice-fallback">
   <!-- Mini-actividad 1 -->
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
     <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 1 · Identifica fracciones equivalentes</h2>
@@ -157,6 +209,9 @@ window.MathJax = {
       </ol>
     </details>
   </div>
+
+  </div>
+  <script type="module" src="/matematica-a-pedal/assets/fraction-equivalence-practice.js"></script>
 
   <!-- Cierre -->
   <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">

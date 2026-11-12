@@ -23,3 +23,12 @@ test('distingue un cálculo incorrecto de una entrada inválida', async () => {
   assert.equal(compareNumericAnswer('8/2', '4', true), 'format');
   assert.equal(compareNumericAnswer(' ', '3/10'), 'empty');
 });
+
+test('pide seguir simplificando solo cuando el ejercicio requiere una fracción irreducible', async () => {
+  const { compareNumericAnswer } = await practice;
+  assert.equal(compareNumericAnswer('6/9', '2/3'), 'correct');
+  assert.equal(compareNumericAnswer('6/9', '2/3', false, true), 'reducible');
+  assert.equal(compareNumericAnswer('−4/−6', '2/3', false, true), 'reducible');
+  assert.equal(compareNumericAnswer(' 2 / 3 ', '2/3', false, true), 'correct');
+  assert.equal(compareNumericAnswer('3/2', '2/3', false, true), 'incorrect');
+});

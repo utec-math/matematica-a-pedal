@@ -1,6 +1,6 @@
 import { multiplicationExercises } from './multiplication-exercises.js?v=2';
 
-export function compareNumericAnswer(raw, expected, integer = false) {
+export function compareNumericAnswer(raw, expected, integer = false, irreducible = false) {
   const value = raw.trim().replaceAll('−', '-').replaceAll('⁄', '/');
   if (!value) return 'empty';
   const fraction = /^([+-]?\d+)(?:\s*\/\s*([+-]?\d+))?$/.exec(value);
@@ -10,12 +10,22 @@ export function compareNumericAnswer(raw, expected, integer = false) {
   const denominator = BigInt(fraction[2] ?? '1');
   if (denominator === 0n) return 'zero-denominator';
   const [targetNumerator, targetDenominator = 1n] = expected.split('/').map(part => BigInt(part));
-  return numerator * targetDenominator === targetNumerator * denominator ? 'correct' : 'incorrect';
+  if (numerator * targetDenominator !== targetNumerator * denominator) return 'incorrect';
+
+  if (irreducible) {
+    let a = numerator;
+    let b = denominator;
+    while (b !== 0n) {
+      [a, b] = [b, a % b];
+    }
+    if (a !== 1n && a !== -1n) return 'reducible';
+  }
+  return 'correct';
 }
 
 function describeAnswer(exercise, values) {
   for (const [index, field] of exercise.fields.entries()) {
-    const result = compareNumericAnswer(values[index] ?? '', field.expected, field.integer);
+    const result = compareNumericAnswer(values[index] ?? '', field.expected, field.integer, field.irreducible);
     if (result === 'empty') {
       return { message: 'Completá «' + field.label + '» para comprobar.' };
     }
@@ -25,6 +35,9 @@ function describeAnswer(exercise, values) {
     }
     if (result === 'zero-denominator') {
       return { message: 'En «' + field.label + '», el denominador tiene que ser distinto de cero.' };
+    }
+    if (result === 'reducible') {
+      return { message: 'Tu fracción es equivalente. Dividí el numerador y el denominador por un divisor común mayor que 1 para seguir simplificando.' };
     }
     if (result === 'incorrect') {
       return { message: 'Revisá «' + field.label + '». ' + exercise.retry };
@@ -44,7 +57,7 @@ function renderExpression(target, expression) {
   for (const part of expression) {
     if (typeof part === 'string') {
       const value = part.trim();
-      const token = mathElement(/^[×÷·−+]$/.test(value) ? 'mo' : 'mtext');
+      const token = mathElement(/^[×÷·−+,]$/.test(value) ? 'mo' : 'mtext');
       token.textContent = value;
       math.append(token);
       spoken.push(value);
@@ -69,7 +82,7 @@ function showFeedback(target, result) {
   else delete target.dataset.state;
 }
 
-function mountPractice(root) {
+export function mountPractice(root, exercisesByTopic, fallback) {
   const find = name => root.querySelector('[data-' + name + ']');
   const buttons = [...root.querySelectorAll('[data-topic]')];
   const stepForm = find('step-form');
@@ -80,17 +93,17 @@ function mountPractice(root) {
   const previous = find('previous');
   const next = find('next');
 
-  const progress = Object.fromEntries(Object.entries(multiplicationExercises).map(([topic, exercises]) => [
+  const progress = Object.fromEntries(Object.entries(exercisesByTopic).map(([topic, exercises]) => [
     topic, {
       index: 0,
       attempts: exercises.map(() => ({ choice: null, stepChecked: false, values: [], answerChecked: false }))
     }
   ]));
-  let topic = 'signos';
+  let topic = buttons[0].dataset.topic;
 
   function current() {
     const { index, attempts } = progress[topic];
-    return { exercise: multiplicationExercises[topic][index], attempt: attempts[index], index };
+    return { exercise: exercisesByTopic[topic][index], attempt: attempts[index], index };
   }
 
   function updateFeedback() {
@@ -108,12 +121,13 @@ function mountPractice(root) {
 
   function render() {
     const { exercise, attempt, index } = current();
-    const total = multiplicationExercises[topic].length;
+    const total = exercisesByTopic[topic].length;
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.topic === topic)));
     position.textContent = 'Ejercicio ' + (index + 1) + ' de ' + total;
     renderExpression(find('expression'), exercise.expression);
     find('question').textContent = '1. ' + exercise.question;
-    find('step-submit').textContent = topic === 'signos' ? 'Comprobar el signo' : 'Comprobar el paso';
+    const button = buttons.find(button => button.dataset.topic === topic);
+    find('step-submit').textContent = button.dataset.stepLabel || 'Comprobar el paso';
     find('hint').textContent = exercise.hint;
     find('hint-details').open = false;
     find('solution').textContent = exercise.solution;
@@ -199,13 +213,13 @@ function mountPractice(root) {
   previous.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
   render();
+  root.hidden = false;
+  fallback.hidden = true;
 }
 
 if (typeof document !== 'undefined') {
   const practice = document.getElementById('practica-multiplicacion');
   if (practice) {
-    mountPractice(practice);
-    practice.hidden = false;
-    document.getElementById('multiplication-practice-fallback').hidden = true;
+    mountPractice(practice, multiplicationExercises, document.getElementById('multiplication-practice-fallback'));
   }
 }
