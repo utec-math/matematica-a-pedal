@@ -1,4 +1,4 @@
-import { multiplicationExercises } from './multiplication-exercises.js';
+import { multiplicationExercises } from './multiplication-exercises.js?v=2';
 
 export function compareNumericAnswer(raw, expected, integer = false) {
   const value = raw.trim().replaceAll('−', '-').replaceAll('⁄', '/');
@@ -43,10 +43,11 @@ function renderExpression(target, expression) {
   const spoken = [];
   for (const part of expression) {
     if (typeof part === 'string') {
-      const text = mathElement('mtext');
-      text.textContent = part;
-      math.append(text);
-      spoken.push(part);
+      const value = part.trim();
+      const token = mathElement(/^[×÷·−+]$/.test(value) ? 'mo' : 'mtext');
+      token.textContent = value;
+      math.append(token);
+      spoken.push(value);
       continue;
     }
     const fraction = mathElement('mfrac');

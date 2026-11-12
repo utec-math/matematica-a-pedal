@@ -44,7 +44,7 @@ export const multiplicationExercises = {
       solution: '(−4) · (−3) = 12 y 12 · (−2) = −24.'
     }),
     withSignChoice({
-      expression: ['(−15) ÷ ', ['1', '3']], operation: 'cociente', answer: -45,
+      expression: ['(−15)', '÷', ['1', '3']], operation: 'cociente', answer: -45,
       hint: 'Compará el signo de −15 con el de la fracción 1/3.',
       reason: 'Bien. Dividís un número negativo entre una fracción positiva.',
       retry: 'Dividir entre 1/3 equivale a multiplicar por 3.',
@@ -109,7 +109,7 @@ export const multiplicationExercises = {
       solution: '(3x/10) ÷ (9/5) = (3x/10) × (5/9) = 15x/90 = (1/6)x.'
     },
     {
-      expression: [['2a − 6', '8'], ' × 12'],
+      expression: [['2a − 6', '8'], '×', '12'],
       question: '¿Cómo escribís el numerador 2a − 6 sacando factor común 2?',
       choices: [
         { label: '2(a − 6)', feedback: 'Si distribuís el 2, aparece −12. Dividí también −6 entre 2 antes de ponerlo entre paréntesis.' },
@@ -173,7 +173,7 @@ export const multiplicationExercises = {
       solution: '(7a − 21)/14 = [7(a − 3)]/14 = (1/2)(a − 3).'
     },
     {
-      expression: [['2', '3'], 'x − ', ['5', '6'], 'x'],
+      expression: [['2', '3'], 'x', '−', ['5', '6'], 'x'],
       question: 'Reescribí ambos coeficientes con denominador 6.',
       choices: [
         { label: '(2/6)x − (5/6)x', feedback: 'Para que 2/3 conserve su valor, multiplicá el numerador y el denominador por 2.' },
@@ -187,7 +187,7 @@ export const multiplicationExercises = {
       solution: '(2/3)x − (5/6)x = (4/6)x − (5/6)x = (−1/6)x.'
     },
     {
-      expression: ['4 · ', ['x + 2', '8'], ' + ', ['x + 2', '4']],
+      expression: ['4', '·', ['x + 2', '8'], '+', ['x + 2', '4']],
       question: 'Simplificá el factor 4/8 del primer término.',
       choices: [
         { label: '(1/2)(x + 2) + (1/4)(x + 2)', correct: true, feedback: 'Bien. 4/8 se reduce a 1/2 y el segundo término se conserva.' },
