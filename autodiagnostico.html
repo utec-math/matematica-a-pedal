@@ -1,732 +1,394 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-UY">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autodiagnóstico · Matemática a Pedal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autodiagnóstico · Matemática a Pedal</title>
+<link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
+<style>
+#autodiag-home{--ink:#783f04;--cream:#fffdf7;--soft:#fff6e6;--light:#ffe0a8;--gold:#ffd580;--orange:#ffa559;--body:#493726;--muted:#735b43;--line:#e9d6b7;--green:#235b37;--mint:#effff2;--red:#892d23;--pink:#ffecec}
+#autodiag-home *{box-sizing:border-box}
+#autodiag-home{margin:0;background:var(--soft);color:var(--body);font:1rem/1.55 "Segoe UI",Arial,sans-serif}
+#autodiag-home button,#autodiag-home a,#autodiag-home input{font:inherit}
+#autodiag-home button,#autodiag-home a{touch-action:manipulation}
+#autodiag-home button{cursor:pointer}
+#autodiag-home button:disabled{cursor:default;opacity:.45}
+#autodiag-home a{color:var(--ink)}
+#autodiag-home :focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+#autodiag-home [hidden]{display:none!important}
+#autodiag-home.wrap{max-width:1190px;margin:auto;padding:34px 32px 48px}
+#autodiag-home .hero{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:25px}
+#autodiag-home h1,#autodiag-home h2,#autodiag-home h3,#autodiag-home p{margin-top:0}
+#autodiag-home h1,#autodiag-home h2,#autodiag-home h3{color:var(--ink);line-height:1.16}
+#autodiag-home h1{font-size:clamp(2.05rem,5vw,3.35rem);letter-spacing:-.052em;margin-bottom:8px}
+#autodiag-home .intro{margin:0;color:var(--muted)}
+#autodiag-home .progress{width:min(100%,280px);flex-shrink:0}
+#autodiag-home .progress p{display:flex;justify-content:space-between;margin:0 0 7px;font-size:.86rem;color:var(--ink)}
+#autodiag-home progress{display:block;width:100%;height:9px;appearance:none;border:0;background:#eedcc0;border-radius:20px;overflow:hidden}
+#autodiag-home progress::-webkit-progress-bar{background:#eedcc0}
+#autodiag-home progress::-webkit-progress-value{background:#ae5815;border-radius:20px}
+#autodiag-home progress::-moz-progress-bar{background:#ae5815}
+#autodiag-home .layout{display:grid;grid-template-columns:268px minmax(0,1fr);gap:22px;align-items:start}
+#autodiag-home .route,#autodiag-home .card{background:var(--cream);border:1px solid var(--line);border-radius:20px}
+#autodiag-home .route{padding:18px}
+#autodiag-home .route h2{font-size:1rem;margin:0 0 12px}
+#autodiag-home .group{padding:9px 0;border-top:1px solid #f1e4d0}
+#autodiag-home .group-name{display:block;margin:0 0 6px;color:var(--muted);font-size:.82rem;font-weight:650}
+#autodiag-home .stops{display:flex;gap:6px}
+#autodiag-home .stop{display:grid;place-items:center;width:37px;height:34px;background:#fff;border:1px solid var(--line);border-radius:9px;color:var(--ink);font-size:.84rem;font-weight:650}
+#autodiag-home .stop[data-status="respondida"]{background:var(--light);border-color:#bc7b2b}
+#autodiag-home .stop[data-status="no-sabe"]{background:var(--soft);border:1px dashed #986329}
+#autodiag-home .stop[aria-current="step"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+#autodiag-home .card{padding:clamp(19px,4vw,36px);min-width:0;box-shadow:0 8px 22px #783f0408}
+#autodiag-home .context{display:flex;justify-content:space-between;gap:8px;align-items:center;margin:0 0 13px;color:var(--ink);font-size:.85rem;font-weight:700}
+#autodiag-home .topic{background:var(--light);border-radius:100px;padding:4px 11px}
+#autodiag-home .question{font-size:clamp(1.36rem,3vw,1.95rem);letter-spacing:-.025em;margin:0 0 19px}
+#autodiag-home fieldset{padding:0;border:0;margin:0;min-width:0}
+#autodiag-home legend{font-size:.88rem;color:var(--muted);margin-bottom:8px;padding:0}
+#autodiag-home .options{display:grid;gap:8px}
+#autodiag-home .option{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px;min-height:48px;padding:9px 13px;background:#fff;border:1px solid var(--line);border-radius:11px;cursor:pointer}
+#autodiag-home .option:hover{border-color:#aa6f33}
+#autodiag-home .option:has(input:checked){background:var(--soft);border-color:#9a531c;box-shadow:inset 0 0 0 1px #9a531c}
+#autodiag-home .option:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:2px}
+#autodiag-home .option input{accent-color:var(--ink);width:18px;height:18px;margin:0}
+#autodiag-home .option math{font-size:1.12em}
+#autodiag-home .option.skip{margin-top:4px;background:var(--soft);border-style:dashed}
+#autodiag-home .controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}
+#autodiag-home .btn{min-height:43px;padding:8px 15px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;font-weight:700}
+#autodiag-home .btn.primary{background:var(--orange);border-color:#a95e27;color:#4b2500}
+#autodiag-home .btn.primary:hover{background:var(--gold)}
+#autodiag-home .btn.simple{border-color:transparent;background:transparent;text-decoration:underline;text-underline-offset:3px}
+#autodiag-home .btn:hover:not(:disabled){border-color:var(--ink)}
+#autodiag-home .controls .right{display:flex;flex-wrap:wrap;justify-content:end;gap:8px}
+#autodiag-home .summary-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+#autodiag-home .notice,#autodiag-home .review-panel{margin-top:17px}
+#autodiag-home .notice{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:13px}
+#autodiag-home .notice p:last-of-type{margin-bottom:8px}
+#autodiag-home .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:16px 0 20px}
+#autodiag-home .stat{border:1px solid var(--line);border-radius:11px;padding:9px 10px;background:#fff}
+#autodiag-home .stat b{display:block;color:var(--ink);font-size:1.35rem}
+#autodiag-home .stat span{font-size:.82rem;color:var(--muted)}
+#autodiag-home .reco{background:var(--soft);border-radius:12px;padding:15px;margin-bottom:16px}
+#autodiag-home .reco h3{margin:0 0 7px}
+#autodiag-home .reco-list{padding:0;margin:0;list-style:none}
+#autodiag-home .reco-list li{padding:10px 0;border-top:1px solid var(--line)}
+#autodiag-home .reco-list li:first-child{border-top:0}
+#autodiag-home .reco-list a{font-weight:700;text-underline-offset:3px}
+#autodiag-home .reco-list p{margin:3px 0 0;font-size:.88rem;color:var(--muted)}
+#autodiag-home .topic-result{border-top:1px solid var(--line);padding:9px 0}
+#autodiag-home .topic-result h3{margin:0;font-size:1rem}
+#autodiag-home .topic-result p{margin:4px 0 0;font-size:.88rem}
+#autodiag-home details{border-bottom:1px solid var(--line);padding:10px 0}
+#autodiag-home summary{font-weight:650;color:var(--ink);cursor:pointer}
+#autodiag-home details p{margin:8px 0}
+#autodiag-home .correct{color:var(--green)}
+#autodiag-home .incorrect{color:var(--red)}
+#autodiag-home .hint{color:var(--muted);font-size:.88rem}
+@media(max-width:760px){#autodiag-home.wrap{padding-left:17px;padding-right:17px}#autodiag-home.wrap{padding-top:21px}#autodiag-home .hero{display:block}#autodiag-home .progress{margin-top:12px}#autodiag-home .layout{grid-template-columns:1fr;gap:13px}#autodiag-home .route{grid-row:2}#autodiag-home .route .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:0 12px}}
+@media(max-width:440px){#autodiag-home .controls{flex-wrap:wrap}#autodiag-home .controls .right{margin-left:auto}#autodiag-home .stats{grid-template-columns:1fr 1fr}#autodiag-home .context{font-size:.77rem}#autodiag-home .question{overflow-wrap:anywhere}}
+@media print{#autodiag-home .route,#autodiag-home .progress,#autodiag-home .controls,#autodiag-home .summary-actions{display:none}#autodiag-home.wrap,#autodiag-home .card{padding:0;background:#fff;border:0;box-shadow:none}#autodiag-home .layout{display:block}}
 
-  <!-- Estilo global -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[','\\]'], ['$$','$$']]
-      }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
-  <style>
-    .ad-intro {
-      background: linear-gradient(90deg,#FFD580,#FFA559);
-      border-radius: 14px;
-      padding: 20px;
-      border: 2px solid #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,.08);
-      margin-top: 16px;
-    }
-    .ad-card {
-      border: 1px solid #FFD580;
-      border-radius: 12px;
-      padding: 14px;
-      margin-top: 18px;
-      background: #FFFDF7;
-    }
-    .ad-card h2 {
-      margin-top: 0;
-      color: #783f04;
-    }
-    .ad-question {
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px dashed #FFE0A8;
-    }
-    .ad-options label {
-      display: block;
-      margin: 3px 0;
-      cursor: pointer;
-      padding: 2px 4px;
-      border-radius: 6px;
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-    .ad-actions {
-      margin-top: 18px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .ad-actions button {
-      cursor: pointer;
-      color: #783f04;
-      background: #fff;
-      border: 1px solid #FFD580;
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-family: 'Roboto Mono', monospace;
-    }
-    .ad-result {
-      margin-top: 18px;
-      border: 1px solid #FFD580;
-      border-radius: 12px;
-      padding: 14px;
-      background: #FFF6E6;
-    }
-
-    /* Resaltado de corrección */
-    .ad-correct {
-      background: #EFFFF2;
-      box-shadow: 0 0 0 1px #9BE7B0;
-    }
-    .ad-incorrect {
-      background: #FFECEC;
-      box-shadow: 0 0 0 1px #F5A3A3;
-    }
-    .ad-mark {
-      font-size: 0.9em;
-      margin-left: 6px;
-    }
-
-    /* Pregunta enfocada (primera incorrecta/sin responder) */
-    .ad-question-focus {
-      box-shadow: 0 0 0 2px #FFA559;
-      border-radius: 10px;
-      padding: 10px;
-      margin-top: 14px;
-    }
-
-    /* Layout con barra lateral */
-    #autodiag-home {
-      position: relative;
-      padding-left: 280px; /* espacio para la barra lateral en pantallas grandes */
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    #autodiag-progress-wrapper {
-      position: fixed;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 250px;
-      z-index: 40;
-    }
-
-    /* Tarjeta de progreso propia del autodiagnóstico */
-    .ad-progress-card {
-      font-family: 'Roboto Mono', monospace;
-      font-size: 13px;
-      color: #7f6000;
-      background: #FFFDF7;
-      border: 1px solid #FFD580;
-      border-radius: 14px;
-      padding: 10px 14px 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,.06);
-    }
-    .ad-progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .ad-progress-title {
-      font-weight: 600;
-    }
-    .ad-progress-label {
-      font-size: 11px;
-    }
-    .ad-progress-bar {
-      margin-top: 4px;
-    }
-    .ad-progress-track {
-      position: relative;
-      height: 10px;
-      background: #FFF6E6;
-      border-radius: 999px;
-      border: 1px solid #FFD580;
-      overflow: visible; /* para que la bici no quede cortada */
-    }
-    .ad-progress-fill {
-      position: relative;
-      height: 100%;
-      width: 0%;
-      background: #FFA559;
-      border-radius: 999px;
-      transition: width 0.25s ease-out;
-    }
-    .ad-progress-bike {
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -55%) scaleX(-1); /* gira horizontalmente para mirar a la derecha */
-      font-size: 18px;
-      pointer-events: none;
-    }
-    .ad-progress-footer {
-      margin-top: 4px;
-      font-size: 11px;
-      opacity: 0.9;
-    }
-
-    /* En pantallas chicas, la barra vuelve arriba del contenido */
-    @media (max-width: 1024px) {
-      #autodiag-home {
-        padding-left: 0;
-      }
-      #autodiag-progress-wrapper {
-        position: static;
-        transform: none;
-        width: auto;
-        margin-top: 16px;
-        margin-bottom: 4px;
-      }
-    }
-
-    /* Modo impresión: ocultar barra lateral */
-    @media print {
-      #autodiag-progress-wrapper {
-        display: none;
-      }
-      #autodiag-home {
-        padding-left: 0;
-      }
-    }
-  </style>
+#autodiag-home .card{margin:0;width:100%}
+#autodiag-home :is(p,li){line-height:inherit}
+#autodiag-home .reco-list a{text-decoration:underline}
+@media print{#header-placeholder{display:none}}
+</style>
 </head>
-
 <body>
-
-  <!-- Encabezado compartido -->
-  <div id="header-placeholder"></div>
+<div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
-
-  <!-- CONTENIDO AUTODIAGNÓSTICO -->
-  <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55;">
-
-    <!-- Intro -->
-    <section class="ad-intro">
-      <h1 style="color:#783f04; margin:0; font-size:30px;">Autodiagnóstico de Matemática a Pedal</h1>
-      <p style="margin:8px 0 0;">
-        Este autodiagnóstico te ayuda a ubicar por dónde conviene empezar a pedalear 🧮🚲  
-        No es una prueba calificable, sino una herramienta para saber qué unidades requieren más repaso.
-      </p>
-      <p style="margin:8px 0 0;">
-        Respondé sin calculadora si es posible. Al final vas a ver tu resultado global y sugerencias por tema
-        (Calentamiento, Conjuntos y Operaciones, Factorización, Trigonometría y Potencias/Notación Científica).
-      </p>
-    </section>
-
-    <!-- Barra con bici en el margen izquierdo -->
-    <div id="autodiag-progress-wrapper">
-      <div class="ad-progress-card">
-        <div class="ad-progress-header">
-          <span class="ad-progress-title">Progreso del autodiagnóstico</span>
-          <div>
-            <span id="ad-progress-percent">0%</span>
-            <span class="ad-progress-label">completado</span>
-          </div>
-        </div>
-        <div class="ad-progress-bar">
-          <div class="ad-progress-track">
-            <div class="ad-progress-fill" id="ad-progress-fill"></div>
-            <span class="ad-progress-bike" id="ad-progress-bike">🚲</span>
-          </div>
-        </div>
-        <div class="ad-progress-footer" id="ad-progress-footer">
-          Empezá cuando quieras.
-        </div>
-      </div>
+<main class="wrap" id="autodiag-home">
+  <div class="hero">
+    <div><h1>Autodiagnóstico</h1><p class="intro">Identificá qué temas te conviene repasar. Respondé sin calculadora si podés y volvé a cualquier pregunta cuando quieras.</p></div>
+    <div class="progress">
+      <p><span>Tu avance</span><strong id="progress-text" aria-live="polite"></strong></p>
+      <progress id="progress-bar" aria-label="Preguntas con una opción marcada" max="20" value="0"></progress>
     </div>
-
-    <section id="autodiag-form" class="ad-card">
-      <h2>Indicaciones generales</h2>
-      <p style="margin-top:0;">
-        Marcá una sola opción en cada ejercicio. Si no estás seguro, elegí la que te parezca más razonable:
-        eso también es información útil sobre tu nivel actual.
-      </p>
-    </section>
-
-    <!-- BLOQUE U0 · CALENTAMIENTO -->
-    <section class="ad-card">
-      <h2>Bloque A — Calentamiento matemático (U0)</h2>
-
-      <!-- Q1 -->
-      <div class="ad-question">
-        <p><b>1.</b> El número \( \sqrt{2} \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q1" value="a"> Natural y racional.</label>
-          <label><input type="radio" name="q1" value="b"> Entero pero no racional.</label>
-          <label><input type="radio" name="q1" value="c"> Real e irracional.</label>
-          <label><input type="radio" name="q1" value="d"> Un número imaginario.</label>
+  </div>
+  <div class="layout">
+    <nav class="route" aria-label="Preguntas por tema">
+      <h2>Tu recorrido</h2><div class="groups" id="groups"></div>
+    </nav>
+    <section class="card" id="quiz-panel" aria-labelledby="question-title">
+      <div class="context"><span class="topic" id="topic"></span><span id="position"></span></div>
+      <h2 class="question" id="question-title" tabindex="-1"></h2>
+      <fieldset><legend>Elegí una opción.</legend><div class="options" id="options"></div></fieldset>
+      <div class="controls">
+        <button class="btn" id="previous">← Anterior</button>
+        <div class="right">
+          <button class="btn simple" id="results-early">Ver resultados</button>
+          <button class="btn primary" id="next">Siguiente →</button>
         </div>
       </div>
-
-      <!-- Q2 -->
-      <div class="ad-question">
-        <p><b>2.</b> Calculá \( \dfrac{3}{4} + \dfrac{5}{6} \).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q2" value="a"> \( \dfrac{8}{10} \)</label>
-          <label><input type="radio" name="q2" value="b"> \( \dfrac{19}{12} \)</label>
-          <label><input type="radio" name="q2" value="c"> \( \dfrac{7}{10} \)</label>
-          <label><input type="radio" name="q2" value="d"> \( \dfrac{23}{24} \)</label>
-        </div>
-      </div>
-
-      <!-- Q3 -->
-      <div class="ad-question">
-        <p><b>3.</b> Ordená de menor a mayor: \( -2, \; -\dfrac{1}{2}, \; 0, \; 1{,}5 \).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q3" value="a"> \( -2 &lt; 0 &lt; -\dfrac{1}{2} &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="b"> \( -2 &lt; -\dfrac{1}{2} &lt; 0 &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="c"> \( -\dfrac{1}{2} &lt; -2 &lt; 0 &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="d"> \( 0 &lt; -2 &lt; -\dfrac{1}{2} &lt; 1{,}5 \)</label>
-        </div>
-      </div>
-
-      <!-- Q4 -->
-      <div class="ad-question">
-        <p><b>4.</b> El resultado de \( (-3)^2 - 4\cdot 2 \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q4" value="a"> \( -17 \)</label>
-          <label><input type="radio" name="q4" value="b"> \( 1 \)</label>
-          <label><input type="radio" name="q4" value="c"> \( 25 \)</label>
-          <label><input type="radio" name="q4" value="d"> \( 5 \)</label>
-        </div>
+      <div class="notice" id="finish-notice" hidden>
+        <p id="pending-text" tabindex="-1"></p>
+        <button class="btn" id="go-pending">Ir a la primera pendiente</button>
+        <button class="btn primary" id="finish-anyway">Ver resultados</button>
       </div>
     </section>
-
-    <!-- BLOQUE U1 · CONJUNTOS Y OPERACIONES -->
-    <section class="ad-card">
-      <h2>Bloque B — Conjuntos numéricos y operaciones básicas (U1)</h2>
-
-      <!-- Q5 -->
-      <div class="ad-question">
-        <p><b>5.</b> ¿Cuál de las siguientes afirmaciones es verdadera?</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q5" value="a"> \( \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \)</label>
-          <label><input type="radio" name="q5" value="b"> \( \mathbb{Q} \subset \mathbb{Z} \subset \mathbb{R} \subset \mathbb{N} \)</label>
-          <label><input type="radio" name="q5" value="c"> \( \mathbb{Z} \subset \mathbb{N} \subset \mathbb{Q} \subset \mathbb{R} \)</label>
-          <label><input type="radio" name="q5" value="d"> \( \mathbb{R} \subset \mathbb{Q} \subset \mathbb{Z} \subset \mathbb{N} \)</label>
-        </div>
+    <section class="card" id="results-panel" aria-labelledby="results-title" hidden>
+      <h2 class="question" id="results-title" tabindex="-1">Tu resultado</h2>
+      <div class="stats" id="stats"></div>
+      <div class="reco" id="recommendation"></div>
+      <div id="topics-result"></div>
+      <div class="summary-actions">
+        <button class="btn primary" id="review-button" aria-expanded="false" aria-controls="review">Revisar respuestas</button>
+        <button class="btn" id="resume">Volver a las preguntas</button>
+        <button class="btn" id="print">Imprimir</button>
+        <button class="btn simple" id="reset">Empezar de nuevo</button>
       </div>
-
-      <!-- Q6 -->
-      <div class="ad-question">
-        <p><b>6.</b> Aplicando la propiedad distributiva, el valor de \( 3(2x - 5) - (x - 1) \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q6" value="a"> \( 7x - 16 \)</label>
-          <label><input type="radio" name="q6" value="b"> \( 5x - 14 \)</label>
-          <label><input type="radio" name="q6" value="c"> \( 6x - 15 - x + 1 \)</label>
-          <label><input type="radio" name="q6" value="d"> \( 5x - 16 \)</label>
-        </div>
-      </div>
-
-      <!-- Q7 -->
-      <div class="ad-question">
-        <p><b>7.</b> Calculá \( \dfrac{5}{8} - \dfrac{3}{10} \).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q7" value="a"> \( \dfrac{1}{40} \)</label>
-          <label><input type="radio" name="q7" value="b"> \( \dfrac{7}{40} \)</label>
-          <label><input type="radio" name="q7" value="c"> \( \dfrac{13}{40} \)</label>
-          <label><input type="radio" name="q7" value="d"> \( \dfrac{19}{40} \)</label>
-        </div>
-      </div>
-
-      <!-- Q8 -->
-      <div class="ad-question">
-        <p><b>8.</b> ¿Cuál de las siguientes expresiones es equivalente a \( -(-a + 3b) \)?</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q8" value="a"> \( -a - 3b \)</label>
-          <label><input type="radio" name="q8" value="b"> \( a - 3b \)</label>
-          <label><input type="radio" name="q8" value="c"> \( a + 3b \)</label>
-          <label><input type="radio" name="q8" value="d"> \( -a + 3b \)</label>
-        </div>
-      </div>
+      <div class="review-panel" id="review" hidden></div>
     </section>
+  </div>
+</main>
+<script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+<script>
+(function () {
+const topics = [
+  'Calentamiento matemático', 'Números y operaciones', 'Álgebra en acción',
+  'Trigonometría', 'Potencias y raíces'
+];
 
-    <!-- BLOQUE U2 · FACTORIZACIÓN -->
-    <section class="ad-card">
-      <h2>Bloque C — Factorización y expresiones algebraicas (U2)</h2>
+const unitBase = 'https://utec-math.github.io/matematica-a-pedal/';
+const reviewTopics = {
+  numberSets: ['Conjuntos numéricos', 'unidad1/bloque-a.html'],
+  fractions: ['Operaciones con fracciones', 'unidad1/bloque-f.html'],
+  numberOrder: ['Números reales y signos', 'unidad1/bloque-c.html'],
+  powers: ['Potencias y exponentes', 'unidad4/bloque-a.html'],
+  expressions: ['Operar expresiones algebraicas', 'unidad2/bloque-b.html'],
+  factoring: ['Factorización', 'unidad2/bloque-d.html'],
+  products: ['Productos notables', 'unidad2/bloque-c.html'],
+  algebraicFractions: ['Fracciones algebraicas', 'unidad2/bloque-e.html'],
+  angles: ['Medir ángulos en grados y radianes', 'unidad3/bloque-b.html'],
+  circle: ['Valores notables en el círculo unitario', 'unidad3/bloque-e.html'],
+  triangles: ['Razones trigonométricas', 'unidad3/bloque-d.html'],
+  frequency: ['Trigonometría', 'unidad3/index.html', 'Para repasar frecuencia, relacioná los ciclos por segundo con el tiempo que tarda un ciclo.'],
+  roots: ['Raíces y exponentes fraccionarios', 'unidad4/bloque-b.html'],
+  scientific: ['Notación científica', 'unidad4/bloque-d.html']
+};
+// Cada entrada corresponde a la pregunta de la misma posición en el cuestionario.
+const questionReviewTopics = [
+  'numberSets', 'fractions', 'numberOrder', 'powers', 'numberSets', 'expressions', 'fractions', 'expressions',
+  'factoring', 'products', 'algebraicFractions', 'factoring', 'angles', 'circle', 'triangles', 'frequency',
+  'powers', 'roots', 'scientific', 'scientific'
+];
+const questions = [
+  {"prompt":"El número <math><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></math> es:","options":["Natural y racional.","Entero pero no racional.","Real e irracional.","Un número imaginario."],"answer":"c"},
+  {"prompt":"Calculá <math><mrow><mfrac><mrow><mn>3</mn></mrow><mrow><mn>4</mn></mrow></mfrac><mo>+</mo><mfrac><mrow><mn>5</mn></mrow><mrow><mn>6</mn></mrow></mfrac></mrow></math>","options":["<math><mrow><mfrac><mrow><mn>8</mn></mrow><mrow><mn>10</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>19</mn></mrow><mrow><mn>12</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>10</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>23</mn></mrow><mrow><mn>24</mn></mrow></mfrac></mrow></math>"],"answer":"b"},
+  {"prompt":"Ordená de menor a mayor: <math><mrow><mo>−</mo><mn>2</mn><mo>,</mo><mspace width=\"0.28em\"/><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>,</mo><mspace width=\"0.28em\"/><mn>0</mn><mo>,</mo><mspace width=\"0.28em\"/><mn>1,5</mn></mrow></math>.","options":["<math><mrow><mo>−</mo><mn>2</mn><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&lt;</mo><mn>1,5</mn></mrow></math>","<math><mrow><mo>−</mo><mn>2</mn><mo>&lt;</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><mn>1,5</mn></mrow></math>","<math><mrow><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&lt;</mo><mo>−</mo><mn>2</mn><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><mn>1,5</mn></mrow></math>","<math><mrow><mn>0</mn><mo>&lt;</mo><mo>−</mo><mn>2</mn><mo>&lt;</mo><mo>−</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mo>&lt;</mo><mn>1,5</mn></mrow></math>"],"answer":"b"},
+  {"prompt":"El resultado de <math><mrow><msup><mrow><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup><mo>−</mo><mn>4</mn><mo>·</mo><mn>2</mn></mrow></math> es:","options":["<math><mrow><mo>−</mo><mn>17</mn></mrow></math>","<math><mrow><mn>1</mn></mrow></math>","<math><mrow><mn>25</mn></mrow></math>","<math><mrow><mn>5</mn></mrow></math>"],"answer":"b"},
+  {"prompt":"¿Cuál de las siguientes afirmaciones es verdadera?","options":["<math><mrow><mi>ℕ</mi><mo>⊂</mo><mi>ℤ</mi><mo>⊂</mo><mi>ℚ</mi><mo>⊂</mo><mi>ℝ</mi></mrow></math>","<math><mrow><mi>ℚ</mi><mo>⊂</mo><mi>ℤ</mi><mo>⊂</mo><mi>ℝ</mi><mo>⊂</mo><mi>ℕ</mi></mrow></math>","<math><mrow><mi>ℤ</mi><mo>⊂</mo><mi>ℕ</mi><mo>⊂</mo><mi>ℚ</mi><mo>⊂</mo><mi>ℝ</mi></mrow></math>","<math><mrow><mi>ℝ</mi><mo>⊂</mo><mi>ℚ</mi><mo>⊂</mo><mi>ℤ</mi><mo>⊂</mo><mi>ℕ</mi></mrow></math>"],"answer":"a"},
+  {"prompt":"Al aplicar la distributiva y reducir los términos semejantes, la forma simplificada de <math><mrow><mn>3</mn><mo>(</mo><mn>2</mn><mi>x</mi><mo>−</mo><mn>5</mn><mo>)</mo><mo>−</mo><mo>(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow></math> es:","options":["<math><mrow><mn>7</mn><mi>x</mi><mo>−</mo><mn>16</mn></mrow></math>","<math><mrow><mn>5</mn><mi>x</mi><mo>−</mo><mn>14</mn></mrow></math>","<math><mrow><mn>6</mn><mi>x</mi><mo>−</mo><mn>15</mn><mo>−</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow></math>","<math><mrow><mn>5</mn><mi>x</mi><mo>−</mo><mn>16</mn></mrow></math>"],"answer":"b"},
+  {"prompt":"Calculá <math><mrow><mfrac><mrow><mn>5</mn></mrow><mrow><mn>8</mn></mrow></mfrac><mo>−</mo><mfrac><mrow><mn>3</mn></mrow><mrow><mn>10</mn></mrow></mfrac></mrow></math>","options":["<math><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>40</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>7</mn></mrow><mrow><mn>40</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>13</mn></mrow><mrow><mn>40</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>19</mn></mrow><mrow><mn>40</mn></mrow></mfrac></mrow></math>"],"answer":"c"},
+  {"prompt":"¿Cuál de las siguientes expresiones es equivalente a <math><mrow><mo>−</mo><mo>(</mo><mo>−</mo><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi><mo>)</mo></mrow></math>?","options":["<math><mrow><mo>−</mo><mi>a</mi><mo>−</mo><mn>3</mn><mi>b</mi></mrow></math>","<math><mrow><mi>a</mi><mo>−</mo><mn>3</mn><mi>b</mi></mrow></math>","<math><mrow><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi></mrow></math>","<math><mrow><mo>−</mo><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi></mrow></math>"],"answer":"b"},
+  {"prompt":"Factorizá <math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>9</mn></mrow></math>","options":["<math><mrow><msup><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></math>","<math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>9</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow></math>","<math><mrow><mo>(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo>)</mo><mo>(</mo><mi>x</mi><mo>+</mo><mn>3</mn><mo>)</mo></mrow></math>","<math><mrow><mi>x</mi><mo>(</mo><mi>x</mi><mo>−</mo><mn>9</mn><mo>)</mo></mrow></math>"],"answer":"c"},
+  {"prompt":"El desarrollo de <math><mrow><msup><mrow><mo>(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></math> es:","options":["<math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></math>","<math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow></math>","<math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow></math>","<math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>2</mn></mrow></math>"],"answer":"c"},
+  {"prompt":"Reducí al máximo la fracción algebraica <math><mrow><mfrac><mrow><mn>6</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><mn>9</mn><mi>x</mi></mrow></mfrac></mrow></math> (con <math><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow></math>).","options":["<math><mrow><mfrac><mrow><mn>2</mn><mi>x</mi></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>6</mn><mi>x</mi></mrow><mrow><mn>9</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>3</mn><mi>x</mi></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>"],"answer":"a"},
+  {"prompt":"Al extraer el máximo factor común, <math><mrow><mn>5</mn><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>10</mn><msup><mi>x</mi><mn>2</mn></msup></mrow></math> se puede escribir como:","options":["<math><mrow><mn>5</mn><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mi>x</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow></math>","<math><mrow><mn>5</mn><mi>x</mi><mo>(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mo>)</mo></mrow></math>","<math><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>(</mo><mn>5</mn><mi>x</mi><mo>−</mo><mn>10</mn><mo>)</mo></mrow></math>","<math><mrow><mn>5</mn><mo>(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></mrow></math>"],"answer":"a"},
+  {"prompt":"Expresá <math><mrow><msup><mn>150</mn><mo>°</mo></msup></mrow></math> en radianes.","options":["<math><mrow><mfrac><mrow><mi>π</mi></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mrow><mn>3</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac></mrow></math>"],"answer":"b"},
+  {"prompt":"El valor de <math><mrow><mi mathvariant=\"normal\">sin</mi><mo>(</mo><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac><mo>)</mo></mrow></math> es:","options":["<math><mrow><mfrac><mrow><msqrt><mrow><mn>3</mn></mrow></msqrt></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>","<math><mrow><mfrac><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>","1"],"answer":"b"},
+  {"prompt":"En un triángulo rectángulo, el ángulo agudo mide <math><mrow><msup><mn>30</mn><mo>°</mo></msup></mrow></math> y la hipotenusa mide 10. La longitud del cateto opuesto a ese ángulo es:","options":["5","<math><mrow><mn>5</mn><msqrt><mrow><mn>3</mn></mrow></msqrt></mrow></math>","10","<math><mrow><mfrac><mrow><mn>10</mn></mrow><mrow><msqrt><mrow><mn>3</mn></mrow></msqrt></mrow></mfrac></mrow></math>"],"answer":"a"},
+  {"prompt":"Una función sinusoidal tiene período <math><mrow><mi>T</mi><mo>=</mo><mn>4</mn></mrow></math> segundos. ¿Cuál es su frecuencia?","options":["<math><mrow><mn>4</mn><mspace width=\"0.15em\"/><mtext>Hz</mtext></mrow></math>","<math><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>4</mn></mrow></mfrac><mspace width=\"0.15em\"/><mtext>Hz</mtext></mrow></math>","<math><mrow><mn>2</mn><mspace width=\"0.15em\"/><mtext>Hz</mtext></mrow></math>","<math><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac><mspace width=\"0.15em\"/><mtext>Hz</mtext></mrow></math>"],"answer":"b"},
+  {"prompt":"Calculá <math><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>·</mo><msup><mn>2</mn><mn>4</mn></msup></mrow></math>","options":["<math><mrow><msup><mn>2</mn><mn>7</mn></msup><mo>=</mo><mn>128</mn></mrow></math>","<math><mrow><msup><mn>2</mn><mrow><mn>12</mn></mrow></msup><mo>=</mo><mn>4096</mn></mrow></math>","<math><mrow><msup><mn>2</mn><mrow><mn>1</mn></mrow></msup><mo>=</mo><mn>2</mn></mrow></math>","<math><mrow><msup><mn>2</mn><mrow><mn>4</mn></mrow></msup><mo>·</mo><msup><mn>2</mn><mrow><mn>3</mn></mrow></msup><mo>=</mo><mn>24</mn></mrow></math>"],"answer":"a"},
+  {"prompt":"El valor de <math><mrow><mroot><mrow><mn>8</mn></mrow><mrow><mn>3</mn></mrow></mroot></mrow></math> es:","options":["2","4","<math><mrow><msqrt><mrow><mn>8</mn></mrow></msqrt></mrow></math>","<math><mrow><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math>"],"answer":"a"},
+  {"prompt":"Escribí <math><mrow><mn>0,00045</mn></mrow></math> en notación científica.","options":["<math><mrow><mn>4,5</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></math>","<math><mrow><mn>4,5</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow></math>","<math><mrow><mn>45</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow></math>","<math><mrow><mn>0,45</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow></math>"],"answer":"b"},
+  {"prompt":"El número <math><mrow><mn>5</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math> es igual a:","options":["0,5","0,05","5","<math><mrow><mn>5</mn><mo>×</mo><mn>100</mn></mrow></math>"],"answer":"b"}
+];
 
-      <!-- Q9 -->
-      <div class="ad-question">
-        <p><b>9.</b> Factorizá \( x^2 - 9 \).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q9" value="a"> \( (x - 3)^2 \)</label>
-          <label><input type="radio" name="q9" value="b"> \( (x - 9)(x + 1) \)</label>
-          <label><input type="radio" name="q9" value="c"> \( (x - 3)(x + 3) \)</label>
-          <label><input type="radio" name="q9" value="d"> \( x(x - 9) \)</label>
-        </div>
-      </div>
+const byId = id => document.getElementById(id);
+const letters = 'abcd';
+const answers = Array(questions.length).fill(null);
+const routeButtons = [];
+let position = 0;
 
-      <!-- Q10 -->
-      <div class="ad-question">
-        <p><b>10.</b> El desarrollo de \( (x + 2)^2 \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q10" value="a"> \( x^2 + 4 \)</label>
-          <label><input type="radio" name="q10" value="b"> \( x^2 + 2x + 4 \)</label>
-          <label><input type="radio" name="q10" value="c"> \( x^2 + 4x + 4 \)</label>
-          <label><input type="radio" name="q10" value="d"> \( x^2 + 2x + 2 \)</label>
-        </div>
-      </div>
+function answerStatus(question, answer) {
+  if (answer === null) return 'pending';
+  if (answer === 'unknown') return 'unknown';
+  return answer === question.answer ? 'correct' : 'incorrect';
+}
 
-      <!-- Q11 -->
-      <div class="ad-question">
-        <p><b>11.</b> Simplificá la fracción algebraica \( \dfrac{6x^2}{9x} \) (con \( x \neq 0 \)).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q11" value="a"> \( \dfrac{2x}{3} \)</label>
-          <label><input type="radio" name="q11" value="b"> \( \dfrac{2x^2}{3} \)</label>
-          <label><input type="radio" name="q11" value="c"> \( \dfrac{6x}{9} \)</label>
-          <label><input type="radio" name="q11" value="d"> \( \dfrac{3x}{2} \)</label>
-        </div>
-      </div>
+function summarize(currentAnswers) {
+  const totals = {correct: 0, incorrect: 0, unknown: 0, pending: 0};
+  const blocks = topics.map(() => ({correct: 0, incorrect: 0, unknown: 0, pending: 0}));
+  questions.forEach((question, index) => {
+    const status = answerStatus(question, currentAnswers[index]);
+    totals[status]++;
+    blocks[Math.floor(index / 4)][status]++;
+  });
+  return {totals, blocks};
+}
 
-      <!-- Q12 -->
-      <div class="ad-question">
-        <p><b>12.</b> Factor común: \( 5x^3 - 10x^2 \) se puede escribir como:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q12" value="a"> \( 5x^2(x - 2) \)</label>
-          <label><input type="radio" name="q12" value="b"> \( 5x(x^2 - 2) \)</label>
-          <label><input type="radio" name="q12" value="c"> \( x^2(5x - 10) \)</label>
-          <label><input type="radio" name="q12" value="d"> \( 5(x^3 - 2x^2) \)</label>
-        </div>
-      </div>
-    </section>
+function suggestReviews(currentAnswers) {
+  const review = new Map();
+  currentAnswers.forEach((answer, index) => {
+    const status = answerStatus(questions[index], answer);
+    if (status !== 'incorrect' && status !== 'unknown') return;
+    const topic = questionReviewTopics[index];
+    if (!review.has(topic)) review.set(topic, {incorrect: 0, unknown: 0});
+    review.get(topic)[status]++;
+  });
+  return [...review].sort(([, a], [, b]) => (b.incorrect + b.unknown) - (a.incorrect + a.unknown));
+}
 
-    <!-- BLOQUE U3 · TRIGONOMETRÍA -->
-    <section class="ad-card">
-      <h2>Bloque D — Trigonometría (U3)</h2>
+function reviewLinks(entries) {
+  return '<ul class="reco-list">' + entries.map(([key, signals]) => {
+    const [name, path, tip] = reviewTopics[key];
+    const reasons = [];
+    if (signals.incorrect) reasons.push(signals.incorrect === 1 ? '1 respuesta para revisar' : signals.incorrect + ' respuestas para revisar');
+    if (signals.unknown) reasons.push(signals.unknown + ' «No sé»');
+    return '<li><a href="' + unitBase + path + '" target="_blank" rel="noopener">' + name +
+      '</a><p>' + reasons.join(' · ') + '</p>' + (tip ? '<p>' + tip + '</p>' : '') + '</li>';
+  }).join('') + '</ul>';
+}
 
-      <!-- Q13 -->
-      <div class="ad-question">
-        <p><b>13.</b> Expresá \( 150^\circ \) en radianes.</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q13" value="a"> \( \dfrac{\pi}{3} \)</label>
-          <label><input type="radio" name="q13" value="b"> \( \dfrac{5\pi}{6} \)</label>
-          <label><input type="radio" name="q13" value="c"> \( \dfrac{2\pi}{3} \)</label>
-          <label><input type="radio" name="q13" value="d"> \( \dfrac{3\pi}{4} \)</label>
-        </div>
-      </div>
+function refreshProgress() {
+  const count = answers.filter(answer => answer !== null).length;
+  byId('progress-bar').value = count;
+  byId('progress-text').textContent = count + ' de ' + questions.length;
+  routeButtons.forEach((button, index) => {
+    const status = answers[index] === null ? 'pendiente' : answers[index] === 'unknown' ? 'no-sabe' : 'respondida';
+    button.dataset.status = status;
+    button.setAttribute('aria-label', 'Pregunta ' + (index + 1) + ', ' + (status === 'no-sabe' ? 'No sé' : status));
+    if (index === position && !byId('quiz-panel').hidden) button.setAttribute('aria-current', 'step');
+    else button.removeAttribute('aria-current');
+  });
+}
 
-      <!-- Q14 -->
-      <div class="ad-question">
-        <p><b>14.</b> El valor de \( \sin\left(\dfrac{\pi}{6}\right) \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q14" value="a"> \( \dfrac{\sqrt{3}}{2} \)</label>
-          <label><input type="radio" name="q14" value="b"> \( \dfrac{1}{2} \)</label>
-          <label><input type="radio" name="q14" value="c"> \( \dfrac{\sqrt{2}}{2} \)</label>
-          <label><input type="radio" name="q14" value="d"> 1</label>
-        </div>
-      </div>
-
-      <!-- Q15 -->
-      <div class="ad-question">
-        <p><b>15.</b> En un triángulo rectángulo, el ángulo agudo mide \( 30^\circ \) y la hipotenusa mide 10. 
-        La longitud del cateto opuesto a ese ángulo es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q15" value="a"> 5</label>
-          <label><input type="radio" name="q15" value="b"> \( 5\sqrt{3} \)</label>
-          <label><input type="radio" name="q15" value="c"> 10</label>
-          <label><input type="radio" name="q15" value="d"> \( \dfrac{10}{\sqrt{3}} \)</label>
-        </div>
-      </div>
-
-      <!-- Q16 -->
-      <div class="ad-question">
-        <p><b>16.</b> Una función sinusoidal tiene período \( T = 4 \) segundos. ¿Cuál es su frecuencia?</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q16" value="a"> \( 4 \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="b"> \( \dfrac{1}{4} \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="c"> \( 2 \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="d"> \( \dfrac{1}{2} \,\text{Hz} \)</label>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOQUE U4 · POTENCIACIÓN Y NOTACIÓN CIENTÍFICA -->
-    <section class="ad-card">
-      <h2>Bloque E — Potencias, raíces y notación científica (U4)</h2>
-
-      <!-- Q17 -->
-      <div class="ad-question">
-        <p><b>17.</b> Calculá \( 2^3 \cdot 2^4 \).</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q17" value="a"> \( 2^7 = 128 \)</label>
-          <label><input type="radio" name="q17" value="b"> \( 2^{12} = 4096 \)</label>
-          <label><input type="radio" name="q17" value="c"> \( 2^{1} = 2 \)</label>
-          <label><input type="radio" name="q17" value="d"> \( 2^{4} \cdot 2^{3} = 24 \)</label>
-        </div>
-      </div>
-
-      <!-- Q18 -->
-      <div class="ad-question">
-        <p><b>18.</b> El valor de \( \sqrt[3]{8} \) es:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q18" value="a"> 2</label>
-          <label><input type="radio" name="q18" value="b"> 4</label>
-          <label><input type="radio" name="q18" value="c"> \( \sqrt{8} \)</label>
-          <label><input type="radio" name="q18" value="d"> \( \dfrac{1}{2} \)</label>
-        </div>
-      </div>
-
-      <!-- Q19 -->
-      <div class="ad-question">
-        <p><b>19.</b> Escribí \( 0{,}00045 \) en notación científica.</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q19" value="a"> \( 4{,}5 \times 10^{-3} \)</label>
-          <label><input type="radio" name="q19" value="b"> \( 4{,}5 \times 10^{-4} \)</label>
-          <label><input type="radio" name="q19" value="c"> \( 45 \times 10^{-5} \)</label>
-          <label><input type="radio" name="q19" value="d"> \( 0{,}45 \times 10^{-4} \)</label>
-        </div>
-      </div>
-
-      <!-- Q20 -->
-      <div class="ad-question">
-        <p><b>20.</b> El número \( 5 \times 10^{-2} \) es igual a:</p>
-        <div class="ad-options">
-          <label><input type="radio" name="q20" value="a"> 0,5</label>
-          <label><input type="radio" name="q20" value="b"> 0,05</label>
-          <label><input type="radio" name="q20" value="c"> 5</label>
-          <label><input type="radio" name="q20" value="d"> \( 5 \times 100 \)</label>
-        </div>
-      </div>
-    </section>
-
-    <!-- Botones y resultados -->
-    <section class="ad-card">
-      <h2>Resultados</h2>
-      <p>Cuando termines, hacé clic en <b>Corregir</b>. Podés borrar tus respuestas con <b>Reset</b> o guardar en PDF.</p>
-      <div class="ad-actions">
-        <button id="ad-submit" type="button">✅ Corregir autodiagnóstico</button>
-        <button id="ad-reset" type="button">🔄 Reset respuestas</button>
-        <button id="ad-print" type="button">🖨️ Imprimir / guardar como PDF</button>
-      </div>
-      <div id="ad-result" class="ad-result">
-        <p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Firebase + Auth (opcional) -->
-  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
-
-  <!-- Lógica del autodiagnóstico + barra de progreso propia -->
-  <script>
-  (function(){
-    // Clave de respuestas correctas (según tu lista por bloque)
-    const answerKey = {
-      q1: 'c',
-      q2: 'b',
-      q3: 'b',
-      q4: 'b',
-      q5: 'a',
-      q6: 'b',
-      q7: 'c',
-      q8: 'b',
-      q9: 'c',
-      q10:'c',
-      q11:'a',
-      q12:'a',
-      q13:'b',
-      q14:'b',
-      q15:'a',
-      q16:'b',
-      q17:'a',
-      q18:'a',
-      q19:'b',
-      q20:'b'
-    };
-
-    const topicMap = {
-      q1: 'U0', q2: 'U0', q3: 'U0', q4: 'U0',
-      q5: 'U1', q6: 'U1', q7: 'U1', q8: 'U1',
-      q9: 'U2', q10:'U2', q11:'U2', q12:'U2',
-      q13:'U3', q14:'U3', q15:'U3', q16:'U3',
-      q17:'U4', q18:'U4', q19:'U4', q20:'U4'
-    };
-
-    const topicLabels = {
-      U0: 'Calentamiento matemático (Unidad 0)',
-      U1: 'Conjuntos y operaciones básicas (Unidad 1)',
-      U2: 'Factorización y expresiones algebraicas (Unidad 2)',
-      U3: 'Trigonometría (Unidad 3)',
-      U4: 'Potenciación, radicación y notación científica (Unidad 4)'
-    };
-
-    const submitBtn = document.getElementById('ad-submit');
-    const resetBtn  = document.getElementById('ad-reset');
-    const printBtn  = document.getElementById('ad-print');
-    const resultBox = document.getElementById('ad-result');
-
-    const progressPercent = document.getElementById('ad-progress-percent');
-    const progressFill    = document.getElementById('ad-progress-fill');
-    const progressBike    = document.getElementById('ad-progress-bike');
-    const progressFooter  = document.getElementById('ad-progress-footer');
-
-    const TOTAL_QUESTIONS = Object.keys(answerKey).length;
-
-    function limpiarMarcas(){
-      document.querySelectorAll('.ad-question').forEach(q => {
-        q.classList.remove('ad-question-focus');
-      });
-      document.querySelectorAll('.ad-options label').forEach(lab => {
-        lab.classList.remove('ad-correct','ad-incorrect');
-        const mark = lab.querySelector('.ad-mark');
-        if (mark) mark.remove();
-      });
-    }
-
-    // --- Barra de progreso (por respuestas marcadas) ---
-    function updateProgressBar(){
-      const checked = document.querySelectorAll('#autodiag-home input[type="radio"]:checked').length;
-      const pct = Math.round(100 * checked / TOTAL_QUESTIONS);
-
-      progressPercent.textContent = pct + '%';
-      progressFill.style.width = pct + '%';
-
-      // Posición de la bici respecto a la pista
-      let bikePct = pct;
-      if (bikePct < 3) bikePct = 3;   // margen para que no se corte al inicio
-      if (bikePct > 97) bikePct = 97; // margen para que no se corte al final
-      progressBike.style.left = bikePct + '%';
-
-      if (pct === 0){
-        progressFooter.textContent = 'Empezá cuando quieras.';
-      } else if (pct < 50){
-        progressFooter.textContent = 'Buen comienzo, seguí pedaleando.';
-      } else if (pct < 100){
-        progressFooter.textContent = 'Ya recorriste más de la mitad.';
-      } else {
-        progressFooter.textContent = '¡Autodiagnóstico completo!';
-      }
-    }
-
-    function corregir(){
-      limpiarMarcas();
-
-      let total = 0;
-      let correct = 0;
-      const topicTotals  = {};
-      const topicCorrect = {};
-      let firstProblemQuestion = null;
-
-      for (const qid in answerKey){
-        total++;
-        const radios = document.querySelectorAll('input[name="'+qid+'"]');
-        let chosen = null;
-        radios.forEach(r => { if (r.checked) chosen = r.value; });
-
-        const topic = topicMap[qid];
-        topicTotals[topic]  = (topicTotals[topic]  || 0) + 1;
-
-        const correctValue = answerKey[qid];
-        const correctInput = document.querySelector('input[name="'+qid+'"][value="'+correctValue+'"]');
-        const correctLabel = correctInput ? correctInput.closest('label') : null;
-
-        if (correctLabel){
-          correctLabel.classList.add('ad-correct');
-          const span = document.createElement('span');
-          span.className = 'ad-mark';
-          span.textContent = '✔';
-          correctLabel.appendChild(span);
-        }
-
-        const questionDiv = radios[0] ? radios[0].closest('.ad-question') : null;
-
-        if (chosen === correctValue){
-          correct++;
-          topicCorrect[topic] = (topicCorrect[topic] || 0) + 1;
-        } else {
-          if (chosen){
-            const chosenInput = document.querySelector('input[name="'+qid+'"][value="'+chosen+'"]');
-            const chosenLabel = chosenInput ? chosenInput.closest('label') : null;
-            if (chosenLabel){
-              chosenLabel.classList.add('ad-incorrect');
-              const span = document.createElement('span');
-              span.className = 'ad-mark';
-              span.textContent = '✖';
-              chosenLabel.appendChild(span);
-            }
-          }
-          if (!firstProblemQuestion && questionDiv){
-            firstProblemQuestion = questionDiv;
-          }
-        }
-      }
-
-      if (total === 0) return;
-
-      const pctGlobal = Math.round(100 * correct / total);
-      let html = '';
-
-      html += `<p><b>Resultado global:</b> ${correct} de ${total} ítems correctos (${pctGlobal}%).</p>`;
-
-      let mensajeNivel = '';
-      if (pctGlobal >= 80){
-        mensajeNivel = 'Buen nivel general. Podés usar las unidades sobre todo para afianzar y profundizar.';
-      } else if (pctGlobal >= 50){
-        mensajeNivel = 'Nivel intermedio. Conviene repasar algunas unidades con más detalle.';
-      } else {
-        mensajeNivel = 'Te recomendamos comenzar despacio por las primeras unidades y usar los ejemplos guiados.';
-      }
-      html += `<p>${mensajeNivel}</p>`;
-
-      html += `<h3 style="color:#783f04; margin-top:12px;">Sugerencias por tema</h3><ul>`;
-      Object.keys(topicTotals).sort().forEach(t => {
-        const tot = topicTotals[t];
-        const ok  = topicCorrect[t] || 0;
-        const pct = Math.round(100 * ok / tot);
-        let msg;
-        if (pct >= 80){
-          msg = 'Buen dominio. Podés avanzar con confianza.';
-        } else if (pct >= 50){
-          msg = 'Nivel medio. Vale la pena repasar esta unidad mientras la cursás.';
-        } else {
-          msg = 'Conviene trabajar esta unidad con calma (videos, ejemplos y ejercicios guiados).';
-        }
-        html += `<li><b>${topicLabels[t]}</b>: ${ok}/${tot} (${pct}%). ${msg}</li>`;
-      });
-      html += `</ul>`;
-
-      resultBox.innerHTML = html;
-
-      if (firstProblemQuestion){
-        firstProblemQuestion.classList.add('ad-question-focus');
-        firstProblemQuestion.scrollIntoView({behavior:'smooth', block:'center'});
-      } else {
-        resultBox.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    }
-
-    function resetear(){
-      if (!confirm('¿Borrar tus respuestas del autodiagnóstico?')) return;
-      document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => r.checked = false);
-      limpiarMarcas();
-      resultBox.innerHTML = '<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>';
-      updateProgressBar();
-    }
-
-    function imprimirPDF(){
-      window.print();
-    }
-
-    // Eventos
-    submitBtn.addEventListener('click', corregir);
-    resetBtn.addEventListener('click', resetear);
-    printBtn.addEventListener('click', imprimirPDF);
-
-    document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => {
-      r.addEventListener('change', updateProgressBar);
+function showQuestion(index, focus = true) {
+  position = index;
+  byId('results-panel').hidden = true;
+  byId('quiz-panel').hidden = false;
+  byId('finish-notice').hidden = true;
+  const question = questions[index];
+  byId('topic').textContent = topics[Math.floor(index / 4)];
+  byId('position').textContent = 'Pregunta ' + (index + 1) + ' de ' + questions.length;
+  byId('question-title').innerHTML = question.prompt;
+  byId('options').innerHTML = '';
+  const values = [...letters, 'unknown'];
+  values.forEach((value, choice) => {
+    const label = document.createElement('label');
+    label.className = value === 'unknown' ? 'option skip' : 'option';
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'answer';
+    radio.value = value;
+    radio.checked = answers[index] === value;
+    radio.addEventListener('change', () => {
+      answers[index] = value;
+      byId('finish-notice').hidden = true;
+      refreshProgress();
     });
+    const text = document.createElement('span');
+    text.innerHTML = value === 'unknown' ? 'No sé' : question.options[choice];
+    label.append(radio, text);
+    byId('options').append(label);
+  });
+  byId('previous').disabled = index === 0;
+  byId('next').textContent = index === questions.length - 1 ? 'Ver resultados' : 'Siguiente →';
+  byId('results-early').hidden = index === questions.length - 1;
+  refreshProgress();
+  if (focus) byId('question-title').focus();
+}
 
-    // Estado inicial de la barra
-    updateProgressBar();
-  })();
-  </script>
+function requestResults() {
+  const pending = answers.filter(answer => answer === null).length;
+  if (!pending) {
+    showResults();
+    return;
+  }
+  byId('pending-text').textContent = pending === 1 ? 'Queda una pregunta pendiente.' : 'Quedan ' + pending + ' preguntas pendientes.';
+  byId('finish-notice').hidden = false;
+  byId('pending-text').focus();
+}
 
+function showResults() {
+  byId('quiz-panel').hidden = true;
+  byId('results-panel').hidden = false;
+  byId('review').hidden = true;
+  byId('review-button').setAttribute('aria-expanded', 'false');
+  const {totals, blocks} = summarize(answers);
+  const labels = {correct: 'Correctas', incorrect: 'Para revisar', unknown: 'No sé', pending: 'Sin responder'};
+  byId('stats').innerHTML = Object.keys(labels).map(status =>
+    '<div class="stat"><b>' + totals[status] + '</b><span>' + labels[status] + '</span></div>'
+  ).join('');
+
+  const suggestions = suggestReviews(answers);
+  const recommendation = byId('recommendation');
+
+  if (suggestions.length) {
+    const remaining = suggestions.slice(3);
+    recommendation.innerHTML = '<h3>Por dónde seguir</h3>' + reviewLinks(suggestions.slice(0, 3)) +
+      (remaining.length ? '<details><summary>Otros temas para repasar</summary>' + reviewLinks(remaining) + '</details>' : '');
+  } else {
+    recommendation.textContent = totals.pending === questions.length ? 'Respondé algunas preguntas para recibir una sugerencia.' :
+      totals.pending > 0 ? 'Podés completar las preguntas pendientes para revisar los otros temas.' :
+      'Resolviste las 20 preguntas. Podés seguir con tu ruta de Matemática a Pedal.';
+  }
+
+  byId('topics-result').innerHTML = topics.map((topic, index) => {
+    const block = blocks[index];
+    return '<div class="topic-result"><h3>' + topic + '</h3><p>' + block.correct +
+      ' de 4 correctas · ' + block.incorrect + ' para revisar · ' + block.unknown +
+      ' «No sé» · ' + block.pending + ' sin responder</p></div>';
+  }).join('');
+
+  byId('review').innerHTML = questions.map((question, index) => {
+    const answer = answers[index];
+    const status = answerStatus(question, answer);
+    const statusText = {correct: 'Correcta', incorrect: 'Para revisar', unknown: 'No sé', pending: 'Sin responder'};
+    const chosen = letters.includes(answer ?? 'unknown') ? question.options[letters.indexOf(answer)] : '';
+    return '<details><summary>Pregunta ' + (index + 1) + ' · ' + statusText[status] +
+      '</summary><p>' + question.prompt + '</p>' +
+      (chosen && status === 'incorrect' ? '<p class="incorrect">Tu respuesta ' + chosen + '</p>' : '') +
+      '<p class="correct">Respuesta correcta ' + question.options[letters.indexOf(question.answer)] + '</p></details>';
+  }).join('');
+  refreshProgress();
+  byId('results-title').focus();
+}
+
+topics.forEach((topic, blockIndex) => {
+  const group = document.createElement('div');
+  group.className = 'group';
+  const name = document.createElement('span');
+  name.className = 'group-name';
+  name.textContent = topic;
+  const stops = document.createElement('div');
+  stops.className = 'stops';
+  questions.slice(blockIndex * 4, blockIndex * 4 + 4).forEach((_, item) => {
+    const index = blockIndex * 4 + item;
+    const button = document.createElement('button');
+    button.className = 'stop';
+    button.textContent = index + 1;
+    button.addEventListener('click', () => showQuestion(index));
+    stops.append(button);
+    routeButtons.push(button);
+  });
+  group.append(name, stops);
+  byId('groups').append(group);
+});
+
+byId('previous').addEventListener('click', () => showQuestion(position - 1));
+byId('next').addEventListener('click', () => position === questions.length - 1 ? requestResults() : showQuestion(position + 1));
+byId('results-early').addEventListener('click', requestResults);
+byId('go-pending').addEventListener('click', () => showQuestion(answers.indexOf(null)));
+byId('finish-anyway').addEventListener('click', showResults);
+byId('resume').addEventListener('click', () => showQuestion(position));
+byId('print').addEventListener('click', () => window.print());
+byId('reset').addEventListener('click', () => {
+  if (!window.confirm('¿Empezar de nuevo y borrar tus respuestas de esta prueba?')) return;
+  answers.fill(null);
+  showQuestion(0);
+});
+byId('review-button').addEventListener('click', () => {
+  const review = byId('review');
+  review.hidden = !review.hidden;
+  byId('review-button').setAttribute('aria-expanded', String(!review.hidden));
+  if (!review.hidden) review.querySelector('summary')?.focus();
+});
+
+showQuestion(0, false);
+})();
+</script>
 </body>
 </html>
