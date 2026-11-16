@@ -68,7 +68,9 @@ test('sesión institucional restaurada, salida y cuenta no institucional', async
   b.observe(null);
   assert.equal(configs(b).at(-1)[2].user_id, null);
   b.observe({ uid: 'outsider', isAnonymous: false, email: 'persona@evilutec.edu.uy' });
+  assert.equal(configs(b).at(-1)[2].visitor_type, 'externo');
   assert.equal(configs(b).at(-1)[2].user_id, null);
+  assert.equal(JSON.stringify(b.commands()).includes('outsider'), false);
   assert.equal(views(b).length, 1);
   assert.equal(JSON.stringify(b.commands()).includes('persona@'), false);
 });

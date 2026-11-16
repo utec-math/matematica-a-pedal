@@ -1,6 +1,6 @@
 // assets/cert-auth.js
 // El nombre del archivo se conserva por compatibilidad con las páginas existentes,
-// pero este módulo ahora gestiona únicamente el inicio de sesión institucional UTEC.
+// y gestiona el acceso con Google desde el encabezado compartido.
 
 function qs(id) {
   return document.getElementById(id);
@@ -16,10 +16,10 @@ function updateUI(user) {
   const btn = qs("btnCertLogin");
   if (!status || !btn) return false;
 
-  btn.textContent = "🔐 Iniciar sesión con UTEC";
-
-  if (user?.email && window.__MAP__?.isAllowedEmail?.(user.email)) {
-    status.textContent = `Sesión iniciada: ${user.email}`;
+  if (user && !user.isAnonymous) {
+    const institutional = window.__MAP__?.isAllowedEmail?.(user.email);
+    const label = institutional ? "Sesión UTEC" : "Sesión con Google";
+    status.textContent = user.email ? `${label}: ${user.email}` : label;
     btn.style.display = "none";
     setMsg("");
   } else {
@@ -67,15 +67,21 @@ waitForMAP(() => {
 
   // Delegación: funciona aunque el header se inyecte después de cargar este módulo.
   document.addEventListener("click", async (e) => {
-    if (e.target?.id !== "btnCertLogin") return;
+    const button = e.target?.closest?.("#btnCertLogin");
+    if (!button || button.disabled) return;
 
+    button.disabled = true;
     setMsg("");
     try {
-      await window.__MAP__.signInWithUtec();
+      await window.__MAP__.signInWithGoogle();
       updateUI(window.__MAP__.auth.currentUser);
     } catch (err) {
       console.error(err);
-      setMsg(err?.message || "No se pudo iniciar sesión.");
+      if (err?.code !== "auth/popup-closed-by-user") {
+        setMsg("No se pudo continuar con Google. Probá de nuevo.");
+      }
+    } finally {
+      button.disabled = false;
     }
   });
 });
