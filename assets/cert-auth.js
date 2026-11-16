@@ -14,9 +14,13 @@ function setMsg(text) {
 function updateUI(user) {
   const status = qs("certStatus");
   const btn = qs("btnCertLogin");
+  const help = qs("google-login-help");
   if (!status || !btn) return false;
 
-  if (user && !user.isAnonymous) {
+  const signedIn = Boolean(user && !user.isAnonymous);
+  if (help) help.hidden = signedIn;
+
+  if (signedIn) {
     const institutional = window.__MAP__?.isAllowedEmail?.(user.email);
     const label = institutional ? "Sesión UTEC" : "Sesión con Google";
     status.textContent = user.email ? `${label}: ${user.email}` : label;
@@ -78,7 +82,7 @@ waitForMAP(() => {
     } catch (err) {
       console.error(err);
       if (err?.code !== "auth/popup-closed-by-user") {
-        setMsg("No se pudo continuar con Google. Probá de nuevo.");
+        setMsg("No se pudo iniciar sesión con Google. Probá de nuevo.");
       }
     } finally {
       button.disabled = false;
