@@ -279,11 +279,14 @@ function setIdentity(user) {
   const loginBtn = $('progress-login-btn');
   if (!status || !loginBtn) return;
 
-  if (user?.email && window.__MAP__?.isAllowedEmail?.(user.email)) {
-    status.textContent = `Sesión UTEC activa: ${user.email}. Tu progreso queda asociado a esta cuenta.`;
+  if (user && !user.isAnonymous) {
+    const label = window.__MAP__?.isAllowedEmail?.(user.email) ? 'Sesión UTEC' : 'Sesión con Google';
+    status.textContent = user.email
+      ? `${label}: ${user.email}. Tu progreso queda asociado a esta cuenta.`
+      : `${label}. Tu progreso queda asociado a esta cuenta.`;
     loginBtn.style.display = 'none';
   } else {
-    status.textContent = 'Estás usando una sesión anónima. Podés avanzar normalmente; iniciar sesión con UTEC permite mantener el progreso asociado a tu cuenta.';
+    status.textContent = 'Estás usando el sitio como visitante. Iniciá sesión con tu cuenta Google personal o de UTEC para guardar y retomar tu avance.';
     loginBtn.style.display = 'inline-block';
   }
 }
@@ -433,12 +436,18 @@ async function renderDashboard(user) {
       if (user) renderDashboard(user);
     });
 
-    $('progress-login-btn')?.addEventListener('click', async () => {
+    $('progress-login-btn')?.addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      button.disabled = true;
       try {
-        await map.signInWithUtec();
+        await map.signInWithGoogle();
       } catch (err) {
         console.error(err);
-        showError(err?.message || 'No se pudo iniciar sesión.');
+        if (err?.code !== 'auth/popup-closed-by-user') {
+          showError('No se pudo iniciar sesión con Google. Probá de nuevo.');
+        }
+      } finally {
+        button.disabled = false;
       }
     });
   } catch (err) {
