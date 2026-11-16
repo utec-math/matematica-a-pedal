@@ -7,8 +7,8 @@ Se conserva GA4 G-ZY88YE7ZJJ. El módulo compartido del encabezado cubre las 42 
 - Usuarios totales: visitantes únicos estimados por GA4, deduplicados para el período elegido.
 - Sesiones: visitas, usando la métrica Sesiones del informe de adquisición, no el conteo bruto del evento session_start.
 - Vistas: page_view, una por carga de documento. Iniciar o cerrar sesión no añade una vista adicional.
-- visitor_type: anonimo, utec o desconocido. Es un parámetro de evento; clasifica el estado en el momento del evento, no un tipo permanente de persona.
-- user_id: UID de Firebase solo para usuarios no anónimos con correo institucional permitido. Se borra con null al salir o al usar una sesión anónima.
+- visitor_type: anonimo, utec, externo o desconocido. Es un parámetro de evento; clasifica el estado en el momento del evento, no un tipo permanente de persona.
+- user_id: UID de Firebase solo para usuarios no anónimos con correo institucional permitido. Se borra con null al salir o al usar una sesión anónima o externa.
 - auth_state_change: cambios del estado anterior, incluyendo la resolución tardía de una identidad inicialmente desconocida.
 
 No se envían nombres ni correos por esta integración. Se eliminan parámetros y fragmentos de las URL de página y referente enviadas explícitamente. Google sigue procesando los datos técnicos propios de su etiqueta. Se desactivan Google Signals y las señales de personalización publicitaria en la configuración de la etiqueta.

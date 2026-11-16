@@ -145,7 +145,7 @@ import('/matematica-a-pedal/assets/analytics.js?v=1')
   // una página ya los incluye explícitamente.
   import('/matematica-a-pedal/assets/firebase-init.js')
     .then(() => import('/matematica-a-pedal/assets/cert-auth.js'))
-    .catch(err => console.error('No se pudo inicializar la sesión UTEC del encabezado:', err));
+    .catch(err => console.error('No se pudo inicializar la sesión del encabezado:', err));
 
   import('/matematica-a-pedal/assets/header-progress.js?v=1')
     .catch(err => console.error('No se pudo cargar el progreso del encabezado:', err));

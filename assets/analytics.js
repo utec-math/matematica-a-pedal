@@ -30,10 +30,10 @@ async function startAnalytics() {
   let sentPageView = false;
 
   function updateIdentity(user, resolved, isAllowedEmail) {
-    const institutional = resolved && user && !user.isAnonymous &&
-      isAllowedEmail?.(user.email);
-    const visitorType = !resolved ? 'desconocido' : institutional ? 'utec' : 'anonimo';
-    // Las cuentas anónimas Firebase NO representan un ingreso institucional.
+    const signedIn = resolved && user && !user.isAnonymous;
+    const institutional = signedIn && isAllowedEmail?.(user.email);
+    const visitorType = !resolved ? 'desconocido' : institutional ? 'utec' : signedIn ? 'externo' : 'anonimo';
+    // Solo las cuentas institucionales envían un identificador de usuario a Analytics.
     const userId = institutional ? user.uid : null;
     const identity = JSON.stringify([visitorType, userId]);
     if (identity === previousIdentity) return;

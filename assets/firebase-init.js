@@ -165,7 +165,7 @@ async function retryPendingMigration(user) {
   }
 
   if (!pending?.progressDocs?.length) return;
-  if (pending.expectedEmail && pending.expectedEmail !== user.email.toLowerCase()) return;
+  if (pending.expectedEmail !== user.email.toLowerCase()) return;
 
   try {
     await mergeProgressIntoUser(pending.progressDocs, user.uid);
@@ -185,7 +185,7 @@ const authReady = ensureSignedInUser()
     return null;
   });
 
-// Google Provider: se permite elegir cuenta para admitir estudiantes y personal UTEC.
+// Google permite elegir una cuenta personal o institucional.
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
@@ -200,9 +200,9 @@ function isAllowedEmail(email) {
   return allowedDomains.some(domain => normalizedEmail.endsWith(domain));
 }
 
-// Inicio de sesión institucional UTEC.
+// Inicio de sesión con una cuenta de Google.
 // Si el usuario era anónimo, intenta vincular Google al mismo UID para conservar progreso.
-async function signInWithUtec() {
+async function signInWithGoogle() {
   await auth.authStateReady();
   const u = auth.currentUser || await authReady;
 
@@ -226,17 +226,13 @@ async function signInWithUtec() {
         throw new Error("No se pudo recuperar la credencial de Google para conservar el progreso.");
       }
 
-      const expectedEmail = err?.customData?.email || err?.email || "";
-      savePendingMigration(u.uid, expectedEmail, progressDocs);
+      const expectedEmail = err?.customData?.email || err?.email;
+      if (expectedEmail) savePendingMigration(u.uid, expectedEmail, progressDocs);
 
-      // Inicia sesión con la cuenta Google ya existente.
+      // Inicia sesión con la cuenta que ya posee la credencial de Google.
       cred = await signInWithCredential(auth, googleCredential);
-
-      const email = cred.user?.email || "";
-      if (!isAllowedEmail(email)) {
-        await signOut(auth);
-        throw new Error("Solo cuentas institucionales UTEC pueden iniciar sesión.");
-      }
+      const email = cred.user?.email;
+      if (email) savePendingMigration(u.uid, email, progressDocs);
 
       // Une avances del UID anónimo y del UID Google, sin borrar ninguno.
       await mergeProgressIntoUser(progressDocs, cred.user.uid);
@@ -246,19 +242,13 @@ async function signInWithUtec() {
     cred = await signInWithPopup(auth, provider);
   }
 
-  const email = cred.user?.email || "";
-  if (!isAllowedEmail(email)) {
-    await signOut(auth);
-    throw new Error("Solo cuentas institucionales UTEC pueden iniciar sesión.");
-  }
-
   return cred.user;
 }
 
 window.__MAP__ = {
   app, auth, db, onAuthStateChanged, onIdTokenChanged,
   authReady,
-  signInWithUtec,
+  signInWithGoogle,
   signOut: () => signOut(auth),
   isAllowedEmail
 };
