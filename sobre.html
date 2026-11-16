@@ -1,104 +1,130 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-UY">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sobre el proyecto · Matemática a Pedal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre el proyecto · Matemática a Pedal</title>
+<link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=2">
+<style>
+#sobre-proyecto {
+  --paper: #ffffff; --cream: #fff6e6; --ink: #482b1e; --orange: #e8774f;
+  --deep: #a94224; --line: #ecdbcf; --muted: #6a5143; --stripe: #b35336;
+  --max: 1100px;
+}
+#sobre-proyecto * { box-sizing: border-box; }
+#sobre-proyecto { color: var(--ink); font: 16px/1.65 "Segoe UI", Arial, sans-serif; }
+#sobre-proyecto button, #sobre-proyecto a { font: inherit; }
+#sobre-proyecto a { color: var(--deep); text-underline-offset: .22em; }
+#sobre-proyecto a:hover { text-decoration-thickness: 2px; }
+#sobre-proyecto :focus-visible { outline: 3px solid var(--deep); outline-offset: 4px; }
+#sobre-proyecto h1, #sobre-proyecto h2, #sobre-proyecto p { margin: 0; }
+#sobre-proyecto h1, #sobre-proyecto h2 { letter-spacing: -.045em; line-height: 1.12; }
+#sobre-proyecto h2 { font-size: clamp(1.45rem, 2.4vw, 1.88rem); }
 
-  <!-- Estilo global -->
-  <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css?v=2">
+#sobre-proyecto { width: calc(100% - 52px); max-width: var(--max); margin: auto; padding: 42px 0 30px; }
+#sobre-proyecto .hero {
+  display: grid; grid-template-columns: minmax(0,1.36fr) minmax(0,.9fr);
+  gap: 16px; align-items: stretch;
+}
+#sobre-proyecto .project, #sobre-proyecto .author, #sobre-proyecto .info { border-radius: 16px; min-width: 0; }
+#sobre-proyecto .project { position: relative; overflow: hidden; padding: clamp(24px,4vw,42px); background: var(--cream); }
+#sobre-proyecto .stripe { position: absolute; inset: 0 0 auto; height: 7px; background: linear-gradient(90deg,var(--stripe) 0 19%,var(--orange) 19% 59%,var(--ink) 59% 66%,var(--orange) 66% 100%); }
+#sobre-proyecto h1 { max-width: 11em; margin: 0 0 18px; font-size: clamp(2.2rem,5vw,3.55rem); }
+#sobre-proyecto .project p { max-width: 53ch; font-size: 1.06rem; }
+#sobre-proyecto .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 17px; margin-top: 23px; }
+#sobre-proyecto .cta { color: #391e13; background: var(--orange); border: 1px solid var(--deep); border-radius: 8px; padding: 7px 13px; text-decoration: none; font-weight: 750; }
+#sobre-proyecto .author { background: var(--ink); color: var(--paper); padding: clamp(22px,3vw,30px); }
+#sobre-proyecto .author-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+#sobre-proyecto .portrait { display: block; width: 74px; height: 74px; border-radius: 12px; object-fit: cover; border: 3px solid var(--orange); background: var(--cream); }
+#sobre-proyecto .author h2 { color: var(--paper); }
+#sobre-proyecto .author p { font-size: .96rem; }
+#sobre-proyecto .author a { display: inline-block; margin-top: 10px; color: #fff1dc; font-weight: 700; }
+#sobre-proyecto .author a:focus-visible { outline-color: var(--orange); }
+#sobre-proyecto .details-grid { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+#sobre-proyecto .info { padding: 23px 25px 20px; border: 1px solid var(--line); }
+#sobre-proyecto .info h2 { margin-bottom: 13px; }
+#sobre-proyecto .info ul, #sobre-proyecto .info ol { padding-left: 1.35em; margin: 0; }
+#sobre-proyecto .info li { padding-left: 4px; }
+#sobre-proyecto .info li + li { margin-top: 5px; }
+#sobre-proyecto .info li::marker { color: var(--deep); font-weight: 750; }
+#sobre-proyecto #privacidad { margin-top: 16px; background: var(--cream); scroll-margin-top: 16px; }
+#sobre-proyecto #privacidad summary { cursor: pointer; color: var(--ink); font-weight: 750; }
+#sobre-proyecto #privacidad[open] summary { margin-bottom: 10px; }
+#sobre-proyecto #privacidad p + p { margin-top: 8px; }
+#sobre-proyecto footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; }
+@media (max-width:800px) {
+#sobre-proyecto .hero, #sobre-proyecto .details-grid { grid-template-columns: 1fr; }#sobre-proyecto { padding-top: 24px; }
+}
+@media (max-width:440px) {
+#sobre-proyecto { width: calc(100% - 30px); }
+#sobre-proyecto .project, #sobre-proyecto .info { padding-inline: 18px; }
+}
+
+#sobre-proyecto section { margin: 0; }
+#sobre-proyecto p, #sobre-proyecto li { font-size: inherit; line-height: inherit; }
+#sobre-proyecto .project p { font-size: 1.06rem; }
+#sobre-proyecto .author p { font-size: .96rem; }
+#sobre-proyecto a:not(.cta) { text-decoration: underline; }
+</style>
 </head>
 <body>
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <main style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.6; max-width:1180px; margin:0 auto;">
-
-    <!-- Portada -->
-    <section style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
-      <h1 style="color:#783f04; margin:0; font-size:28px;">Sobre el proyecto y su autor</h1>
-      <p style="margin:8px 0 0;">Qué es <b>Matemática a Pedal</b>, quién lo impulsa y con qué objetivos pedagógicos fue creado.</p>
-    </section>
-
-    <!-- Sobre el proyecto -->
-    <section style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">🚴‍♂️ Matemática a Pedal</h2>
-      <p style="margin:0;">
-        <b>Matemática a Pedal</b> es una propuesta educativa orientada a carreras científico-tecnológicas que integra
+  <main id="sobre-proyecto">
+    <div class="hero">
+      <section class="project" aria-labelledby="about">
+        <div class="stripe" aria-hidden="true"></div>
+        <h1 id="about">Sobre el proyecto y su autor</h1>
+        <p><b>Matemática a Pedal</b> es una propuesta educativa orientada a carreras científico-tecnológicas que integra
         teoría clara, ejercicios paso a paso, <i>mini-evaluaciones</i> y problemas aplicados.
-        La idea es que cada estudiante “pedalee” su propio proceso, con materiales abiertos y apoyo digital.
-      </p>
-    </section>
+        La idea es que cada estudiante “pedalee” su propio proceso, con materiales abiertos y apoyo digital.</p>
+        <div class="hero-actions">
+          <a class="cta" href="/matematica-a-pedal/unidad0/index.html">Empezar por el calentamiento</a>
+          <a href="/matematica-a-pedal/index.html">Volver a la portada</a>
+        </div>
+      </section>
 
-    <!-- Sobre el autor -->
-    <section style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:16px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-  <img src="/matematica-a-pedal/assets/mb.png" alt="Foto de Martín Bulanti" style="width:160px; border-radius:50%; border:2px solid #FFD580;">
-  <div style="flex:1; min-width:240px;">
-    <h2 style="color:#783f04; margin:0 0 8px;">👨‍🏫 Sobre mí</h2>
-    <p style="margin:0;">
-      Soy <b>Martín Bulanti</b>, docente de Matemática en la <b>Universidad Tecnológica del Uruguay (UTEC)</b>.
+      <section class="author" aria-labelledby="author-title">
+        <div class="author-top">
+          <img class="portrait" src="/matematica-a-pedal/assets/mb.png" alt="Foto de Martín Bulanti" width="74" height="74">
+          <h2 id="author-title">Sobre mí</h2>
+        </div>
+        <p>Soy <b>Martín Bulanti</b>, docente de Matemática en la <b>Universidad Tecnológica del Uruguay (UTEC)</b>.
       Trabajo principalmente en la Licenciatura en Análisis Alimentario y en Ingeniería en Mecatrónica.
       Me interesa articular el <b>modelado matemático</b> con aplicaciones reales y herramientas digitales
-      para que el aprendizaje sea significativo y transferible.
-    </p>
-  </div>
-</section>
+      para que el aprendizaje sea significativo y transferible.</p>
+        <a href="mailto:martin.bulanti@utec.edu.uy">Contacto</a>
+      </section>
+    </div>
 
-    <!-- Objetivos del sitio -->
-    <section style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">🎯 Objetivos del sitio</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Favorecer la autonomía y el aprendizaje activo.</li>
+    <div class="details-grid">
+      <section class="info" aria-labelledby="objectives-title">
+        <h2 id="objectives-title">Objetivos del sitio</h2>
+        <ul><li>Favorecer la autonomía y el aprendizaje activo.</li>
         <li>Vincular los contenidos con problemas reales de ingeniería y análisis alimentario.</li>
         <li>Integrar recursos digitales (p. ej., Python, visualizaciones, applets) cuando suman claridad.</li>
-        <li>Compartir materiales abiertos para uso educativo.</li>
-      </ul>
-    </section>
-
-    <!-- Enfoque didáctico (breve) -->
-    <section style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">🧭 Enfoque didáctico</h2>
-      <ol style="margin:0 0 0 18px;">
-        <li>Explicaciones breves y rigurosas con ejemplos progresivos.</li>
+        <li>Compartir materiales abiertos para uso educativo.</li></ul>
+      </section>
+      <section class="info" aria-labelledby="approach-title">
+        <h2 id="approach-title">Enfoque didáctico</h2>
+        <ol><li>Explicaciones breves y rigurosas con ejemplos progresivos.</li>
         <li>Actividades paso a paso y <i>mini-evaluaciones</i> para auto-chequeo.</li>
         <li>Problemas aplicados que conectan con contextos reales.</li>
-        <li>Seguimiento del avance por unidades y bloques.</li>
-      </ol>
-    </section>
+        <li>Seguimiento del avance por unidades y bloques.</li></ol>
+      </section>
+    </div>
 
-    <section id="privacidad" style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
-      <h2 style="color:#783f04; margin:0 0 8px;">Privacidad y medición de visitas</h2>
+    <details class="info" id="privacidad" open>
+      <summary>Privacidad y medición de visitas</summary>
       <p>Usamos Google Analytics para conocer las visitas, las páginas consultadas y la cantidad estimada de visitantes. Analytics utiliza cookies e identificadores del navegador; una misma persona puede contarse más de una vez si cambia de dispositivo o borra esos datos.</p>
       <p>Distinguimos la navegación anónima del ingreso con una cuenta institucional UTEC. Cuando iniciás sesión, enviamos a Analytics un identificador interno de Firebase para reconocer esa cuenta entre visitas y dispositivos. Esta medición no envía tu nombre ni tu correo electrónico. Al cerrar sesión, dejamos de enviar ese identificador institucional.</p>
-      <p>El progreso de aprendizaje se guarda por separado en Firebase. Los informes de visitas son agregados y no representan una lista de asistencia. Google procesa los datos técnicos de su servicio según su <a href="https://policies.google.com/privacy" style="color:#7f6000;">política de privacidad</a>.</p>
-      <p>Podés controlar o bloquear las cookies y la medición desde tu navegador. Para consultas sobre los datos del sitio, escribí a <a href="mailto:martin.bulanti@utec.edu.uy" style="color:#7f6000;">martin.bulanti@utec.edu.uy</a>.</p>
-    </section>
+      <p>El progreso de aprendizaje se guarda por separado en Firebase. Los informes de visitas son agregados y no representan una lista de asistencia. Google procesa los datos técnicos de su servicio según su <a href="https://policies.google.com/privacy">política de privacidad</a>.</p>
+      <p>Podés controlar o bloquear las cookies y la medición desde tu navegador. Para consultas sobre los datos del sitio, escribí a <a href="mailto:martin.bulanti@utec.edu.uy">martin.bulanti@utec.edu.uy</a>.</p>
+    </details>
 
-    <!-- Navegación / CTA -->
-    <div style="margin-top:16px;">
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <a href="/matematica-a-pedal/index.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">🏁 Ir a la portada</a>
-        <a href="/matematica-a-pedal/unidad0/index.html"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">📚 Empezar por la Unidad 0</a>
-        <a href="mailto:martin.bulanti@utec.edu.uy"
-           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">✉️ Contacto</a>
-      </div>
-    </div>
-
-    <!-- Pie de página local -->
-    <div style="margin:16px 0 24px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px; text-align:center;">
-      <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;">
-        <span>📘 <b>Matemática a Pedal</b></span>
-        <span>·</span>
-        <span>Docente: Martín Bulanti</span>
-        <span>·</span>
-        <span>Contacto: <a href="mailto:martin.bulanti@utec.edu.uy" style="color:#783f04;">martin.bulanti@utec.edu.uy</a></span>
-        <span>·</span>
-        <span>Material abierto para uso educativo · UTEC – Uruguay</span>
-      </div>
-    </div>
+    <footer>Matemática a Pedal · Material abierto para uso educativo · UTEC – Uruguay</footer>
   </main>
+
 </body>
 </html>
