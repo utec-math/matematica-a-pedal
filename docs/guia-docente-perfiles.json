@@ -1,0 +1,92 @@
+{
+  "numeros": {
+    "offer": "Un recorrido para revisar la clasificación de números y las decisiones que intervienen al calcular.",
+    "topics": "Conjuntos numéricos y sus relaciones; clasificación de expresiones; propiedades de las operaciones; suma, resta, multiplicación y división con signos.",
+    "approach": "Se presentan explicaciones y ejemplos antes de la práctica. El bloque de conjuntos alterna un ejemplo guiado con un intento propio y propone ejercicios básicos, intermedios y de desafío.",
+    "actions": "Clasificar expresiones, simplificar antes de decidir, reescribir cuentas y justificar el uso de propiedades y signos. En algunos ejercicios se pide explicar la decisión.",
+    "supports": "Ejemplos guiados, pistas y soluciones paso a paso en varios bloques. En conjuntos también hay una demostración opcional para profundizar. Los apoyos disponibles varían entre páginas.",
+    "sample": "Clasificar expresiones con raíces y decidir a qué conjunto pertenecen, justificando la elección.",
+    "use": "Repaso de bases numéricas o revisión de errores de signos y transformaciones que dificultan el trabajo posterior."
+  },
+  "fracciones-decimales": {
+    "offer": "Tres bloques que conectan equivalencia, procedimientos de cálculo y distintas representaciones de un número.",
+    "topics": "Fracciones equivalentes y simplificación; uso de MCD y MCM; operaciones con fracciones; conversión entre fracciones y decimales finitos o periódicos; exactitud y redondeo.",
+    "approach": "El recorrido comienza con equivalencias y simplificación, continúa con operaciones y elección de procedimientos y termina relacionando fracciones y decimales mediante ejemplos desarrollados.",
+    "actions": "Simplificar, elegir un denominador común, resolver operaciones, convertir representaciones y decidir cuándo un resultado es exacto o aproximado.",
+    "supports": "Ejemplos resueltos, mini-actividades y soluciones desplegables. El bloque de equivalencias incluye una pista y una solución paso a paso para acompañar el intento propio.",
+    "sample": "Elegir un método conveniente para sumar fracciones con distintos denominadores y contrastar el procedimiento con la solución.",
+    "use": "Refuerzo de cálculo con fracciones o preparación para trabajar expresiones algebraicas y magnitudes decimales."
+  },
+  "algebra": {
+    "offer": "Una entrada al lenguaje algebraico que vincula la lectura de expresiones con su transformación.",
+    "topics": "Partes de una expresión; coeficientes y parte literal; cantidad de términos y grado; términos semejantes; evaluación de polinomios; suma, resta y multiplicación.",
+    "approach": "Se introducen expresiones mediante ejemplos, incluido un contexto de costos. Luego se trabaja la identificación de sus componentes, la sustitución de valores y las operaciones con polinomios.",
+    "actions": "Clasificar por cantidad de términos, indicar grados, evaluar expresiones y resolver sumas, restas y productos. Las tareas requieren atender a signos, paréntesis y términos semejantes.",
+    "supports": "Ejemplos desarrollados de evaluación y operaciones. Ambos bloques incluyen una mini-actividad con soluciones que el estudiante puede desplegar para revisar su trabajo.",
+    "sample": "Clasificar 5x³ − 2x² + 1 por cantidad de términos e indicar su grado; evaluar otro polinomio en un valor dado.",
+    "use": "Introducción al trabajo con letras o revisión de dificultades al interpretar y operar expresiones."
+  },
+  "productos": {
+    "offer": "Dos bloques que relacionan el desarrollo de productos con la elección de métodos de factorización.",
+    "topics": "Productos notables, cuadrados y cubos; diferencia de cuadrados; suma y diferencia de cubos; factor común, agrupación y combinación de métodos.",
+    "approach": "Se presentan identidades acompañadas de ejemplos y se muestra cómo reconstruir un producto con la distributiva. Después se aborda la factorización mediante distintos casos y combinaciones.",
+    "actions": "Reconocer estructuras, desarrollar expresiones, elegir cómo factorizar y comparar la forma obtenida con una solución. El material conecta operaciones ya trabajadas con nuevos procedimientos.",
+    "supports": "Ejemplos de cada caso y mini-actividades de reconocimiento y factorización. Las soluciones pueden desplegarse para revisar el intento.",
+    "sample": "Factorizar x³ − 4x o una expresión que requiere reconocer un caso notable, y revisar la solución disponible.",
+    "use": "Preparación para simplificar fracciones algebraicas o repaso de la relación entre una expresión desarrollada y factorizada."
+  },
+  "fracciones-algebraicas": {
+    "offer": "Un bloque que reúne simplificación y operaciones con expresiones racionales, atendiendo a sus restricciones.",
+    "topics": "Fracciones algebraicas; dominio y restricciones; factorización y simplificación; multiplicación, división, suma y resta de expresiones racionales.",
+    "approach": "Las explicaciones se acompañan de ejemplos de simplificación y operaciones. Se retoma la factorización y se señala la necesidad de conservar las restricciones de la expresión original.",
+    "actions": "Factorizar, simplificar, buscar denominadores comunes, operar y revisar qué valores quedan excluidos. La propuesta permite observar la relación entre el procedimiento y las condiciones de validez.",
+    "supports": "Ejemplos desarrollados y una mini-actividad de cinco ítems con soluciones desplegables. El enlace al cierre de la etapa permite continuar con el repaso de álgebra.",
+    "sample": "Simplificar una expresión racional y revisar las restricciones que conserva después de cancelar factores.",
+    "use": "Después del trabajo con fracciones numéricas y factorización; especialmente para revisar cancelaciones y restricciones omitidas."
+  },
+  "angulos": {
+    "offer": "Tres bloques que dan contexto a la trigonometría y preparan el trabajo con medidas y relaciones angulares.",
+    "topics": "Origen y aplicaciones de la trigonometría; medidas en grados y radianes; conversiones; relaciones entre ángulos y reconocimiento de giros coterminales.",
+    "approach": "La entrada combina una referencia histórica con aplicaciones actuales. Luego aparecen ejemplos de conversión y de relaciones angulares, seguidos por mini-actividades para aplicar esas ideas.",
+    "actions": "Reconocer contextos de aplicación, convertir medidas y relacionar ángulos. Las tareas alternan lectura de situaciones con cálculos y clasificación de relaciones.",
+    "supports": "Ejemplos y soluciones desplegables en las mini-actividades. Las páginas enlazan entre sí para pasar del contexto inicial a las medidas y sus relaciones.",
+    "sample": "Convertir 120° a radianes y expresar 0,5 rad en grados; identificar relaciones entre ángulos.",
+    "use": "Inicio de trigonometría o repaso previo a problemas con triángulos y al círculo unitario."
+  },
+  "triangulos": {
+    "offer": "Un bloque que pasa de interpretar una situación geométrica a calcular y dar sentido al resultado.",
+    "topics": "Identificación de lados respecto de un ángulo; teorema de Pitágoras; razones trigonométricas, recíprocas y valores notables; alturas y distancias.",
+    "approach": "El material combina el análisis de un árbol quebrado, el cálculo de longitudes y ejemplos trigonométricos. Se presta atención a qué representa cada tramo antes de operar.",
+    "actions": "Interpretar la situación, reconocer los datos y la incógnita, elegir una relación y calcular. En las aplicaciones se espera relacionar el resultado con la pregunta del problema.",
+    "supports": "Desarrollo de ejemplos y una mini-actividad de aplicaciones con soluciones desplegables. Se puede recomendar este bloque sin exigir recorrer toda la etapa.",
+    "sample": "Calcular la longitud de una escalera que alcanza una ventana a 4 m de altura con un ángulo de 70°.",
+    "use": "Trabajo con problemas de alturas y distancias o revisión de la elección de razones trigonométricas."
+  },
+  "circulo": {
+    "offer": "Un bloque para ampliar el trabajo trigonométrico a ángulos negativos y giros mayores que una vuelta.",
+    "topics": "Círculo unitario y coordenadas; sentido del giro; signos por cuadrante; periodicidad; valores notables y situaciones en que la tangente no está definida.",
+    "approach": "Se relacionan los giros con las coordenadas y los signos de las razones. Un ejemplo muestra cómo reducir un ángulo mayor que una vuelta antes de pasar a la mini-actividad.",
+    "actions": "Ubicar un ángulo en un cuadrante, calcular una razón para un ángulo negativo y combinar un dato trigonométrico con la información del cuadrante.",
+    "supports": "Explicaciones, un ejemplo de reducción y soluciones desplegables para la mini-actividad. Al final de la página se sintetizan las ideas de la etapa.",
+    "sample": "Determinar en qué cuadrante se encuentra 200° y calcular sen(−30°).",
+    "use": "Continuación del trabajo con triángulos rectángulos y preparación para interpretar giros y patrones de signos."
+  },
+  "potencias": {
+    "offer": "Tres bloques que conectan reglas de cálculo, significado de las operaciones y condiciones de uso.",
+    "topics": "Exponentes enteros y fraccionarios; propiedades y signos; radicación y condiciones en los reales; simplificación y operaciones con radicales.",
+    "approach": "El recorrido presenta ejemplos de potencias, aborda las raíces y sus condiciones y continúa con simplificación de radicales. Incluye atención a signos, paréntesis y casos no definidos.",
+    "actions": "Transformar expresiones, aplicar propiedades, distinguir casos válidos y simplificar o combinar radicales. Las actividades permiten revisar las decisiones detrás del cálculo.",
+    "supports": "Ejemplos y mini-actividades con soluciones desplegables. El estudiante puede volver al bloque de potencias o de radicación cuando necesita revisar un paso.",
+    "sample": "Simplificar √72 o reducir una suma de radicales y contrastar el procedimiento con las soluciones.",
+    "use": "Repaso de exponentes y raíces o preparación para cálculo con magnitudes y notación científica."
+  },
+  "notacion": {
+    "offer": "Un tramo que combina representaciones numéricas, una calculadora interactiva y problemas aplicados.",
+    "topics": "Notación científica y operaciones con magnitudes; aplicaciones en ciencia y tecnología; exploración de potencias y raíces; práctica de síntesis y autoevaluación conceptual.",
+    "approach": "Después de ejemplos de conversión y operaciones, se propone explorar con la mini-app. La práctica final combina cálculo, problemas aplicados y afirmaciones para analizar y explicar.",
+    "actions": "Convertir representaciones, operar con magnitudes, contrastar resultados con la calculadora y resolver situaciones de biología, química, astronomía e ingeniería.",
+    "supports": "La mini-app muestra resultados exactos cuando es posible, aproximaciones y pasos. La práctica final ofrece soluciones desplegables y orientaciones para volver a los bloques que haga falta repasar.",
+    "sample": "Calcular cuántas veces se multiplicó una población que pasó de 2·10⁶ a 6·10⁷ bacterias.",
+    "use": "Transferencia a contextos científicos o tecnológicos y cierre integrado del trabajo con potencias, raíces y magnitudes."
+  }
+}

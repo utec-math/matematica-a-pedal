@@ -1,4 +1,5 @@
-import {writeFileSync,mkdirSync} from 'node:fs';
+// Generador histórico de la guía de conceptos, sustituida por la edición docente aprobada.
+// La descarga vigente es un PDF estático; ver docs/guia-docente-publicada.json.
 import {fileURLToPath} from 'node:url';import {resolve} from 'node:path';
 import {jsPDF,pdfAssets} from './pdf-assets.mjs';
 import {units} from '../assets/report-catalog.mjs';
@@ -93,7 +94,5 @@ export function createGuidePDF(){
  return {pdf,pageCount,sourceLinks,anchors};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const {pdf,pageCount,sourceLinks}=createGuidePDF();mkdirSync(new URL('../descargas/',import.meta.url),{recursive:true});
- writeFileSync(new URL('../descargas/guia-contenidos-docentes.pdf',import.meta.url),Buffer.from(pdf.output('arraybuffer')));
- console.log(`Guía generada: ${pageCount} páginas, ${sourceLinks.length} enlaces de contenido y cuatro accesos internos al detalle.`);
+ throw new Error('Generador histórico retirado: no reemplaza la guía docente aprobada. Consultá docs/guia-docente-publicada.json y docs/reportes-pdf.md.');
 }
