@@ -139,7 +139,7 @@
     <div id="u0-scorebox" style="margin-top:24px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
       <h2 style="color:#783f04; margin:0 0 8px;">📊 Puntaje de esta mini-evaluación</h2>
       <p style="margin:0 0 10px;">
-        Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje se guarda automáticamente en este navegador.
+        Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje que declarás se guarda en tu cuenta.
       </p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
         <label style="display:flex; gap:8px; align-items:center;"><input type="checkbox" class="u0-ans" data-key="q1" /> <span>1) Conjuntos</span></label>
@@ -174,57 +174,7 @@
     </div>
 
     <!-- ✅ Script puntaje -->
-    <script>
-      (function(){
-        const STORAGE = 'mp-u0-score-v1';
-        const checks = Array.from(document.querySelectorAll('.u0-ans'));
-        const bar = document.getElementById('u0-score-bar');
-        const label = document.getElementById('u0-score-label');
-        const btnCalc = document.getElementById('u0-score-calc');
-        const btnReset = document.getElementById('u0-score-reset');
-        const btnPrint = document.getElementById('u0-print');
 
-        function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE)||'{}'); }catch(e){ return {}; } }
-        function writeState(s){ localStorage.setItem(STORAGE, JSON.stringify(s)); }
-
-        function currentScore(){
-          const total = checks.length || 1;
-          const ok = checks.filter(ch => ch.checked).length;
-          return { ok, total, pct: Math.round(100 * ok / total) };
-        }
-
-        function updateUI(){
-          const { ok, total, pct } = currentScore();
-          if (bar) bar.style.width = pct + '%';
-          if (label) label.textContent = ok + '/' + total + ' · ' + pct + '%';
-        }
-
-        function applyState(s){
-          checks.forEach(ch => ch.checked = !!s[ch.dataset.key]);
-          updateUI();
-        }
-
-        function handleToggle(e){
-          const s = readState();
-          s[e.target.dataset.key] = e.target.checked;
-          writeState(s);
-          updateUI();
-        }
-
-        function resetAll(){
-          localStorage.removeItem(STORAGE);
-          checks.forEach(ch => ch.checked = false);
-          updateUI();
-        }
-
-        checks.forEach(ch => ch.addEventListener('change', handleToggle));
-        if (btnCalc) btnCalc.addEventListener('click', updateUI);
-        if (btnReset) btnReset.addEventListener('click', resetAll);
-        if (btnPrint) btnPrint.addEventListener('click', () => window.print());
-
-        applyState(readState());
-      })();
-    </script>
 
     <!-- ✅ CHECKLIST U0 (MISMO ANCHO, CON SEPARACIÓN) -->
     <div id="u0-checklist" style="margin-top:24px;">
@@ -232,7 +182,7 @@
         <h2 style="color:#783f04; margin:0 0 8px;">✅ Checklist U0 — Autoevaluación de progreso</h2>
         <p style="margin:0 0 10px;">
           Marcá según tu confianza: <b>✅</b> dominio sólido • <b>🔶</b> en proceso • <b>❌</b> necesito repasar.
-          <span style="opacity:.8">Se guarda automáticamente en este navegador.</span>
+          <span style="opacity:.8">Se guarda en tu cuenta.</span>
         </p>
 
         <table style="width:100%; border-collapse:collapse; margin-top:8px;">
@@ -285,58 +235,13 @@
         </table>
 
         <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
-          <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Borrar marcas de este dispositivo</button>
+          <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reiniciar mi autoevaluación</button>
           <span id="u0-status" style="font-size:12px; opacity:.8;"></span>
         </div>
       </div>
 
       <!-- Guarda/recupera con localStorage -->
-      <script>
-        (function() {
-          const STORAGE_PREFIX = 'mp-u0-checklist-v1';
-          const boxes = Array.from(document.querySelectorAll('#u0-checklist .u0-box'));
-          const status = document.getElementById('u0-status');
-          const resetBtn = document.getElementById('u0-reset');
 
-          function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_PREFIX)||'{}'); }catch(e){ return {}; } }
-          function writeState(state){ localStorage.setItem(STORAGE_PREFIX, JSON.stringify(state)); }
-
-          function applyState(state){
-            boxes.forEach(input => {
-              const key = input.dataset.key;
-              const val = state[key];
-              input.checked = (val && input.value === val);
-            });
-          }
-
-          function handleChange(e){
-            const input = e.target;
-            if(!input || !input.dataset) return;
-            const key = input.dataset.key;
-            const val = input.value;
-            const state = readState();
-            state[key] = val;
-            writeState(state);
-            if(status){
-              status.textContent = 'Guardado.';
-              setTimeout(() => status.textContent = '', 1200);
-            }
-          }
-
-          function resetAll(){
-            localStorage.removeItem(STORAGE_PREFIX);
-            boxes.forEach(i => i.checked = false);
-            if(status){
-              status.textContent = 'Se borraron las marcas de este dispositivo.';
-              setTimeout(() => status.textContent = '', 1500);
-            }
-          }
-
-          applyState(readState());
-          boxes.forEach(i => i.addEventListener('change', handleChange));
-          if(resetBtn) resetBtn.addEventListener('click', resetAll);
-        })();
-      </script>
     </div>
 
     <!-- Cierre -->
@@ -373,5 +278,6 @@
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/cert-auth.js"></script>
+<script type="module" src="/matematica-a-pedal/assets/calentamiento-autoevaluacion.mjs"></script>
 </body>
 </html>

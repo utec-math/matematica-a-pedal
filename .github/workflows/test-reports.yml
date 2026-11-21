@@ -1,0 +1,17 @@
+name: Comprobar reportes PDF
+on:
+  pull_request:
+  push:
+    branches: [codex/reportes-pdf-personales]
+permissions:
+  contents: read
+jobs:
+  reports:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/*.test.mjs
+      - run: node scripts/check-report.mjs

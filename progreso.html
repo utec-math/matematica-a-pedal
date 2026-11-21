@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mi progreso · Matemática a Pedal</title>
   <link rel="stylesheet" href="/matematica-a-pedal/assets/style.css" />
+  <link rel="stylesheet" href="/matematica-a-pedal/assets/report-ui.css" />
 </head>
 <body style="background:#FFFDF8; color:#7f6000;">
 
@@ -73,6 +74,25 @@
       <div style="margin-top:12px; font-size:22px; font-weight:800; color:#783f04;">🏁 100%</div>
     </section>
 
+    <section class="report-export" aria-labelledby="report-title">
+      <h2 id="report-title">Mi recorrido en PDF</h2>
+      <p><a href="/matematica-a-pedal/descargas/guia-contenidos-docentes.pdf" download>Guía de contenidos para docentes (PDF)</a> · Consulta abierta, sin registro.</p>
+      <p>Descargá tus avances, autodiagnóstico y sugerencias de repaso para compartirlos con tu docente.</p>
+      <label for="report-scope">¿Qué querés incluir?</label>
+      <select id="report-scope" disabled><option value="todo">Todo mi recorrido</option></select>
+      <label for="report-name">Nombre en el reporte</label>
+      <input id="report-name" type="text" maxlength="100" autocomplete="name" disabled />
+      <p class="report-hint">Se usa el nombre que indiques; el reporte no es una certificación de identidad ni una calificación.</p>
+      <details><summary>Agregar mi reflexión (opcional)</summary>
+        <label for="report-understood">Lo que mejor comprendí</label>
+        <textarea id="report-understood" maxlength="600" disabled></textarea>
+        <label for="report-help">Lo que todavía me cuesta o quisiera consultar</label>
+        <textarea id="report-help" maxlength="600" disabled></textarea>
+        <p class="report-hint">Hasta 600 caracteres por respuesta. Se incluyen en el PDF; no se publican ni se guardan en tu perfil.</p>
+      </details>
+      <button id="report-download" type="button" disabled>Descargar mi reporte PDF</button>
+      <p id="report-status" role="status" aria-live="polite">Preparando tu sesión…</p>
+    </section>
     <section id="progress-units" style="display:grid; gap:12px; margin-top:18px;"></section>
 
     <section id="progress-continue-wrap" style="margin-top:18px; display:flex; justify-content:center;">
@@ -86,5 +106,6 @@
   </main>
 
   <script type="module" src="/matematica-a-pedal/assets/progress-dashboard.js"></script>
+  <script type="module" src="/matematica-a-pedal/assets/report-ui.mjs"></script>
 </body>
 </html>
