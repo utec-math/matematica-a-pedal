@@ -8,7 +8,9 @@ En `progreso.html`, una persona identificada con Google elige todo el recorrido 
 
 El informe conserva la identidad visual de la plataforma y su logo transparente. Distingue páginas completadas, ausencia de registros, respuestas del autodiagnóstico y autoevaluación declarada. Las sugerencias de repaso se generan a partir de respuestas incorrectas o «No sé», con hasta tres temas enlazados; las preguntas pendientes no se interpretan como errores.
 
-La guía pública `descargas/guia-contenidos-docentes.pdf` tiene 13 páginas: presentación del proyecto, mapa de cuatro grandes temas, calentamiento transversal, conceptos y definiciones, ejemplos, práctica y orientaciones docentes. Incluye enlaces a las 38 páginas del recorrido y cuatro accesos internos desde el mapa al detalle. Sus contenidos están en `docs/guia-contenidos-data.mjs` y se regeneran con `node scripts/generate-guide.mjs`.
+La guía pública `descargas/guia-contenidos-docentes.pdf` es la edición de 18 páginas aprobada el 21-11-2026. Presenta el proyecto, el mapa de temas, un índice enlazado, tres situaciones de uso y diez fichas que describen qué se trabaja, cómo se presenta, qué hace el estudiante y qué apoyos encuentra. Incluye dos páginas comentadas del reporte con datos completamente ficticios. Su enfoque es ayudar al docente a seleccionar materiales, sin desarrollar definiciones matemáticas.
+
+Se publica como PDF estático: no requiere servicios de generación ni cambios en Firebase. `docs/guia-docente-publicada.json` identifica el archivo aprobado mediante SHA-256, cantidad de páginas y alcance; `docs/guia-docente-perfiles.json` conserva los textos editables de las diez fichas. Incluye enlaces a las 38 páginas del catálogo, 47 enlaces externos y 39 enlaces internos, además de 18 marcadores. El generador anterior `scripts/generate-guide.mjs` queda como antecedente de la guía de conceptos y su ejecución directa está bloqueada para evitar que sobrescriba esta edición. Al actualizar la guía, revisar la maqueta, reemplazar el PDF aprobado y actualizar sus metadatos y la versión del enlace de descarga.
 
 La descarga está en `docentes.html`, con acceso «Para docentes» en el encabezado compartido, la portada y Sobre el proyecto. Se retiró el enlace de la sección de reporte personal en Mi progreso para mantener allí la tarea del estudiante. La guía no exige registro. Revisar contenidos, enlaces y fecha cuando cambie la plataforma.
 
@@ -31,7 +33,7 @@ Los registros del navegador siguen siendo declaraciones o marcas de actividad. E
 
 ## Generación y dependencias
 
-El PDF se genera en el dispositivo, sin Functions ni servidor de generación. jsPDF 4.2.1 y Roboto Mono están incluidos y licenciados en `assets/vendor/`, cargados solo al solicitar el PDF. No se utiliza conversión de HTML ni se envían respuestas a una API de generación.
+El reporte personal se genera en el dispositivo, sin Functions ni servidor de generación. jsPDF 4.2.1 y Roboto Mono están incluidos y licenciados en `assets/vendor/`, cargados solo al solicitar el PDF. No se utiliza conversión de HTML ni se envían respuestas a una API de generación.
 
 `report-model.mjs` calcula el alcance; `report-records.mjs` valida y coordina los registros por cuenta; `report-account-store.mjs` adapta Firestore; `report-pdf.mjs` compone páginas y enlaces; `report-ui.mjs` conecta el formulario. `report-catalog.mjs` deriva de `assets/nav.json`; comprobar ambos al editar la ruta. Al cambiar preguntas, respuestas o su interpretación hay que cambiar `diagnosticVersion` para no reinterpretar respuestas anteriores.
 
