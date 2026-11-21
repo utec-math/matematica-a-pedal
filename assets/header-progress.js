@@ -1,3 +1,4 @@
+import {readAccount,writeAccount,removeAccount} from './account-progress.mjs';
 import {
   doc,
   getDoc
@@ -15,22 +16,15 @@ const TOTAL_PAGES = Object.values(UNIT_PAGES).reduce((sum, pages) => sum + pages
 const badge = document.getElementById('header-progress-badge');
 const progressLink = document.getElementById('header-progress-link');
 
-function readJson(key, fallback) {
-  try {
-    const value = JSON.parse(localStorage.getItem(key) || 'null');
-    return value ?? fallback;
-  } catch (_) {
-    return fallback;
-  }
-}
+function readJson(key, fallback, uid = window.__MAP__?.auth.currentUser?.uid) { return readAccount(localStorage,uid,key,fallback); }
 
-function localCompleted(unitId) {
-  const value = readJson(`map:completed:${unitId}`, []);
+function localCompleted(unitId,uid=window.__MAP__?.auth.currentUser?.uid) {
+  const value = readJson(`map:completed:${unitId}`, [],uid);
   return Array.isArray(value) ? value : [];
 }
 
-function localChecked(unitId) {
-  const value = readJson(`progress:${unitId}`, []);
+function localChecked(unitId,uid=window.__MAP__?.auth.currentUser?.uid) {
+  const value = readJson(`progress:${unitId}`, [],uid);
   return Array.isArray(value) ? value : [];
 }
 
@@ -128,14 +122,14 @@ async function totalForUser(map, user) {
     const data = snap.exists() ? snap.data() : {};
     const completed = new Set([
       ...(Array.isArray(data?.completedPages) ? data.completedPages : []),
-      ...localCompleted(unitId)
+      ...localCompleted(unitId,user.uid)
     ]);
 
     // El badge es de solo lectura: interpreta el progreso histórico sin modificar Firestore.
     if ((Number(data?.progressModelVersion) || 0) < 2) {
       const checked = [
         ...(Array.isArray(data?.checked) ? data.checked : []),
-        ...localChecked(unitId)
+        ...localChecked(unitId,user.uid)
       ];
       legacyPages(unitId, checked).forEach(pageId => completed.add(pageId));
     }
@@ -171,7 +165,8 @@ paint(localTotal());
   if (initialUser) refreshRemote(map, initialUser);
 
   map.onAuthStateChanged(map.auth, user => {
-    if (user) refreshRemote(map, user);
+    paint(localTotal());
+    if (user) refreshRemote(map,user);else {refreshVersion++;paint(0);}
   });
 
   window.addEventListener('map:page-completed', () => {
@@ -187,7 +182,7 @@ paint(localTotal());
   });
 
   window.addEventListener('storage', event => {
-    if (!event.key || (!event.key.startsWith('map:completed:') && !event.key.startsWith('progress:'))) return;
+    if (!event.key || (!event.key.startsWith('map:completed:') && !event.key.startsWith('progress:') && !event.key.startsWith('map:account:'))) return;
     paint(localTotal());
     const user = map.auth.currentUser;
     if (user) refreshRemote(map, user);
