@@ -1,3 +1,5 @@
+import {offerLegacyImport} from './progress-legacy-import.mjs';
+import {readAccount,writeAccount,removeAccount} from './account-progress.mjs';
 import {
   doc,
   getDoc,
@@ -93,28 +95,21 @@ function waitForMAP() {
   });
 }
 
-function readJson(key, fallback) {
-  try {
-    const value = JSON.parse(localStorage.getItem(key) || 'null');
-    return value ?? fallback;
-  } catch (_) {
-    return fallback;
-  }
-}
+function readJson(key, fallback, uid = window.__MAP__?.auth.currentUser?.uid) { return readAccount(localStorage,uid,key,fallback); }
 
-function localChecked(unitId) {
-  const value = readJson(`progress:${unitId}`, []);
+function localChecked(unitId,uid=window.__MAP__?.auth.currentUser?.uid) {
+  const value = readJson(`progress:${unitId}`, [],uid);
   return Array.isArray(value) ? value : [];
 }
 
-function localCompleted(unitId) {
-  const value = readJson(`map:completed:${unitId}`, []);
+function localCompleted(unitId,uid=window.__MAP__?.auth.currentUser?.uid) {
+  const value = readJson(`map:completed:${unitId}`, [],uid);
   return Array.isArray(value) ? value : [];
 }
 
-function saveLocalCompleted(unitId, pages) {
+function saveLocalCompleted(unitId,pages,uid) {
   try {
-    localStorage.setItem(`map:completed:${unitId}`, JSON.stringify([...new Set(pages)]));
+    writeAccount(localStorage,uid,`map:completed:${unitId}`,[...new Set(pages)]);
   } catch (_) {}
 }
 
@@ -186,20 +181,20 @@ async function readUnitProgress(db, uid, unit) {
   const snap = await getDoc(ref);
   const data = snap.exists() ? snap.data() : {};
   const remotePages = Array.isArray(data?.completedPages) ? data.completedPages : [];
-  const localPages = localCompleted(unit.id);
+  const localPages = localCompleted(unit.id,uid);
   let completedPages = [...new Set([...remotePages, ...localPages])];
 
   // Migración única del esquema manual anterior. Una vez fijada la versión 2,
   // marcar viejas casillas ya no puede aumentar el progreso del recorrido.
-  if ((Number(data?.progressModelVersion) || 0) < 2) {
+  if ((Number(data?.progressModelVersion) || 0) < 2 || readAccount(localStorage,uid,`map:legacy-pending:${unit.id}`,false)) {
     const oldChecked = [
       ...(Array.isArray(data?.checked) ? data.checked : []),
-      ...localChecked(unit.id)
+      ...localChecked(unit.id,uid)
     ];
     completedPages = [...new Set([...completedPages, ...legacyPages(unit, oldChecked)])];
   }
 
-  const needsSync = completedPages.length !== remotePages.length || (Number(data?.progressModelVersion) || 0) < 2;
+  const needsSync = completedPages.length !== remotePages.length || (Number(data?.progressModelVersion) || 0) < 2 || readAccount(localStorage,uid,`map:legacy-pending:${unit.id}`,false);
   if (needsSync) {
     await setDoc(ref, {
       completedPages,
@@ -209,7 +204,8 @@ async function readUnitProgress(db, uid, unit) {
     }, { merge: true });
   }
 
-  saveLocalCompleted(unit.id, completedPages);
+  removeAccount(localStorage,uid,`map:legacy-pending:${unit.id}`);
+  saveLocalCompleted(unit.id,completedPages,uid);
 
   const completedIds = new Set(completedPages);
   const checked = new Set();
@@ -365,10 +361,13 @@ function showError(message) {
   box.textContent = message;
 }
 
+let dashboardVersion=0;
 async function renderDashboard(user) {
-  if (!user || !window.__MAP__?.db) return;
+  const version=++dashboardVersion;
+  if (!user || !window.__MAP__?.db || window.__MAP__.auth.currentUser?.uid !== user.uid) return;
 
   setIdentity(user);
+  offerLegacyImport(user,()=>renderDashboard(window.__MAP__.auth.currentUser));
   const container = $('progress-units');
   if (!container) return;
   container.innerHTML = '<div style="padding:12px;">Cargando tu recorrido…</div>';
@@ -378,6 +377,7 @@ async function renderDashboard(user) {
       UNITS.map(unit => readUnitProgress(window.__MAP__.db, user.uid, unit))
     );
 
+    if(version!==dashboardVersion||window.__MAP__.auth.currentUser?.uid!==user.uid)return;
     container.innerHTML = '';
     let doneAll = 0;
     let totalAll = 0;
@@ -413,6 +413,7 @@ async function renderDashboard(user) {
       continueA.textContent = '🏁 Recorrido completado';
     }
   } catch (err) {
+    if(version!==dashboardVersion)return;
     console.error(err);
     container.innerHTML = '';
     showError('No se pudo leer el progreso en este momento. Probá recargar la página.');
@@ -429,6 +430,7 @@ async function renderDashboard(user) {
 
     map.onAuthStateChanged(map.auth, user => {
       if (user) renderDashboard(user);
+      else {dashboardVersion++;const container=$('progress-units');if(container)container.innerHTML='';offerLegacyImport(null,()=>{});}
     });
 
     window.addEventListener('map:page-completed', () => {

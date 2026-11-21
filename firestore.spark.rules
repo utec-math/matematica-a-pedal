@@ -1,0 +1,135 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function identified() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && request.auth.token.email_verified == true;
+    }
+    function self(uid) { return request.auth != null && request.auth.uid == uid; }
+    function teacher(uid) {
+      let profile = get(/databases/$(database)/documents/sparkProfiles/$(uid)).data;
+      return identified() && profile.teacherEnabled == true && !profile.get('suspended', false);
+    }
+    function group(gid) { return get(/databases/$(database)/documents/sparkGroups/$(gid)).data; }
+    function groupAfter(gid) { return getAfter(/databases/$(database)/documents/sparkGroups/$(gid)).data; }
+    function owns(gid) { return identified() && group(gid).ownerId == request.auth.uid && teacher(request.auth.uid); }
+    function live(gid) { return group(gid).status == 'active' && teacher(group(gid).ownerId); }
+    function member(gid, uid) { return exists(/databases/$(database)/documents/sparkGroups/$(gid)/members/$(uid)); }
+    function memberAfter(gid, uid) { return existsAfter(/databases/$(database)/documents/sparkGroups/$(gid)/members/$(uid)); }
+    function shortName(value, size) { return value is string && value.size() > 0 && value.size() <= size; }
+    function code(value) { return value is string && value.matches('^[A-F0-9]{32}$'); }
+    function memberShape(uid) {
+      let data = request.resource.data;
+      return data.keys().hasOnly(['uid','alias','joinedAt','consentVersion','sharePriorProgress','inviteCode'])
+        && data.uid == uid && shortName(data.alias, 60)
+        && data.joinedAt == request.time && data.consentVersion == 1
+        && data.sharePriorProgress == true;
+    }
+    function invitationMatches(data, gid) {
+      let g = groupAfter(gid);
+      return data.keys().hasOnly(['groupId','name','teacherName','ownerId','expiresAt'])
+        && data.groupId == gid && data.name == g.name && data.teacherName == g.teacherName
+        && data.ownerId == g.ownerId && data.expiresAt == g.expiresAt;
+    }
+    function sharedProgress(uid) {
+      let share = get(/databases/$(database)/documents/sparkShares/$(uid)/teachers/$(request.auth.uid)).data;
+      let g = group(share.groupId);
+      return identified() && teacher(request.auth.uid) && g.ownerId == request.auth.uid
+        && g.status == 'active' && member(share.groupId, uid);
+    }
+    // Se conserva el acceso propio publicado, incluido el progreso anónimo anterior.
+    match /users/{uid} {
+      allow read, write: if self(uid);
+      match /progress/{unitId} {
+        allow read, write: if self(uid);
+        allow get: if unitId in ['unidad0','unidad1','unidad2','unidad3','unidad4'] && sharedProgress(uid);
+      }
+    }
+    match /sparkProfiles/{uid} {
+      allow get: if self(uid);
+      allow create: if identified() && self(uid)
+        && request.resource.data.keys().hasOnly(['name','teacherEnabled','createdAt'])
+        && shortName(request.resource.data.name,60)
+        && request.resource.data.teacherEnabled == true && request.resource.data.createdAt == request.time;
+      allow update: if identified() && self(uid) && !resource.data.get('suspended',false)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+        && shortName(request.resource.data.name,60);
+    }
+    match /sparkGroups/{gid} {
+      allow get: if (identified() && !exists(/databases/$(database)/documents/sparkGroups/$(gid)))
+        || owns(gid) || (identified() && live(gid) && member(gid,request.auth.uid));
+      allow list: if identified() && teacher(request.auth.uid)
+        && resource.data.ownerId == request.auth.uid && request.query.limit <= 21;
+      allow create: if identified() && teacher(request.auth.uid)
+        && request.resource.data.keys().hasOnly(['name','ownerId','teacherName','status','createdAt','code','expiresAt'])
+        && request.resource.data.ownerId == request.auth.uid
+        && shortName(request.resource.data.name,70) && shortName(request.resource.data.teacherName,60)
+        && request.resource.data.status == 'active' && request.resource.data.createdAt == request.time
+        && code(request.resource.data.code)
+        && request.resource.data.expiresAt > request.time
+        && request.resource.data.expiresAt <= request.time + duration.value(7,'d')
+        && invitationMatches(getAfter(/databases/$(database)/documents/sparkInvites/$(request.resource.data.code)).data,gid);
+      allow update: if owns(gid) && resource.data.status == 'active'
+        && (
+          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+            && shortName(request.resource.data.name,70)
+            && invitationMatches(getAfter(/databases/$(database)/documents/sparkInvites/$(resource.data.code)).data,gid))
+          || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['code','expiresAt'])
+            && code(request.resource.data.code) && request.resource.data.code != resource.data.code
+            && request.resource.data.expiresAt > request.time
+            && request.resource.data.expiresAt <= request.time + duration.value(7,'d')
+            && invitationMatches(getAfter(/databases/$(database)/documents/sparkInvites/$(request.resource.data.code)).data,gid))
+          || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','archivedAt'])
+            && request.resource.data.status == 'archived' && request.resource.data.archivedAt == request.time)
+        );
+      match /members/{uid} {
+        allow get: if self(uid) || owns(gid);
+        allow list: if owns(gid) && request.query.limit <= 201;
+        allow create: if identified() && self(uid) && live(gid) && memberShape(uid)
+          && request.resource.data.inviteCode == group(gid).code
+          && group(gid).expiresAt > request.time
+          && existsAfter(/databases/$(database)/documents/sparkMemberships/$(uid)/groups/$(gid));
+        // La presencia implica consentimiento. No hay altas o cambios por parte del docente.
+        allow delete: if self(uid) || owns(gid);
+      }
+    }
+    match /sparkInvites/{inviteCode} {
+      allow get: if identified() && code(inviteCode) && (
+        !exists(/databases/$(database)/documents/sparkInvites/$(inviteCode))
+        || (live(resource.data.groupId) && group(resource.data.groupId).code == inviteCode
+          && resource.data.expiresAt > request.time));
+      // No se permite enumerar códigos; solo consultar un secreto aleatorio de 128 bits.
+      function validWrite() {
+        return identified() && teacher(request.auth.uid)
+          && groupAfter(request.resource.data.groupId).ownerId == request.auth.uid
+          && groupAfter(request.resource.data.groupId).status == 'active'
+          && groupAfter(request.resource.data.groupId).code == inviteCode
+          && invitationMatches(request.resource.data,request.resource.data.groupId);
+      }
+      allow create: if validWrite();
+      allow update: if validWrite() && resource.data.ownerId == request.auth.uid
+        && resource.data.groupId == request.resource.data.groupId;
+      allow delete: if owns(resource.data.groupId);
+    }
+    match /sparkMemberships/{uid}/groups/{gid} {
+      allow read: if self(uid);
+      allow create: if identified() && self(uid) && live(gid)
+        && request.resource.data.keys().hasOnly(['groupId']) && request.resource.data.groupId == gid
+        && memberAfter(gid,uid);
+      allow delete: if (self(uid) || owns(gid)) && !memberAfter(gid,uid);
+    }
+    match /sparkShares/{uid}/teachers/{teacherId} {
+      allow get: if self(uid) || (identified() && request.auth.uid == teacherId);
+      // El enlace puede apuntar solamente a un grupo con consentimiento vigente.
+      // Reubicarlo no concede acceso nuevo: el grupo de destino ya debe tener al estudiante.
+      allow create, update: if identified()
+        && (self(uid) || request.auth.uid == teacherId)
+        && request.resource.data.keys().hasOnly(['groupId'])
+        && groupAfter(request.resource.data.groupId).ownerId == teacherId
+        && groupAfter(request.resource.data.groupId).status == 'active'
+        && teacher(teacherId) && memberAfter(request.resource.data.groupId,uid);
+      allow delete: if self(uid);
+    }
+  }
+}

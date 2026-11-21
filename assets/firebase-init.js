@@ -1,4 +1,5 @@
 // assets/firebase-init.js
+import {readAccount} from './account-progress.mjs';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import {
   getAuth,
@@ -12,8 +13,8 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 import {
-  getFirestore,
-  enableIndexedDbPersistence,
+  initializeFirestore,
+  memoryLocalCache,
   collection,
   doc,
   getDoc,
@@ -34,11 +35,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+// No persistir en IndexedDB registros de estudiantes consultados por docentes.
+// Las copias propias sin conexión se conservan en claves locales por UID.
+const db = initializeFirestore(app, { localCache: memoryLocalCache() });
 
 const PENDING_MIGRATION_KEY = "map:pending-progress-migration";
 
-enableIndexedDbPersistence(db).catch(() => {});
 
 // Sitio abierto: conservar primero cualquier sesión persistida.
 // Solo crea una cuenta anónima si Firebase confirma que no hay usuario autenticado.
@@ -88,7 +90,7 @@ function mergeCompletionMeta(sourceMeta, targetMeta) {
 // Lee todo el progreso del UID actual antes de cambiar de identidad.
 async function readProgressSnapshot(uid) {
   const snap = await getDocs(collection(db, "users", uid, "progress"));
-  return snap.docs.map(d => {
+  const docs = snap.docs.map(d => {
     const data = d.data() || {};
     return {
       id: d.id,
@@ -98,6 +100,19 @@ async function readProgressSnapshot(uid) {
       progressModelVersion: Number(data.progressModelVersion) || 0
     };
   });
+  for(let i=0;i<5;i++){
+    const id=`unidad${i}`;
+    const checked=readAccount(localStorage,uid,`progress:${id}`,[]);
+    const completed=readAccount(localStorage,uid,`map:completed:${id}`,[]);
+    const localChecked=Array.isArray(checked)?checked:[],localPages=Array.isArray(completed)?completed:[];
+    if(!localChecked.length&&!localPages.length)continue;
+    let item=docs.find(d=>d.id===id);
+    if(!item){item={id,checked:[],completedPages:[],completionMeta:{},progressModelVersion:0};docs.push(item)}
+    item.checked=[...new Set([...item.checked,...localChecked])];
+    item.completedPages=[...new Set([...item.completedPages,...localPages])];
+    if(readAccount(localStorage,uid,`map:legacy-pending:${id}`,false))item.progressModelVersion=0;
+  }
+  return docs;
 }
 
 function savePendingMigration(sourceUid, expectedEmail, progressDocs) {

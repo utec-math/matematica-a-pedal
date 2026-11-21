@@ -138,6 +138,7 @@ import('/matematica-a-pedal/assets/analytics.js?v=1')
 
   const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=6", { cache: "no-store" });
   placeholder.innerHTML = await headerRes.text();
+  import('/matematica-a-pedal/assets/aula-entry.mjs').catch(err=>console.warn('Mi espacio no está disponible.',err));
 
   // El encabezado es global, así que también debe ser global la sesión UTEC.
   // Usamos exactamente las mismas URLs que las páginas nuevas: el mapa de módulos

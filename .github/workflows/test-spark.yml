@@ -1,0 +1,40 @@
+name: Verificar seguimiento Spark
+on:
+  push:
+    branches: [codex/spark-seguimiento-docente]
+  pull_request:
+    paths: ['aula/**', 'spark/**', 'tests/spark-rules.test.cjs', 'firestore.spark.rules', 'firebase.spark.json', 'package.json', '.github/workflows/test-spark.yml']
+concurrency:
+  group: spark-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm install
+      - run: node tests/audit.cjs
+      - run: npm test
+      - run: npm run test:rules
+      - run: npm run test:integration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diagnostico-spark
+          path: |
+            firestore-debug.log
+            firebase-debug.log
+            package-lock.json
+            npm-audit.json
+          if-no-files-found: ignore
+
