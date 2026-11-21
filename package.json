@@ -1,0 +1,10 @@
+{
+  "name":"matematica-a-pedal-testing",
+  "private":true,
+  "scripts":{
+    "test":"node --test spark/test/*.test.mjs aula/test/*.test.cjs",
+    "emulators":"firebase emulators:start --project demo-matematica-pedal --config firebase.spark.json",
+    "test:rules":"firebase emulators:exec --project demo-matematica-pedal --config firebase.spark.json --only firestore \"node --test tests/spark-rules.test.cjs\""
+  },
+  "devDependencies":{"firebase-tools":"^14.0.0","@firebase/rules-unit-testing":"5.0.0","firebase":"12.4.0"}
+}
