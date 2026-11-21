@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
-const catalog=require('../../functions/catalog.json');
+const catalog=JSON.parse(fs.readFileSync(require.resolve('../catalog.mjs'),'utf8').replace(/^export const catalog=/,'').replace(/;\s*$/,''));
 function setup(){
   const elements=new Map();
   const el=id=>{if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',hidden:false,setAttribute(){},focus(){}});return elements.get(id)};
