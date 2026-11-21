@@ -1,4 +1,6 @@
 // assets/firebase-init.js
+import {readAccount} from './account-progress.mjs';
+import {RECORD_IDS,cleanRecord,newerRecord,recordKey} from './report-records.mjs';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 import {
   getAuth,
@@ -12,8 +14,8 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 import {
-  getFirestore,
-  enableIndexedDbPersistence,
+  initializeFirestore,
+  memoryLocalCache,
   collection,
   doc,
   getDoc,
@@ -34,11 +36,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+// No persistir en IndexedDB registros de estudiantes consultados por docentes.
+// Las copias propias sin conexión se conservan en claves locales por UID.
+const db = initializeFirestore(app, { localCache: memoryLocalCache() });
 
 const PENDING_MIGRATION_KEY = "map:pending-progress-migration";
 
-enableIndexedDbPersistence(db).catch(() => {});
 
 // Sitio abierto: conservar primero cualquier sesión persistida.
 // Solo crea una cuenta anónima si Firebase confirma que no hay usuario autenticado.
@@ -50,6 +53,7 @@ async function ensureSignedInUser() {
   }
 
   const cred = await signInAnonymously(auth);
+  window.dispatchEvent(new Event('map:account-ready'));
   return cred.user;
 }
 
@@ -88,8 +92,10 @@ function mergeCompletionMeta(sourceMeta, targetMeta) {
 // Lee todo el progreso del UID actual antes de cambiar de identidad.
 async function readProgressSnapshot(uid) {
   const snap = await getDocs(collection(db, "users", uid, "progress"));
-  return snap.docs.map(d => {
+  const docs = snap.docs.map(d => {
     const data = d.data() || {};
+    const kind=Object.keys(RECORD_IDS).find(k=>RECORD_IDS[k]===d.id);
+    if(kind)return {id:d.id,reportKind:kind,reportData:cleanRecord(kind,data)};
     return {
       id: d.id,
       checked: Array.isArray(data.checked) ? data.checked : [],
@@ -98,6 +104,26 @@ async function readProgressSnapshot(uid) {
       progressModelVersion: Number(data.progressModelVersion) || 0
     };
   });
+  for(const kind of Object.keys(RECORD_IDS)){
+    const local=cleanRecord(kind,readAccount(localStorage,uid,recordKey(kind),null)?.record);
+    if(!local)continue;
+    const prior=docs.find(d=>d.id===RECORD_IDS[kind]);
+    if(prior)prior.reportData=newerRecord(local,prior.reportData);
+    else docs.push({id:RECORD_IDS[kind],reportKind:kind,reportData:local});
+  }
+  for(let i=0;i<5;i++){
+    const id=`unidad${i}`;
+    const checked=readAccount(localStorage,uid,`progress:${id}`,[]);
+    const completed=readAccount(localStorage,uid,`map:completed:${id}`,[]);
+    const localChecked=Array.isArray(checked)?checked:[],localPages=Array.isArray(completed)?completed:[];
+    if(!localChecked.length&&!localPages.length)continue;
+    let item=docs.find(d=>d.id===id);
+    if(!item){item={id,checked:[],completedPages:[],completionMeta:{},progressModelVersion:0};docs.push(item)}
+    item.checked=[...new Set([...item.checked,...localChecked])];
+    item.completedPages=[...new Set([...item.completedPages,...localPages])];
+    if(readAccount(localStorage,uid,`map:legacy-pending:${id}`,false))item.progressModelVersion=0;
+  }
+  return docs;
 }
 
 function savePendingMigration(sourceUid, expectedEmail, progressDocs) {
@@ -122,6 +148,13 @@ async function mergeProgressIntoUser(progressDocs, targetUid) {
     const targetRef = doc(db, "users", targetUid, "progress", item.id);
     const targetSnap = await getDoc(targetRef);
     const targetData = targetSnap.exists() ? targetSnap.data() : {};
+    if(item.reportKind){
+      const source=cleanRecord(item.reportKind,item.reportData);
+      const target=cleanRecord(item.reportKind,targetData);
+      const record=newerRecord(source,target);
+      if(record&&record!==target)await setDoc(targetRef,{...record,ts:serverTimestamp()});
+      continue;
+    }
 
     const targetChecked = Array.isArray(targetData?.checked) ? targetData.checked : [];
     const targetCompleted = Array.isArray(targetData?.completedPages) ? targetData.completedPages : [];

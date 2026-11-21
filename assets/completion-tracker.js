@@ -1,3 +1,4 @@
+import {readAccount,writeAccount,removeAccount} from './account-progress.mjs';
 import {
   doc,
   getDoc,
@@ -60,32 +61,22 @@ function localSessionKey(unitId, pageId) {
   return `map:page-session:${unitId}:${pageId}`;
 }
 
-function readJson(key, fallback) {
-  try {
-    const value = JSON.parse(localStorage.getItem(key) || 'null');
-    return value ?? fallback;
-  } catch (_) {
-    return fallback;
-  }
-}
+function readJson(key, fallback, uid = window.__MAP__?.auth.currentUser?.uid) { return readAccount(localStorage,uid,key,fallback); }
 
-function writeJson(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); }
-  catch (_) {}
-}
+function writeJson(key,value,uid = window.__MAP__?.auth.currentUser?.uid) { writeAccount(localStorage,uid,key,value); }
 
-function readLocalCompleted(unitId) {
-  const value = readJson(localCompletionKey(unitId), []);
+function readLocalCompleted(unitId,uid) {
+  const value = readJson(localCompletionKey(unitId), [],uid);
   return Array.isArray(value) ? value : [];
 }
 
-function readLegacyLocalChecked(unitId) {
-  const value = readJson(`progress:${unitId}`, []);
+function readLegacyLocalChecked(unitId,uid) {
+  const value = readJson(`progress:${unitId}`, [],uid);
   return Array.isArray(value) ? value : [];
 }
 
-function saveLocalCompleted(unitId, pages) {
-  writeJson(localCompletionKey(unitId), [...new Set(pages)]);
+function saveLocalCompleted(unitId,pages,uid) {
+  writeJson(localCompletionKey(unitId), [...new Set(pages)],uid);
 }
 
 function legacyPagesFromChecked(unitId, checkedIds) {
@@ -158,7 +149,7 @@ async function ensureMAP() {
   }
 
   const user = await window.__MAP__.authReady;
-  return { map: window.__MAP__, user: user || window.__MAP__.auth.currentUser };
+  return { map: window.__MAP__, user: window.__MAP__.auth.currentUser };
 }
 
 function contentWordCount() {
@@ -324,16 +315,16 @@ async function readProgressDoc(db, uid, unitId) {
   const snap = await getDoc(ref);
   const data = snap.exists() ? snap.data() : {};
   const remotePages = Array.isArray(data?.completedPages) ? data.completedPages : [];
-  const localPages = readLocalCompleted(unitId);
+  const localPages = readLocalCompleted(unitId,uid);
   let completedPages = [...new Set([...remotePages, ...localPages])];
 
   // Migración única del sistema manual anterior. Se hace también desde las páginas
   // de unidad, para no obligar a visitar “Mi progreso” antes de conservar el historial.
   const oldVersion = Number(data?.progressModelVersion) || 0;
-  if (oldVersion < 2) {
+  if (oldVersion < 2 || readAccount(localStorage,uid,`map:legacy-pending:${unitId}`,false)) {
     const oldChecked = [
       ...(Array.isArray(data?.checked) ? data.checked : []),
-      ...readLegacyLocalChecked(unitId)
+      ...readLegacyLocalChecked(unitId,uid)
     ];
     completedPages = [...new Set([
       ...completedPages,
@@ -341,7 +332,7 @@ async function readProgressDoc(db, uid, unitId) {
     ])];
   }
 
-  const needsSync = completedPages.length !== remotePages.length || oldVersion < 2;
+  const needsSync = completedPages.length !== remotePages.length || oldVersion < 2 || readAccount(localStorage,uid,`map:legacy-pending:${unitId}`,false);
   if (needsSync) {
     await setDoc(ref, {
       completedPages,
@@ -351,7 +342,8 @@ async function readProgressDoc(db, uid, unitId) {
     }, { merge: true });
   }
 
-  saveLocalCompleted(unitId, completedPages);
+  removeAccount(localStorage,uid,`map:legacy-pending:${unitId}`);
+  saveLocalCompleted(unitId,completedPages,uid);
   return { ref, data, completedPages };
 }
 
@@ -360,7 +352,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   const snap = await getDoc(ref);
   const data = snap.exists() ? snap.data() : {};
   const remotePages = Array.isArray(data?.completedPages) ? data.completedPages : [];
-  const localPages = readLocalCompleted(unitId);
+  const localPages = readLocalCompleted(unitId,uid);
   const completedPages = [...new Set([...remotePages, ...localPages, pageId])];
   const existingMeta = data?.completionMeta && typeof data.completionMeta === 'object'
     ? data.completionMeta
@@ -379,7 +371,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
     }
   };
 
-  saveLocalCompleted(unitId, completedPages);
+  saveLocalCompleted(unitId,completedPages,uid);
 
   await setDoc(ref, {
     completedPages,
@@ -422,6 +414,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   let lastActivityAt = Date.now();
   let lastPersistSecond = -1;
   let completed = false;
+  let activeUid=null, bindVersion=0;
   let busy = false;
 
   const touchActivity = () => { lastActivityAt = Date.now(); };
@@ -430,7 +423,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   });
 
   const persistSession = () => {
-    writeJson(localSessionKey(route.unitId, pageId), { activeSeconds, maxScroll });
+    writeJson(localSessionKey(route.unitId,pageId),{activeSeconds,maxScroll},activeUid);
   };
 
   function ready() {
@@ -438,6 +431,8 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
   }
 
   function paint() {
+    if(!activeUid){box.textContent='Preparando tu sesión…';setForwardDisabled(forward,true);return;}
+
     maxScroll = Math.max(maxScroll, scrollProgress());
     const remaining = Math.max(0, minSeconds - Math.floor(activeSeconds));
     const scrollPct = Math.round(maxScroll * 100);
@@ -472,27 +467,24 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
     const { map, user } = await ensureMAP();
     if (!user) throw new Error('No hay una sesión activa.');
 
-    const state = await readProgressDoc(map.db, user.uid, route.unitId);
-    completed = state.completedPages.includes(pageId);
-    applyAutomaticChecklist(route.unitId, state.completedPages);
-    paint();
-
-    map.onAuthStateChanged(map.auth, async nextUser => {
-      if (!nextUser || nextUser.uid === user.uid) return;
-      try {
-        const nextState = await readProgressDoc(map.db, nextUser.uid, route.unitId);
-        completed = nextState.completedPages.includes(pageId);
-        applyAutomaticChecklist(route.unitId, nextState.completedPages);
-        paint();
-      } catch (err) {
-        console.warn('completion-tracker: no se pudo actualizar el estado tras cambiar de usuario.', err);
-      }
-    });
+    async function bindUser(nextUser){
+      const version=++bindVersion;activeUid=nextUser?.uid||null;completed=false;busy=false;
+      const saved=readJson(localSessionKey(route.unitId,pageId),{},activeUid);
+      activeSeconds=Math.max(0,Number(saved.activeSeconds)||0);maxScroll=Math.max(scrollProgress(),Number(saved.maxScroll)||0);lastPersistSecond=-1;
+      applyAutomaticChecklist(route.unitId,[]);paint();
+      if(!nextUser)return;
+      try{const state=await readProgressDoc(map.db,nextUser.uid,route.unitId);
+        if(version!==bindVersion||map.auth.currentUser?.uid!==nextUser.uid)return;
+        completed=state.completedPages.includes(pageId);applyAutomaticChecklist(route.unitId,state.completedPages);paint();
+      }catch(err){if(version===bindVersion)console.warn('No se pudo cargar el avance de esta cuenta.',err)}
+    }
+    await bindUser(map.auth.currentUser||user);
+    map.onAuthStateChanged(map.auth,nextUser=>{if(nextUser?.uid!==activeUid)bindUser(nextUser)});
 
     const timer = setInterval(() => {
       maxScroll = Math.max(maxScroll, scrollProgress());
 
-      if (!completed && document.visibilityState === 'visible' && document.hasFocus() && Date.now() - lastActivityAt < IDLE_LIMIT_MS) {
+      if (activeUid && !completed && document.visibilityState === 'visible' && document.hasFocus() && Date.now() - lastActivityAt < IDLE_LIMIT_MS) {
         activeSeconds += 1;
       }
 
@@ -510,6 +502,7 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
     });
 
     forward.addEventListener('click', async event => {
+      if(!activeUid||map.auth.currentUser?.uid!==activeUid){event.preventDefault();return;}
       if (completed) return;
 
       if (!ready() || busy) {
@@ -523,20 +516,23 @@ async function markCompleted(db, uid, unitId, pageId, activeSeconds, maxScroll) 
       forward.textContent = 'Guardando progreso…';
       setForwardDisabled(forward, true);
 
-      const currentUser = map.auth.currentUser || user;
+      const currentUser = map.auth.currentUser;
+      const saveVersion=bindVersion;
       try {
         await markCompleted(map.db, currentUser.uid, route.unitId, pageId, activeSeconds, maxScroll);
+        if(saveVersion!==bindVersion||map.auth.currentUser?.uid!==currentUser.uid)return;
         completed = true;
-        localStorage.removeItem(localSessionKey(route.unitId, pageId));
-        const updatedPages = [...readLocalCompleted(route.unitId), pageId];
-        saveLocalCompleted(route.unitId, updatedPages);
+        removeAccount(localStorage,currentUser.uid,localSessionKey(route.unitId,pageId));
+        const updatedPages = [...readLocalCompleted(route.unitId,currentUser.uid), pageId];
+        saveLocalCompleted(route.unitId,updatedPages,currentUser.uid);
         applyAutomaticChecklist(route.unitId, updatedPages);
         location.href = originalHref;
       } catch (err) {
+        if(saveVersion!==bindVersion||map.auth.currentUser?.uid!==currentUser.uid)return;
         console.error('completion-tracker: no se pudo guardar la finalización.', err);
-        saveLocalCompleted(route.unitId, [...readLocalCompleted(route.unitId), pageId]);
+        saveLocalCompleted(route.unitId,[...readLocalCompleted(route.unitId,currentUser.uid),pageId],currentUser.uid);
         box.textContent = '⚠️ Se guardó el avance en este navegador, pero no se pudo sincronizar con la nube. Se reintentará más adelante.';
-        setTimeout(() => { location.href = originalHref; }, 900);
+        setTimeout(() => { if(saveVersion===bindVersion && map.auth.currentUser?.uid===currentUser.uid)location.href = originalHref; }, 900);
       }
     }, true);
   } catch (err) {
