@@ -8,7 +8,9 @@ En `progreso.html`, una persona identificada con Google elige todo el recorrido 
 
 El informe conserva la identidad visual de la plataforma y su logo transparente. Distingue páginas completadas, ausencia de registros, respuestas del autodiagnóstico y autoevaluación declarada. Las sugerencias de repaso se generan a partir de respuestas incorrectas o «No sé», con hasta tres temas enlazados; las preguntas pendientes no se interpretan como errores.
 
-La guía pública `descargas/guia-contenidos-docentes.pdf` contiene las cinco unidades y enlaces a las 38 páginas, más orientaciones de selección e interpretación. Se enlaza desde la portada y Mi progreso, sin exigir registro. Para regenerarla: `node scripts/generate-guide.mjs`. Sus descripciones y fecha requieren revisión cuando cambien los contenidos.
+La guía pública `descargas/guia-contenidos-docentes.pdf` tiene 13 páginas: presentación del proyecto, mapa de cuatro grandes temas, calentamiento transversal, conceptos y definiciones, ejemplos, práctica y orientaciones docentes. Incluye enlaces a las 38 páginas del recorrido y cuatro accesos internos desde el mapa al detalle. Sus contenidos están en `docs/guia-contenidos-data.mjs` y se regeneran con `node scripts/generate-guide.mjs`.
+
+La descarga está en `docentes.html`, con acceso «Para docentes» en el encabezado compartido, la portada y Sobre el proyecto. Se retiró el enlace de la sección de reporte personal en Mi progreso para mantener allí la tarea del estudiante. La guía no exige registro. Revisar contenidos, enlaces y fecha cuando cambie la plataforma.
 
 ## Datos y permisos
 
