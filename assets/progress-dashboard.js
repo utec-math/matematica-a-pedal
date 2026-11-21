@@ -364,7 +364,7 @@ function showError(message) {
 let dashboardVersion=0;
 async function renderDashboard(user) {
   const version=++dashboardVersion;
-  if (!user || !window.__MAP__?.db) return;
+  if (!user || !window.__MAP__?.db || window.__MAP__.auth.currentUser?.uid !== user.uid) return;
 
   setIdentity(user);
   offerLegacyImport(user,()=>renderDashboard(window.__MAP__.auth.currentUser));

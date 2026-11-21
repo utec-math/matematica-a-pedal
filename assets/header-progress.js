@@ -146,7 +146,7 @@ async function refreshRemote(map, user) {
   const version = ++refreshVersion;
   try {
     const done = await totalForUser(map, user);
-    if (version === refreshVersion) paint(done);
+    if (version === refreshVersion && map.auth.currentUser?.uid === user?.uid) paint(done);
   } catch (err) {
     console.warn('No se pudo actualizar el progreso del encabezado:', err);
   }
